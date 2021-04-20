@@ -26,17 +26,15 @@ class App
 
                     $this->method = $url[1];
                     unset($url[1]);
-
                 }
             }
 
             $this->params =$url ? array_values($url) : [];
             try{
                 call_user_func_array([$this->controller , $this->method], $this->params);
-            }catch(Exception $ex){
-                
+            }catch(Exception $e){  
+            //    return new Result($e->getMessage());
             }
-
         }
 
 

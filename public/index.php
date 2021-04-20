@@ -22,7 +22,6 @@ require_once '../app/init.php';
 <?php 
 include 'includes/footer.php'
 ?>
-
 </body>
 </html>
 

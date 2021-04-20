@@ -11,6 +11,7 @@ footer p{
     padding: 0.6em;
 }
 </style>
+
 <footer>
 <div class="container-fluid">
 <div class=" mx-auto">

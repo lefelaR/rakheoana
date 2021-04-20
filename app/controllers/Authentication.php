@@ -15,7 +15,7 @@ class Authentication extends Controller
     public function login()
     {
 
-        return $this->view('authentication/login');
+        return $this->view('authentication/login',null);
     }
 
 
@@ -30,6 +30,10 @@ class Authentication extends Controller
 
         
     }
+    public function index()
+    {
 
+        return $this->view('authentication/index',null);
+    }
 
 }

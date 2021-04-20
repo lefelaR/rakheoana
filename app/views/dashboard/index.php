@@ -10,7 +10,7 @@
       <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
         Home
       </button>
-      <div class="collapse show" id="home-collapse" style="">
+      <div class="collapse show" id="home-collapse" >
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
           <li><a href="#" class="link-dark rounded">Overview</a></li>
           <li><a href="#" class="link-dark rounded">Updates</a></li>
@@ -22,7 +22,7 @@
       <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="true">
         Dashboard
       </button>
-      <div class="collapse show" id="dashboard-collapse" style="">
+      <div class="collapse show" id="dashboard-collapse" >
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
           <li><a href="#" class="link-dark rounded">Overview</a></li>
           <li><a href="#" class="link-dark rounded">Weekly</a></li>
@@ -35,7 +35,7 @@
       <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="true">
         Orders
       </button>
-      <div class="collapse show" id="orders-collapse" style="">
+      <div class="collapse show" id="orders-collapse" >
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
           <li><a href="#" class="link-dark rounded">New</a></li>
           <li><a href="#" class="link-dark rounded">Processed</a></li>
@@ -49,7 +49,7 @@
       <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
         Account
       </button>
-      <div class="collapse" id="account-collapse" style="">
+      <div class="collapse" id="account-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
           <li><a href="#" class="link-dark rounded">New...</a></li>
           <li><a href="#" class="link-dark rounded">Profile</a></li>
