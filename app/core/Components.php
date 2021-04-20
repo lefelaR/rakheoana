@@ -1,7 +1,7 @@
 <?php
 
 $context = new stdClass;
-$context->siteroot = 'mvc/public/';
+$context->siteroot = '/mvc/public';
 function url($string)
 {
     global $context;
