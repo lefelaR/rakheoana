@@ -18,4 +18,9 @@ class Home extends Controller{
        
       return $this->view('home/index', $name);
     }
+    function NotFound()
+    {
+     
+     return $this->view('home/notfound', null);
+    }
 }
