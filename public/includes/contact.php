@@ -87,7 +87,7 @@
 
                     <div class="contact-form pt-30">
 
-                        <form id="contact-form" action="process.php" method="POST">
+                        <form id="contact-form" action="home/process" method="POST">
 
                             <input type="text" class="hidden" hidden="hidden" name="PostName" value="ContactForm">
 

@@ -13,6 +13,9 @@ require_once '../app/init.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/default.css">
+    <!-- <link rel="stylesheet" href="css/main.css"> -->
+    <link rel="stylesheet" href="css/util.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
 <?php include 'includes/header.php'?>

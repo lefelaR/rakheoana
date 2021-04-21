@@ -7,7 +7,7 @@
                         <h2 class="action-title">Do you like what you see?</h2>
                         <p>Get in touch, i might blend in with your team.</p>
                         <ul>
-                          <form action="process.php" method="POST" id="downloadButton"> 
+                          <form action="home/process" method="POST" id="downloadButton"> 
                                  <input type="text" class="hidden" hidden="hidden" name="PostName" value="DownLoadCV"> 
                                  <input class="main-btn custom" type="submit" name="submit" value="download cv" /> 
                                 <li><a class="main-btn custom-2" href="#contact">hire me</a></li>

@@ -3,7 +3,12 @@
 class Authentication extends Controller
 {
 
-
+/**
+   * 
+   * The default controller method 
+   * 
+   * @return void
+   * */ 
 
     public function register()
     {
@@ -15,7 +20,7 @@ class Authentication extends Controller
     public function login()
     {
 
-        return $this->view('authentication/login',null);
+        return $this->view('authentication/login');
     }
 
 

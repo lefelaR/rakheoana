@@ -24,13 +24,11 @@
                                     <i class="lni lni-linkedin-original"></i>
                                     </a></li>
                         </ul>
-                    </div> <!-- footer content -->
+                    </div> 
                 </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </div> <!-- footer widget -->
-
-
+            </div> 
+        </div> 
+    </div> 
 
     <div class="footer-copyright pb-20">
         <div class="container">
@@ -39,42 +37,27 @@
                     <div class="copyright-text text-center pt-20">
                         <p>Copyright © <span id="date"> <?php echo date("Y"); ?></span>
                             </a></p>
-                </div> <!-- copyright text -->
+                </div> 
                 </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </div> <!-- footer widget -->
+            </div>
+        </div> 
+    </div> 
 
 </footer>
-<!--====== FOOTER PART ENDS ======-->
-<!--====== BACK TOP TOP PART START ======-->
 <a href="#" class="back-to-top"><i class="lni lni-chevron-up"></i></a>
-<!--====== BACK TOP TOP PART ENDS ======-->
-<!--====== jquery js ======-->
 <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
 <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
-<!--====== Bootstrap js ======-->
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/popper.min.js"></script>
-<!--====== Magnific Popup js ======-->
 <script src="assets/js/jquery.magnific-popup.min.js"></script>
-<!--====== Parallax js ======-->
 <script src="assets/js/parallax.min.js"></script>
-<!--====== Counter Up js ======-->
 <script src="assets/js/waypoints.min.js"></script>
 <script src="assets/js/jquery.counterup.min.js"></script>
-<!--====== Appear js ======-->
 <script src="assets/js/jquery.appear.min.js"></script>
-<!--====== Scrolling js ======-->
 <script src="assets/js/scrolling-nav.js"></script>
 <script src="assets/js/jquery.easing.min.js"></script>
-<!--====== Main js ======-->
 <script src="assets/js/main.js"></script>
-<!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-analytics.js"></script>
 
 <script>
