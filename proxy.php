@@ -1,8 +1,24 @@
 <?php
 
+$server = $_SERVER["HTTP_HOST"];
+
+$staging = 'localhost:8080';
+$ver;
+if($server == $staging){
+    $ver = 'staging';
+}else{
+    $ver = 'live';
+}
+
+
 
 $context = new stdClass;
-$siteroot = '/rakheoana/public/';
+if($ver == 'staging'){
+    $siteroot = '/rakheoana/public/';
+}
+if($ver == 'live'){
+    $siteroot = '/public/';
+}
 
 
 $context->root = explode('/' , $siteroot);
@@ -10,6 +26,6 @@ $context->root = explode('/' , $siteroot);
 if(in_array("public", $context->root)){
     header('Location:'.$siteroot);
 }else{
-    $siteroot = $_SERVER['HTTP_HOST'].'/rakheoana/public/';
+    $siteroot = $_SERVER['HTTP_HOST']. $siteroot .'/public/';
 }
 ?>

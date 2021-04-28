@@ -42,13 +42,6 @@
                 </div>
             </div>
         </div>
-
-
-
-        <!--  ASP.NET mvc -->
-
-
-
         <div class="col-lg-4 col-md-6 col-sm-6">
             <div class="single-work text-center mt-30">
                 <div class="work-image">
@@ -79,7 +72,7 @@
                         <ul>
                             <li><a class="image-popup" href="assets/images/work/reactMovie.PNG" target="_blank"><i
                                         class="lni lni-plus"></i></a></li>
-                            <li><a href="#">
+                            <li><a href="https://preware.herokuapp.com/" target="_blank">
                                     <i class="lni lni-link"></i></a></li>
                         </ul>
                     </div>
@@ -96,9 +89,9 @@
                     <div class="work-content">
                         <h3 class="work-title"> HTML JS form validation example </h3>
                         <ul>
-                            <li><a class="image-popup" href="assets/images/work/val.png"><i
+                            <li><a class="image-popup" href="assets/images/work/val.png" ><i
                                         class="lni lni-plus"></i></a></li>
-                            <li><a href="https://brave-wing-550a66.netlify.app/">
+                            <li><a href="https://brave-wing-550a66.netlify.app/" target="_blank">
                                     <i class="lni lni-link"></i></a></li>
                         </ul>
                     </div>
