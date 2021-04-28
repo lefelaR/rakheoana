@@ -27,7 +27,7 @@
                                     <li class="nav-item"><a class="page-scroll" href="#contact">Contact</a></li>
                             </div> 
                             <div class="collapse navbar-collapse">
-                                <ul class="navbar-nav ml-auto">
+                                <ul class="navbar-nav ml-auto">              
                                     <li class="nav-item">
                                         <a class="page-scroll" href="authentication/login">login</a>
                                     </li>

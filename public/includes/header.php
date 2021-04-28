@@ -9,9 +9,11 @@ if (in_array("authentication", $gpsarray))
         // include 'includes/loginheader.php';
     }
      if(in_array("dashboard", $gpsarray)){
+
          include 'includes/backendheader.php';
-    }
-}else{
-    include 'includes/frontendheader.php';
+        }
+    }else{
+    
+        include 'includes/frontendheader.php';
 }
 ?>

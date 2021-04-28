@@ -32,4 +32,5 @@ include 'includes/mywork.php';
 include 'includes/experience.php';
 include 'includes/education.php';
 include 'includes/contact.php';
+include 'includes/cookies.php';
 ?>
