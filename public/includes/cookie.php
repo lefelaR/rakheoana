@@ -20,6 +20,9 @@
 	section#eucookie * {
 		color: #ddd;
 	}
+	section#eucookie .smaller{
+		line-height: 38px !important;
+	}
 </style>
 <?php
 
@@ -35,10 +38,12 @@ if (isset($cookiedata)) {
 
 <section id="eucookie">
 	<div class="container my-3">
-		<p>We uses cookies to improve user experience. Choose what cookies you allow us to use. You can read more about our Cookie Policy in our <a href="<?php url('privacypolicy') ?>">Privacy Policy</a>. </p>
+		<p>[ This is Just a demonstration of how i implement cookies for POPI ACT compliance on any project ] <br/> 
+		We uses cookies to improve user experience. Choose what cookies you allow us to use. You can read more about our Cookie Policy in our 
+		<a href="<?php url('home/privacypolicy') ?>">Privacy Policy</a>. </p>
 		<!-- <p class="float-left"><?php //echo $cookiedata->name; 
 									?></p> -->
-		<a href="#" onclick="handle_eucookie()" class="btn btn-primary float-right">got it</a>
+		<a href="#" onclick="handle_eucookie()" class="main-btn float-right smaller">got it</a>
 	</div>
 </section>
 

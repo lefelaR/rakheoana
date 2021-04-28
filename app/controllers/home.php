@@ -15,23 +15,31 @@ class Home extends Controller{
        //model stuff here
       // $user =  $this->model('User');  
       //   $user->name = $name;
-       
       return $this->view('home/index', $name);
     }
+
+    
     function NotFound()
-    {
-     
+    { 
      return $this->view('home/notfound', null);
     }
+
+
+    function privacypolicy()
+    {
+      return $this->view('home/privatepolicy', null);
+    }
+
+
 
     function process()
     {
      
       if(isset($_POST)){
         $data = $_POST;
-    }
+                        }
 
-    if ($_POST['PostName'] == "DownLoadCV"){
+     if ($_POST['PostName'] == "DownLoadCV"){
       // We'll be outputting a PDF
       header('Content-type: application/pdf/doc/docx');
       // It will be called downloaded.pdf
@@ -76,8 +84,6 @@ class Home extends Controller{
       mail("rakgew@gmail.com",$subject,$message,$headers);
       
       Header("Location: home/index");
-    
-
     
     }
 }
