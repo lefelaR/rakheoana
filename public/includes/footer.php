@@ -6,10 +6,11 @@ $gpsarray = explode('/' ,$context->siteroot);
     {
         if (in_array("authentication", $gpsarray))
         {
-            include 'includes/frontendfooter.php';
+           // include 'includes/frontendfooter.php';
         }else{
             include 'includes/backendfooter.php';
         }
+    }else{
+        include 'includes/frontendfooter.php';
     }
-
 ?>

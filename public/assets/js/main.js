@@ -10,7 +10,6 @@
     
     
     //===== Mobile Menu 
-    
     $(".navbar-toggler").on('click', function() {
         $(this).toggleClass('active');
     });
@@ -47,7 +46,6 @@
         var scrollbarLocation = $(this).scrollTop();
 
         scrollLink.each(function() {
-
           var sectionOffset = $(this.hash).offset().top - 73;
 
           if ( sectionOffset <= scrollbarLocation ) {

@@ -5,9 +5,12 @@ class App
     protected $controller = 'home';
     protected $method = 'index';
     protected $params = [];
+    protected $components = [];
         public function __construct()
         {
             $url = $this->parseUrl();
+
+            
 
             if(file_exists('../app/controllers/' . $url[0] . '.php' ))
             {
@@ -15,8 +18,9 @@ class App
                 unset($url[0]);
             }
 
+   
 
-        require_once '../app/controllers/' . $this->controller . '.php';
+            require_once '../app/controllers/' . $this->controller . '.php';
             $this->controller = new $this->controller;
         
             if(isset($url[1]))
@@ -33,7 +37,7 @@ class App
             try{
                 call_user_func_array([$this->controller , $this->method], $this->params);
             }catch(Exception $e){  
-            //    return new Result($e->getMessage());
+               return new Result($e->getMessage());
             }
         }
 
@@ -45,6 +49,8 @@ class App
             }else{
                 return $url = explode('/', filter_var(rtrim("home/index",'/'),FILTER_SANITIZE_URL));
         }
+
+      
 
     }
 }

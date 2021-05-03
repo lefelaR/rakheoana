@@ -14,7 +14,7 @@ if($server == $staging){
 
 $context = new stdClass;
 if($ver == 'staging'){
-    $siteroot = '/rakheoana/public/';
+    $siteroot = '/mvc/public/';
 }
 if($ver == 'live'){
     $siteroot = '/public/';

@@ -1,5 +1,7 @@
 <?php
 
+
+
 class Dashboard extends Controller
 {
 
@@ -12,9 +14,10 @@ class Dashboard extends Controller
 
    public function index()
    {
-
-
-    return $this->view('dashboard/index');
+ 
+  $user =  $this->model('User');  
+   $user->name = "test";
+    return $this->view('dashboard/index', $user);
    }
 
 }

@@ -21,4 +21,10 @@ class Controller
         return $view;
     }
 
+    public function components($component)
+    {
+        require $component . '.php';
+        return $component;
+    } 
+
 }

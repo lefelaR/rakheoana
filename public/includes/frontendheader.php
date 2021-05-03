@@ -24,7 +24,7 @@
                                     <li class="nav-item"><a class="page-scroll" href="#portfolio">My work</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="#Education">Education</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="#contact">Contact</a></li>
-                                    <li class="nav-item"><a class="page-scroll" href="#contact">Contact</a></li>
+                                    <li class="nav-item"><a class="page-scroll" href="dashboard/index">dashboard</a></li>
                             </div> 
                             <div class="collapse navbar-collapse">
                                 <ul class="navbar-nav ml-auto">              

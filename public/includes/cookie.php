@@ -39,11 +39,11 @@ if (isset($cookiedata)) {
 <section id="eucookie">
 	<div class="container my-3">
 		<p>[ This is Just a demonstration of how i implement cookies for POPI ACT compliance on any project ] <br/> 
-		We uses cookies to improve user experience. Choose what cookies you allow us to use. You can read more about our Cookie Policy in our 
+		Hi, i use cookies to improve user experience. Choose what cookies you allow us to use. You can read more about our Cookie Policy in our 
 		<a href="<?php url('home/privacypolicy') ?>">Privacy Policy</a>. </p>
-		<!-- <p class="float-left"><?php //echo $cookiedata->name; 
-									?></p> -->
 		<a href="#" onclick="handle_eucookie()" class="main-btn float-right smaller">got it</a>
+		<br>
+		<a href="home/privacypolicy">php_versioin</a>
 	</div>
 </section>
 
