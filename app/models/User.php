@@ -2,6 +2,14 @@
 
 class User{
 
-    public $name;
+   
+
+    public static function Login()
+    {
+
+
+        return $data;
+    } 
+
 
 }

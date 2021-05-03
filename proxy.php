@@ -1,5 +1,8 @@
 <?php
 
+include 'app/core/Components.php';
+
+
 $server = $_SERVER["HTTP_HOST"];
 
 $staging = 'localhost:8080';

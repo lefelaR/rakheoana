@@ -21,6 +21,12 @@ class Controller
         return $view;
     }
 
+    public function redirect($view, $data=[])
+    {
+        require_once ''
+        return new $view();
+    }
+
     public function components($component)
     {
         require $component . '.php';

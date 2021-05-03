@@ -19,10 +19,18 @@ class Authentication extends Controller
 
     public function login()
     {
-
         return $this->view('authentication/login');
     }
 
+
+    public function postlogin($data)
+    {
+        $user = new User();
+        $profile = user::Login($data);
+
+        return $this->redirect();
+    }
+   
 
     public function forgotpassword()
     {
