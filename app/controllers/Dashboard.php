@@ -15,10 +15,9 @@ class Dashboard extends Controller
    public function index()
    {
  
-  $user =  $this->model('User');  
-   $user->name = "test";
-    return $this->view('dashboard/index', $user);
+     $user =  $this->model('User');  
+     $user->name = "test";
+     return $this->view('dashboard/index', $user);
    }
-
 }
 
