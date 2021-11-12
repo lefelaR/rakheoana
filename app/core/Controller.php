@@ -23,7 +23,7 @@ class Controller
 
     public function redirect($view, $data=[])
     {
-        require_once ''
+        
         return new $view();
     }
 
