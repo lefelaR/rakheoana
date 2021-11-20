@@ -3,22 +3,22 @@
         <div class="row">
             <div class="col-md-6 col-sm-12">
                 <div class="text-center form-parent">
-                    <form class="mt-5" id="login" action="authentication/postLogin">
+                    <form class="mt-5" id="login" action="postlogin">
                         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
                         <div class="card mb-3">
                             <div class="card-body">
                         <div class="form-floating p-1">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <input type="email" class="form-control" id="floatingInput" name="username" placeholder="name@example.com">
                             <label for="floatingInput">Email address</label>
                         </div>
                        
                                 <div class="form-floating p-1">
-                                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                                    <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
                                     <label for="floatingPassword">Password</label>
                                 </div>
                                 <div class="checkbox mb-1">
                                     <label>
-                                        <input type="checkbox" value="remember-me"> Remember me
+                                        <input type="checkbox" id="remember_me" value="remember-me"> Remember me
                                     </label> |
                                     <label>
                                         <a class="text-muted" href="#">Don't have a login? Signup</a>
