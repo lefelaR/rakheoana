@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - cd frontend
+      - rm -rf .next out node_modules
+      - npm install
+      - npm run export
+
+    artifacts:
+            - out/**
+            
+  build:
+    commands:
+      - npm run-script lint
+      - npm run test
