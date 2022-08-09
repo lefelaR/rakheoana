@@ -19,12 +19,13 @@ phases:
       - yarn test
       - yarn lint
 
-  cache:
-    paths:
-      - 'node_modules/**/*'
-      - '.next/cache/**/*'
+cache:
+  paths:
+    - 'node_modules/**/*'
+    - '.next/cache/**/*'
 
-  artifacts:
-    files:
-      - '**/*'
-    base-directory: 'out'
+artifacts:
+  files:
+    - '**/*'
+    
+  base-directory: 'out'
