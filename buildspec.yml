@@ -10,7 +10,7 @@ phases:
       - rm -rf .next out node_modules
       - yarn install  --silent
       - yarn build
-      - yarn export
+    
 
   build:
     commands:
