@@ -8,8 +8,9 @@ phases:
   pre_build:
     commands:
       - rm -rf .next out node_modules
-      - yarn install  --silent
-      - yarn build
+      - npm install  --silent
+      - npm run build
+      - npm run export
     
 
   build:
