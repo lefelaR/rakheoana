@@ -1,17 +1,30 @@
 version: 0.2
 
 phases:
-  pre_build:
+  install:
+    runtime-versions:
+      nodejs: 12.x
     commands:
       - cd frontend
+      - npm install --silent --no-progress -g yarn
+  pre_build:
+    commands:
       - rm -rf .next out node_modules
-      - npm install
-      - npm run export
+      - yarn install  --silent
+      - yarn build
+      - yarn export
 
-    artifacts:
-            - out/**
-            
   build:
     commands:
-      - npm run-script lint
-      - npm run test
+      - yarn test
+      - yarn lint
+
+  cache:
+    paths:
+      - 'node_modules/**/*'
+      - '.next/cache/**/*'
+
+  artifacts:
+    files:
+      - '**/*'
+    base-directory: 'out'
