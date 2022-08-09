@@ -8,7 +8,7 @@ phases:
   pre_build:
     commands:
       - rm -rf .next out node_modules
-      - npm install  --silent
+      - npm install  
       - npm run build
       - npm run export
     
