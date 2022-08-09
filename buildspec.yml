@@ -23,6 +23,7 @@ cache:
     - '.next/cache/**/*'
 
 artifacts:
+  files:
     - out/**
 
 
