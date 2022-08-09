@@ -1,6 +1,7 @@
 import React from "react"
 import Head from "next/head"
 import { useRouter } from 'next/router';
+import Header from '../components/atoms/header';
 
 
 type LayoutType = {
@@ -21,10 +22,11 @@ export default ({ children, title = 'Mr Lyons' }: LayoutType) => {
                 <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap' rel="stylesheet" />
                 <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap' rel="stylesheet" />
             </Head>
-
+            <header />
             <main className={(pathname !== '/' ? 'main-page' : '')}>
                 {children}
             </main>
+            <footer />
         </div>
     )
 }
