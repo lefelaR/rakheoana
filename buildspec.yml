@@ -8,10 +8,9 @@ phases:
   pre_build:
     commands:
       - rm -rf .next out node_modules
-      - npm install  
-      - npm run build
-      - npm run export
-    
+      - yarn install  --silent
+      - yarn build
+      - yarn export
 
   build:
     commands:
@@ -24,7 +23,7 @@ cache:
     - '.next/cache/**/*'
 
 artifacts:
-  files:
-    - '**/*'
+    - out/**
+
+
     
-  base-directory: 'out'
