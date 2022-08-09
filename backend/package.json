@@ -1,0 +1,12 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "api for personal site system'",
+  "main": "handler.js",
+  "repository": "https://github.com/lefelaR/rakheoana",
+  "author": "rakheoana lefela",
+  "license": "MIT",
+  "dependencies": {
+    "serverless": "^3.21.0"
+  }
+}
