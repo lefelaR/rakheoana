@@ -2,9 +2,12 @@
 html{
   scroll-behavior: smooth;
 }
-
+@import url('slick.css');
 @import url('default.css');
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800");
+@import url('magnific-popup.css');
+@import url('LineIcons.css');
+
 body {
  
   font-family: "Segoe UI","Oxygen",Helvetica,Arial,sans-serif;
