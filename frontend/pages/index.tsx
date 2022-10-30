@@ -1,16 +1,19 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
+
 import Image from 'next/image'
-import FrontendLayout from '../layouts/frontendLayout'
 import styles from '../styles/Home.module.css'
 
 
-const Home: NextPage = () => {
+export default function Home() {
   return (
-    <FrontendLayout>
+    <div className={styles.container}>
+     
 
-    </FrontendLayout>
+      <main className={styles.main}>
+        <div>
+          hello world
+        </div>
+      </main>
+
+    </div>
   )
 }
-
-export default Home
