@@ -15,16 +15,16 @@ export default function Footer() {
                                     </a>
 
                                     <ul>
-                                        <li><a href="https://twitter.com/r_lefela" target="_blank">
+                                        <li><a href="https://twitter.com/r_lefela" target="_blank" rel="noreferrer">
                                             <i className="lni lni-twitter-original"></i>
 
                                         </a></li>
 
-                                        <li><a href="https://github.com/" target="_blank">
+                                        <li><a href="https://github.com/" target="_blank" rel="noreferrer">
                                             <i className="lni lni-github-original"></i>
                                         </a></li>
 
-                                        <li><a href="https://www.linkedin.com/feed/" target="_blank">
+                                        <li><a href="https://www.linkedin.com/feed/" target="_blank" rel="noreferrer">
                                             <i className="lni lni-linkedin-original"></i>
                                         </a></li>
                                     </ul>
