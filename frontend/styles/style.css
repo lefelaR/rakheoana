@@ -2,7 +2,7 @@
 html{
   scroll-behavior: smooth;
 }
-@import  url('loader.css');
+
 @import url('default.css');
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800");
 body {
