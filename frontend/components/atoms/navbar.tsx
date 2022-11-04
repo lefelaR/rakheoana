@@ -1,4 +1,5 @@
 import Image from "next/image";
+import React from "react";
 
 import Link from "next/link";
 export default function Navbar() {
@@ -48,7 +49,7 @@ export default function Navbar() {
                         </Link>
                       </li>
                       <li className="nav-item">
-                        <Link className="page-scroll" href="/service">
+                        <Link className="page-scroll" href="/stack">
                           Tech-Stack
                         </Link>
                       </li>
@@ -58,7 +59,7 @@ export default function Navbar() {
                         </Link>
                       </li>
                       <li className="nav-item">
-                        <Link className="page-scroll" href="/work">
+                        <Link className="page-scroll" href="/portfolio">
                           Portfolio
                         </Link>
                       </li>

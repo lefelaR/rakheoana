@@ -1,3 +1,5 @@
+import React from "react";
+
 import Navbar from "../atoms/navbar";
 import Footer from "../atoms/footer";
 import Head from "next/head";
@@ -14,7 +16,9 @@ export default function Layout({ children }: any) {
 
       <Navbar />
       <div className={styles.container}>
-        <main className={styles.main}>{children}</main>
+        <main className={styles.main}>
+            {children}
+        </main>
       </div>
       <Footer />
     </>
