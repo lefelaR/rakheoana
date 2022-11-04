@@ -1,9 +1,8 @@
-import react from 'react';
+import React from 'react';
 
 
 const About = () => {
     return (
-
         <section id="about" className="about-area pt-125 pb-130 my-5">
             <div className="container">
                 <div className="row justify-content-center">
@@ -86,7 +85,6 @@ const About = () => {
                                 </li>
 
                             </ul>
-
                         </div>
                     </div>
                 </div>
