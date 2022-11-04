@@ -84,7 +84,7 @@ const [url, setUrl] = useState('')
                   <div className="collapse navbar-collapse">
                                 <ul className="navbar-nav ml-auto">              
                                     <li className="nav-item">
-                                        <a className="page-scroll" href="/signin"><i className="lni lni-lock">&nbsp; </i>
+                                        <a className="page-scroll" href="/auth/signin"><i className="lni lni-lock">&nbsp; </i>
                                             Login
                                         </a>
                                     </li>
