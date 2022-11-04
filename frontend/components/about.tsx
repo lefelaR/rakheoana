@@ -28,7 +28,7 @@ const About = () => {
                                         in whatever they might have needed. whether it was in the fields of agriculture, politics,
                                         economics, a long line on lefela men have always
                                         risen up to the occasion and presented solutions to complex human problems. <a
-                                            href="http://wikipedia.com" target="_blank"><i className="lni-bulb x2"></i></a>
+                                            href="http://wikipedia.com" target="_blank" rel="noreferrer"><i className="lni-bulb x2"></i></a>
                                     </p>
                                 </div>
                             </div>
