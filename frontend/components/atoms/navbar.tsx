@@ -1,8 +1,14 @@
 import Image from "next/image";
-import React from "react";
+import React, {useState} from "react";
 
 import Link from "next/link";
-export default function Navbar() {
+export default function Navbar( props:any ) {
+
+const { isLoggedin }= props
+const [lock, setLock ] = useState('')
+const [url, setUrl] = useState('')
+
+
   return (
     <>
       <header id="home" className="header-area">
@@ -11,7 +17,7 @@ export default function Navbar() {
             <div className="row">
               <div className="col-lg-12">
                 <nav className="navbar navbar-expand-lg">
-                  <a className="navbar-brand" href="index.html">
+                  <a className="navbar-brand" href="/">
                     <Image
                       src="/images/logo.png"
                       width={100}
@@ -75,6 +81,15 @@ export default function Navbar() {
                       </li>
                     </ul>
                   </div>
+                  <div className="collapse navbar-collapse">
+                                <ul className="navbar-nav ml-auto">              
+                                    <li className="nav-item">
+                                        <a className="page-scroll" href="/signin"><i className="lni lni-lock">&nbsp; </i>
+                                            Login
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                 </nav>
               </div>
             </div>
