@@ -1,7 +1,9 @@
+import React from "react";
 import Image from "next/image";
+
 const Experience = () => {
   return (
-    <section id="pricing" className="pricing-area gray-bg pt-125 pb-130 my-5">
+    <section id="pricing" className="pricing-area  pt-125 pb-130 my-5">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-lg-8">
@@ -22,7 +24,7 @@ const Experience = () => {
             <div className="card single-service" title="">
               <div className="card-header">
                 <Image
-                  src="'.$comapanyLogo.'"
+                  src={''}
                   title="https://lucidocean.com"
                   alt=""
                   width={10}

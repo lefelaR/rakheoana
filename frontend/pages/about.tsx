@@ -9,8 +9,8 @@ const About = () => {
             <div className="section-title text-center mb-5">
               <h2 className="title">About Me</h2>
               <p>
-                i am a vibrant curious developer inhabiting the cape town tech
-                space. i am also a foodie and a fantasy enthusiast.
+                I am a vibrant curious developer inhabiting the cape town tech
+                space. I am also a foodie and a fantasy enthusiast.
               </p>
             </div>
           </div>
@@ -28,7 +28,7 @@ const About = () => {
                     times of old achieved greatness in being selfless and
                     helping others in whatever they might have needed. whether
                     it was in the fields of agriculture, politics, economics, a
-                    long line on lefela men have always risen up to the occasion
+                    long line on Lefela men have always risen up to the occasion
                     and presented solutions to complex human problems.{" "}
                     <a
                       href="http://wikipedia.com"
