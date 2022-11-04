@@ -1,7 +1,7 @@
 
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-
+import About from '../components/about';
 
 export default function Home() {
   return (
@@ -9,7 +9,7 @@ export default function Home() {
     
       <main className={styles.main}>
         <div>
-          hello world
+          <About />
         </div>
       </main>
     </div>
