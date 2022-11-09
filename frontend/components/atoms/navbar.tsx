@@ -17,7 +17,7 @@ const [url, setUrl] = useState('')
             <div className="row">
               <div className="col-lg-12">
                 <nav className="navbar navbar-expand-lg">
-                  <a className="navbar-brand" href="/">
+                  <Link className="navbar-brand" href="/">
                     <Image
                       src="/images/logo.png"
                       width={100}
@@ -25,7 +25,7 @@ const [url, setUrl] = useState('')
                       alt="Logo"
                       id="header-logo"
                     />
-                  </a>
+                  </Link>
                   <button
                     className="navbar-toggler"
                     type="button"
@@ -84,9 +84,9 @@ const [url, setUrl] = useState('')
                   <div className="collapse navbar-collapse">
                                 <ul className="navbar-nav ml-auto">              
                                     <li className="nav-item">
-                                        <a className="page-scroll" href="/auth/signin"><i className="lni lni-lock">&nbsp; </i>
+                                        <Link className="page-scroll" href="/auth/signin"><i className="lni lni-lock">&nbsp; </i>
                                             Login
-                                        </a>
+                                        </Link>
                                     </li>
                                 </ul>
                             </div>

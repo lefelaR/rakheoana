@@ -35,7 +35,7 @@ const Portfolio = () => {
                     <li>
                       <a
                         href="https://play.google.com/store/apps/details?id=com.arthur.contractor"
-                        target="_blank"
+                        target="_blank" rel="noreferrer"
                       >
                         <i className="lni lni-link"></i>
                       </a>
@@ -65,7 +65,7 @@ const Portfolio = () => {
                       </a>
                     </li>
                     <li>
-                      <a href="https://www.isutech.co.za/" target="_blank">
+                      <a href="https://www.isutech.co.za/" target="_blank" rel="noreferrer">
                         <i className="lni lni-link"></i>
                       </a>
                     </li>
@@ -97,7 +97,7 @@ const Portfolio = () => {
                       </a>
                     </li>
                     <li>
-                      <a href="http://www.hcifoundation.co.za/" target="_blank">
+                      <a href="http://www.hcifoundation.co.za/" target="_blank" rel="noreferrer">
                         <i className="lni lni-link"></i>
                       </a>
                     </li>
@@ -131,7 +131,7 @@ const Portfolio = () => {
                     <li>
                       <a
                         href="https://www.tmtownplanning.co.za/"
-                        target="_blank"
+                        target="_blank" rel="noreferrer"
                       >
                         <i className="lni lni-link"></i>
                       </a>
@@ -163,7 +163,7 @@ const Portfolio = () => {
                     <li>
                       <a
                         href="https://agitated-curie-6f1d29.netlify.app/"
-                        target="_blank"
+                        target="_blank" rel="noreferrer"
                       >
                         <i className="lni lni-link"></i>
                       </a>
@@ -187,13 +187,13 @@ const Portfolio = () => {
                       <a
                         className="image-popup"
                         href="<?php echo url('assets/images/work/reactMovie.png')?>"
-                        target="_blank"
+                        target="_blank" rel="noreferrer"
                       >
                         <i className="lni lni-plus"></i>
                       </a>
                     </li>
                     <li>
-                      <a href="https://preware.herokuapp.com/" target="_blank">
+                      <a href="https://preware.herokuapp.com/" target="_blank" rel="noreferrer">
                         <i className="lni lni-link"></i>
                       </a>
                     </li>
@@ -229,7 +229,7 @@ const Portfolio = () => {
                     <li>
                       <a
                         href="https://brave-wing-550a66.netlify.app/"
-                        target="_blank"
+                        target="_blank" rel="noreferrer"
                       >
                         <i className="lni lni-link"></i>
                       </a>
@@ -262,7 +262,7 @@ const Portfolio = () => {
                       </a>
                     </li>
                     <li>
-                      <a href="http://3.136.224.69/simple/" target="_blank">
+                      <a href="http://3.136.224.69/simple/" target="_blank" rel="noreferrer">
                         <i className="lni lni-link"></i>
                       </a>
                     </li>
@@ -293,7 +293,7 @@ const Portfolio = () => {
                       </a>
                     </li>
                     <li>
-                      <a href="http://www.witaxi.co.za" target="_blank">
+                      <a href="http://www.witaxi.co.za" target="_blank" rel="noreferrer">
                         <i className="lni lni-link"></i>
                       </a>
                     </li>
@@ -333,7 +333,7 @@ const Portfolio = () => {
                       </a>
                     </li>
                     <li>
-                      <a href="http://3.136.224.69/simple/" target="_blank">
+                      <a href="http://3.136.224.69/simple/" target="_blank" rel="noreferrer">
                         <i className="lni lni-link"></i>
                       </a>
                     </li>

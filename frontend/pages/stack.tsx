@@ -2,7 +2,7 @@ import React from "react";
 
 const TechStack = () => {
   return (
-
+<>
 <section id="service" className="services-area gray-bg pt-125 pb-130">
         <div className="container">
             <div className="row justify-content-center">
@@ -13,7 +13,7 @@ const TechStack = () => {
                     </div> 
                 </div>
             </div> 
-
+</div>
             <div className="row justify-content-center">
                 <div className="col-lg-4 col-md-6 col-sm-8">
                     <div className="single-service text-center mt-30">
@@ -175,7 +175,7 @@ const TechStack = () => {
                         </div>
                         <div className="service-content">
                             <h4 className="service-title"><a href="#">WEB API</a></h4>
-                            <p> Restful api's are almost in every project today. the power to access your data from any devices
+                            <p> Restful api&apos;s are almost in every project today. the power to access your data from any devices
                                 is driving the demand. .Net web api are easy to build. </p>
                         </div>
                     </div> 
@@ -239,7 +239,7 @@ const TechStack = () => {
                         </div>
                         <div className="service-content">
                             <h4 className="service-title"><a href="#">WEB API</a></h4>
-                            <p> Restful api's are almost in every project today. the power to access your data from any devices
+                            <p> Restful api&apos;s are almost in every project today. the power to access your data from any devices
                                 is driving the demand. .Net web api are easy to build. </p>
                         </div>
                     </div> 
@@ -248,7 +248,7 @@ const TechStack = () => {
             </div>
         </div> 
 </section>
-
+</>
             )
 };
 
