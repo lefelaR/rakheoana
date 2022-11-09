@@ -11,8 +11,8 @@ export default function Home() {
         <div className="row align-items-center">
           <div className="col-xl-5 col-lg-6">
             <div className="header-content-right">
-              <h4 className="sub-title">Hello, I’m</h4>
-              <h1 className="title">Rakheoana Lefela</h1>
+              <h4 className="sub-title animate__animated animate__backInLeft">Hello, I’m</h4>
+              <h1 className="title animate__animated animate__backInLeft animate__delay-1s">Rakheoana Lefela</h1>
               <p>i am a Web and software Developer...</p>
               <a className="main-btn" href="#work">View my Work</a>
             </div>
@@ -20,7 +20,7 @@ export default function Home() {
           <div className="col-lg-6 offset-xl-1">
             <div className="header-image d-none d-lg-block">
               <div className="shadow-lg  bg-white rounded">
-                <Image src="/images/banner/hero.jpg" width={350} height={500} alt="hero" id="header-image" />
+                <Image src="/images/Rakheoana-Profile.jpg"  width={500} height={500} alt="hero" id="header-image" />
               </div>
             </div>
           </div>
