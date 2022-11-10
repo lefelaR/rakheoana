@@ -19,7 +19,7 @@ export default function Home() {
           <div className="col-lg-6 offset-xl-1">
             <div className="header-image d-none d-lg-block">
               <div className="shadow-lg  bg-white rounded">
-                <Image src="/images/Rakheoana-Profile.jpg"  width={500} height={500} alt="hero" id="header-image" />
+                <Image src="/images/Rakheoana-Profile.jpg"  width={800} height={500} alt="hero" id="header-image" />
               </div>
             </div>
           </div>

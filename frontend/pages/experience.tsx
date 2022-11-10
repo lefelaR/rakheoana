@@ -1,6 +1,57 @@
 import React from "react";
 import Image from "next/image";
 
+const data = [
+  {
+    company: "Design Guru",
+    logo:"",
+    link:"",
+    started: "Sept 2015",
+    ended: "Dec 2015",
+    position: "Intern (PHP developer)",
+    responsinility:
+      "Making static pages dynamic, connecting front-end with dynamic data using Mampp and sql database.",
+    city: "Cape Town",
+    country: "South Africa",
+  },
+  {
+    company: "LUCIDOCEAN",
+    logo:"",
+    link:"",
+    started: "Jul 2018",
+    ended: "MAr 2021",
+    position: "Software Developer",
+    responsinility:
+      "Building new features for existing projects. | Upgrading ASP.Net projects UI to moredern CSS frameworks (Bootstrap4, Materialize)",
+    city: "Cape Town",
+    country: "South Africa",
+  },
+  {
+    company: "WEMASOFT",
+    logo:"",
+    link:"",
+    started: "Jun 2021",
+    ended: "Nov 2021",
+    position: "Software Developer",
+    responsinility:
+      "Built new features for existing projects. | Project development life-cycle | Team lead | Allocating Tasks | Evaluating team perfomance through sprint management (scrum) | Selecting Tech for new projects and upgrading existing projects.",
+    city: "Pretoria",
+    country: "South Africa",
+  },
+  {
+    company: "Turati Software",
+    logo:"",
+    link:"",
+    started: "Feb 2022",
+    ended: "present",
+    position: "Fullstack software developer",
+    responsinility:
+      "Project planning and kick-off | Induction and coaching | Building new features | Mobile App development using React-native & Expo Cli | Building ReastFul Api with AWS Api-Gateway, lambda, Serverless",
+    city: "Johannesburg",
+    country: "South Africa",
+  },
+];
+
 const Experience = () => {
   return (
     <section id="pricing" className="pricing-area  pt-125 pb-130 my-5">
@@ -19,30 +70,31 @@ const Experience = () => {
         </div>
 
         <div className="row">
-          {/* loop experience */}
-          <div className="col-md-12 my-3">
-            <div className="card single-service" title="">
-              <div className="card-header">
-                <Image
-                  src={''}
-                  title="https://lucidocean.com"
-                  alt=""
-                  width={10}
-                  height={10}
-                  style={{ width: "10em" }}
-                />
-                <h4>company start - end</h4>
-                <span className="float-right">position</span>
-              </div>
-              <div className="card-body">
-                <p>responsibility</p>
-              </div>
-              <div className="card-footer">
-                <p>city, country</p>
+          {data.map((job) => (
+            <div className="col-md-12 my-3">
+              <div className="card single-service" title="">
+                <div className="card-header">
+                  <Image
+                    src={""}
+                    title="https://lucidocean.com"
+                    alt=""
+                    width={10}
+                    height={10}
+                    style={{ width: "10em" }}
+                  />
+                  <p className="h4">{job.company}</p> <p>{job.started} - {job.ended}</p>
+                  <span className="float-right">{job.position}</span>
+                </div>
+                <div className="card-body">
+                  <p className="fw-light">Responsibility</p>
+                  <p className="fw-normal">{job.responsinility}</p>
+                </div>
+                <div className="card-footer">
+                  <p>{job.city}, {job.country}</p>
+                </div>
               </div>
             </div>
-          </div>
-          {/* close loop */}
+          ))}
         </div>
       </div>
     </section>
