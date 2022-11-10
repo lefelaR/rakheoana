@@ -49,11 +49,7 @@ const [url, setUrl] = useState('')
                           Home
                         </Link>
                       </li>
-                      <li className="nav-item">
-                        <Link className="page-scroll" href="/about">
-                          About
-                        </Link>
-                      </li>
+                      
                       <li className="nav-item">
                         <Link className="page-scroll" href="/stack">
                           Tech-Stack
