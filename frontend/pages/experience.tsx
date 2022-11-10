@@ -3,6 +3,7 @@ import Image from "next/image";
 
 const data = [
   {
+    id:1,
     company: "Design Guru",
     logo:"",
     link:"",
@@ -15,6 +16,7 @@ const data = [
     country: "South Africa",
   },
   {
+    id:2,
     company: "LUCIDOCEAN",
     logo:"",
     link:"",
@@ -27,6 +29,7 @@ const data = [
     country: "South Africa",
   },
   {
+    id:3,
     company: "WEMASOFT",
     logo:"",
     link:"",
@@ -39,6 +42,7 @@ const data = [
     country: "South Africa",
   },
   {
+    id:4,
     company: "Turati Software",
     logo:"",
     link:"",
@@ -71,7 +75,7 @@ const Experience = () => {
 
         <div className="row">
           {data.map((job) => (
-            <div className="col-md-12 my-3">
+            <div className="col-md-12 my-3" key={job.id}>
               <div className="card single-service" title="">
                 <div className="card-header">
                   <Image

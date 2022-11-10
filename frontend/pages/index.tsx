@@ -1,6 +1,6 @@
 import React from "react";
 import Image from 'next/image'
-
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
               <h4 className="sub-title animate__animated animate__backInLeft">Hello, I’m</h4>
               <h1 className="title animate__animated animate__backInLeft animate__delay-1s">Rakheoana Lefela</h1>
               <p>i am a Web and software Developer...</p>
-              <a className="main-btn" href="/portfolio">View my Work</a>
+              <Link className="main-btn" href="/portfolio">View my Work</Link>
             </div>
           </div>
           <div className="col-lg-6 offset-xl-1">
