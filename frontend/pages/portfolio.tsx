@@ -12,6 +12,7 @@ const Portfolio = () => {
             </div>
           </div>
         </div>
+
         <div className="row">
           <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
@@ -35,7 +36,8 @@ const Portfolio = () => {
                     <li>
                       <a
                         href="https://play.google.com/store/apps/details?id=com.arthur.contractor"
-                        target="_blank" rel="noreferrer"
+                        target="_blank"
+                        rel="noreferrer"
                       >
                         <i className="lni lni-link"></i>
                       </a>
@@ -45,7 +47,12 @@ const Portfolio = () => {
               </div>
             </div>
           </div>
-
+        </div>
+      </div>
+    </section>
+  );
+  {
+    /*
           <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
               <div className="work-image">
@@ -65,7 +72,11 @@ const Portfolio = () => {
                       </a>
                     </li>
                     <li>
-                      <a href="https://www.isutech.co.za/" target="_blank" rel="noreferrer">
+                      <a
+                        href="https://www.isutech.co.za/"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         <i className="lni lni-link"></i>
                       </a>
                     </li>
@@ -78,10 +89,7 @@ const Portfolio = () => {
           <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
               <div className="work-image">
-                <img
-                  src={"/images/work/HCIfoundation.png"}
-                  alt="work"
-                />
+                <img src={"/images/work/HCIfoundation.png"} alt="work" />
               </div>
               <div className="work-overlay">
                 <div className="work-content">
@@ -97,7 +105,11 @@ const Portfolio = () => {
                       </a>
                     </li>
                     <li>
-                      <a href="http://www.hcifoundation.co.za/" target="_blank" rel="noreferrer">
+                      <a
+                        href="http://www.hcifoundation.co.za/"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         <i className="lni lni-link"></i>
                       </a>
                     </li>
@@ -131,7 +143,8 @@ const Portfolio = () => {
                     <li>
                       <a
                         href="https://www.tmtownplanning.co.za/"
-                        target="_blank" rel="noreferrer"
+                        target="_blank"
+                        rel="noreferrer"
                       >
                         <i className="lni lni-link"></i>
                       </a>
@@ -163,7 +176,8 @@ const Portfolio = () => {
                     <li>
                       <a
                         href="https://agitated-curie-6f1d29.netlify.app/"
-                        target="_blank" rel="noreferrer"
+                        target="_blank"
+                        rel="noreferrer"
                       >
                         <i className="lni lni-link"></i>
                       </a>
@@ -187,13 +201,18 @@ const Portfolio = () => {
                       <a
                         className="image-popup"
                         href="<?php echo url('assets/images/work/reactMovie.png')?>"
-                        target="_blank" rel="noreferrer"
+                        target="_blank"
+                        rel="noreferrer"
                       >
                         <i className="lni lni-plus"></i>
                       </a>
                     </li>
                     <li>
-                      <a href="https://preware.herokuapp.com/" target="_blank" rel="noreferrer">
+                      <a
+                        href="https://preware.herokuapp.com/"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         <i className="lni lni-link"></i>
                       </a>
                     </li>
@@ -206,10 +225,7 @@ const Portfolio = () => {
           <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
               <div className="work-image">
-                <img
-                  src={"/images/work/js-html5.png"}
-                  alt="work"
-                />
+                <img src={"/images/work/js-html5.png"} alt="work" />
               </div>
               <div className="work-overlay">
                 <div className="work-content">
@@ -219,17 +235,15 @@ const Portfolio = () => {
                   </h3>
                   <ul>
                     <li>
-                      <a
-                        className="image-popup"
-                        href={"/images/work/val.png"}
-                      >
+                      <a className="image-popup" href={"/images/work/val.png"}>
                         <i className="lni lni-plus"></i>
                       </a>
                     </li>
                     <li>
                       <a
                         href="https://brave-wing-550a66.netlify.app/"
-                        target="_blank" rel="noreferrer"
+                        target="_blank"
+                        rel="noreferrer"
                       >
                         <i className="lni lni-link"></i>
                       </a>
@@ -243,10 +257,7 @@ const Portfolio = () => {
           <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
               <div className="work-image">
-                <img
-                  src={"/images/work/simple freight cover.jpg"}
-                  alt="work"
-                />
+                <img src={"/images/work/simple freight cover.jpg"} alt="work" />
               </div>
               <div className="work-overlay">
                 <div className="work-content">
@@ -262,7 +273,11 @@ const Portfolio = () => {
                       </a>
                     </li>
                     <li>
-                      <a href="http://3.136.224.69/simple/" target="_blank" rel="noreferrer">
+                      <a
+                        href="http://3.136.224.69/simple/"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         <i className="lni lni-link"></i>
                       </a>
                     </li>
@@ -274,10 +289,7 @@ const Portfolio = () => {
           <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
               <div className="work-image">
-                <img
-                  src={"/images/work/Wi-Taxi - Full Logo.png"}
-                  alt="work"
-                />
+                <img src={"/images/work/Wi-Taxi - Full Logo.png"} alt="work" />
               </div>
               <div className="work-overlay">
                 <div className="work-content">
@@ -293,7 +305,11 @@ const Portfolio = () => {
                       </a>
                     </li>
                     <li>
-                      <a href="http://www.witaxi.co.za" target="_blank" rel="noreferrer">
+                      <a
+                        href="http://www.witaxi.co.za"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         <i className="lni lni-link"></i>
                       </a>
                     </li>
@@ -314,10 +330,7 @@ const Portfolio = () => {
           <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
               <div className="work-image">
-                <img
-                  src={"/images/work/onestopshop.png"}
-                  alt="work"
-                />
+                <img src={"/images/work/onestopshop.png"} alt="work" />
               </div>
               <div className="work-overlay">
                 <div className="work-content">
@@ -333,7 +346,11 @@ const Portfolio = () => {
                       </a>
                     </li>
                     <li>
-                      <a href="http://3.136.224.69/simple/" target="_blank" rel="noreferrer">
+                      <a
+                        href="http://3.136.224.69/simple/"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         <i className="lni lni-link"></i>
                       </a>
                     </li>
@@ -351,8 +368,72 @@ const Portfolio = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section> 
+  );*/
+  }
 };
 
 export default Portfolio;
+
+const data = [
+  {
+    live: [
+      {
+        periodName: "Live",
+        name: "Arthur Contractor App",
+        company: "Lucidocean",
+        period: "3",
+        cardImage: "/images/work/contractor.png",
+        cover: "/images/work/contractor1.PNG",
+      },
+      {
+        periodName: "Live",
+        name: "Arthur Contractor App",
+        company: "Lucidocean",
+        period: "3",
+        cardImage: "/images/work/contractor.png",
+        cover: "/images/work/contractor1.PNG",
+      },
+      {
+        periodName: "Live",
+        name: "Arthur Contractor App",
+        company: "Lucidocean",
+        period: "3",
+        cardImage: "/images/work/contractor.png",
+        cover: "/images/work/contractor1.PNG",
+      },
+      {
+        periodName: "Live",
+        name: "Arthur Contractor App",
+        company: "Lucidocean",
+        period: "3",
+        cardImage: "/images/work/contractor.png",
+        cover: "/images/work/contractor1.PNG",
+      },
+      {
+        periodName: "Live",
+        name: "Arthur Contractor App",
+        company: "Lucidocean",
+        period: "3",
+        cardImage: "/images/work/contractor.png",
+        cover: "/images/work/contractor1.PNG",
+      },
+    ],
+    current: {
+      periodName: "Current",
+      name: "",
+      company: "",
+      period: "",
+      cardImage: "",
+      cover: "",
+    },
+    future: {
+      periodName: "Future",
+      name: "",
+      company: "",
+      period: "",
+      cardImage: "",
+      cover: "",
+    },
+  },
+];
