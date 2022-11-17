@@ -1,13 +1,11 @@
 import Image from "next/image";
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 import Link from "next/link";
-export default function Navbar( props:any ) {
-
-const { isLoggedin }= props
-const [lock, setLock ] = useState('')
-const [url, setUrl] = useState('')
-
+export default function Navbar(props: any) {
+  const { isLoggedin } = props;
+  const [lock, setLock] = useState("");
+  const [url, setUrl] = useState("");
 
   return (
     <>
@@ -49,7 +47,6 @@ const [url, setUrl] = useState('')
                           Home
                         </Link>
                       </li>
-                      
                       <li className="nav-item">
                         <Link className="page-scroll" href="/stack">
                           Tech-Stack
@@ -78,14 +75,15 @@ const [url, setUrl] = useState('')
                     </ul>
                   </div>
                   <div className="collapse navbar-collapse">
-                                <ul className="navbar-nav ml-auto">              
-                                    <li className="nav-item">
-                                        <Link className="page-scroll" href="/auth/signin"><i className="lni lni-lock">&nbsp; </i>
-                                            Login
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </div>
+                    <ul className="navbar-nav ml-auto">
+                      <li className="nav-item">
+                        <Link className="page-scroll" href="/auth/signin">
+                          <i className="lni lni-lock">&nbsp; </i>
+                          Login
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
                 </nav>
               </div>
             </div>
