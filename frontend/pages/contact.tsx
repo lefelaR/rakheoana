@@ -1,6 +1,29 @@
-import React from "react";
+import { ImageError } from "next/dist/server/image-optimizer";
+import React, { useState, useEffect } from "react";
+import contactInformation from "components/atoms/contactInformation";
+
+interface Iemail {
+  name: string;
+  email: string;
+  message: string;
+}
 
 const Contact = () => {
+  const [item, setItem] = useState<Iemail | any>();
+
+ 
+  const handleChange = (event: any) => {
+    const { target: input } = event;
+    const tmpItem = { ...item };
+    tmpItem[input.name] = input.value;
+    setItem(tmpItem);
+  };
+
+  const handleSubmit = (event) => {
+    debugger;
+    console.log(item);
+  };
+
   return (
     <section id="contact" className="contact-area pt-125 pb-130 ">
       <div className="container">
@@ -12,59 +35,30 @@ const Contact = () => {
             </div>
           </div>
         </div>
+        
+        <contactInformation />
 
-        <div className="row justify-content-center">
-          <div className="col-lg-4 col-md-6 col-sm-7">
-            <div className="contact-box text-center mt-30">
-              <div className="contact-icon">
-                <i className="lni lni-map"></i>
-              </div>
-              <div className="contact-content">
-                <h6 className="contact-title">Address</h6>
-                <p>Claremont, Western Cape 7708</p>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-4 col-md-6 col-sm-7">
-            <div className="contact-box text-center mt-30">
-              <div className="contact-icon">
-                <i className="lni lni-phone"></i>
-              </div>
-              <div className="contact-content">
-                <h6 className="contact-title">Phone</h6>
-                <p>+277 (0) 8 375 4146</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-lg-4 col-md-6 col-sm-7">
-            <div className="contact-box text-center mt-30">
-              <div className="contact-icon">
-                <i className="lni lni-envelope"></i>
-              </div>
-              <div className="contact-content">
-                <h6 className="contact-title">Email</h6>
-                <p>rakgew@gmail.com</p>
-              </div>
-            </div>
-          </div>
-        </div>
         <div className="row">
           <div className="col-lg-6">
             <div className="contact-form pt-30">
-              <form id="contact-form" action="index/process" method="POST">
-                <input
-                  type="text"
-                  className="hidden"
-                  hidden={true}
-                  name="PostName"
-                  value="ContactForm"
-                />
+              <form id="contact-form" onSubmit={handleSubmit}>
                 <div className="single-form">
-                  <input type="text" name="name" placeholder="Name" />
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Name"
+                    value={item.name}
+                    onChange={handleChange}
+                  />
                 </div>
                 <div className="single-form">
-                  <input type="email" name="email" placeholder="Email" />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={item.email}
+                    onChange={handleChange}
+                  />
                 </div>
                 <div className="single-form">
                   <textarea
@@ -72,6 +66,8 @@ const Contact = () => {
                     name="message"
                     rows={4}
                     cols={50}
+                    value={item.message}
+                    onChange={handleChange}
                   ></textarea>
                 </div>
                 <p className="form-message"></p>
