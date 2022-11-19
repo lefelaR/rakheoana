@@ -6,7 +6,7 @@ const data = [
     id:1,
     company: "Design Guru",
     logo:"",
-    link:"",
+    link:"/images/icons/designguru.png",
     started: "Sept 2015",
     ended: "Dec 2015",
     position: "Intern (PHP developer)",
@@ -19,7 +19,7 @@ const data = [
     id:2,
     company: "LUCIDOCEAN",
     logo:"",
-    link:"",
+    link:"/images/icons/lucidocean.png",
     started: "Jul 2018",
     ended: "MAr 2021",
     position: "Software Developer",
@@ -32,7 +32,7 @@ const data = [
     id:3,
     company: "WEMASOFT",
     logo:"",
-    link:"",
+    link:"/images/icons/wemasoft.png",
     started: "Jun 2021",
     ended: "Nov 2021",
     position: "Software Developer",
@@ -44,8 +44,8 @@ const data = [
   {
     id:4,
     company: "Turati Software",
-    logo:"",
-    link:"",
+    logo:"turati",
+    link:"/images/icons/TuratiLogoTime.png",
     started: "Feb 2022",
     ended: "present",
     position: "Fullstack software developer",
@@ -79,15 +79,15 @@ const Experience = () => {
               <div className="card single-service" title="">
                 <div className="card-header">
                   <Image
-                    src={""}
-                    title="https://lucidocean.com"
+                    src={job.link}
+                    title={job.logo}
                     alt=""
-                    width={10}
-                    height={10}
-                    style={{ width: "10em" }}
+                    width={"200"}
+                    height={"100"}
+                 
                   />
-                  <p className="h4">{job.company}</p> <p>{job.started} - {job.ended}</p>
-                  <span className="float-right">{job.position}</span>
+                  {/* <p className="h4">{job.company}</p> <p>{job.started} - {job.ended}</p>
+                  <span className="float-right">{job.position}</span> */}
                 </div>
                 <div className="card-body">
                   <p className="fw-light">Responsibility</p>

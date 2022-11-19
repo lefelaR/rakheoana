@@ -3,9 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Portfolio = () => {
-
-  const height = '200';
-const width = '200';
+  const height = "200";
+  const width = "200";
 
   return (
     <section id="work" className="work-area pt-125 pb-130">
@@ -23,7 +22,12 @@ const width = '200';
           <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
               <div className="work-image">
-                <Image src={"/images/work/contractor.png"} width={width} height={height} alt="work" />
+                <Image
+                  src={"/images/work/contractor.png"}
+                  width={width}
+                  height={height}
+                  alt="work"
+                />
               </div>
 
               <div className="work-overlay">
@@ -53,12 +57,9 @@ const width = '200';
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-  );
-  {
-    /*
+
+
+
           <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
               <div className="work-image">
@@ -325,7 +326,6 @@ const width = '200';
             </div>
           </div>
         </div>
-
         <div className="col-lg-8 mt-5">
           <div className="section-title text-center pb-30">
             <p className="title h2 ">Current projects</p>
@@ -374,72 +374,8 @@ const width = '200';
           </div>
         </div>
       </div>
-    </section> 
-  );*/
-  }
+    </section>
+  );
 };
 
 export default Portfolio;
-
-const data = [
-  {
-    live: [
-      {
-        periodName: "Live",
-        name: "Arthur Contractor App",
-        company: "Lucidocean",
-        period: "3",
-        cardImage: "/images/work/contractor.png",
-        cover: "/images/work/contractor1.PNG",
-      },
-      {
-        periodName: "Live",
-        name: "Arthur Contractor App",
-        company: "Lucidocean",
-        period: "3",
-        cardImage: "/images/work/contractor.png",
-        cover: "/images/work/contractor1.PNG",
-      },
-      {
-        periodName: "Live",
-        name: "Arthur Contractor App",
-        company: "Lucidocean",
-        period: "3",
-        cardImage: "/images/work/contractor.png",
-        cover: "/images/work/contractor1.PNG",
-      },
-      {
-        periodName: "Live",
-        name: "Arthur Contractor App",
-        company: "Lucidocean",
-        period: "3",
-        cardImage: "/images/work/contractor.png",
-        cover: "/images/work/contractor1.PNG",
-      },
-      {
-        periodName: "Live",
-        name: "Arthur Contractor App",
-        company: "Lucidocean",
-        period: "3",
-        cardImage: "/images/work/contractor.png",
-        cover: "/images/work/contractor1.PNG",
-      },
-    ],
-    current: {
-      periodName: "Current",
-      name: "",
-      company: "",
-      period: "",
-      cardImage: "",
-      cover: "",
-    },
-    future: {
-      periodName: "Future",
-      name: "",
-      company: "",
-      period: "",
-      cardImage: "",
-      cover: "",
-    },
-  },
-];
