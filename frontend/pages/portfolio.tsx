@@ -1,6 +1,11 @@
 import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 const Portfolio = () => {
+  const height = "200";
+  const width = "200";
+
   return (
     <section id="work" className="work-area pt-125 pb-130">
       <div className="container">
@@ -17,7 +22,12 @@ const Portfolio = () => {
           <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
               <div className="work-image">
-                <img src={"/images/work/contractor.png"} alt="work" />
+                <Image
+                  src={"/images/work/contractor.png"}
+                  width={width}
+                  height={height}
+                  alt="work"
+                />
               </div>
 
               <div className="work-overlay">
@@ -26,33 +36,30 @@ const Portfolio = () => {
                   <p className="text-white">Lucidocean</p>
                   <ul>
                     <li>
-                      <a
+                      <Link
                         className="image-popup"
                         href={"/images/work/contractor1.PNG"}
                       >
                         <i className="lni lni-plus"></i>
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
+                      <Link
                         href="https://play.google.com/store/apps/details?id=com.arthur.contractor"
                         target="_blank"
                         rel="noreferrer"
                       >
                         <i className="lni lni-link"></i>
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-  );
-  {
-    /*
+
+
+
           <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
               <div className="work-image">
@@ -319,7 +326,6 @@ const Portfolio = () => {
             </div>
           </div>
         </div>
-
         <div className="col-lg-8 mt-5">
           <div className="section-title text-center pb-30">
             <p className="title h2 ">Current projects</p>
@@ -368,72 +374,8 @@ const Portfolio = () => {
           </div>
         </div>
       </div>
-    </section> 
-  );*/
-  }
+    </section>
+  );
 };
 
 export default Portfolio;
-
-const data = [
-  {
-    live: [
-      {
-        periodName: "Live",
-        name: "Arthur Contractor App",
-        company: "Lucidocean",
-        period: "3",
-        cardImage: "/images/work/contractor.png",
-        cover: "/images/work/contractor1.PNG",
-      },
-      {
-        periodName: "Live",
-        name: "Arthur Contractor App",
-        company: "Lucidocean",
-        period: "3",
-        cardImage: "/images/work/contractor.png",
-        cover: "/images/work/contractor1.PNG",
-      },
-      {
-        periodName: "Live",
-        name: "Arthur Contractor App",
-        company: "Lucidocean",
-        period: "3",
-        cardImage: "/images/work/contractor.png",
-        cover: "/images/work/contractor1.PNG",
-      },
-      {
-        periodName: "Live",
-        name: "Arthur Contractor App",
-        company: "Lucidocean",
-        period: "3",
-        cardImage: "/images/work/contractor.png",
-        cover: "/images/work/contractor1.PNG",
-      },
-      {
-        periodName: "Live",
-        name: "Arthur Contractor App",
-        company: "Lucidocean",
-        period: "3",
-        cardImage: "/images/work/contractor.png",
-        cover: "/images/work/contractor1.PNG",
-      },
-    ],
-    current: {
-      periodName: "Current",
-      name: "",
-      company: "",
-      period: "",
-      cardImage: "",
-      cover: "",
-    },
-    future: {
-      periodName: "Future",
-      name: "",
-      company: "",
-      period: "",
-      cardImage: "",
-      cover: "",
-    },
-  },
-];

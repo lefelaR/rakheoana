@@ -14,6 +14,9 @@ useEffect(()=>{
             <p className="h1">
                 Blog page
             </p>
+            <p className="h5">
+                under construction
+            </p>
         </div>
         </>
     )
