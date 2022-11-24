@@ -1,17 +1,12 @@
 import { ImageError } from "next/dist/server/image-optimizer";
 import React, { useState, useEffect } from "react";
-import contactInformation from "components/atoms/contactInformation";
+import ContactInformation from "components/atoms/contactInformation";
+import Email from "models/email.model";
+import { sendEmail } from "services/mailServices";
 
-interface Iemail {
-  name: string;
-  email: string;
-  message: string;
-}
 
 const Contact = () => {
-  const [item, setItem] = useState<Iemail | any>();
-
- 
+  const [item, setItem] = useState<Email | any>({});
   const handleChange = (event: any) => {
     const { target: input } = event;
     const tmpItem = { ...item };
@@ -19,9 +14,14 @@ const Contact = () => {
     setItem(tmpItem);
   };
 
-  const handleSubmit = (event) => {
-    debugger;
+  const handleSubmit = async (event: any) => {
     console.log(item);
+    await sendEmail("rakgew@gmail.com", "rakgew@hotmail.com", "example email", "this is going toi be sweet once it works")
+    .then((res:any)=>{
+      console.log(res);
+    }).catch((error:any)=>console.log(error.message))
+    debugger
+
   };
 
   return (
@@ -35,9 +35,7 @@ const Contact = () => {
             </div>
           </div>
         </div>
-        
-        <contactInformation />
-
+        <ContactInformation />
         <div className="row">
           <div className="col-lg-6">
             <div className="contact-form pt-30">
@@ -51,6 +49,7 @@ const Contact = () => {
                     onChange={handleChange}
                   />
                 </div>
+
                 <div className="single-form">
                   <input
                     type="email"
