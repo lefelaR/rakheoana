@@ -1,37 +1,39 @@
-import type { AWS } from '@serverless/typescript';
-import * as hello from '@functions/hello';
-import DynamoDBTables from "./resources/DynamoDBTables"
-// send contact email
-// login authentication
-// backend functions
-
-
+import type { AWS } from "@serverless/typescript";
+import * as feedbackFunctions from "@functions/feedback";
+import * as snagsFunctions from "@functions/snags";
+import * as userFunctions from "@functions/users";
+import dynamoDbTables from "./resources/dynamodb-tables";
 
 const serverlessConfiguration: AWS = {
-  service: 'rakheoana-backend',
-  frameworkVersion: '3',
+  service: "rakheoana-backend",
+  frameworkVersion: "3",
+  variablesResolutionMode: "20210326",
   plugins: [
-    'serverless-esbuild'
+    "serverless-esbuild",
+    "serverless-offline",
+    "serverless-dynamodb-local",
   ],
   provider: {
-    name: 'aws',
-    runtime: 'nodejs14.x',
-    region:'eu-west-1',
-    tracing:{
-      apiGateway:true,
-      lambda:true,
+    name: "aws",
+    runtime: "nodejs14.x",
+    region: "eu-central-1",
+    tracing: {
+      apiGateway: true,
+      lambda: true,
     },
-
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
     },
-    stage:"dev",
+    stage: "dev",
     environment: {
-      AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
-      NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
+      AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1",
+      NODE_OPTIONS: "--enable-source-maps --stack-trace-limit=1000",
+      ADMIN_EMAIL: "rakgew@gmail.com",
+      USER_SNAGS_TABLE: "${self:service}-${self:provider.stage}-user-snags",
+      USER_ISSUES_TABLE: "${self:service}-${self:provider.stage}-user-issues",
       USERS_TABLE: "${self:service}-${self:provider.stage}-users",
-      CONTACT_TABLE: "${self:service}-${self:provider.stage}-contact",
+      FEEDBACK_TABLE: "${self:service}-${self:provider.stage}-feedback",
     },
     iam: {
       role: {
@@ -101,35 +103,57 @@ const serverlessConfiguration: AWS = {
         ],
       },
     },
-    // deploymentBucket:{
-    //   name:"rakheoana-serverless-deployments",
-    //   serverSideEncryption: "AES256",
-    // }
+    lambdaHashingVersion: "20201221",
+    deploymentBucket: {
+      name: "rakheoana-serverless-deployments",
+      serverSideEncryption: "AES256",
+    },
   },
   // import the function via paths
-  functions: { 
-    ...hello,
+  functions: {
+    ...snagsFunctions,
+    ...userFunctions,
+    ...feedbackFunctions,
+    ...lambdaTriggers,
   },
 
-resources:{
-  Resources: DynamoDBTables,
-},
-
-  package:{ patterns: ["!.dynamodb/**", "!node_modules/**"] },
+  resources: {
+    Resources: dynamoDbTables,
+  },
+  package: { patterns: ["!.dynamodb/**", "!node_modules/**"] },
   custom: {
     esbuild: {
       bundle: true,
       minify: false,
       sourcemap: true,
-      exclude: ['aws-sdk'],
-      target: 'node14',
-      define: { 'require.resolve': undefined },
-      platform: 'node',
+      exclude: ["aws-sdk"],
+      target: "node14",
+      define: { "require.resolve": undefined },
+      platform: "node",
       concurrency: 10,
     },
-    dynamodb:{
-      stages:['dev','staging','main'],    
-    }
+    prune: {
+      automatic: true,
+      includeLayers: true,
+    },
+    webpack: {
+      webpackConfig: "./webpack.config.js",
+      includeModules: true,
+    },
+    dynamodb: {
+      stages: ["dev", "stag", "prod"],
+      start: {
+        port: 8000,
+        dbPath: "./",
+        migrate: true,
+      },
+    },
+
+    splitStacks: {
+      perFunction: false,
+      perType: true,
+      perGroupFunction: false,
+    },
   },
 };
 
