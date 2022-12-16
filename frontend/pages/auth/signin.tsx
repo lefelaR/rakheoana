@@ -13,12 +13,6 @@ const Signin = () => {
     const tmpUser = { ...user };
     tmpUser[user.name] = input.value;
     setUser(tmpUser);
-  
-    
-    
-  
-  
-  
   };
 
 
