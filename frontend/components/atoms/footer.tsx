@@ -1,13 +1,11 @@
 
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 
 
 
 export default function Footer() {
-
     var date = new Date().getFullYear();
- 
-
+    
     return (
         <>
             <footer id="footer" className="footer-area">
@@ -47,12 +45,12 @@ export default function Footer() {
                                 <div className="copyright-text text-center pt-20">
                                     <p>Copyright © <span id="date"> {date} </span>
                                     </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </footer>
+            </footer>
         </>
     )
 }
