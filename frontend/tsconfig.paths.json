@@ -5,6 +5,7 @@
             "@components/*":["components/"],
             "@models/*":["models/"],
             "@services/*":["services/"],
+            
         }
     }
 }
