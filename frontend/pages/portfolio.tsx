@@ -17,49 +17,8 @@ const Portfolio = () => {
             </div>
           </div>
         </div>
-
         <div className="row">
-          <div className="col-lg-4 col-md-6 col-sm-6">
-            <div className="single-work text-center mt-30">
-              <div className="work-image">
-                <Image
-                  src={"/images/work/contractor.png"}
-                  width={width}
-                  height={height}
-                  alt="work"
-                />
-              </div>
-
-              <div className="work-overlay">
-                <div className="work-content">
-                  <h3 className="work-title">Arthur Contractor App</h3>
-                  <p className="text-white">Lucidocean</p>
-                  <ul>
-                    <li>
-                      <Link
-                        className="image-popup"
-                        href={"/images/work/contractor1.PNG"}
-                      >
-                        <i className="lni lni-plus"></i>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="https://play.google.com/store/apps/details?id=com.arthur.contractor"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <i className="lni lni-link"></i>
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-
+        
           <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
               <div className="work-image">
@@ -161,7 +120,7 @@ const Portfolio = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-4 col-md-6 col-sm-6">
+          {/* <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
               <div className="work-image">
                 <img src={"/images/work/csharp.png"} alt="work" />
@@ -193,7 +152,7 @@ const Portfolio = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
           <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
@@ -229,7 +188,7 @@ const Portfolio = () => {
             </div>
           </div>
 
-          <div className="col-lg-4 col-md-6 col-sm-6">
+          {/* <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
               <div className="work-image">
                 <img src={"/images/work/js-html5.png"} alt="work" />
@@ -259,7 +218,7 @@ const Portfolio = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
           <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
@@ -332,7 +291,7 @@ const Portfolio = () => {
             <p className="h5">Live projects</p>
           </div>
         </div>
-        <div className="row">
+        {/* <div className="row">
           <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
               <div className="work-image">
@@ -365,7 +324,7 @@ const Portfolio = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className="col-lg-8 mt-5">
           <div className="section-title text-center pb-30">

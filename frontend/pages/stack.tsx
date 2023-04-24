@@ -31,8 +31,6 @@ const TechStack = () => {
       icon:"git"
     },
       
-    
-
   ];
 
 

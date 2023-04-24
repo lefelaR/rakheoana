@@ -83,8 +83,7 @@ const Experience = () => {
                     title={job.logo}
                     alt=""
                     width={"200"}
-                    height={"100"}
-                 
+                    height={"60"}
                   />
                   {/* <p className="h4">{job.company}</p> <p>{job.started} - {job.ended}</p>
                   <span className="float-right">{job.position}</span> */}
