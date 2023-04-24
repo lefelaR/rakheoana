@@ -1,5 +1,21 @@
 import Link from "next/link";
+import React, { useState, useEffect } from "react";
+import User from "models/user.model";
+import axios from "axios";
+
+
 const Signin = () => {
+  const [credentials, setCredentials] = useState<User | any>({});
+  const [user, setUser] = useState<User | any>({});
+
+  const handleSubmit = (event: any) => {
+    const { target: input } = event;
+    const tmpUser = { ...user };
+    tmpUser[user.name] = input.value;
+    setUser(tmpUser);
+  };
+
+
   return (
     <div className="col-lg-5 col-12 px-5 mt-5">
       <div id="auth-left row ">
@@ -8,10 +24,10 @@ const Signin = () => {
 
           <p className="auth-title h2 mx-auto">Log in.</p>
           <p className="auth-subtitle mb-5 mx-auto">
-            Log in with your data that you entered during registration.
+            Log in with credentials that you entered during registration.
           </p>
 
-          <form id="login-form" action="authenticate" method="POST">
+          <form id="login-form" onSubmit={handleSubmit}>
             <div className="form-group position-relative has-icon-left mb-4">
               <input
                 type="text"
@@ -59,17 +75,15 @@ const Signin = () => {
               <a href="signup" className="font-bold">
                 Sign up
               </a>
-              
             </p>
             <p>
               <Link className="font-bold" href="/auth/forgotpassword">
                 Forgot password?
               </Link>
-               |
+              |
               <Link className="font-bold" href="/">
                 home
               </Link>
-              
             </p>
           </div>
         </div>
