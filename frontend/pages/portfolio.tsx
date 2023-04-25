@@ -8,6 +8,7 @@ const Portfolio = () => {
 
   return (
     <section id="work" className="work-area pt-125 pb-130">
+
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-lg-8">
@@ -17,8 +18,10 @@ const Portfolio = () => {
             </div>
           </div>
         </div>
+
+
         <div className="row">
-        
+
           <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
               <div className="work-image">
@@ -120,7 +123,8 @@ const Portfolio = () => {
               </div>
             </div>
           </div>
-         <div className="col-lg-4 col-md-6 col-sm-6">
+
+          {/* <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
               <div className="work-image">
                 <img src={"/images/work/csharp.png"} alt="work" />
@@ -152,7 +156,7 @@ const Portfolio = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
           <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
@@ -187,8 +191,8 @@ const Portfolio = () => {
               </div>
             </div>
           </div>
-          
-          <div className="col-lg-4 col-md-6 col-sm-6">
+
+          {/* <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
               <div className="work-image">
                 <img src={"/images/work/simple freight cover.jpg"} alt="work" />
@@ -219,7 +223,8 @@ const Portfolio = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
+
           <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
               <div className="work-image">
@@ -252,15 +257,20 @@ const Portfolio = () => {
               </div>
             </div>
           </div>
+
         </div>
-        <div className="col-lg-8 mt-5">
-          <div className="section-title text-center pb-30">
-            <p className="title h2 ">Current projects</p>
-            <p className="h5">Live projects</p>
+
+        <div className="row justify-content-center mt-5">
+          <div className="col-lg-8">
+            <div className="section-title text-center pb-30">
+              <p className="title h2 ">Current projects</p>
+              <p className="h5">Live projects</p>
+            </div>
           </div>
         </div>
-        {/* <div className="row">
-          <div className="col-lg-4 col-md-6 col-sm-6">
+
+        <div className="row">
+          {/* <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
               <div className="work-image">
                 <img src={"/images/work/onestopshop.png"} alt="work" />
@@ -291,17 +301,20 @@ const Portfolio = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </div> */}
+          </div> */}
+        </div>
 
-        <div className="col-lg-8 mt-5">
+        <div className="row justify-content-center">
+          <div className="col-lg-8">
           <div className="section-title text-center pb-30">
             <p className="title h2 ">Future projects</p>
             <p className="h5">Live projects</p>
           </div>
         </div>
+        </div>
+
       </div>
-    </section>
+    </section >
   );
 };
 
