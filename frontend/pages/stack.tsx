@@ -31,8 +31,6 @@ const TechStack = () => {
       icon:"git"
     },
       
-    
-
   ];
 
 
@@ -60,7 +58,7 @@ const TechStack = () => {
             
             var icon = `lni lni-${row.icon}`;
             return(
-            <div className="col-lg-4 col-md-6 col-sm-8">
+            <div className="col-lg-4 col-md-6 col-sm-8" key={row.id}>
               <div className="single-service text-center mt-30">
                 <div className="service-icon">
                   <i className={icon}></i>

@@ -62,11 +62,11 @@ export default function Navbar(props: any) {
                           Portfolio
                         </Link>
                       </li>
-                      <li className="nav-item">
+                      {/* <li className="nav-item">
                         <Link className="page-scroll" href="/blog">
                           Blog
                         </Link>
-                      </li>
+                      </li> */}
                       <li className="nav-item">
                         <Link className="page-scroll" href="/contact">
                           Contact

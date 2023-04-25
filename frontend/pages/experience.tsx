@@ -51,7 +51,8 @@ const data = [
     position: "Fullstack software developer",
     responsinility:
       "Project planning and kick-off | Induction and coaching | Building new features | Mobile App development using React-native & Expo Cli | Building ReastFul Api with AWS Api-Gateway, lambda, Serverless",
-    city: "Johannesburg",
+    skills:"React.js · AWS Lambda · Amazon Cognito · Amazon Dynamodb · AWS amplify · AWS Code build · AWS CodePipeline · AWS CodeDeploy · Next.js · Bugsnag · Mapbox · React Map Js",
+      city: "Johannesburg",
     country: "South Africa",
   },
 ];
@@ -83,8 +84,7 @@ const Experience = () => {
                     title={job.logo}
                     alt=""
                     width={"200"}
-                    height={"100"}
-                 
+                    height={"60"}
                   />
                   {/* <p className="h4">{job.company}</p> <p>{job.started} - {job.ended}</p>
                   <span className="float-right">{job.position}</span> */}
@@ -92,6 +92,8 @@ const Experience = () => {
                 <div className="card-body">
                   <p className="fw-light">Responsibility</p>
                   <p className="fw-normal">{job.responsinility}</p>
+                  <p className="fw-light">Skills</p>
+                  <p className="fw-normal">{job.skills}</p>
                 </div>
                 <div className="card-footer">
                   <p>{job.city}, {job.country}</p>

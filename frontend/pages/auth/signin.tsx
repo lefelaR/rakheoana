@@ -24,7 +24,7 @@ const Signin = () => {
 
           <p className="auth-title h2 mx-auto">Log in.</p>
           <p className="auth-subtitle mb-5 mx-auto">
-            Log in with your data that you entered during registration.
+            Log in with credentials that you entered during registration.
           </p>
 
           <form id="login-form" onSubmit={handleSubmit}>

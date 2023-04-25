@@ -8,6 +8,7 @@ const Portfolio = () => {
 
   return (
     <section id="work" className="work-area pt-125 pb-130">
+
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-lg-8">
@@ -18,47 +19,8 @@ const Portfolio = () => {
           </div>
         </div>
 
+
         <div className="row">
-          <div className="col-lg-4 col-md-6 col-sm-6">
-            <div className="single-work text-center mt-30">
-              <div className="work-image">
-                <Image
-                  src={"/images/work/contractor.png"}
-                  width={width}
-                  height={height}
-                  alt="work"
-                />
-              </div>
-
-              <div className="work-overlay">
-                <div className="work-content">
-                  <h3 className="work-title">Arthur Contractor App</h3>
-                  <p className="text-white">Lucidocean</p>
-                  <ul>
-                    <li>
-                      <Link
-                        className="image-popup"
-                        href={"/images/work/contractor1.PNG"}
-                      >
-                        <i className="lni lni-plus"></i>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="https://play.google.com/store/apps/details?id=com.arthur.contractor"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <i className="lni lni-link"></i>
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
 
           <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
@@ -161,7 +123,8 @@ const Portfolio = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-4 col-md-6 col-sm-6">
+
+          {/* <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
               <div className="work-image">
                 <img src={"/images/work/csharp.png"} alt="work" />
@@ -182,7 +145,7 @@ const Portfolio = () => {
                     </li>
                     <li>
                       <a
-                        href="https://agitated-curie-6f1d29.netlify.app/"
+                        href="https://preware-git-staging-lefelar.vercel.app/"
                         target="_blank"
                         rel="noreferrer"
                       >
@@ -193,7 +156,7 @@ const Portfolio = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
           <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
@@ -216,7 +179,7 @@ const Portfolio = () => {
                     </li>
                     <li>
                       <a
-                        href="https://preware.herokuapp.com/"
+                        href="https://preware-git-staging-lefelar.vercel.app/"
                         target="_blank"
                         rel="noreferrer"
                       >
@@ -229,39 +192,7 @@ const Portfolio = () => {
             </div>
           </div>
 
-          <div className="col-lg-4 col-md-6 col-sm-6">
-            <div className="single-work text-center mt-30">
-              <div className="work-image">
-                <img src={"/images/work/js-html5.png"} alt="work" />
-              </div>
-              <div className="work-overlay">
-                <div className="work-content">
-                  <h3 className="work-title">
-                    {" "}
-                    HTML JS form validation example{" "}
-                  </h3>
-                  <ul>
-                    <li>
-                      <a className="image-popup" href={"/images/work/val.png"}>
-                        <i className="lni lni-plus"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://brave-wing-550a66.netlify.app/"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <i className="lni lni-link"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-lg-4 col-md-6 col-sm-6">
+          {/* <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
               <div className="work-image">
                 <img src={"/images/work/simple freight cover.jpg"} alt="work" />
@@ -292,7 +223,8 @@ const Portfolio = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
+
           <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
               <div className="work-image">
@@ -325,15 +257,20 @@ const Portfolio = () => {
               </div>
             </div>
           </div>
+
         </div>
-        <div className="col-lg-8 mt-5">
-          <div className="section-title text-center pb-30">
-            <p className="title h2 ">Current projects</p>
-            <p className="h5">Live projects</p>
+
+        <div className="row justify-content-center mt-5">
+          <div className="col-lg-8">
+            <div className="section-title text-center pb-30">
+              <p className="title h2 ">Current projects</p>
+              <p className="h5">Live projects</p>
+            </div>
           </div>
         </div>
+
         <div className="row">
-          <div className="col-lg-4 col-md-6 col-sm-6">
+          {/* <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
               <div className="work-image">
                 <img src={"/images/work/onestopshop.png"} alt="work" />
@@ -364,17 +301,20 @@ const Portfolio = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
-        <div className="col-lg-8 mt-5">
+        <div className="row justify-content-center">
+          <div className="col-lg-8">
           <div className="section-title text-center pb-30">
             <p className="title h2 ">Future projects</p>
             <p className="h5">Live projects</p>
           </div>
         </div>
+        </div>
+
       </div>
-    </section>
+    </section >
   );
 };
 
