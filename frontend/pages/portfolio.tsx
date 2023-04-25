@@ -187,39 +187,7 @@ const Portfolio = () => {
               </div>
             </div>
           </div>
-
-          {/* <div className="col-lg-4 col-md-6 col-sm-6">
-            <div className="single-work text-center mt-30">
-              <div className="work-image">
-                <img src={"/images/work/js-html5.png"} alt="work" />
-              </div>
-              <div className="work-overlay">
-                <div className="work-content">
-                  <h3 className="work-title">
-                    {" "}
-                    HTML JS form validation example{" "}
-                  </h3>
-                  <ul>
-                    <li>
-                      <a className="image-popup" href={"/images/work/val.png"}>
-                        <i className="lni lni-plus"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://brave-wing-550a66.netlify.app/"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <i className="lni lni-link"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div> */}
-
+          
           <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
               <div className="work-image">
