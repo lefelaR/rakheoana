@@ -120,7 +120,7 @@ const Portfolio = () => {
               </div>
             </div>
           </div>
-          {/* <div className="col-lg-4 col-md-6 col-sm-6">
+         <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
               <div className="work-image">
                 <img src={"/images/work/csharp.png"} alt="work" />
@@ -141,7 +141,7 @@ const Portfolio = () => {
                     </li>
                     <li>
                       <a
-                        href="https://agitated-curie-6f1d29.netlify.app/"
+                        href="https://preware-git-staging-lefelar.vercel.app/"
                         target="_blank"
                         rel="noreferrer"
                       >
@@ -152,7 +152,7 @@ const Portfolio = () => {
                 </div>
               </div>
             </div>
-          </div> */}
+          </div>
 
           <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
@@ -175,7 +175,7 @@ const Portfolio = () => {
                     </li>
                     <li>
                       <a
-                        href="https://preware.herokuapp.com/"
+                        href="https://preware-git-staging-lefelar.vercel.app/"
                         target="_blank"
                         rel="noreferrer"
                       >
