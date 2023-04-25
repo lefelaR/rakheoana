@@ -192,7 +192,7 @@ const Portfolio = () => {
             </div>
           </div>
 
-          <div className="col-lg-4 col-md-6 col-sm-6">
+          {/* <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
               <div className="work-image">
                 <img src={"/images/work/simple freight cover.jpg"} alt="work" />
@@ -223,7 +223,7 @@ const Portfolio = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
           <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
@@ -270,7 +270,7 @@ const Portfolio = () => {
         </div>
 
         <div className="row">
-          <div className="col-lg-4 col-md-6 col-sm-6">
+          {/* <div className="col-lg-4 col-md-6 col-sm-6">
             <div className="single-work text-center mt-30">
               <div className="work-image">
                 <img src={"/images/work/onestopshop.png"} alt="work" />
@@ -301,7 +301,7 @@ const Portfolio = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className="row justify-content-center">
