@@ -12,7 +12,7 @@ export default function Home() {
             <div className="header-content-right">
               <h4 className="sub-title animate__animated animate__backInLeft">Hello, I’m</h4>
               <h1 className="title animate__animated animate__backInLeft animate__delay-1s">Rakheoana Lefela</h1>
-              <p>i am a Web and software Developer...</p>
+              <p>Web and software Developer...</p>
               <Link className="main-btn" href="/portfolio">View my Work</Link>
             </div>
           </div>
