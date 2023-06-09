@@ -63,7 +63,7 @@ export default function Home() {
       <div className="row">
         <div className="col-lg-12">
           <div className="about-content mt-50 text-center">
-            <div className="card">
+            <div className="card animate__animated animate__swing">
               <div className="card-header">
                 <h5 className="about-title">The Lefela Legacy</h5>
               </div>
