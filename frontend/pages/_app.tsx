@@ -11,7 +11,7 @@ import UserContext, { IUserContext } from '@contexts/userContext';
 import { useRouter } from "next/router";
 import checkSession from '@services/auth/checkSession';
 import {getUser} from '@services/usersService';
-import User from 'models/user.model';
+import User from '@models/user.model';
 
 export default function App({ Component, pageProps }: AppProps) {
 

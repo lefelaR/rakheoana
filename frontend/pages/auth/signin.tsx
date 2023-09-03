@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import User from "models/user.model";
 import axios from "axios";
 import { Formik, Form, Field, FieldAttributes, useField } from "formik";
-import toast from "react-hot-toast";
+import toast,{Toaster} from "react-hot-toast";
 import { useRouter } from "next/router";
 import userSignIn from "@services/auth/userSignIn";
 import useUserContext from 'hooks/useUser';
@@ -28,20 +28,17 @@ const Signin = () => {
             }}
             onSubmit={(values, { resetForm, setSubmitting }) => {
               setSubmitting(true);
-              debugger
               userSignIn({ email: values.email, password: values.password })
-                .then(() => {
+                .then((res:any) => {
                   debugger
                   toast.success("Sign in successful");
-                  handleUserUpdate().then(() => {
-                    debugger
-                    resetForm();
-                    console.log("Done");
-                    router.push("dashboard/");
-                  });
+                  // handleUserUpdate().then(() => {
+                  //   resetForm();
+                  //   console.log("Done");
+                    router.push("/dashboard/");
+                  // });
                 })
                 .catch((err: any) => {
-                  debugger
                   if (err.message === "User is not confirmed") {
                     toast.error(
                       "Your email is not verified, please check your email for a verification email from us."
@@ -121,6 +118,7 @@ const Signin = () => {
               </Link>
             </p>
           </div>
+
         </div>
       </div>
     </div>
