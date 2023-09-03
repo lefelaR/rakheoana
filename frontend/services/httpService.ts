@@ -2,7 +2,8 @@ import axios from 'axios';
 
 // Set config defaults
 const http = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_BASE_API_ENDPOINT,
+    // baseURL: process.env.NEXT_PUBLIC_BASE_API_ENDPOINT,
+    baseURL:"https://2kyfkk5k93.execute-api.eu-central-1.amazonaws.com/dev/"
 });
 http.interceptors.request.use(
     (config:any) => {

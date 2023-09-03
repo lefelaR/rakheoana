@@ -2,73 +2,108 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import User from "models/user.model";
 import axios from "axios";
-
+import { Formik, Form, Field, FieldAttributes, useField } from "formik";
+import toast from "react-hot-toast";
+import { useRouter } from "next/router";
+import userSignIn from "@services/auth/userSignIn";
+import useUserContext from 'hooks/useUser';
 
 const Signin = () => {
-  const [credentials, setCredentials] = useState<User | any>({});
-  const [user, setUser] = useState<User | any>({});
-
-  const handleSubmit = (event: any) => {
-    const { target: input } = event;
-    const tmpUser = { ...user };
-    tmpUser[user.name] = input.value;
-    setUser(tmpUser);
-  };
-
-
+  const router = useRouter();
+  const {onUpdated: handleUserUpdate,currentUser,isLoading} = useUserContext();
   return (
     <div className="col-lg-5 col-12 px-5 mt-5">
       <div id="auth-left row ">
         <div className="card shadow p-5 sm-5 bg-white rounded ">
           <div className="auth-logo"> </div>
-
           <p className="auth-title h2 mx-auto">Log in.</p>
           <p className="auth-subtitle mb-5 mx-auto">
             Log in with credentials that you entered during registration.
           </p>
 
-          <form id="login-form" onSubmit={handleSubmit}>
-            <div className="form-group position-relative has-icon-left mb-4">
-              <input
-                type="text"
-                className="form-control form-control-xl"
-                name="username"
-                placeholder="Username"
-              />
-              <div className="form-control-icon">
-                <i className="bi bi-person"></i>
-              </div>
-            </div>
-            <div className="form-group position-relative has-icon-left mb-4">
-              <input
-                type="password"
-                className="form-control form-control-xl"
-                name="password"
-                placeholder="Password"
-              />
-              <div className="form-control-icon">
-                <i className="bi bi-shield-lock"></i>
-              </div>
-            </div>
-            <div className="form-check form-check-lg d-flex align-items-end">
-              <input
-                className="form-check-input me-2"
-                name="flexcheck"
-                type="checkbox"
-                value=""
-                id="flexCheckDefault"
-              />
-              <label className="form-check-label text-gray-600">
-                Keep me logged in
-              </label>
-            </div>
-            <input
-              className="btn main-btn btn-primary btn-block shadow-lg mt-5"
-              type="submit"
-              name="submit"
-              value="Log in"
-            />
-          </form>
+          <Formik
+            initialValues={{
+              email: "",
+              password: "",
+            }}
+            onSubmit={(values, { resetForm, setSubmitting }) => {
+              setSubmitting(true);
+              debugger
+              userSignIn({ email: values.email, password: values.password })
+                .then(() => {
+                  debugger
+                  toast.success("Sign in successful");
+                  handleUserUpdate().then(() => {
+                    debugger
+                    resetForm();
+                    console.log("Done");
+                    router.push("dashboard/");
+                  });
+                })
+                .catch((err: any) => {
+                  debugger
+                  if (err.message === "User is not confirmed") {
+                    toast.error(
+                      "Your email is not verified, please check your email for a verification email from us."
+                    );
+                  } else if (
+                    err.message === "handleUserUpdate is not a function" ||
+                    err.message === "t is not a function"
+                  ) {
+                    toast.error(
+                      "Unable to proceed, please contact Sam for assistance"
+                    );
+                  } else {
+                    toast.error(err.message);
+                  }
+                  setSubmitting(false);
+                });
+            }}
+          >
+            {({ errors, touched, isSubmitting, handleBlur, handleChange }) => (
+              <Form>
+                <div className="form-group position-relative has-icon-left mb-4">
+                  <Field
+                    name="email"
+                    type="input"
+                    className="form-control form-control-xl"
+                    margin="normal"
+                    label="Email"
+                    placeholder={"Email"}
+                    fullWidth
+                    error={!!errors.email && !!touched.email}
+                    helperText={!!touched.email && errors.email}
+                  />
+                  <div className="form-control-icon">
+                    <i className="bi bi-person"></i>
+                  </div>
+                </div>
+                <div className="form-group position-relative has-icon-left mb-4">
+                  <Field
+                    name="password"
+                    type="input"
+                    className="form-control form-control-xl"
+                    margin="normal"
+                    placeholder={"Password"}
+                    label="Password"
+                    fullWidth
+                    error={!!errors.password && !!touched.password}
+                    helperText={!!touched.password && errors.password}
+                  />
+                  <div className="form-control-icon">
+                    <i className="bi bi-person"></i>
+                  </div>
+                </div>
+                <input
+                  className="btn main-btn btn-primary btn-block shadow-lg mt-5"
+                  type="submit"
+                  name="submit"
+                  value="Log in"
+                />
+              </Form>
+            )}
+          </Formik>
+
           <div className="text-center mt-5 font-weight-smaller">
             <p className="text-gray-600">
               Don&apos;t have an account?{" "}

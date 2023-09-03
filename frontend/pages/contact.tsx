@@ -16,6 +16,7 @@ const Contact = () => {
 
   const handleSubmit = async (event: any) => {
     console.log(item);
+    debugger
     await sendEmail("rakgew@gmail.com", "rakgew@hotmail.com", "example email", "this is going toi be sweet once it works")
     .then((res:any)=>{
       console.log(res);

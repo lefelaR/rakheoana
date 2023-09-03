@@ -17,14 +17,16 @@ const signUp = async (props: User) => {
 
         attributeList.push(name, familyName)
 
-        UserPool.signUp(props.email, props.password, attributeList, [], (err: any, data: ISignUpResult) => {
+        UserPool.signUp(props.email, props.password, attributeList, [], (err: any, data: ISignUpResult|undefined) => {
             if (err) {
+                debugger
                 console.log(err);
                 reject(err);
                 return;
             } else {
                 resolve(data);
             }
+            
         });
     });
 };
