@@ -2,9 +2,13 @@
     "compilerOptions": {
         "baseUrl": ".",
         "paths": {
-            "@components/*":["components/"],
-            "@models/*":["models/"],
-            "@services/*":["services/"],
+            "@components/*":["components/*"],
+            "@models/*":["models/*"],
+            "@services/*":["services/*"],
+            "@hooks/*":["hooks/*"],
+            "@contexts/*":["contexts/*"],
+            "@sharedProject/*":["../shared/*"],
+            
             
         }
     }

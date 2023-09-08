@@ -9,16 +9,24 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@bugsnag/js": "^7.21.0",
+    "@emotion/cache": "^11.11.0",
+    "@mui/material": "^5.14.8",
+    "amazon-cognito-identity-js": "^6.2.0",
     "animate.css": "^4.1.1",
+    "aws-amplify": "^5.1.3",
     "aws-sdk": "^2.1260.0",
-    "axios": "^1.1.3",
+    "axios": "^1.5.0",
     "bootstrap": "5.2.2",
+    "formik": "^2.2.9",
     "moment": "^2.29.4",
     "next": "^13.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hot-toast": "^2.4.0",
-    "react-parallax": "^3.5.1"
+    "react-hot-toast": "^2.4.1",
+    "react-parallax": "^3.5.1",
+    "sendpulse-api": "^1.1.6",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@types/node": "18.11.7",

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import ContactInformation from "components/atoms/contactInformation";
 import Email from "models/email.model";
 import { sendEmail } from "services/mailServices";
-
+import Layout from "@components/layouts/frontendLayout";
 
 const Contact = () => {
   const [item, setItem] = useState<Email | any>({});
@@ -16,16 +16,17 @@ const Contact = () => {
 
   const handleSubmit = async (event: any) => {
     console.log(item);
+    
     await sendEmail("rakgew@gmail.com", "rakgew@hotmail.com", "example email", "this is going toi be sweet once it works")
     .then((res:any)=>{
       console.log(res);
     }).catch((error:any)=>console.log(error.message))
-    debugger
+    
 
   };
 
   return (
-    <section id="contact" className="contact-area pt-125 pb-130 ">
+    <Layout>    <section id="contact" className="contact-area pt-125 pb-130 ">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-lg-8">
@@ -99,6 +100,8 @@ const Contact = () => {
         </div>
       </div>
     </section>
+    </Layout>
+
   );
 };
 

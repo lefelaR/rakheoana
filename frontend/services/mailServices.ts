@@ -1,7 +1,7 @@
 import AWS from "aws-sdk";
 import axios from "axios";
 
-const SES = new AWS.SES({ region: "eu-west-1" });
+const SES = new AWS.SES({ region: "eu-central-1" });
 
 export const sendEmail = async (
   to: string,

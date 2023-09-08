@@ -1,10 +1,12 @@
 import React from "react";
 import Image from 'next/image'
 import Link from "next/link";
+import Layout from "../components/layouts/frontendLayout";
+
 
 export default function Home() {
   return (
-    <>
+    <Layout>
     <div id="parallax" className="header-content d-flex align-items-center">
       <div className="container">
         <div className="row align-items-center">
@@ -87,18 +89,7 @@ export default function Home() {
             </div>
 
             <ul className="clearfix">
-              <li>
-                <div className="single-info d-flex align-items-center">
-                  <div className="info-icon">
-                    <i className="lni lni-calendar"></i>
-                  </div>
-                  <div className="info-text">
-                    <p>
-                      <span>Date of birth:</span> 26 February 1990
-                    </p>
-                  </div>
-                </div>
-              </li>
+              
               <li>
                 <div className="single-info d-flex align-items-center">
                   <div className="info-icon">
@@ -106,7 +97,7 @@ export default function Home() {
                   </div>
                   <div className="info-text">
                     <p>
-                      <span>Email:</span> rakgew@gmail.com
+                      <span>Email:</span> rakgew@gmail.com ✉
                     </p>
                   </div>
                 </div>
@@ -118,7 +109,7 @@ export default function Home() {
                   </div>
                   <div className="info-text">
                     <p>
-                      <span>Phone:</span> +27 (0) 78 375 4146
+                      <span>Phone:</span> +27 (0) 78 375 4146 📞
                     </p>
                   </div>
                 </div>
@@ -131,7 +122,7 @@ export default function Home() {
 
                   <div className="info-text">
                     <p>
-                      <span>Location:</span> cape Town
+                      <span>Location:</span> cape Town 🌍 | Willing to relocate | Remote 💻
                     </p>
                   </div>
                 </div>
@@ -142,6 +133,6 @@ export default function Home() {
       </div>
     </div>
   </section>
-  </>
+  </Layout>
   )
 }

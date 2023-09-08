@@ -25,9 +25,7 @@ export default function Navbar(props: any) {
                     />
                   </Link>
                   <button
-                    className="navbar-toggler"
-                    type="button"
-                    data-toggle="collapse"
+                    className="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent"
                     aria-expanded="false"
