@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@bugsnag/js": "^7.21.0",
     "@emotion/cache": "^11.11.0",
     "@mui/material": "^5.14.8",
     "amazon-cognito-identity-js": "^6.2.0",

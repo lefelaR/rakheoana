@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 import checkSession from "@services/auth/checkSession";
 import { getUser } from "@services/usersService";
 import User from "@models/user.model";
+import { string } from "yup";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [appRoles, setAppRoles] = useState<IAppRoleContext>({ roles: [] });
@@ -19,8 +20,8 @@ export default function App({ Component, pageProps }: AppProps) {
 
   const updateUser = async () => {
     await checkSession()
-      .then((cognitoUser: User) => {
-        getUser(cognitoUser.id)
+      .then((cognitoUser: any) => {
+        getUser(cognitoUser.id )
           .then((res) => {
             const currentUser: User = {
               ...res,

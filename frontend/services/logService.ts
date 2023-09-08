@@ -1,4 +1,4 @@
-// import Bugsnag from '@bugsnag/js';
+import Bugsnag from '@bugsnag/js';
 // import BugsnagPluginReact from '@bugsnag/plugin-react';
 // import LogModel, { LogType } from 'models/log.model';
 // import { createLog } from './auditLogService';
