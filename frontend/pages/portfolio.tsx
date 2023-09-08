@@ -1,13 +1,14 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Layout from "@components/layouts/frontendLayout"
 
 const Portfolio = () => {
   const height = "200";
   const width = "200";
 
   return (
-    <section id="work" className="work-area pt-125 pb-130">
+    <Layout>    <section id="work" className="work-area pt-125 pb-130">
 
       <div className="container">
         <div className="row justify-content-center">
@@ -315,6 +316,8 @@ const Portfolio = () => {
 
       </div>
     </section >
+    </Layout>
+
   );
 };
 

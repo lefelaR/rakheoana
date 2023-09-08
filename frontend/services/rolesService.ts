@@ -15,7 +15,7 @@ const roleCache: IRolesCache = {
 };
 export const getAllRoles = async (): Promise<Role[]> => {
     try {
-        debugger
+        
         const now = moment(new Date());
         const lastCacheTime = moment(new Date(roleCache.cacheTime));
         const duration = moment.duration(now.diff(lastCacheTime));

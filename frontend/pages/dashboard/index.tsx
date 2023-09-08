@@ -1,17 +1,14 @@
 import React from "react";
 import Layout from "components/layouts/dashboardLayout";
 
-
-const Dashboard =() =>{
-    return(
-        <div className="container-fluid">       
-         <Layout>
-            <>
-            Dash</>
-        </Layout>
-        </div>
-
-    )
-}
+const Dashboard = () => {
+  return (
+    <Layout>
+      <div className="container-fluid">
+        <>Dash</>
+      </div>
+    </Layout>
+  );
+};
 
 export default Dashboard;

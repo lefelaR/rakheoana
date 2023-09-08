@@ -19,7 +19,7 @@ const signUp = async (props: User) => {
 
         UserPool.signUp(props.email, props.password, attributeList, [], (err: any, data: ISignUpResult|undefined) => {
             if (err) {
-                debugger
+                
                 console.log(err);
                 reject(err);
                 return;

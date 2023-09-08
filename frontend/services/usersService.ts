@@ -17,7 +17,7 @@ export const getUser = async (userId: string) => {
 
 export const addUser = async (user: User | any) => {
     try {
-        debugger
+        
         // const defaultRole = await getOrCreateDefaultRole();
         const cognitoUser: any = await userSignUp({
             email: user.email,

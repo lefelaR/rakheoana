@@ -30,7 +30,7 @@ const Signin = () => {
               setSubmitting(true);
               userSignIn({ email: values.email, password: values.password })
                 .then((res:any) => {
-                  debugger
+                  
                   toast.success("Sign in successful");
                   // handleUserUpdate().then(() => {
                   //   resetForm();

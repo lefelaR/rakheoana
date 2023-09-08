@@ -1,10 +1,12 @@
 import React from "react";
 import Image from 'next/image'
 import Link from "next/link";
+import Layout from "../components/layouts/frontendLayout";
+
 
 export default function Home() {
   return (
-    <>
+    <Layout>
     <div id="parallax" className="header-content d-flex align-items-center">
       <div className="container">
         <div className="row align-items-center">
@@ -131,6 +133,6 @@ export default function Home() {
       </div>
     </div>
   </section>
-  </>
+  </Layout>
   )
 }

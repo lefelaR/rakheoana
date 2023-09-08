@@ -1,5 +1,7 @@
 import React from "react";
 import Image from "next/image";
+import Layout from "@components/layouts/frontendLayout"
+
 
 const data = [
   {
@@ -59,6 +61,7 @@ const data = [
 
 const Experience = () => {
   return (
+    <Layout>
     <section id="pricing" className="pricing-area  pt-125 pb-130 my-5">
       <div className="container">
         <div className="row justify-content-center">
@@ -104,6 +107,7 @@ const Experience = () => {
         </div>
       </div>
     </section>
+    </Layout>
   );
 };
 

@@ -1,6 +1,7 @@
 import React from "react";
+import Layout from "@components/layouts/frontendLayout";
 
-const TechStack = () => {
+ const TechStack = () => {
   const data = [
     {
       id: 1,
@@ -39,6 +40,7 @@ const TechStack = () => {
   ];
 
   return (
+    <Layout>
     <section id="techstack" className="services-area gray-bg pt-125 pb-130">
       <div className="container">
         <div className="row justify-content-center">
@@ -75,6 +77,7 @@ const TechStack = () => {
         </div>
       </div>
     </section>
+    </Layout>
   );
 };
 
