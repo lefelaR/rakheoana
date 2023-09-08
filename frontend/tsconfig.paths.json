@@ -7,6 +7,8 @@
             "@services/*":["services/*"],
             "@hooks/*":["hooks/*"],
             "@contexts/*":["contexts/*"],
+            "@sharedProject/*":["../shared/*"],
+            
             
         }
     }

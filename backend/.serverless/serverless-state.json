@@ -1,0 +1,2004 @@
+{
+  "service": {
+    "service": "rakheoana-backend-dev",
+    "serviceObject": {
+      "name": "rakheoana-backend-dev"
+    },
+    "provider": {
+      "name": "aws",
+      "runtime": "nodejs14.x",
+      "region": "eu-central-1",
+      "tracing": {
+        "apiGateway": true,
+        "lambda": true
+      },
+      "eventBridge": {
+        "useCloudFormation": true
+      },
+      "stage": "dev",
+      "environment": {
+        "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+        "ROLES_TABLE": "rakheoana-backend-dev-dev-roles",
+        "USERS_TABLE": "rakheoana-backend-dev-dev-users",
+        "REGION": "eu-central-1",
+        "ADMIN_EMAIL": "rakgew@gmail.com",
+        "STAGE": "dev"
+      },
+      "lambdaHashingVersion": "20201221",
+      "deploymentBucket": "rakheoana-deployment-bucket",
+      "iam": {
+        "role": {
+          "statements": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "xray:PutTraceSegments",
+                "xray:PutTelemetryRecords"
+              ],
+              "Resource": "*"
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "events:PutEvents"
+              ],
+              "Resource": "*"
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:DescribeTable",
+                "dynamodb:Query",
+                "dynamodb:Scan",
+                "dynamodb:GetItem",
+                "dynamodb:PutItem",
+                "dynamodb:UpdateItem",
+                "dynamodb:DeleteItem"
+              ],
+              "Resource": "*"
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "s3:*"
+              ],
+              "Resource": "*"
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "lambda:InvokeFunction"
+              ],
+              "Resource": "*"
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "ses:*"
+              ],
+              "Resource": "*"
+            },
+            {
+              "Sid": "VisualEditor0",
+              "Effect": "Allow",
+              "Action": [
+                "cloudformation:CreateStack",
+                "cloudformation:DeleteStack",
+                "cloudformation:DescribeStacks",
+                "cloudformation:DescribeStackEvents",
+                "cloudformation:DescribeStackResource",
+                "cloudformation:DescribeStackResources",
+                "cloudformation:ListStackResources",
+                "cloudformation:UpdateStack",
+                "cloudformation:ValidateTemplate",
+                "logs:CreateLogGroup",
+                "logs:DescribeLogGroups",
+                "logs:DeleteLogGroup"
+              ],
+              "Resource": "*"
+            }
+          ]
+        }
+      },
+      "versionFunctions": true,
+      "deploymentBucketObject": {
+        "name": "rakheoana-deployment-bucket",
+        "serverSideEncryption": "AES256"
+      },
+      "compiledCloudFormationTemplate": {
+        "AWSTemplateFormatVersion": "2010-09-09",
+        "Description": "The AWS CloudFormation template for this Serverless application",
+        "Resources": {
+          "GetAllConfigurationsLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/rakheoana-backend-dev-dev-getAllConfigurations"
+            },
+            "DependsOn": []
+          },
+          "CreateRoleLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/rakheoana-backend-dev-dev-createRole"
+            },
+            "DependsOn": []
+          },
+          "UpdateRoleLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/rakheoana-backend-dev-dev-updateRole"
+            },
+            "DependsOn": []
+          },
+          "DeleteRoleLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/rakheoana-backend-dev-dev-deleteRole"
+            },
+            "DependsOn": []
+          },
+          "GetRoleLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/rakheoana-backend-dev-dev-getRole"
+            },
+            "DependsOn": []
+          },
+          "GetAllRolesLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/rakheoana-backend-dev-dev-getAllRoles"
+            },
+            "DependsOn": []
+          },
+          "AddUserLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/rakheoana-backend-dev-dev-addUser"
+            },
+            "DependsOn": []
+          },
+          "IamRoleLambdaExecution": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+              "AssumeRolePolicyDocument": {
+                "Version": "2012-10-17",
+                "Statement": [
+                  {
+                    "Effect": "Allow",
+                    "Principal": {
+                      "Service": [
+                        "lambda.amazonaws.com"
+                      ]
+                    },
+                    "Action": [
+                      "sts:AssumeRole"
+                    ]
+                  }
+                ]
+              },
+              "Policies": [
+                {
+                  "PolicyName": {
+                    "Fn::Join": [
+                      "-",
+                      [
+                        "rakheoana-backend-dev",
+                        "dev",
+                        "lambda"
+                      ]
+                    ]
+                  },
+                  "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                      {
+                        "Effect": "Allow",
+                        "Action": [
+                          "logs:CreateLogStream",
+                          "logs:CreateLogGroup"
+                        ],
+                        "Resource": [
+                          {
+                            "Fn::Sub": [
+                              "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/rakheoana-backend-dev-dev*:*",
+                              {}
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "Effect": "Allow",
+                        "Action": [
+                          "logs:PutLogEvents"
+                        ],
+                        "Resource": [
+                          {
+                            "Fn::Sub": [
+                              "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/rakheoana-backend-dev-dev*:*:*",
+                              {}
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "$ref": "$[\"service\"][\"provider\"][\"iam\"][\"role\"][\"statements\"][0]"
+                      },
+                      {
+                        "$ref": "$[\"service\"][\"provider\"][\"iam\"][\"role\"][\"statements\"][1]"
+                      },
+                      {
+                        "$ref": "$[\"service\"][\"provider\"][\"iam\"][\"role\"][\"statements\"][2]"
+                      },
+                      {
+                        "$ref": "$[\"service\"][\"provider\"][\"iam\"][\"role\"][\"statements\"][3]"
+                      },
+                      {
+                        "$ref": "$[\"service\"][\"provider\"][\"iam\"][\"role\"][\"statements\"][4]"
+                      },
+                      {
+                        "$ref": "$[\"service\"][\"provider\"][\"iam\"][\"role\"][\"statements\"][5]"
+                      },
+                      {
+                        "$ref": "$[\"service\"][\"provider\"][\"iam\"][\"role\"][\"statements\"][6]"
+                      },
+                      {
+                        "Effect": "Allow",
+                        "Action": [
+                          "xray:PutTraceSegments",
+                          "xray:PutTelemetryRecords"
+                        ],
+                        "Resource": [
+                          "*"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ],
+              "Path": "/",
+              "RoleName": {
+                "Fn::Join": [
+                  "-",
+                  [
+                    "rakheoana-backend-dev",
+                    "dev",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    "lambdaRole"
+                  ]
+                ]
+              }
+            },
+            "DependsOn": []
+          },
+          "GetAllConfigurationsLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "rakheoana-deployment-bucket",
+                "S3Key": "serverless/rakheoana-backend-dev/dev/1693743300906-2023-09-03T12:15:00.906Z/rakheoana-backend-dev.zip"
+              },
+              "Handler": "src/functions/configurations/getAllConfigs/handler.main",
+              "Runtime": "nodejs14.x",
+              "FunctionName": "rakheoana-backend-dev-dev-getAllConfigurations",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "TracingConfig": {
+                "Mode": "Active"
+              },
+              "Environment": {
+                "Variables": {
+                  "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+                  "ROLES_TABLE": "rakheoana-backend-dev-dev-roles",
+                  "USERS_TABLE": "rakheoana-backend-dev-dev-users",
+                  "REGION": "eu-central-1",
+                  "ADMIN_EMAIL": "rakgew@gmail.com",
+                  "STAGE": "dev"
+                }
+              },
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "GetAllConfigurationsLogGroup"
+            ]
+          },
+          "CreateRoleLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "rakheoana-deployment-bucket",
+                "S3Key": "serverless/rakheoana-backend-dev/dev/1693743300906-2023-09-03T12:15:00.906Z/rakheoana-backend-dev.zip"
+              },
+              "Handler": "src/functions/roles/create/handler.main",
+              "Runtime": "nodejs14.x",
+              "FunctionName": "rakheoana-backend-dev-dev-createRole",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "TracingConfig": {
+                "Mode": "Active"
+              },
+              "Environment": {
+                "Variables": {
+                  "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+                  "ROLES_TABLE": "rakheoana-backend-dev-dev-roles",
+                  "USERS_TABLE": "rakheoana-backend-dev-dev-users",
+                  "REGION": "eu-central-1",
+                  "ADMIN_EMAIL": "rakgew@gmail.com",
+                  "STAGE": "dev"
+                }
+              },
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "CreateRoleLogGroup"
+            ]
+          },
+          "UpdateRoleLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "rakheoana-deployment-bucket",
+                "S3Key": "serverless/rakheoana-backend-dev/dev/1693743300906-2023-09-03T12:15:00.906Z/rakheoana-backend-dev.zip"
+              },
+              "Handler": "src/functions/roles/update/handler.main",
+              "Runtime": "nodejs14.x",
+              "FunctionName": "rakheoana-backend-dev-dev-updateRole",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "TracingConfig": {
+                "Mode": "Active"
+              },
+              "Environment": {
+                "Variables": {
+                  "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+                  "ROLES_TABLE": "rakheoana-backend-dev-dev-roles",
+                  "USERS_TABLE": "rakheoana-backend-dev-dev-users",
+                  "REGION": "eu-central-1",
+                  "ADMIN_EMAIL": "rakgew@gmail.com",
+                  "STAGE": "dev"
+                }
+              },
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "UpdateRoleLogGroup"
+            ]
+          },
+          "DeleteRoleLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "rakheoana-deployment-bucket",
+                "S3Key": "serverless/rakheoana-backend-dev/dev/1693743300906-2023-09-03T12:15:00.906Z/rakheoana-backend-dev.zip"
+              },
+              "Handler": "src/functions/roles/delete/handler.main",
+              "Runtime": "nodejs14.x",
+              "FunctionName": "rakheoana-backend-dev-dev-deleteRole",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "TracingConfig": {
+                "Mode": "Active"
+              },
+              "Environment": {
+                "Variables": {
+                  "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+                  "ROLES_TABLE": "rakheoana-backend-dev-dev-roles",
+                  "USERS_TABLE": "rakheoana-backend-dev-dev-users",
+                  "REGION": "eu-central-1",
+                  "ADMIN_EMAIL": "rakgew@gmail.com",
+                  "STAGE": "dev"
+                }
+              },
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "DeleteRoleLogGroup"
+            ]
+          },
+          "GetRoleLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "rakheoana-deployment-bucket",
+                "S3Key": "serverless/rakheoana-backend-dev/dev/1693743300906-2023-09-03T12:15:00.906Z/rakheoana-backend-dev.zip"
+              },
+              "Handler": "src/functions/roles/get/handler.main",
+              "Runtime": "nodejs14.x",
+              "FunctionName": "rakheoana-backend-dev-dev-getRole",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "TracingConfig": {
+                "Mode": "Active"
+              },
+              "Environment": {
+                "Variables": {
+                  "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+                  "ROLES_TABLE": "rakheoana-backend-dev-dev-roles",
+                  "USERS_TABLE": "rakheoana-backend-dev-dev-users",
+                  "REGION": "eu-central-1",
+                  "ADMIN_EMAIL": "rakgew@gmail.com",
+                  "STAGE": "dev"
+                }
+              },
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "GetRoleLogGroup"
+            ]
+          },
+          "GetAllRolesLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "rakheoana-deployment-bucket",
+                "S3Key": "serverless/rakheoana-backend-dev/dev/1693743300906-2023-09-03T12:15:00.906Z/rakheoana-backend-dev.zip"
+              },
+              "Handler": "src/functions/roles/getAll/handler.main",
+              "Runtime": "nodejs14.x",
+              "FunctionName": "rakheoana-backend-dev-dev-getAllRoles",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "TracingConfig": {
+                "Mode": "Active"
+              },
+              "Environment": {
+                "Variables": {
+                  "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+                  "ROLES_TABLE": "rakheoana-backend-dev-dev-roles",
+                  "USERS_TABLE": "rakheoana-backend-dev-dev-users",
+                  "REGION": "eu-central-1",
+                  "ADMIN_EMAIL": "rakgew@gmail.com",
+                  "STAGE": "dev"
+                }
+              },
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "GetAllRolesLogGroup"
+            ]
+          },
+          "AddUserLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "rakheoana-deployment-bucket",
+                "S3Key": "serverless/rakheoana-backend-dev/dev/1693743300906-2023-09-03T12:15:00.906Z/rakheoana-backend-dev.zip"
+              },
+              "Handler": "src/functions/users/addUser/handler.main",
+              "Runtime": "nodejs14.x",
+              "FunctionName": "rakheoana-backend-dev-dev-addUser",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "TracingConfig": {
+                "Mode": "Active"
+              },
+              "Environment": {
+                "Variables": {
+                  "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+                  "ROLES_TABLE": "rakheoana-backend-dev-dev-roles",
+                  "USERS_TABLE": "rakheoana-backend-dev-dev-users",
+                  "REGION": "eu-central-1",
+                  "ADMIN_EMAIL": "rakgew@gmail.com",
+                  "STAGE": "dev"
+                }
+              },
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "AddUserLogGroup"
+            ]
+          },
+          "ApiGatewayMethodConfigurationsOptions": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "AuthorizationType": "NONE",
+              "HttpMethod": "OPTIONS",
+              "MethodResponses": [
+                {
+                  "StatusCode": "200",
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true,
+                    "method.response.header.Access-Control-Allow-Headers": true,
+                    "method.response.header.Access-Control-Allow-Methods": true
+                  },
+                  "ResponseModels": {}
+                }
+              ],
+              "RequestParameters": {},
+              "Integration": {
+                "Type": "MOCK",
+                "RequestTemplates": {
+                  "application/json": "{statusCode:200}"
+                },
+                "ContentHandling": "CONVERT_TO_TEXT",
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET'"
+                    },
+                    "ResponseTemplates": {
+                      "application/json": ""
+                    }
+                  }
+                ]
+              },
+              "ResourceId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayResourceConfigurations"
+                ]
+              },
+              "RestApiId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayRestApi"
+                ]
+              }
+            },
+            "DependsOn": [
+              "APINestedStack"
+            ]
+          },
+          "ApiGatewayMethodRolesOptions": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "AuthorizationType": "NONE",
+              "HttpMethod": "OPTIONS",
+              "MethodResponses": [
+                {
+                  "StatusCode": "200",
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true,
+                    "method.response.header.Access-Control-Allow-Headers": true,
+                    "method.response.header.Access-Control-Allow-Methods": true
+                  },
+                  "ResponseModels": {}
+                }
+              ],
+              "RequestParameters": {},
+              "Integration": {
+                "Type": "MOCK",
+                "RequestTemplates": {
+                  "application/json": "{statusCode:200}"
+                },
+                "ContentHandling": "CONVERT_TO_TEXT",
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,POST'"
+                    },
+                    "ResponseTemplates": {
+                      "application/json": ""
+                    }
+                  }
+                ]
+              },
+              "ResourceId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayResourceRoles"
+                ]
+              },
+              "RestApiId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayRestApi"
+                ]
+              }
+            },
+            "DependsOn": [
+              "APINestedStack"
+            ]
+          },
+          "ApiGatewayMethodRolesIdVarOptions": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "AuthorizationType": "NONE",
+              "HttpMethod": "OPTIONS",
+              "MethodResponses": [
+                {
+                  "StatusCode": "200",
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true,
+                    "method.response.header.Access-Control-Allow-Headers": true,
+                    "method.response.header.Access-Control-Allow-Methods": true
+                  },
+                  "ResponseModels": {}
+                }
+              ],
+              "RequestParameters": {},
+              "Integration": {
+                "Type": "MOCK",
+                "RequestTemplates": {
+                  "application/json": "{statusCode:200}"
+                },
+                "ContentHandling": "CONVERT_TO_TEXT",
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,DELETE,PUT'"
+                    },
+                    "ResponseTemplates": {
+                      "application/json": ""
+                    }
+                  }
+                ]
+              },
+              "ResourceId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayResourceRolesIdVar"
+                ]
+              },
+              "RestApiId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayRestApi"
+                ]
+              }
+            },
+            "DependsOn": [
+              "APINestedStack"
+            ]
+          },
+          "ApiGatewayMethodUsersOptions": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "AuthorizationType": "NONE",
+              "HttpMethod": "OPTIONS",
+              "MethodResponses": [
+                {
+                  "StatusCode": "200",
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true,
+                    "method.response.header.Access-Control-Allow-Headers": true,
+                    "method.response.header.Access-Control-Allow-Methods": true
+                  },
+                  "ResponseModels": {}
+                }
+              ],
+              "RequestParameters": {},
+              "Integration": {
+                "Type": "MOCK",
+                "RequestTemplates": {
+                  "application/json": "{statusCode:200}"
+                },
+                "ContentHandling": "CONVERT_TO_TEXT",
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST'"
+                    },
+                    "ResponseTemplates": {
+                      "application/json": ""
+                    }
+                  }
+                ]
+              },
+              "ResourceId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayResourceUsers"
+                ]
+              },
+              "RestApiId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayRestApi"
+                ]
+              }
+            },
+            "DependsOn": [
+              "APINestedStack"
+            ]
+          },
+          "ApiGatewayMethodConfigurationsGet": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "GET",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayResourceConfigurations"
+                ]
+              },
+              "RestApiId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayRestApi"
+                ]
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "GetAllConfigurationsLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            },
+            "DependsOn": [
+              "APINestedStack",
+              "PermissionsNestedStack"
+            ]
+          },
+          "ApiGatewayMethodRolesPost": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "POST",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayResourceRoles"
+                ]
+              },
+              "RestApiId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayRestApi"
+                ]
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "CreateRoleLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": [],
+              "RequestValidatorId": {
+                "Ref": "ApiGatewayRakheoanabackenddevRequestValidator"
+              },
+              "RequestModels": {
+                "application/json": {
+                  "Ref": "ApiGatewayMethodRolesPostApplicationJsonModel"
+                }
+              }
+            },
+            "DependsOn": [
+              "APINestedStack",
+              "PermissionsNestedStack"
+            ]
+          },
+          "ApiGatewayMethodRolesIdVarPut": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "PUT",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayResourceRolesIdVar"
+                ]
+              },
+              "RestApiId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayRestApi"
+                ]
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "UpdateRoleLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": [],
+              "RequestValidatorId": {
+                "Ref": "ApiGatewayRakheoanabackenddevRequestValidator"
+              },
+              "RequestModels": {
+                "application/json": {
+                  "Ref": "ApiGatewayMethodRolesIdVarPutApplicationJsonModel"
+                }
+              }
+            },
+            "DependsOn": [
+              "APINestedStack",
+              "PermissionsNestedStack"
+            ]
+          },
+          "ApiGatewayMethodRolesIdVarDelete": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "DELETE",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayResourceRolesIdVar"
+                ]
+              },
+              "RestApiId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayRestApi"
+                ]
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "DeleteRoleLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            },
+            "DependsOn": [
+              "APINestedStack",
+              "PermissionsNestedStack"
+            ]
+          },
+          "ApiGatewayMethodRolesIdVarGet": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "GET",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayResourceRolesIdVar"
+                ]
+              },
+              "RestApiId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayRestApi"
+                ]
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "GetRoleLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            },
+            "DependsOn": [
+              "APINestedStack",
+              "PermissionsNestedStack"
+            ]
+          },
+          "ApiGatewayMethodRolesGet": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "GET",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayResourceRoles"
+                ]
+              },
+              "RestApiId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayRestApi"
+                ]
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "GetAllRolesLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            },
+            "DependsOn": [
+              "APINestedStack",
+              "PermissionsNestedStack"
+            ]
+          },
+          "ApiGatewayMethodUsersPost": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "POST",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayResourceUsers"
+                ]
+              },
+              "RestApiId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayRestApi"
+                ]
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "AddUserLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": [],
+              "RequestValidatorId": {
+                "Ref": "ApiGatewayRakheoanabackenddevRequestValidator"
+              },
+              "RequestModels": {
+                "application/json": {
+                  "Ref": "ApiGatewayMethodUsersPostApplicationJsonModel"
+                }
+              }
+            },
+            "DependsOn": [
+              "APINestedStack",
+              "PermissionsNestedStack"
+            ]
+          },
+          "ApiGatewayRakheoanabackenddevRequestValidator": {
+            "Type": "AWS::ApiGateway::RequestValidator",
+            "Properties": {
+              "RestApiId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayRestApi"
+                ]
+              },
+              "ValidateRequestBody": true,
+              "ValidateRequestParameters": true,
+              "Name": "rakheoana-backend-dev-dev | Validate request body and querystring parameters"
+            },
+            "DependsOn": [
+              "APINestedStack"
+            ]
+          },
+          "ApiGatewayMethodRolesPostApplicationJsonModel": {
+            "Type": "AWS::ApiGateway::Model",
+            "Properties": {
+              "RestApiId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayRestApi"
+                ]
+              },
+              "ContentType": "application/json",
+              "Schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "permissions": {
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "title",
+                  "description"
+                ]
+              }
+            },
+            "DependsOn": [
+              "APINestedStack"
+            ]
+          },
+          "ApiGatewayMethodRolesIdVarPutApplicationJsonModel": {
+            "Type": "AWS::ApiGateway::Model",
+            "Properties": {
+              "RestApiId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayRestApi"
+                ]
+              },
+              "ContentType": "application/json",
+              "Schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "permissions": {
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "title",
+                  "description",
+                  "permissions"
+                ]
+              }
+            },
+            "DependsOn": [
+              "APINestedStack"
+            ]
+          },
+          "ApiGatewayMethodUsersPostApplicationJsonModel": {
+            "Type": "AWS::ApiGateway::Model",
+            "Properties": {
+              "RestApiId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayRestApi"
+                ]
+              },
+              "ContentType": "application/json",
+              "Schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "phoneNumber": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "phoneNumber"
+                ]
+              }
+            },
+            "DependsOn": [
+              "APINestedStack"
+            ]
+          },
+          "ApiGatewayDeployment1693743251114": {
+            "Type": "AWS::ApiGateway::Deployment",
+            "Properties": {
+              "RestApiId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayRestApi"
+                ]
+              },
+              "StageName": "dev"
+            },
+            "DependsOn": [
+              "ApiGatewayMethodConfigurationsOptions",
+              "ApiGatewayMethodRolesOptions",
+              "ApiGatewayMethodRolesIdVarOptions",
+              "ApiGatewayMethodUsersOptions",
+              "ApiGatewayMethodConfigurationsGet",
+              "ApiGatewayMethodRolesPost",
+              "ApiGatewayMethodRolesIdVarPut",
+              "ApiGatewayMethodRolesIdVarDelete",
+              "ApiGatewayMethodRolesIdVarGet",
+              "ApiGatewayMethodRolesGet",
+              "ApiGatewayMethodUsersPost",
+              "APINestedStack"
+            ]
+          },
+          "RolesTable": {
+            "Type": "AWS::DynamoDB::Table",
+            "Properties": {
+              "TableName": "rakheoana-backend-dev-dev-roles",
+              "BillingMode": "PAY_PER_REQUEST",
+              "AttributeDefinitions": [
+                {
+                  "AttributeName": "id",
+                  "AttributeType": "S"
+                }
+              ],
+              "KeySchema": [
+                {
+                  "AttributeName": "id",
+                  "KeyType": "HASH"
+                }
+              ]
+            },
+            "DependsOn": []
+          },
+          "UsersTable": {
+            "Type": "AWS::DynamoDB::Table",
+            "Properties": {
+              "TableName": "rakheoana-backend-dev-dev-users",
+              "BillingMode": "PAY_PER_REQUEST",
+              "AttributeDefinitions": [
+                {
+                  "AttributeName": "id",
+                  "AttributeType": "S"
+                }
+              ],
+              "KeySchema": [
+                {
+                  "AttributeName": "id",
+                  "KeyType": "HASH"
+                }
+              ]
+            },
+            "DependsOn": []
+          },
+          "VersionsNestedStack": {
+            "Type": "AWS::CloudFormation::Stack",
+            "Properties": {
+              "Parameters": {
+                "GetAllConfigurationsLambdaFunctionParameter": {
+                  "Ref": "GetAllConfigurationsLambdaFunction"
+                },
+                "CreateRoleLambdaFunctionParameter": {
+                  "Ref": "CreateRoleLambdaFunction"
+                },
+                "UpdateRoleLambdaFunctionParameter": {
+                  "Ref": "UpdateRoleLambdaFunction"
+                },
+                "DeleteRoleLambdaFunctionParameter": {
+                  "Ref": "DeleteRoleLambdaFunction"
+                },
+                "GetRoleLambdaFunctionParameter": {
+                  "Ref": "GetRoleLambdaFunction"
+                },
+                "GetAllRolesLambdaFunctionParameter": {
+                  "Ref": "GetAllRolesLambdaFunction"
+                },
+                "AddUserLambdaFunctionParameter": {
+                  "Ref": "AddUserLambdaFunction"
+                }
+              },
+              "TemplateURL": {
+                "Fn::Join": [
+                  "/",
+                  [
+                    "https://s3.eu-central-1.amazonaws.com",
+                    "rakheoana-deployment-bucket",
+                    "serverless/rakheoana-backend-dev/dev/1693743300906-2023-09-03T12:15:00.906Z",
+                    "cloudformation-template-Versions-nested-stack.json"
+                  ]
+                ]
+              }
+            },
+            "DependsOn": [
+              "GetAllConfigurationsLambdaFunction",
+              "CreateRoleLambdaFunction",
+              "UpdateRoleLambdaFunction",
+              "DeleteRoleLambdaFunction",
+              "GetRoleLambdaFunction",
+              "GetAllRolesLambdaFunction",
+              "AddUserLambdaFunction"
+            ]
+          },
+          "APINestedStack": {
+            "Type": "AWS::CloudFormation::Stack",
+            "Properties": {
+              "Parameters": {},
+              "TemplateURL": {
+                "Fn::Join": [
+                  "/",
+                  [
+                    "https://s3.eu-central-1.amazonaws.com",
+                    "rakheoana-deployment-bucket",
+                    "serverless/rakheoana-backend-dev/dev/1693743300906-2023-09-03T12:15:00.906Z",
+                    "cloudformation-template-API-nested-stack.json"
+                  ]
+                ]
+              }
+            }
+          },
+          "PermissionsNestedStack": {
+            "Type": "AWS::CloudFormation::Stack",
+            "Properties": {
+              "Parameters": {
+                "ApiGatewayRestApiParameter": {
+                  "Fn::GetAtt": [
+                    "APINestedStack",
+                    "Outputs.ApiGatewayRestApi"
+                  ]
+                },
+                "GetAllConfigurationsLambdaFunctionArnParameter": {
+                  "Fn::GetAtt": [
+                    "GetAllConfigurationsLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "CreateRoleLambdaFunctionArnParameter": {
+                  "Fn::GetAtt": [
+                    "CreateRoleLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "UpdateRoleLambdaFunctionArnParameter": {
+                  "Fn::GetAtt": [
+                    "UpdateRoleLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "DeleteRoleLambdaFunctionArnParameter": {
+                  "Fn::GetAtt": [
+                    "DeleteRoleLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "GetRoleLambdaFunctionArnParameter": {
+                  "Fn::GetAtt": [
+                    "GetRoleLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "GetAllRolesLambdaFunctionArnParameter": {
+                  "Fn::GetAtt": [
+                    "GetAllRolesLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "AddUserLambdaFunctionArnParameter": {
+                  "Fn::GetAtt": [
+                    "AddUserLambdaFunction",
+                    "Arn"
+                  ]
+                }
+              },
+              "TemplateURL": {
+                "Fn::Join": [
+                  "/",
+                  [
+                    "https://s3.eu-central-1.amazonaws.com",
+                    "rakheoana-deployment-bucket",
+                    "serverless/rakheoana-backend-dev/dev/1693743300906-2023-09-03T12:15:00.906Z",
+                    "cloudformation-template-Permissions-nested-stack.json"
+                  ]
+                ]
+              }
+            },
+            "DependsOn": [
+              "APINestedStack",
+              "GetAllConfigurationsLambdaFunction",
+              "CreateRoleLambdaFunction",
+              "UpdateRoleLambdaFunction",
+              "DeleteRoleLambdaFunction",
+              "GetRoleLambdaFunction",
+              "GetAllRolesLambdaFunction",
+              "AddUserLambdaFunction"
+            ]
+          }
+        },
+        "Outputs": {
+          "ServerlessDeploymentBucketName": {
+            "Value": "rakheoana-deployment-bucket",
+            "Export": {
+              "Name": "sls-rakheoana-backend-dev-dev-ServerlessDeploymentBucketName"
+            }
+          },
+          "GetAllConfigurationsLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Fn::GetAtt": [
+                "VersionsNestedStack",
+                "Outputs.GetAllConfigurationsLambdaVersiontokBqchPzNiCvoJc36diKe4Sg57RhXwsR6I3VqvW9Y"
+              ]
+            },
+            "Export": {
+              "Name": "sls-rakheoana-backend-dev-dev-GetAllConfigurationsLambdaFunctionQualifiedArn"
+            }
+          },
+          "CreateRoleLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Fn::GetAtt": [
+                "VersionsNestedStack",
+                "Outputs.CreateRoleLambdaVersionK4FfQxPE8LrNGIZLQm8IQy0bFaWFhv5dxuE94XgXctE"
+              ]
+            },
+            "Export": {
+              "Name": "sls-rakheoana-backend-dev-dev-CreateRoleLambdaFunctionQualifiedArn"
+            }
+          },
+          "UpdateRoleLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Fn::GetAtt": [
+                "VersionsNestedStack",
+                "Outputs.UpdateRoleLambdaVersionmNtcHJdeM9Q8eJjr2PQy5M8nlHuFIOJxctFbWT5yM"
+              ]
+            },
+            "Export": {
+              "Name": "sls-rakheoana-backend-dev-dev-UpdateRoleLambdaFunctionQualifiedArn"
+            }
+          },
+          "DeleteRoleLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Fn::GetAtt": [
+                "VersionsNestedStack",
+                "Outputs.DeleteRoleLambdaVersionHtCpyD8g8rlDuC8BuGpeGuzuKBCYbGC1oOTSUo1yyw"
+              ]
+            },
+            "Export": {
+              "Name": "sls-rakheoana-backend-dev-dev-DeleteRoleLambdaFunctionQualifiedArn"
+            }
+          },
+          "GetRoleLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Fn::GetAtt": [
+                "VersionsNestedStack",
+                "Outputs.GetRoleLambdaVersionE3iILdhJ7FpzM9O6bUnl9O1PquRoIN0iusybdAIM"
+              ]
+            },
+            "Export": {
+              "Name": "sls-rakheoana-backend-dev-dev-GetRoleLambdaFunctionQualifiedArn"
+            }
+          },
+          "GetAllRolesLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Fn::GetAtt": [
+                "VersionsNestedStack",
+                "Outputs.GetAllRolesLambdaVersionqvZ1dW0GfaZGuv03psq9aLzg1tjyOIhN0rIdS6P8I"
+              ]
+            },
+            "Export": {
+              "Name": "sls-rakheoana-backend-dev-dev-GetAllRolesLambdaFunctionQualifiedArn"
+            }
+          },
+          "AddUserLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Fn::GetAtt": [
+                "VersionsNestedStack",
+                "Outputs.AddUserLambdaVersionQWReJzSwd5CaX2lEiaUgimBmGhD9o16pH2PEkHF7cI"
+              ]
+            },
+            "Export": {
+              "Name": "sls-rakheoana-backend-dev-dev-AddUserLambdaFunctionQualifiedArn"
+            }
+          },
+          "ServiceEndpoint": {
+            "Description": "URL of the service endpoint",
+            "Value": {
+              "Fn::Join": [
+                "",
+                [
+                  "https://",
+                  {
+                    "Fn::GetAtt": [
+                      "APINestedStack",
+                      "Outputs.ApiGatewayRestApi"
+                    ]
+                  },
+                  ".execute-api.",
+                  {
+                    "Ref": "AWS::Region"
+                  },
+                  ".",
+                  {
+                    "Ref": "AWS::URLSuffix"
+                  },
+                  "/dev"
+                ]
+              ]
+            },
+            "Export": {
+              "Name": "sls-rakheoana-backend-dev-dev-ServiceEndpoint"
+            }
+          }
+        }
+      },
+      "vpc": {}
+    },
+    "custom": {
+      "prune": {
+        "automatic": true,
+        "number": 1,
+        "includeLayers": true
+      },
+      "webpack": {
+        "webpackConfig": "./webpack.config.js",
+        "includeModules": true
+      },
+      "dynamodb": {
+        "stages": [
+          "dev",
+          "stag",
+          "prod"
+        ],
+        "start": {
+          "port": 8000,
+          "dbPath": "./",
+          "migrate": true
+        }
+      },
+      "serverless-offline-aws-eventbridge": {
+        "port": 4080,
+        "mockEventBridgeServer": true,
+        "pubSubPort": 4011,
+        "debug": true,
+        "account": ""
+      },
+      "splitStacks": {
+        "perFunction": false,
+        "perType": true,
+        "perGroupFunction": false
+      }
+    },
+    "plugins": [
+      "serverless-webpack",
+      "serverless-offline",
+      "serverless-dynamodb-local",
+      "serverless-deployment-bucket",
+      "serverless-prune-plugin",
+      "serverless-offline-aws-eventbridge",
+      "serverless-plugin-split-stacks"
+    ],
+    "pluginsData": {},
+    "functions": {
+      "getAllConfigurations": {
+        "handler": "src/functions/configurations/getAllConfigs/handler.main",
+        "tracing": true,
+        "events": [
+          {
+            "http": {
+              "method": "get",
+              "path": "configurations",
+              "cors": {
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "GET"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "rakheoana-backend-dev-dev-getAllConfigurations",
+        "package": {
+          "artifact": ".serverless\\rakheoana-backend-dev.zip"
+        },
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs14.x",
+        "vpc": {},
+        "versionLogicalId": "GetAllConfigurationsLambdaVersiontokBqchPzNiCvoJc36diKe4Sg57RhXwsR6I3VqvW9Y"
+      },
+      "createRole": {
+        "handler": "src/functions/roles/create/handler.main",
+        "tracing": true,
+        "events": [
+          {
+            "http": {
+              "method": "post",
+              "path": "roles",
+              "cors": {
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "POST"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent"
+                ],
+                "allowCredentials": false
+              },
+              "request": {
+                "schema": {
+                  "application/json": {
+                    "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"ApiGatewayMethodRolesPostApplicationJsonModel\"][\"Properties\"][\"Schema\"]"
+                  }
+                }
+              },
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "rakheoana-backend-dev-dev-createRole",
+        "package": {
+          "artifact": ".serverless\\rakheoana-backend-dev.zip"
+        },
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs14.x",
+        "vpc": {},
+        "versionLogicalId": "CreateRoleLambdaVersionK4FfQxPE8LrNGIZLQm8IQy0bFaWFhv5dxuE94XgXctE"
+      },
+      "updateRole": {
+        "handler": "src/functions/roles/update/handler.main",
+        "tracing": true,
+        "events": [
+          {
+            "http": {
+              "method": "put",
+              "path": "roles/{id}",
+              "cors": {
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "PUT"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent"
+                ],
+                "allowCredentials": false
+              },
+              "request": {
+                "schema": {
+                  "application/json": {
+                    "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"ApiGatewayMethodRolesIdVarPutApplicationJsonModel\"][\"Properties\"][\"Schema\"]"
+                  }
+                }
+              },
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "rakheoana-backend-dev-dev-updateRole",
+        "package": {
+          "artifact": ".serverless\\rakheoana-backend-dev.zip"
+        },
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs14.x",
+        "vpc": {},
+        "versionLogicalId": "UpdateRoleLambdaVersionmNtcHJdeM9Q8eJjr2PQy5M8nlHuFIOJxctFbWT5yM"
+      },
+      "deleteRole": {
+        "handler": "src/functions/roles/delete/handler.main",
+        "tracing": true,
+        "events": [
+          {
+            "http": {
+              "method": "delete",
+              "cors": {
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "DELETE"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent"
+                ],
+                "allowCredentials": false
+              },
+              "path": "roles/{id}",
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "rakheoana-backend-dev-dev-deleteRole",
+        "package": {
+          "artifact": ".serverless\\rakheoana-backend-dev.zip"
+        },
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs14.x",
+        "vpc": {},
+        "versionLogicalId": "DeleteRoleLambdaVersionHtCpyD8g8rlDuC8BuGpeGuzuKBCYbGC1oOTSUo1yyw"
+      },
+      "getRole": {
+        "handler": "src/functions/roles/get/handler.main",
+        "tracing": true,
+        "events": [
+          {
+            "http": {
+              "method": "get",
+              "path": "roles/{id}",
+              "cors": {
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "GET"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "rakheoana-backend-dev-dev-getRole",
+        "package": {
+          "artifact": ".serverless\\rakheoana-backend-dev.zip"
+        },
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs14.x",
+        "vpc": {},
+        "versionLogicalId": "GetRoleLambdaVersionE3iILdhJ7FpzM9O6bUnl9O1PquRoIN0iusybdAIM"
+      },
+      "getAllRoles": {
+        "handler": "src/functions/roles/getAll/handler.main",
+        "tracing": true,
+        "events": [
+          {
+            "http": {
+              "method": "get",
+              "path": "roles",
+              "cors": {
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "GET"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "rakheoana-backend-dev-dev-getAllRoles",
+        "package": {
+          "artifact": ".serverless\\rakheoana-backend-dev.zip"
+        },
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs14.x",
+        "vpc": {},
+        "versionLogicalId": "GetAllRolesLambdaVersionqvZ1dW0GfaZGuv03psq9aLzg1tjyOIhN0rIdS6P8I"
+      },
+      "addUser": {
+        "handler": "src/functions/users/addUser/handler.main",
+        "tracing": true,
+        "events": [
+          {
+            "http": {
+              "method": "post",
+              "path": "users",
+              "cors": {
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "POST"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent"
+                ],
+                "allowCredentials": false
+              },
+              "request": {
+                "schema": {
+                  "application/json": {
+                    "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"ApiGatewayMethodUsersPostApplicationJsonModel\"][\"Properties\"][\"Schema\"]"
+                  }
+                }
+              },
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "rakheoana-backend-dev-dev-addUser",
+        "package": {
+          "artifact": ".serverless\\rakheoana-backend-dev.zip"
+        },
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs14.x",
+        "vpc": {},
+        "versionLogicalId": "AddUserLambdaVersionQWReJzSwd5CaX2lEiaUgimBmGhD9o16pH2PEkHF7cI"
+      }
+    },
+    "resources": {
+      "Resources": {
+        "RolesTable": {
+          "Type": "AWS::DynamoDB::Table",
+          "Properties": {
+            "TableName": "rakheoana-backend-dev-dev-roles",
+            "BillingMode": "PAY_PER_REQUEST",
+            "AttributeDefinitions": [
+              {
+                "AttributeName": "id",
+                "AttributeType": "S"
+              }
+            ],
+            "KeySchema": [
+              {
+                "AttributeName": "id",
+                "KeyType": "HASH"
+              }
+            ]
+          }
+        },
+        "UsersTable": {
+          "Type": "AWS::DynamoDB::Table",
+          "Properties": {
+            "TableName": "rakheoana-backend-dev-dev-users",
+            "BillingMode": "PAY_PER_REQUEST",
+            "AttributeDefinitions": [
+              {
+                "AttributeName": "id",
+                "AttributeType": "S"
+              }
+            ],
+            "KeySchema": [
+              {
+                "AttributeName": "id",
+                "KeyType": "HASH"
+              }
+            ]
+          }
+        }
+      },
+      "Outputs": {}
+    },
+    "configValidationMode": "warn",
+    "serviceFilename": "serverless.ts",
+    "initialServerlessConfig": {
+      "service": {
+        "$ref": "$[\"service\"][\"serviceObject\"]"
+      },
+      "variablesResolutionMode": "20210326",
+      "custom": {
+        "$ref": "$[\"service\"][\"custom\"]"
+      },
+      "plugins": {
+        "$ref": "$[\"service\"][\"plugins\"]"
+      },
+      "package": {
+        "patterns": [
+          "!.dynamodb/**",
+          "!node_modules/**"
+        ],
+        "deploymentBucket": "rakheoana-deployment-bucket",
+        "artifactDirectoryName": "serverless/rakheoana-backend-dev/dev/1693743300906-2023-09-03T12:15:00.906Z"
+      },
+      "provider": {
+        "$ref": "$[\"service\"][\"provider\"]"
+      },
+      "functions": {
+        "$ref": "$[\"service\"][\"functions\"]"
+      },
+      "resources": {
+        "$ref": "$[\"service\"][\"resources\"]"
+      }
+    },
+    "layers": {},
+    "isDashboardMonitoringPreconfigured": false
+  },
+  "package": {
+    "artifactDirectoryName": "serverless/rakheoana-backend-dev/dev/1693743300906-2023-09-03T12:15:00.906Z",
+    "artifact": ""
+  }
+}

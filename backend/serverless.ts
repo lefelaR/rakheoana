@@ -1,39 +1,106 @@
 import type { AWS } from "@serverless/typescript";
-import * as feedbackFunctions from "@functions/feedback";
-import * as snagsFunctions from "@functions/snags";
-import * as userFunctions from "@functions/users";
 import dynamoDbTables from "./resources/dynamodb-tables";
+// import * as issueFunctions from "@functions/issues";
+// import * as notificationFunctions from "@functions/notifications";
+// import * as departmentFunctions from "@functions/departments";
+// import * as categoryFunctions from "@functions/categories";
+import * as roleFunctions from "@functions/roles";
+import * as userFunctions from "@functions/users";
+// import * as newsletterFunctions from "@functions/newsletter";
+// import * as rsvpFunctions from "@functions/rsvps";
+// import * as propertyFunctions from "@functions/properties";
+// import * as agmFunctions from "@functions/agm";
+// import * as interactionFunctions from "@functions/interactions";
+// import * as mailSubscriberFunctions from "@functions/mail-subscribers";
+// import * as wayLeaveFunctions from '@functions/way-leaves';
+
+
+import { getAllConfigurations } from "@functions/configurations";
 
 const serverlessConfiguration: AWS = {
-  service: "rakheoana-backend",
-  frameworkVersion: "3",
+  service: "rakheoana-backend-dev",
   variablesResolutionMode: "20210326",
+  custom: {
+    prune: {
+      automatic: true,
+      number: 1,
+      includeLayers: true,
+    },
+    webpack: {
+      webpackConfig: "./webpack.config.js",
+      includeModules: true,
+    },
+    dynamodb: {
+      stages: ["dev", "stag","prod"],
+      start: {
+        port: 8000,
+        dbPath: "./",
+        migrate: true,
+      },
+    },
+    ["serverless-offline-aws-eventbridge"]: {
+      port: 4080,
+      mockEventBridgeServer: true,
+      pubSubPort: 4011,
+      debug: true,
+      account: "",
+    },
+    splitStacks: {
+      perFunction: false,
+      perType: true,
+      perGroupFunction: false,
+    },
+  },
   plugins: [
-    "serverless-esbuild",
+    "serverless-webpack",
     "serverless-offline",
     "serverless-dynamodb-local",
+    "serverless-deployment-bucket",
+    "serverless-prune-plugin",
+    "serverless-offline-aws-eventbridge",
+    "serverless-plugin-split-stacks",
+    // "serverless-stack-termination-protection",
   ],
+  package: {
+    patterns: ["!.dynamodb/**", "!node_modules/**"],
+  },
   provider: {
     name: "aws",
+    // profile: "turati",
     runtime: "nodejs14.x",
     region: "eu-central-1",
     tracing: {
       apiGateway: true,
       lambda: true,
     },
-    apiGateway: {
-      minimumCompressionSize: 1024,
-      shouldStartNameWithService: true,
+    eventBridge: {
+      useCloudFormation: true,
     },
     stage: "dev",
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1",
-      NODE_OPTIONS: "--enable-source-maps --stack-trace-limit=1000",
-      ADMIN_EMAIL: "rakgew@gmail.com",
-      USER_SNAGS_TABLE: "${self:service}-${self:provider.stage}-user-snags",
-      USER_ISSUES_TABLE: "${self:service}-${self:provider.stage}-user-issues",
+      // ISSUE_TABLE: "${self:service}-${self:provider.stage}-issues",
+      // LOG_TABLE: "${self:service}-${self:provider.stage}-logs",
+      // PROPERTY_TABLE: "${self:service}-${self:provider.stage}-properties",
+      // CATEGORY_TABLE: "${self:service}-${self:provider.stage}-categories",
+      // DEPARTMENT_TABLE: "${self:service}-${self:provider.stage}-departments",
+      ROLES_TABLE: "${self:service}-${self:provider.stage}-roles",
       USERS_TABLE: "${self:service}-${self:provider.stage}-users",
-      FEEDBACK_TABLE: "${self:service}-${self:provider.stage}-feedback",
+      // NEWSLETTERS_TABLE: "${self:service}-${self:provider.stage}-newsletter",
+      // RSVP_TABLE: "${self:service}-${self:provider.stage}-rsvp",
+      // AGM_TABLE: "${self:service}-${self:provider.stage}-agmdocuments",
+      REGION: "${self:provider.region}",
+      ADMIN_EMAIL: "rakgew@gmail.com",
+      STAGE: "${self:provider.stage}",
+      // INTERACTIONS_TABLE: "${self:service}-${self:provider.stage}-interactions",
+      // MAIL_SUBSCRIBER_TABLE: "${self:service}-${self:provider.stage}-mailSubscribers",
+      // WAY_LEAVE_TABLE: "${self:service}-${self:provider.stage}-wayLeaves",
+
+    },
+    lambdaHashingVersion: "20201221",
+    deploymentBucket: {
+      name: "rakheoana-deployment-bucket",
+      serverSideEncryption: "AES256",
     },
     iam: {
       role: {
@@ -77,11 +144,6 @@ const serverlessConfiguration: AWS = {
             Resource: "*",
           },
           {
-            Effect: "Allow",
-            Action: ["sns:*"],
-            Resource: "*",
-          },
-          {
             Sid: "VisualEditor0",
             Effect: "Allow",
             Action: [
@@ -103,58 +165,36 @@ const serverlessConfiguration: AWS = {
         ],
       },
     },
-    lambdaHashingVersion: "20201221",
-    deploymentBucket: {
-      name: "rakheoana-serverless-deployments",
-      serverSideEncryption: "AES256",
-    },
   },
   // import the function via paths
+  //@ts-ignore
   functions: {
-    ...snagsFunctions,
-    ...userFunctions,
-    ...feedbackFunctions,
-    ...lambdaTriggers,
+    getAllConfigurations,
+    // ...issueFunctions,
+    //  ...notificationFunctions,
+    //  ...departmentFunctions,
+    //  ...categoryFunctions,
+     ...roleFunctions,
+     ...userFunctions,
+    //  ...newsletterFunctions,
+    //  ...rsvpFunctions,
+    //  ...propertyFunctions,
+    //  ...agmFunctions,
+    //  ...interactionFunctions,
+    //  ...mailSubscriberFunctions,
+    //  ...wayLeaveFunctions
   },
 
   resources: {
     Resources: dynamoDbTables,
   },
-  package: { patterns: ["!.dynamodb/**", "!node_modules/**"] },
-  custom: {
-    esbuild: {
-      bundle: true,
-      minify: false,
-      sourcemap: true,
-      exclude: ["aws-sdk"],
-      target: "node14",
-      define: { "require.resolve": undefined },
-      platform: "node",
-      concurrency: 10,
-    },
-    prune: {
-      automatic: true,
-      includeLayers: true,
-    },
-    webpack: {
-      webpackConfig: "./webpack.config.js",
-      includeModules: true,
-    },
-    dynamodb: {
-      stages: ["dev", "stag", "prod"],
-      start: {
-        port: 8000,
-        dbPath: "./",
-        migrate: true,
-      },
-    },
-
-    splitStacks: {
-      perFunction: false,
-      perType: true,
-      perGroupFunction: false,
-    },
-  },
 };
+
+if (serverlessConfiguration.provider.stage != "prod") {
+  console.log("Not in production");
+  serverlessConfiguration.provider.environment.ADMIN_EMAIL =
+    "rakgew@gmail.com";
+  console.log("STAGE:", serverlessConfiguration.provider.stage);
+}
 
 module.exports = serverlessConfiguration;
