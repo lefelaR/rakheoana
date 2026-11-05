@@ -1,9 +1,7 @@
-import { ImageError } from "next/dist/server/image-optimizer";
 import React, { useState, useEffect } from "react";
 import ContactInformation from "components/atoms/contactInformation";
 import Email from "models/email.model";
 import { sendEmail } from "services/mailServices";
-import styles from "Contact.module.css";
 
 
 const Contact = () => {
@@ -38,7 +36,7 @@ const Contact = () => {
         <div className="row">
           <div className="col-lg-6">
             <div className="contact-form pt-30">
-              <form id="contact-form" onSubmit={handleSubmit} className={Contact}>
+              <form id="contact-form" onSubmit={handleSubmit}>
                 <div className="single-form">
                   <input
                     type="text"

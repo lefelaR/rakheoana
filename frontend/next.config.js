@@ -1,10 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
-   sassOptions: {
+  turbopack: {
+    root: __dirname,
+  },
+  sassOptions: {
     includePaths: ["styles"],
-  }
+  },
 }
 
 module.exports = nextConfig

@@ -1,11 +1,10 @@
 {
-    "compilerOptions": {
-        "baseUrl": ".",
-        "paths": {
-            "@components/*":["components/"],
-            "@models/*":["models/"],
-            "@services/*":["services/"],
-            
-        }
+  "compilerOptions": {
+    "paths": {
+      "*": ["./*"],
+      "@components/*": ["./components/*"],
+      "@models/*": ["./models/*"],
+      "@services/*": ["./services/*"]
     }
+  }
 }
