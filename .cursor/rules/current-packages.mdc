@@ -1,0 +1,25 @@
+---
+description: Do not add deprecated or maintenance-only packages
+alwaysApply: true
+---
+
+# Current packages
+
+Before adding a dependency, confirm the registry does not mark it deprecated and that it still receives releases. Do not add a package that only exists to keep an abandoned API compiling.
+
+Do not add new imports of packages already in the repo that are deprecated or maintenance-only:
+
+- `aws-sdk` (v2). New AWS calls use `@aws-sdk/client-*`.
+- `moment`. New date code uses built-in `Date` and `Intl`, unless a maintained date library is already installed in that package.
+
+When a change touches a file that imports one of those, new code in that file uses the successor. Do not start a repo-wide upgrade unless asked.
+
+```ts
+// do not add
+import AWS from "aws-sdk";
+import moment from "moment";
+
+// add this instead
+import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
+const label = new Intl.DateTimeFormat("en-ZA").format(new Date());
+```

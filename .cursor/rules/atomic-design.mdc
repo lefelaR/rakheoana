@@ -1,0 +1,27 @@
+---
+description: Atomic Design layers for the Next.js profile UI
+globs: "frontend/**/*.{tsx,ts}"
+alwaysApply: false
+---
+
+# Atomic Design
+
+Classify before adding a file. New UI goes in one layer under `frontend/components/`. Routes in `frontend/pages/` are the page layer. `frontend/components/layouts/` is legacy; new screen layouts go in `templates`. Do not mass-move `navbar` or `footer`.
+
+| Layer | Folder | May import |
+| --- | --- | --- |
+| Atom | `components/atoms` | Native elements only |
+| Molecule | `components/molecules` | Atoms |
+| Organism | `components/organisms` | Molecules, atoms |
+| Template | `components/templates` | Organisms, molecules, atoms |
+| Page | `pages/` | Its template, plus data loading |
+
+Imports point downward only. Fetching and route data stay in the page and go through `frontend/services/httpService.ts`. Atoms, molecules, organisms, and templates receive props and callbacks. They do not call HTTP.
+
+```tsx
+// page loads data and fills one template
+const profile = await http.get("/api/profile");
+return <ProfileTemplate profile={profile} />;
+```
+
+One component per file. Name it for what it is. Do not put the layer in the name. Create a layer folder only when the first component of that layer is added.
