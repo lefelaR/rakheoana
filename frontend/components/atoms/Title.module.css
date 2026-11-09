@@ -1,0 +1,7 @@
+.title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(3.4rem, 10vw, 7.4rem);
+  letter-spacing: -0.045em;
+  line-height: 0.88;
+}

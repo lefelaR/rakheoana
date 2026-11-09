@@ -1,0 +1,14 @@
+.page {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.lede {
+  max-width: 40rem;
+  color: var(--muted);
+}
+
+.list {
+  display: grid;
+  gap: 1.75rem;
+}

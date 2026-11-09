@@ -1,0 +1,19 @@
+.sample {
+  display: grid;
+  gap: 0.45rem;
+  align-content: start;
+  padding: 1.15rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.context {
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.detail {
+  color: var(--muted);
+}

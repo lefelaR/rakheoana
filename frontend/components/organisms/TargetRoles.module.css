@@ -1,0 +1,23 @@
+.panel {
+  display: grid;
+  gap: 1rem;
+  padding: 1.4rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.heading {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.roles {
+  margin-top: 0.35rem;
+  font-size: 1.15rem;
+}
+
+.modes {
+  color: var(--muted);
+}

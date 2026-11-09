@@ -1,0 +1,44 @@
+.card {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  gap: 1rem 1.25rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--line);
+}
+
+.index {
+  margin: 0.35rem 0 0;
+  color: var(--ember);
+  font-family: var(--serif);
+  font-size: 1.3rem;
+}
+
+.company {
+  font-family: var(--serif);
+  font-size: 1.85rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.role {
+  margin: 0.25rem 0 0.35rem;
+  font-weight: 600;
+}
+
+.bullets {
+  margin: 0.9rem 0 1rem;
+  padding-left: 1.1rem;
+  color: var(--muted);
+}
+
+.bullets li + li {
+  margin-top: 0.45rem;
+}
+
+@media (max-width: 640px) {
+  .card {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+}

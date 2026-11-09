@@ -1,0 +1,33 @@
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(16rem, 0.8fr);
+  gap: 2.5rem 3rem;
+  align-items: end;
+}
+
+.role {
+  margin-top: 1rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.summary {
+  max-width: 42rem;
+  margin-top: 1.1rem;
+  color: var(--muted);
+}
+
+.facts {
+  display: grid;
+  gap: 0.45rem;
+  align-content: end;
+  padding: 1.25rem 0 0.2rem;
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 800px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+}

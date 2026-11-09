@@ -1,0 +1,17 @@
+.home {
+  display: grid;
+  gap: 3.5rem;
+}
+
+.section {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.sectionHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+}

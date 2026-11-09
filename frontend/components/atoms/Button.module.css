@@ -1,0 +1,17 @@
+.button {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font: inherit;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.8rem 1.2rem;
+  border-radius: 999px;
+}
+
+.button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
