@@ -1,0 +1,31 @@
+---
+description: Frontend and backend consume API Gateway routes under /api
+alwaysApply: true
+---
+
+# Shared REST API
+
+API Gateway is the REST API. New routes live under `/api`. The Next.js frontend and other Lambda handlers consume those routes. They do not reach into another handler.
+
+Leave current paths unchanged: `/snags`, `/users`, `/feedback`.
+
+New profile resources:
+
+- `/api/profile` — identity, summary, contact, target roles
+- `/api/experience` — the six roles, newest first
+- `/api/skills` — the five skill groups
+- `/api/education` — the degree
+
+Declare the path on the Serverless HTTP event, the same way existing functions set `http.path` in `backend/src/functions/**/index.ts`.
+
+```ts
+http: { method: "get", path: "/api/profile", cors: true }
+```
+
+The frontend calls through `frontend/services/httpService.ts`. Its base URL is the API Gateway stage root (`NEXT_PUBLIC_BASE_API_ENDPOINT`). Request paths start with `/api/`. Pages and services do not call AWS directly.
+
+```ts
+const profile = await http.get("/api/profile");
+```
+
+A handler implements its own route. Shared repositories and services stay local to the handler that owns the data. If a handler needs another resource, it calls that resource's `/api` route. It does not import another function's handler, and it does not HTTP-call its own route.

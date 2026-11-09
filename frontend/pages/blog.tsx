@@ -1,23 +1,13 @@
+import BlogTemplate from "@components/templates/BlogTemplate";
+import Head from "next/head";
 
-import React, {useState, useEffect} from "react";
-
-
-export default function Blog(){
-
-useEffect(()=>{
-
-},[])
-
-    return (
-        <>
-        <div>
-            <p className="h1">
-                Blog page
-            </p>
-            <p className="h5">
-                under construction
-            </p>
-        </div>
-        </>
-    )
+export default function BlogPage() {
+  return (
+    <>
+      <Head>
+        <title>Blog · Rakheoana Lefela</title>
+      </Head>
+      <BlogTemplate />
+    </>
+  );
 }

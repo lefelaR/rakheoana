@@ -1,0 +1,13 @@
+.link {
+  color: var(--ink);
+  text-decoration: none;
+  text-underline-offset: 0.22em;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.link[aria-current="page"] {
+  text-decoration: none;
+}

@@ -1,0 +1,45 @@
+.header {
+  pointer-events: none;
+}
+
+.status,
+.dock {
+  pointer-events: auto;
+}
+
+.status {
+  position: fixed;
+  top: 1.1rem;
+  left: 50%;
+  z-index: 20;
+  transform: translateX(-50%);
+  padding: 0.4rem 0.95rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.72),
+    0 8px 18px rgba(22, 22, 22, 0.05);
+  backdrop-filter: blur(10px) saturate(1.5);
+}
+
+.dock {
+  position: fixed;
+  left: 50%;
+  bottom: 1.15rem;
+  z-index: 20;
+  transform: translateX(-50%);
+  max-width: calc(100% - 1.25rem);
+  padding: 12px;
+  border-radius: 22px;
+  background: rgba(187, 187, 188, 0.28);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+    inset 1.6px 2.4px 0 -1.6px rgba(255, 255, 255, 0.82),
+    inset -1.4px -1.8px 0 -1.4px rgba(255, 255, 255, 0.66),
+    0 12px 28px rgba(22, 22, 22, 0.08);
+  backdrop-filter: blur(10px) saturate(1.5);
+@media (max-width: 720px) {
+  .dock {
+    padding: 8px;
+  }
+}
