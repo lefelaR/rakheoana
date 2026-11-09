@@ -1,6 +1,9 @@
 .page {
   display: grid;
   gap: 2.5rem;
+  width: min(40rem, calc(100% - 2rem));
+  margin-inline: auto;
+  padding-top: 6.5rem;
 }
 
 .education {

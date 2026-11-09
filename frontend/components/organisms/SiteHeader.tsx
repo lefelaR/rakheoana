@@ -1,28 +1,25 @@
-import Monogram from "@components/atoms/Monogram";
-import TextLink from "@components/atoms/TextLink";
+import Eyebrow from "@components/atoms/Eyebrow";
 import NavLinks, { type NavItem } from "@components/molecules/NavLinks";
 import styles from "./SiteHeader.module.css";
 
 type SiteHeaderProps = {
-  name: string;
-  initials: string;
+  availability: string;
   pathname: string;
   items: NavItem[];
 };
 
-export default function SiteHeader({ name, initials, pathname, items }: SiteHeaderProps) {
+export default function SiteHeader({ availability, pathname, items }: SiteHeaderProps) {
   return (
     <header className={styles.header}>
       <a className="skip" href="#content">
         Skip to content
       </a>
-      <div className={styles.brand}>
-        <Monogram href="/" label={`${name}, home`}>
-          {initials}
-        </Monogram>
-        <TextLink href="/">{name}</TextLink>
+      <div className={styles.status}>
+        <Eyebrow>{availability}</Eyebrow>
       </div>
-      <NavLinks items={items} pathname={pathname} />
+      <div className={styles.dock}>
+        <NavLinks items={items} pathname={pathname} />
+      </div>
     </header>
   );
 }

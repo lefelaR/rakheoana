@@ -1,18 +1,11 @@
 .footer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 0.4rem 1.5rem;
+  display: grid;
+  justify-items: center;
+  gap: 0.25rem;
   width: min(1120px, calc(100% - 2.5rem));
   margin: 0 auto;
-  padding: 1.5rem 0 2rem;
-  border-top: 1px solid var(--line);
+  padding: 1rem 0 6.5rem;
   color: var(--faint);
-  font-size: 0.92rem;
-}
-
-@media (max-width: 720px) {
-  .footer {
-    width: min(1120px, calc(100% - 1.5rem));
-  }
+  font-size: 0.88rem;
+  text-align: center;
 }

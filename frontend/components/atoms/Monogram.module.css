@@ -1,14 +1,14 @@
 .mark {
   display: grid;
   place-items: center;
-  width: 2.4rem;
-  height: 2.4rem;
-  border-radius: 999px;
-  background: var(--ink);
-  color: var(--paper);
-  font-family: var(--serif);
-  font-weight: 600;
-  font-size: 0.85rem;
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 32%, #ffffff, #e6e6e4 72%);
+  color: var(--ink);
+  font-size: 1.35rem;
+  font-weight: 500;
   letter-spacing: 0.04em;
   text-decoration: none;
+  box-shadow: 0 10px 30px rgba(22, 22, 22, 0.06);
 }
