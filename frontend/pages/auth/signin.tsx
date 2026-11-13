@@ -12,8 +12,8 @@ const Signin = () => {
   const router = useRouter();
   const {onUpdated: handleUserUpdate,currentUser,isLoading} = useUserContext();
   return (
-    <div className="col-lg-5 col-12 px-5 mt-5">
-      <div id="auth-left row ">
+    <div className="d-flex align-items-center justify-content-center min-vh-100 px-3">
+      <div className="col-lg-5 col-md-8 col-12" id="auth-left">
         <div className="card shadow p-5 sm-5 bg-white rounded ">
           <div className="auth-logo"> </div>
           <p className="auth-title h2 mx-auto">Log in.</p>
