@@ -1,0 +1,143 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "VersionsNestedStack nested stack",
+  "Parameters": {
+    "GetAllConfigurationsLambdaFunctionParameter": {
+      "Type": "String"
+    },
+    "CreateRoleLambdaFunctionParameter": {
+      "Type": "String"
+    },
+    "UpdateRoleLambdaFunctionParameter": {
+      "Type": "String"
+    },
+    "DeleteRoleLambdaFunctionParameter": {
+      "Type": "String"
+    },
+    "GetRoleLambdaFunctionParameter": {
+      "Type": "String"
+    },
+    "GetAllRolesLambdaFunctionParameter": {
+      "Type": "String"
+    },
+    "AddUserLambdaFunctionParameter": {
+      "Type": "String"
+    }
+  },
+  "Resources": {
+    "GetAllConfigurationsLambdaVersiontokBqchPzNiCvoJc36diKe4Sg57RhXwsR6I3VqvW9Y": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "GetAllConfigurationsLambdaFunctionParameter"
+        },
+        "CodeSha256": "zuM3A17MBO+dZgdbmkncexA/hHHaGARDj761A0fEFLw="
+      },
+      "DependsOn": []
+    },
+    "CreateRoleLambdaVersionK4FfQxPE8LrNGIZLQm8IQy0bFaWFhv5dxuE94XgXctE": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "CreateRoleLambdaFunctionParameter"
+        },
+        "CodeSha256": "zuM3A17MBO+dZgdbmkncexA/hHHaGARDj761A0fEFLw="
+      },
+      "DependsOn": []
+    },
+    "UpdateRoleLambdaVersionmNtcHJdeM9Q8eJjr2PQy5M8nlHuFIOJxctFbWT5yM": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "UpdateRoleLambdaFunctionParameter"
+        },
+        "CodeSha256": "zuM3A17MBO+dZgdbmkncexA/hHHaGARDj761A0fEFLw="
+      },
+      "DependsOn": []
+    },
+    "DeleteRoleLambdaVersionHtCpyD8g8rlDuC8BuGpeGuzuKBCYbGC1oOTSUo1yyw": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "DeleteRoleLambdaFunctionParameter"
+        },
+        "CodeSha256": "zuM3A17MBO+dZgdbmkncexA/hHHaGARDj761A0fEFLw="
+      },
+      "DependsOn": []
+    },
+    "GetRoleLambdaVersionE3iILdhJ7FpzM9O6bUnl9O1PquRoIN0iusybdAIM": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "GetRoleLambdaFunctionParameter"
+        },
+        "CodeSha256": "zuM3A17MBO+dZgdbmkncexA/hHHaGARDj761A0fEFLw="
+      },
+      "DependsOn": []
+    },
+    "GetAllRolesLambdaVersionqvZ1dW0GfaZGuv03psq9aLzg1tjyOIhN0rIdS6P8I": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "GetAllRolesLambdaFunctionParameter"
+        },
+        "CodeSha256": "zuM3A17MBO+dZgdbmkncexA/hHHaGARDj761A0fEFLw="
+      },
+      "DependsOn": []
+    },
+    "AddUserLambdaVersionQWReJzSwd5CaX2lEiaUgimBmGhD9o16pH2PEkHF7cI": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "AddUserLambdaFunctionParameter"
+        },
+        "CodeSha256": "zuM3A17MBO+dZgdbmkncexA/hHHaGARDj761A0fEFLw="
+      },
+      "DependsOn": []
+    }
+  },
+  "Outputs": {
+    "AddUserLambdaVersionQWReJzSwd5CaX2lEiaUgimBmGhD9o16pH2PEkHF7cI": {
+      "Value": {
+        "Ref": "AddUserLambdaVersionQWReJzSwd5CaX2lEiaUgimBmGhD9o16pH2PEkHF7cI"
+      }
+    },
+    "GetAllRolesLambdaVersionqvZ1dW0GfaZGuv03psq9aLzg1tjyOIhN0rIdS6P8I": {
+      "Value": {
+        "Ref": "GetAllRolesLambdaVersionqvZ1dW0GfaZGuv03psq9aLzg1tjyOIhN0rIdS6P8I"
+      }
+    },
+    "GetRoleLambdaVersionE3iILdhJ7FpzM9O6bUnl9O1PquRoIN0iusybdAIM": {
+      "Value": {
+        "Ref": "GetRoleLambdaVersionE3iILdhJ7FpzM9O6bUnl9O1PquRoIN0iusybdAIM"
+      }
+    },
+    "DeleteRoleLambdaVersionHtCpyD8g8rlDuC8BuGpeGuzuKBCYbGC1oOTSUo1yyw": {
+      "Value": {
+        "Ref": "DeleteRoleLambdaVersionHtCpyD8g8rlDuC8BuGpeGuzuKBCYbGC1oOTSUo1yyw"
+      }
+    },
+    "UpdateRoleLambdaVersionmNtcHJdeM9Q8eJjr2PQy5M8nlHuFIOJxctFbWT5yM": {
+      "Value": {
+        "Ref": "UpdateRoleLambdaVersionmNtcHJdeM9Q8eJjr2PQy5M8nlHuFIOJxctFbWT5yM"
+      }
+    },
+    "CreateRoleLambdaVersionK4FfQxPE8LrNGIZLQm8IQy0bFaWFhv5dxuE94XgXctE": {
+      "Value": {
+        "Ref": "CreateRoleLambdaVersionK4FfQxPE8LrNGIZLQm8IQy0bFaWFhv5dxuE94XgXctE"
+      }
+    },
+    "GetAllConfigurationsLambdaVersiontokBqchPzNiCvoJc36diKe4Sg57RhXwsR6I3VqvW9Y": {
+      "Value": {
+        "Ref": "GetAllConfigurationsLambdaVersiontokBqchPzNiCvoJc36diKe4Sg57RhXwsR6I3VqvW9Y"
+      }
+    }
+  }
+}
