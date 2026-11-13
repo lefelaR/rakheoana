@@ -1,0 +1,12 @@
+.page {
+  max-width: 64rem;
+}
+
+.title {
+  margin: 0 0 1.75rem;
+  color: #32333c;
+  font-family: Poppins, "Segoe UI", sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+}

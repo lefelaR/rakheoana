@@ -1,0 +1,128 @@
+.menuButton,
+.close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid #eceef3;
+  border-radius: 0.65rem;
+  background: #fff;
+  color: #32333c;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.menuButton:focus-visible,
+.close:focus-visible {
+  outline: 2px solid #38f9d7;
+  outline-offset: 2px;
+}
+
+.menuButton {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 40;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  border: 0;
+  background: rgba(18, 18, 18, 0.45);
+  cursor: pointer;
+}
+
+.sideNav {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  width: 16.5rem;
+  padding: 1.25rem 1rem 2rem;
+  overflow-y: auto;
+  background: #fff;
+  border-right: 1px solid #eceef3;
+  color: #32333c;
+  transform: translateX(-105%);
+  transition: transform 0.2s ease;
+}
+
+.sideNavOpen {
+  transform: translateX(0);
+}
+
+.brandRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+  padding: 0.15rem 0.5rem 0.85rem;
+}
+
+.brand {
+  color: #32333c;
+  font-family: Poppins, "Segoe UI", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.brand::before {
+  content: "";
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-right: 0.55rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #43cae9, #38f9d7);
+  vertical-align: 0.05rem;
+}
+
+.groupLabel {
+  margin: 1.15rem 0.85rem 0.35rem;
+  color: #8a8fa3;
+  font-family: Poppins, "Segoe UI", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (min-width: 768px) {
+  .menuButton,
+  .close,
+  .backdrop {
+    display: none;
+  }
+
+  .sideNav,
+  .sideNavOpen {
+    transform: none;
+  }
+}

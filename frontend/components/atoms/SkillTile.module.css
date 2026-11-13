@@ -1,0 +1,16 @@
+.tile {
+  height: 100%;
+  padding: 1.05rem 1rem;
+  border: 1px solid #eceef3;
+  border-radius: 0.85rem;
+  background: #fff;
+  color: #32333c;
+  font-family: Poppins, "Segoe UI", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.tile:hover {
+  border-color: #38f9d7;
+}
