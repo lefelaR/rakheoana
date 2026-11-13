@@ -1,21 +1,23 @@
-import type { ReactNode } from "react";
 import SkillTile from "@components/molecules/SkillTile";
 import styles from "./SkillGroup.module.css";
 
 export type Skill = {
+  id: string;
   name: string;
-  icon: ReactNode;
+  selected: boolean;
 };
 
 type SkillGroupProps = {
   label: string;
   skills: Skill[];
+  pendingId?: string;
+  onToggle?: (skill: Skill) => void;
 };
 
 const headingId = (label: string) =>
   `skill-group-${label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
 
-const SkillGroup = ({ label, skills }: SkillGroupProps) => {
+const SkillGroup = ({ label, skills, pendingId, onToggle }: SkillGroupProps) => {
   const id = headingId(label);
 
   return (
@@ -25,8 +27,13 @@ const SkillGroup = ({ label, skills }: SkillGroupProps) => {
       </h2>
       <ul className={styles.grid}>
         {skills.map((skill) => (
-          <li key={skill.name}>
-            <SkillTile name={skill.name} icon={skill.icon} />
+          <li key={skill.id}>
+            <SkillTile
+              name={skill.name}
+              selected={skill.selected}
+              disabled={pendingId === skill.id}
+              onToggle={onToggle ? () => onToggle(skill) : undefined}
+            />
           </li>
         ))}
       </ul>

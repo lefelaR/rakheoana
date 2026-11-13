@@ -6,6 +6,7 @@ import dynamoDbTables from "./resources/dynamodb-tables";
 // import * as categoryFunctions from "@functions/categories";
 import * as roleFunctions from "@functions/roles";
 import * as userFunctions from "@functions/users";
+import * as skillFunctions from "@functions/skills";
 // import * as newsletterFunctions from "@functions/newsletter";
 // import * as rsvpFunctions from "@functions/rsvps";
 // import * as propertyFunctions from "@functions/properties";
@@ -35,7 +36,7 @@ const serverlessConfiguration: AWS = {
       start: {
         port: 8000,
         dbPath: "./",
-        migrate: true,
+        migrate: false,
       },
     },
     ["serverless-offline-aws-eventbridge"]: {
@@ -86,6 +87,7 @@ const serverlessConfiguration: AWS = {
       // DEPARTMENT_TABLE: "${self:service}-${self:provider.stage}-departments",
       ROLES_TABLE: "${self:service}-${self:provider.stage}-roles",
       USERS_TABLE: "${self:service}-${self:provider.stage}-users",
+      SKILLS_TABLE: "${self:service}-${self:provider.stage}-skills",
       // NEWSLETTERS_TABLE: "${self:service}-${self:provider.stage}-newsletter",
       // RSVP_TABLE: "${self:service}-${self:provider.stage}-rsvp",
       // AGM_TABLE: "${self:service}-${self:provider.stage}-agmdocuments",
@@ -176,6 +178,7 @@ const serverlessConfiguration: AWS = {
     //  ...categoryFunctions,
      ...roleFunctions,
      ...userFunctions,
+     ...skillFunctions,
     //  ...newsletterFunctions,
     //  ...rsvpFunctions,
     //  ...propertyFunctions,

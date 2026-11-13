@@ -1,19 +1,38 @@
-import type { ReactNode } from "react";
+import SkillIcon from "@components/atoms/SkillIcon";
 import styles from "./SkillTile.module.css";
 
 type SkillTileProps = {
   name: string;
-  icon: ReactNode;
+  selected: boolean;
+  disabled?: boolean;
+  onToggle?: () => void;
 };
 
-const SkillTile = ({ name, icon }: SkillTileProps) => {
-  return (
-    <div className={styles.tile}>
-      <span className={styles.icon} aria-hidden="true">
-        {icon}
+const SkillTile = ({ name, selected, disabled, onToggle }: SkillTileProps) => {
+  const className = selected ? `${styles.tile} ${styles.selected}` : styles.tile;
+  const content = (
+    <>
+      <span className={styles.icon}>
+        <SkillIcon name={name} />
       </span>
       <span>{name}</span>
-    </div>
+    </>
+  );
+
+  if (!onToggle) {
+    return <div className={className}>{content}</div>;
+  }
+
+  return (
+    <button
+      type="button"
+      className={`${className} ${styles.button}`}
+      aria-pressed={selected}
+      disabled={disabled}
+      onClick={onToggle}
+    >
+      {content}
+    </button>
   );
 };
 
