@@ -1,6 +1,7 @@
 import { ImageError } from "next/dist/server/image-optimizer";
 import React, { useState, useEffect } from "react";
 import ContactInformation from "components/atoms/contactInformation";
+import Layout from "components/layouts/frontendLayout";
 import Email from "models/email.model";
 import { sendEmail } from "services/mailServices";
 import styles from "Contact.module.css";
@@ -98,6 +99,7 @@ const Contact = () => {
         </div>
       </div>
     </section>
+    </Layout>
   );
 };
 
