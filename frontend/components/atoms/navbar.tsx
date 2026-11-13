@@ -1,11 +1,20 @@
 import Image from "next/image";
-import React, { useState } from "react";
-
+import React from "react";
 import Link from "next/link";
-export default function Navbar(props: any) {
-  const { isLoggedin } = props;
-  const [lock, setLock] = useState("");
-  const [url, setUrl] = useState("");
+import { useRouter } from "next/router";
+
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/stack", label: "Tech-Stack" },
+  { href: "/experience", label: "Experience" },
+  { href: "/portfolio", label: "Portfolio" },
+  { href: "/contact", label: "Contact" },
+];
+
+export default function Navbar() {
+  const { pathname } = useRouter();
+  const itemClass = (href: string) =>
+    pathname === href ? "nav-item active" : "nav-item";
 
   return (
     <>
@@ -40,41 +49,18 @@ export default function Navbar(props: any) {
                     id="navbarSupportedContent"
                   >
                     <ul className="navbar-nav ml-auto">
-                      <li className="nav-item active">
-                        <Link className="page-scroll" href="/">
-                          Home
-                        </Link>
-                      </li>
-                      <li className="nav-item">
-                        <Link className="page-scroll" href="/stack">
-                          Tech-Stack
-                        </Link>
-                      </li>
-                      <li className="nav-item">
-                        <Link className="page-scroll" href="/experience">
-                          Experience
-                        </Link>
-                      </li>
-                      <li className="nav-item">
-                        <Link className="page-scroll" href="/portfolio">
-                          Portfolio
-                        </Link>
-                      </li>
-                      {/* <li className="nav-item">
-                        <Link className="page-scroll" href="/blog">
-                          Blog
-                        </Link>
-                      </li> */}
-                      <li className="nav-item">
-                        <Link className="page-scroll" href="/contact">
-                          Contact
-                        </Link>
-                      </li>
+                      {links.map((link) => (
+                        <li className={itemClass(link.href)} key={link.href}>
+                          <Link className="page-scroll" href={link.href}>
+                            {link.label}
+                          </Link>
+                        </li>
+                      ))}
                     </ul>
                   </div>
                   <div className="collapse navbar-collapse">
                     <ul className="navbar-nav ml-auto">
-                      <li className="nav-item">
+                      <li className={itemClass("/auth/signin")}>
                         <Link className="page-scroll" href="/auth/signin">
                           <i className="lni lni-lock">&nbsp; </i>
                           Login

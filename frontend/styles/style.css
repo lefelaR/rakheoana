@@ -598,7 +598,7 @@ filter: grayscale(0) !important;
               display: none; } }
       .navigation .navbar .navbar-nav .nav-item.active a, .navigation .navbar .navbar-nav .nav-item:hover a {
         color: #754ef9; }
-        .navigation .navbar .navbar-nav .nav-item.active a::before, .navigation .navbar .navbar-nav .nav-item:hover a::before {
+        .navigation .navbar .navbar-nav .nav-item.active a::before {
           height: 45px; }
 
 .header-content {
