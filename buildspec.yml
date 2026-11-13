@@ -1,0 +1,33 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+    - cd ${PROJECT_DIR}
+    - rm -rf .next out node_modules
+    - yarn install
+
+  build:
+    commands:
+      - yarn build
+      # - yarn export
+      
+
+  post_build:
+    commands:
+      - aws s3 sync .next/ ${S3_BUCKET} --acl public-read --delete
+      - aws s3 cp ${S3_BUCKET} ${S3_BUCKET}_next/ --recursive
+      - aws s3 cp $CODEBUILD_SRC_DIR/${PROJECT_DIR}/public/ ${S3_BUCKET} --metadata-directive REPLACE --cache-control 'max-age=31104000' --recursive 
+      - aws s3 cp $CODEBUILD_SRC_DIR/${PROJECT_DIR}/.next/static/ ${S3_BUCKET} --metadata-directive REPLACE --cache-control 'max-age=31104000' --recursive  
+      # - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths /
+
+cache:
+  paths:
+    - "node_modules/**/*"
+    - ".next/cache/**/*"
+
+artifacts:
+  files:
+    - '**/*'
+
+  base-directory: '${PROJECT_DIR}/.next/server/pages/'
