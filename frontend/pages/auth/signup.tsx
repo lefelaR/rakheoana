@@ -6,7 +6,6 @@ import { Formik, Form, Field, FieldAttributes, useField } from "formik";
 import Yup from "yup";
 import signUp from "../../services/auth/userSignUp";
 import toast from "react-hot-toast";
-import { addUser } from "services/usersService";
 import { useRouter } from "next/router";
 
 
@@ -39,8 +38,8 @@ const Signup = () => {
 
   return (
     <>
-      <div className="col-lg-5 col-12 px-5 mt-5">
-        <div id="auth-left row ">
+      <div className="d-flex align-items-center justify-content-center min-vh-100 px-3 py-4">
+        <div className="col-lg-5 col-md-8 col-12" id="auth-left">
           <div className="card shadow p-5 sm-5 bg-white rounded ">
             <div className="auth-logo"> </div>
 
@@ -57,17 +56,23 @@ const Signup = () => {
                 confirmPassword: "",
               }}
               // validationSchema={SignupSchema}
-              onSubmit={(values, { resetForm, setSubmitting }) => {
+              onSubmit={(values, { setSubmitting }) => {
                 setSubmitting(true);
-                addUser(values)
+                signUp({
+                  email: values.email,
+                  password: values.password,
+                  name: values.name,
+                  familyName: values.familyName,
+                })
                   .then(() => {
-                    toast.success("Successfully sighned up");
-                    resetForm();
-                    router.push("/signin");
+                    router.push({
+                      pathname: "/auth/confirm",
+                      query: { email: values.email },
+                    });
                   })
                   .catch((err) => {
                     toast.error(err.message);
-                    resetForm();
+                    setSubmitting(false);
                   });
               }}
             >

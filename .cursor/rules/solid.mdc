@@ -1,0 +1,23 @@
+---
+description: SOLID boundaries for profile handlers, services, and UI
+alwaysApply: true
+---
+
+# SOLID
+
+New profile code keeps one reason to change per module. Match the folders already in the backend: `backend/src/functions/` (HTTP), `backend/src/services/` (a use case), `backend/src/repositories/` (persistence).
+
+- A handler maps the API Gateway event to a service call and a response. It does not query DynamoDB or assemble unrelated features.
+- A service owns one use case. A repository owns persistence for one aggregate.
+- New behavior is a new module. Do not edit an unrelated handler to reach into another feature.
+- Depend on a small interface, as with `backend/src/common/interfaces/ISoftDelete.interface.ts`, not on a concrete AWS client, when a service already wraps that client (`backend/src/services/awsService.ts`, `backend/src/services/DynamoDatabaseService.ts`).
+- On the frontend, a service returns data. Components below the page layer receive props and callbacks.
+
+```ts
+// handler maps HTTP
+const profile = await profileService.get();
+return ResponseModel.ok(profile);
+
+// service depends on the repository, not the AWS SDK
+export const get = () => profileRepository.get();
+```

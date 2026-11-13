@@ -1,9 +1,10 @@
 import { ImageError } from "next/dist/server/image-optimizer";
 import React, { useState, useEffect } from "react";
 import ContactInformation from "components/atoms/contactInformation";
+import Layout from "components/layouts/frontendLayout";
 import Email from "models/email.model";
 import { sendEmail } from "services/mailServices";
-import Layout from "@components/layouts/frontendLayout";
+
 
 const Contact = () => {
   const [item, setItem] = useState<Email | any>({});
@@ -16,13 +17,10 @@ const Contact = () => {
 
   const handleSubmit = async (event: any) => {
     console.log(item);
-    
     await sendEmail("rakgew@gmail.com", "rakgew@hotmail.com", "example email", "this is going toi be sweet once it works")
     .then((res:any)=>{
       console.log(res);
     }).catch((error:any)=>console.log(error.message))
-    
-
   };
 
   return (
@@ -101,7 +99,6 @@ const Contact = () => {
       </div>
     </section>
     </Layout>
-
   );
 };
 
