@@ -1,7 +1,0 @@
-.title {
-  max-width: 11em;
-  font-weight: 400;
-  font-size: clamp(2.5rem, 6vw, 3.25rem);
-  letter-spacing: -0.035em;
-  line-height: 1.05;
-}
