@@ -1,9 +1,15 @@
-import SkillTile from "@components/atoms/SkillTile";
+import type { ReactNode } from "react";
+import SkillTile from "@components/molecules/SkillTile";
 import styles from "./SkillGroup.module.css";
+
+export type Skill = {
+  name: string;
+  icon: ReactNode;
+};
 
 type SkillGroupProps = {
   label: string;
-  skills: string[];
+  skills: Skill[];
 };
 
 const headingId = (label: string) =>
@@ -19,8 +25,8 @@ const SkillGroup = ({ label, skills }: SkillGroupProps) => {
       </h2>
       <ul className={styles.grid}>
         {skills.map((skill) => (
-          <li key={skill}>
-            <SkillTile name={skill} />
+          <li key={skill.name}>
+            <SkillTile name={skill.name} icon={skill.icon} />
           </li>
         ))}
       </ul>

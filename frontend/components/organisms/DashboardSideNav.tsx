@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import Link from "next/link";
+import { LuMenu, LuX } from "react-icons/lu";
 import DashboardNavLink from "@components/molecules/DashboardNavLink";
 import styles from "./DashboardSideNav.module.css";
 
 export type DashboardNavItem = {
   href: string;
   label: string;
-  icon: string;
+  icon: ReactNode;
 };
 
 export type DashboardNavGroup = {
@@ -56,7 +57,7 @@ const DashboardSideNav = ({ groups, pathname }: DashboardSideNavProps) => {
         aria-controls="dashboard-side-nav"
         onClick={() => setOpen(true)}
       >
-        <i className="lni lni-menu" aria-hidden="true" />
+        <LuMenu aria-hidden="true" />
         <span className={styles.srOnly}>Open menu</span>
       </button>
       {open ? (
@@ -77,13 +78,13 @@ const DashboardSideNav = ({ groups, pathname }: DashboardSideNavProps) => {
             Rakheoana
           </Link>
           <button type="button" className={styles.close} onClick={close}>
-            <i className="lni lni-close" aria-hidden="true" />
+            <LuX aria-hidden="true" />
             <span className={styles.srOnly}>Close menu</span>
           </button>
         </div>
         {groups.map((group) => (
           <div key={group.label} className={styles.group}>
-            <p className={styles.groupLabel}>{group.label}</p>
+            {group.label ? <p className={styles.groupLabel}>{group.label}</p> : null}
             <ul className={styles.list}>
               {group.items.map((item) => (
                 <li key={item.href}>

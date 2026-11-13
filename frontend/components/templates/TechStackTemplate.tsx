@@ -1,9 +1,9 @@
-import SkillGroup from "@components/organisms/SkillGroup";
+import SkillGroup, { type Skill } from "@components/organisms/SkillGroup";
 import styles from "./TechStackTemplate.module.css";
 
 export type TechStackGroup = {
   label: string;
-  skills: string[];
+  skills: Skill[];
 };
 
 type TechStackTemplateProps = {

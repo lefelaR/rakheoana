@@ -9,8 +9,13 @@
   border-radius: 0.65rem;
   background: #fff;
   color: #32333c;
-  font-size: 1.1rem;
   cursor: pointer;
+}
+
+.menuButton svg,
+.close svg {
+  width: 1.15rem;
+  height: 1.15rem;
 }
 
 .menuButton:focus-visible,
