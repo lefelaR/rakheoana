@@ -57,7 +57,7 @@ const DashboardSideNav = ({ groups, pathname }: DashboardSideNavProps) => {
         aria-controls="dashboard-side-nav"
         onClick={() => setOpen(true)}
       >
-        <LuMenu aria-hidden="true" />
+        {LuMenu({ "aria-hidden": true })}
         <span className={styles.srOnly}>Open menu</span>
       </button>
       {open ? (
@@ -78,7 +78,7 @@ const DashboardSideNav = ({ groups, pathname }: DashboardSideNavProps) => {
             Rakheoana
           </Link>
           <button type="button" className={styles.close} onClick={close}>
-            <LuX aria-hidden="true" />
+            {LuX({ "aria-hidden": true })}
             <span className={styles.srOnly}>Close menu</span>
           </button>
         </div>
