@@ -32,12 +32,18 @@ const serverlessConfiguration: AWS = {
       includeModules: true,
     },
     dynamodb: {
-      stages: ["dev", "stag","prod"],
+      stages: ["dev", "stag", "prod"],
       start: {
         port: 8000,
-        dbPath: "./",
+        dbPath: "./.dynamodb",
+        sharedDb: true,
         migrate: false,
       },
+    },
+    "serverless-offline": {
+      httpPort: 4000,
+      lambdaPort: 4002,
+      httpHost: "127.0.0.1",
     },
     ["serverless-offline-aws-eventbridge"]: {
       port: 4080,
@@ -54,12 +60,12 @@ const serverlessConfiguration: AWS = {
   },
   plugins: [
     "serverless-webpack",
-    "serverless-offline",
     "serverless-dynamodb-local",
     "serverless-deployment-bucket",
     "serverless-prune-plugin",
     "serverless-offline-aws-eventbridge",
     "serverless-plugin-split-stacks",
+    "serverless-offline",
     // "serverless-stack-termination-protection",
   ],
   package: {

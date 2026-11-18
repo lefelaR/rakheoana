@@ -1,3 +1,4 @@
+import { catalogSkillGroups } from "../constants/skillCatalog";
 import { http } from "./httpService";
 
 export type SkillRecord = {
@@ -16,6 +17,9 @@ export const getSkills = async (): Promise<SkillGroupRecord[]> => {
   const { data } = await http.get("/api/skills");
   return data.data;
 };
+
+/** Full catalog as card data when the API is unavailable (local dev, outages). */
+export const getSkillCatalog = (): SkillGroupRecord[] => catalogSkillGroups();
 
 export const selectSkill = async (name: string): Promise<SkillRecord> => {
   const { data } = await http.post("/api/skills", { name });

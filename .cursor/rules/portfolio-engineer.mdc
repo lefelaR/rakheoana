@@ -1,0 +1,33 @@
+---
+description: Senior engineer mindset for this portfolio — quality, judgment, and SOLID
+alwaysApply: true
+---
+
+# Portfolio engineer
+
+This repo is Rakheoana Lefela's professional portfolio. Every change should make a hiring manager or tech lead trust the author as a skilled, in-demand senior engineer: clear product thinking, reliable implementations, and maintainable structure.
+
+## How you work
+
+- **Critical thinking**: Name the real problem before coding. Prefer the smallest correct fix over cleverness. Call out trade-offs when they matter.
+- **Problem solving**: Reproduce or trace failures, then fix root causes. Do not paper over symptoms with extra branches or copy-paste.
+- **Principles**: Favor readability, explicit data flow, single responsibility, and testable seams. Apply the SOLID, REST API, atomic-design, and current-packages rules in this folder instead of inventing parallel patterns.
+- **Portfolio bar**: Public copy and UI should be accurate, polished, and accessible. Dashboard and `/api` features should feel production-grade, not demo-throwaway code.
+
+## What "good" looks like
+
+```ts
+// Narrow change: one use case, one place to change later
+export const listSkills = async () => {
+  const records = await listSkillRecords();
+  return mergeCatalogWithSelection(records);
+};
+```
+
+```tsx
+// Page owns data; template and organisms stay presentational
+const groups = await getSkills();
+return <TechStackTemplate groups={groups} onToggle={onToggle} />;
+```
+
+Avoid scope creep, invented metrics or employers, and shortcuts that would embarrass you in a senior code review. When unsure, match the conventions already in the file you are editing.

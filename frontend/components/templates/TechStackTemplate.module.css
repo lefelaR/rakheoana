@@ -2,11 +2,43 @@
   max-width: 64rem;
 }
 
+.header {
+  margin-bottom: 1.75rem;
+}
+
 .title {
-  margin: 0 0 1.75rem;
+  margin: 0 0 0.5rem;
   color: #32333c;
   font-family: Poppins, "Segoe UI", sans-serif;
   font-size: 1.75rem;
   font-weight: 700;
   line-height: 1.2;
+}
+
+.lead {
+  margin: 0;
+  max-width: 40rem;
+  color: #5c6178;
+  font-family: Poppins, "Segoe UI", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.status {
+  margin: 0.85rem 0 0;
+  color: #8a8fa3;
+  font-family: Poppins, "Segoe UI", sans-serif;
+  font-size: 0.9rem;
+}
+
+.notice {
+  margin: 0.85rem 0 0;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid #f0d9a8;
+  border-radius: 0.5rem;
+  background: #fff9ed;
+  color: #6b5730;
+  font-family: Poppins, "Segoe UI", sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.45;
 }

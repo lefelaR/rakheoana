@@ -9,13 +9,32 @@ export type TechStackGroup = {
 type TechStackTemplateProps = {
   groups: TechStackGroup[];
   pendingId?: string;
+  catalogOnly?: boolean;
+  status?: string;
   onToggle?: (skill: Skill) => void;
 };
 
-const TechStackTemplate = ({ groups, pendingId, onToggle }: TechStackTemplateProps) => {
+const TechStackTemplate = ({
+  groups,
+  pendingId,
+  catalogOnly,
+  status,
+  onToggle,
+}: TechStackTemplateProps) => {
   return (
     <section className={styles.page}>
-      <h1 className={styles.title}>Tech stack</h1>
+      <header className={styles.header}>
+        <h1 className={styles.title}>Tech stack</h1>
+        <p className={styles.lead}>
+          Every programming technology in the catalog is a card you can press. Selected cards appear
+          on your public stack page.
+        </p>
+        {status ? (
+          <p className={catalogOnly ? styles.notice : styles.status} role="status">
+            {status}
+          </p>
+        ) : null}
+      </header>
       {groups.map((group) => (
         <SkillGroup
           key={group.label}

@@ -6,6 +6,7 @@ import TechStackTemplate, {
 } from "@components/templates/TechStackTemplate";
 import type { Skill } from "@components/organisms/SkillGroup";
 import {
+  getSkillCatalog,
   getSkills,
   removeSkill,
   selectSkill,
@@ -13,9 +14,10 @@ import {
 } from "@services/skillsService";
 
 const DashboardTechStack = () => {
-  const [groups, setGroups] = useState<TechStackGroup[]>([]);
+  const [groups, setGroups] = useState<TechStackGroup[]>(() => getSkillCatalog());
   const [pendingId, setPendingId] = useState<string>();
   const [status, setStatus] = useState("Loading tech stack.");
+  const [catalogOnly, setCatalogOnly] = useState(false);
 
   useEffect(() => {
     let active = true;
@@ -25,14 +27,19 @@ const DashboardTechStack = () => {
         if (!active) {
           return;
         }
-        setGroups(records);
+        setGroups(Array.isArray(records) && records.length > 0 ? records : getSkillCatalog());
+        setCatalogOnly(false);
         setStatus("");
       })
       .catch(() => {
         if (!active) {
           return;
         }
-        setStatus("The tech stack could not be loaded.");
+        setGroups(getSkillCatalog());
+        setCatalogOnly(true);
+        setStatus(
+          "Could not reach the API. Showing the full catalog — selections will apply once the API is available."
+        );
       });
 
     return () => {
@@ -69,10 +76,13 @@ const DashboardTechStack = () => {
 
   return (
     <Layout>
-      {status ? <p>{status}</p> : null}
-      {groups.length > 0 ? (
-        <TechStackTemplate groups={groups} pendingId={pendingId} onToggle={onToggle} />
-      ) : null}
+      <TechStackTemplate
+        groups={groups}
+        pendingId={pendingId}
+        catalogOnly={catalogOnly}
+        status={status}
+        onToggle={onToggle}
+      />
     </Layout>
   );
 };
