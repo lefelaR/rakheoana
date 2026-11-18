@@ -1,0 +1,49 @@
+.link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  border-radius: 0.65rem;
+  color: #32333c;
+  font-family: Poppins, "Segoe UI", sans-serif;
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.link:hover {
+  background: #f4f6fb;
+  color: #32333c;
+}
+
+.link:focus-visible {
+  outline: 2px solid #38f9d7;
+  outline-offset: 2px;
+}
+
+.active,
+.active:hover {
+  background: #f3fffc;
+  color: #0f766e;
+  box-shadow: inset 3px 0 0 #38f9d7;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.15rem;
+  height: 1.15rem;
+  color: #8a8fa3;
+}
+
+.icon svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.active .icon {
+  color: #0f766e;
+}

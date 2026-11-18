@@ -39,7 +39,12 @@ class DynamoDatabaseService {
 	constructor() {
 		let options: IConfig;
 		if (process.env.IS_OFFLINE) {
-			options = { endpoint: "http://localhost:8000" };
+			options = {
+				endpoint: "http://localhost:8000",
+				region: "eu-central-1",
+				accessKeyId: "local",
+				secretAccessKey: "local",
+			};
 		}
 		//@ts-ignore
 		this.documentClient = new AWS.DynamoDB.DocumentClient(options);

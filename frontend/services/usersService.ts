@@ -19,17 +19,19 @@ export const addUser = async (user: User | any) => {
     try {
         
         // const defaultRole = await getOrCreateDefaultRole();
+        const firstName = user.firstName || user.name;
+        const lastName = user.lastName || user.familyName;
         const cognitoUser: any = await userSignUp({
             email: user.email,
             password: user.password,
-            name: user.firstName,
-            familyName: user.lastName,
+            name: firstName,
+            familyName: lastName,
         });
     
         let newUser: User = new User();
         newUser.id = cognitoUser.userSub;
-        newUser.firstName = user.firstName;
-        newUser.lastName = user.lastName;
+        newUser.firstName = firstName;
+        newUser.lastName = lastName;
         newUser.department = '';
         // newUser.roles = [defaultRole.id];
         newUser.email = user.email;
