@@ -14,6 +14,7 @@ const dynamo = new AWS.DynamoDB({
 const tables = [
   "rakheoana-backend-dev-dev-roles",
   "rakheoana-backend-dev-dev-skills",
+  "rakheoana-backend-dev-dev-experience",
   "rakheoana-backend-dev-dev-users",
 ];
 

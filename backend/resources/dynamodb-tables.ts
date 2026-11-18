@@ -57,6 +57,15 @@ export default {
       KeySchema: [{ AttributeName: "id", KeyType: "HASH" }],
     },
   },
+  ExperienceTable: {
+    Type: "AWS::DynamoDB::Table",
+    Properties: {
+      TableName: "${self:provider.environment.EXPERIENCE_TABLE}",
+      BillingMode: "PAY_PER_REQUEST",
+      AttributeDefinitions: [{ AttributeName: "id", AttributeType: "S" }],
+      KeySchema: [{ AttributeName: "id", KeyType: "HASH" }],
+    },
+  },
   UsersTable: {
     Type: "AWS::DynamoDB::Table",
     Properties: {
