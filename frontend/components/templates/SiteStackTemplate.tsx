@@ -24,7 +24,12 @@ const SiteStackTemplate = ({ groups }: SiteStackTemplateProps) => {
           <p className="text-center">No technologies selected yet.</p>
         ) : (
           groups.map((group) => (
-            <SkillGroup key={group.label} label={group.label} skills={group.skills} />
+            <SkillGroup
+              key={group.label}
+              label={group.label}
+              skills={group.skills}
+              layout="bootstrap"
+            />
           ))
         )}
       </div>

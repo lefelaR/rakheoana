@@ -24,3 +24,14 @@
 .grid li {
   display: flex;
 }
+
+.bootstrapList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bootstrapList li {
+  display: flex;
+  margin-bottom: 0.85rem;
+}
