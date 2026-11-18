@@ -5,34 +5,58 @@
     "ApiGatewayRestApiParameter": {
       "Type": "String"
     },
-    "GetAllConfigurationsLambdaFunctionArnParameter": {
+    "ListSkillsLambdaFunctionArnParameter": {
       "Type": "String"
     },
-    "CreateRoleLambdaFunctionArnParameter": {
+    "GetSkillLambdaFunctionArnParameter": {
       "Type": "String"
     },
-    "UpdateRoleLambdaFunctionArnParameter": {
+    "SelectSkillLambdaFunctionArnParameter": {
       "Type": "String"
     },
-    "DeleteRoleLambdaFunctionArnParameter": {
+    "UpdateSkillLambdaFunctionArnParameter": {
       "Type": "String"
     },
-    "GetRoleLambdaFunctionArnParameter": {
+    "RemoveSkillLambdaFunctionArnParameter": {
       "Type": "String"
     },
-    "GetAllRolesLambdaFunctionArnParameter": {
+    "ListExperienceLambdaFunctionArnParameter": {
       "Type": "String"
     },
-    "AddUserLambdaFunctionArnParameter": {
+    "GetExperienceLambdaFunctionArnParameter": {
+      "Type": "String"
+    },
+    "CreateExperienceLambdaFunctionArnParameter": {
+      "Type": "String"
+    },
+    "UpdateExperienceLambdaFunctionArnParameter": {
+      "Type": "String"
+    },
+    "DeleteExperienceLambdaFunctionArnParameter": {
+      "Type": "String"
+    },
+    "ListPortfolioLambdaFunctionArnParameter": {
+      "Type": "String"
+    },
+    "GetPortfolioLambdaFunctionArnParameter": {
+      "Type": "String"
+    },
+    "CreatePortfolioLambdaFunctionArnParameter": {
+      "Type": "String"
+    },
+    "UpdatePortfolioLambdaFunctionArnParameter": {
+      "Type": "String"
+    },
+    "DeletePortfolioLambdaFunctionArnParameter": {
       "Type": "String"
     }
   },
   "Resources": {
-    "GetAllConfigurationsLambdaPermissionApiGateway": {
+    "ListSkillsLambdaPermissionApiGateway": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "FunctionName": {
-          "Ref": "GetAllConfigurationsLambdaFunctionArnParameter"
+          "Ref": "ListSkillsLambdaFunctionArnParameter"
         },
         "Action": "lambda:InvokeFunction",
         "Principal": "apigateway.amazonaws.com",
@@ -63,11 +87,11 @@
       },
       "DependsOn": []
     },
-    "CreateRoleLambdaPermissionApiGateway": {
+    "GetSkillLambdaPermissionApiGateway": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "FunctionName": {
-          "Ref": "CreateRoleLambdaFunctionArnParameter"
+          "Ref": "GetSkillLambdaFunctionArnParameter"
         },
         "Action": "lambda:InvokeFunction",
         "Principal": "apigateway.amazonaws.com",
@@ -98,11 +122,11 @@
       },
       "DependsOn": []
     },
-    "UpdateRoleLambdaPermissionApiGateway": {
+    "SelectSkillLambdaPermissionApiGateway": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "FunctionName": {
-          "Ref": "UpdateRoleLambdaFunctionArnParameter"
+          "Ref": "SelectSkillLambdaFunctionArnParameter"
         },
         "Action": "lambda:InvokeFunction",
         "Principal": "apigateway.amazonaws.com",
@@ -133,11 +157,11 @@
       },
       "DependsOn": []
     },
-    "DeleteRoleLambdaPermissionApiGateway": {
+    "UpdateSkillLambdaPermissionApiGateway": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "FunctionName": {
-          "Ref": "DeleteRoleLambdaFunctionArnParameter"
+          "Ref": "UpdateSkillLambdaFunctionArnParameter"
         },
         "Action": "lambda:InvokeFunction",
         "Principal": "apigateway.amazonaws.com",
@@ -168,11 +192,11 @@
       },
       "DependsOn": []
     },
-    "GetRoleLambdaPermissionApiGateway": {
+    "RemoveSkillLambdaPermissionApiGateway": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "FunctionName": {
-          "Ref": "GetRoleLambdaFunctionArnParameter"
+          "Ref": "RemoveSkillLambdaFunctionArnParameter"
         },
         "Action": "lambda:InvokeFunction",
         "Principal": "apigateway.amazonaws.com",
@@ -203,11 +227,11 @@
       },
       "DependsOn": []
     },
-    "GetAllRolesLambdaPermissionApiGateway": {
+    "ListExperienceLambdaPermissionApiGateway": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "FunctionName": {
-          "Ref": "GetAllRolesLambdaFunctionArnParameter"
+          "Ref": "ListExperienceLambdaFunctionArnParameter"
         },
         "Action": "lambda:InvokeFunction",
         "Principal": "apigateway.amazonaws.com",
@@ -238,11 +262,291 @@
       },
       "DependsOn": []
     },
-    "AddUserLambdaPermissionApiGateway": {
+    "GetExperienceLambdaPermissionApiGateway": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "FunctionName": {
-          "Ref": "AddUserLambdaFunctionArnParameter"
+          "Ref": "GetExperienceLambdaFunctionArnParameter"
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApiParameter"
+              },
+              "/*/*"
+            ]
+          ]
+        }
+      },
+      "DependsOn": []
+    },
+    "CreateExperienceLambdaPermissionApiGateway": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "CreateExperienceLambdaFunctionArnParameter"
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApiParameter"
+              },
+              "/*/*"
+            ]
+          ]
+        }
+      },
+      "DependsOn": []
+    },
+    "UpdateExperienceLambdaPermissionApiGateway": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "UpdateExperienceLambdaFunctionArnParameter"
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApiParameter"
+              },
+              "/*/*"
+            ]
+          ]
+        }
+      },
+      "DependsOn": []
+    },
+    "DeleteExperienceLambdaPermissionApiGateway": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "DeleteExperienceLambdaFunctionArnParameter"
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApiParameter"
+              },
+              "/*/*"
+            ]
+          ]
+        }
+      },
+      "DependsOn": []
+    },
+    "ListPortfolioLambdaPermissionApiGateway": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "ListPortfolioLambdaFunctionArnParameter"
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApiParameter"
+              },
+              "/*/*"
+            ]
+          ]
+        }
+      },
+      "DependsOn": []
+    },
+    "GetPortfolioLambdaPermissionApiGateway": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "GetPortfolioLambdaFunctionArnParameter"
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApiParameter"
+              },
+              "/*/*"
+            ]
+          ]
+        }
+      },
+      "DependsOn": []
+    },
+    "CreatePortfolioLambdaPermissionApiGateway": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "CreatePortfolioLambdaFunctionArnParameter"
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApiParameter"
+              },
+              "/*/*"
+            ]
+          ]
+        }
+      },
+      "DependsOn": []
+    },
+    "UpdatePortfolioLambdaPermissionApiGateway": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "UpdatePortfolioLambdaFunctionArnParameter"
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "ApiGatewayRestApiParameter"
+              },
+              "/*/*"
+            ]
+          ]
+        }
+      },
+      "DependsOn": []
+    },
+    "DeletePortfolioLambdaPermissionApiGateway": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "DeletePortfolioLambdaFunctionArnParameter"
         },
         "Action": "lambda:InvokeFunction",
         "Principal": "apigateway.amazonaws.com",
