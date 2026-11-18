@@ -18,17 +18,6 @@ export const getSkills = async (): Promise<SkillGroupRecord[]> => {
   return data.data;
 };
 
-/** Groups and skills saved in DynamoDB (`selected: true`) for the public stack page. */
-export const selectedSkillGroups = (groups: SkillGroupRecord[]): SkillGroupRecord[] =>
-  groups
-    .map((group) => ({
-      ...group,
-      skills: group.skills
-        .filter((skill) => skill.selected)
-        .map((skill) => ({ ...skill, selected: true })),
-    }))
-    .filter((group) => group.skills.length > 0);
-
 /** Full catalog as card data when the API is unavailable (local dev, outages). */
 export const getSkillCatalog = (): SkillGroupRecord[] => catalogSkillGroups();
 
