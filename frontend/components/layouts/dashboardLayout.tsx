@@ -1,7 +1,7 @@
 import React, { type ReactNode } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { LuBriefcase, LuLayers } from "react-icons/lu";
+import { LuBriefcase, LuImages, LuLayers } from "react-icons/lu";
 import { Toaster } from "react-hot-toast";
 import DashboardSideNav, {
   type DashboardNavGroup,
@@ -13,6 +13,7 @@ const groups: DashboardNavGroup[] = [
     label: "",
     items: [
       { href: "/dashboard/experience", label: "Experience", icon: <LuBriefcase /> },
+      { href: "/dashboard/portfolio", label: "Portfolio", icon: <LuImages /> },
       { href: "/dashboard/stack", label: "Tech stack", icon: <LuLayers /> },
     ],
   },
