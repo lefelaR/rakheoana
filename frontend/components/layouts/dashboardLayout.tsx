@@ -11,7 +11,7 @@ import styles from "./dashboardLayout.module.css";
 const groups: DashboardNavGroup[] = [
   {
     label: "",
-    items: [{ href: "/dashboard/stack", label: "Tech stack", icon: LuLayers({}) }],
+    items: [{ href: "/dashboard/stack", label: "Tech stack", icon: <LuLayers /> }],
   },
 ];
 

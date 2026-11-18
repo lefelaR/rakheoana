@@ -71,7 +71,7 @@ type SkillIconProps = {
 
 const SkillIcon = ({ name }: SkillIconProps) => {
   const Icon = icons[name] ?? LuCode;
-  return <span aria-hidden="true">{Icon({ size: 28 })}</span>;
+  return <Icon size={28} aria-hidden="true" />;
 };
 
 export default SkillIcon;

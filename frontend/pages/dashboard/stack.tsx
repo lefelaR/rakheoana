@@ -5,7 +5,12 @@ import TechStackTemplate, {
   type TechStackGroup,
 } from "@components/templates/TechStackTemplate";
 import type { Skill } from "@components/organisms/SkillGroup";
-import { getSkills, removeSkill, selectSkill } from "@services/skillsService";
+import {
+  getSkills,
+  removeSkill,
+  selectSkill,
+  type SkillGroupRecord,
+} from "@services/skillsService";
 
 const DashboardTechStack = () => {
   const [groups, setGroups] = useState<TechStackGroup[]>([]);
@@ -35,7 +40,7 @@ const DashboardTechStack = () => {
     };
   }, []);
 
-  const applySelection = (records: TechStackGroup[], id: string, selected: boolean) =>
+  const applySelection = (records: SkillGroupRecord[], id: string, selected: boolean) =>
     records.map((group) => ({
       ...group,
       skills: group.skills.map((skill) =>
