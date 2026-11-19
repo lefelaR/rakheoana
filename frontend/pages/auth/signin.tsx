@@ -3,15 +3,26 @@ import React, { useState, useEffect } from "react";
 import User from "models/user.model";
 import axios from "axios";
 import { Formik, Form, Field, FieldAttributes, useField } from "formik";
-import toast,{Toaster} from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/router";
 import userSignIn from "@services/auth/userSignIn";
 import useUserContext from 'hooks/useUser';
+import PasswordField from "@components/molecules/PasswordField";
+
+const signInFailureMessage = (error: { message?: string } | null) => {
+  if (error?.message === "User is not confirmed") {
+    return "Your email is not verified. Check your inbox for a verification email.";
+  }
+
+  return "Sign in failed. Check your email and password and try again.";
+};
 
 const Signin = () => {
   const router = useRouter();
   const {onUpdated: handleUserUpdate,currentUser,isLoading} = useUserContext();
   return (
+    <>
+    <Toaster position="bottom-left" />
     <div className="d-flex align-items-center justify-content-center min-vh-100 px-3">
       <div className="col-lg-5 col-md-8 col-12" id="auth-left">
         <div className="card shadow p-5 sm-5 bg-white rounded ">
@@ -26,33 +37,14 @@ const Signin = () => {
               email: "",
               password: "",
             }}
-            onSubmit={(values, { resetForm, setSubmitting }) => {
+            onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
               userSignIn({ email: values.email, password: values.password })
-                .then((res:any) => {
-                  
-                  toast.success("Sign in successful");
-                  // handleUserUpdate().then(() => {
-                  //   resetForm();
-                  //   console.log("Done");
-                    router.push("/dashboard/");
-                  // });
+                .then(() => {
+                  router.push("/dashboard/");
                 })
-                .catch((err: any) => {
-                  if (err.message === "User is not confirmed") {
-                    toast.error(
-                      "Your email is not verified, please check your email for a verification email from us."
-                    );
-                  } else if (
-                    err.message === "handleUserUpdate is not a function" ||
-                    err.message === "t is not a function"
-                  ) {
-                    toast.error(
-                      "Unable to proceed, please contact Sam for assistance"
-                    );
-                  } else {
-                    toast.error(err.message);
-                  }
+                .catch((err: { message?: string }) => {
+                  toast.error(signInFailureMessage(err));
                   setSubmitting(false);
                 });
             }}
@@ -75,21 +67,12 @@ const Signin = () => {
                     <i className="bi bi-person"></i>
                   </div>
                 </div>
-                <div className="form-group position-relative has-icon-left mb-4">
-                  <Field
+                <div className="form-group mb-4">
+                  <PasswordField
                     name="password"
-                    type="input"
                     className="form-control form-control-xl"
-                    margin="normal"
-                    placeholder={"Password"}
-                    label="Password"
-                    fullWidth
-                    error={!!errors.password && !!touched.password}
-                    helperText={!!touched.password && errors.password}
+                    placeholder="Password"
                   />
-                  <div className="form-control-icon">
-                    <i className="bi bi-person"></i>
-                  </div>
                 </div>
                 <input
                   className="btn main-btn btn-primary btn-block shadow-lg mt-5"
@@ -122,6 +105,7 @@ const Signin = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

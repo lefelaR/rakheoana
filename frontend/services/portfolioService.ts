@@ -31,11 +31,13 @@ export const createPortfolio = async (
 
 export const isDraftPortfolioId = (id: string) => id.startsWith("new-");
 
-export const createBlankPortfolioProject = (): PortfolioProject => ({
-  id: `new-${Date.now()}`,
+export const createBlankPortfolioProject = (
+  period: PortfolioProject["period"]
+): PortfolioProject => ({
+  id: `new-${period}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 6)}`,
   title: "",
   credit: "",
   url: "",
   image: "",
-  period: "past",
+  period,
 });
