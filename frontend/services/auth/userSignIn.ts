@@ -2,7 +2,6 @@
 import { CognitoUser, ICognitoUserPoolData, AuthenticationDetails } from 'amazon-cognito-identity-js';
 // import logger from "@services/logService";
 import UserPool from './userPool'
-import  toast  from 'react-hot-toast';
 
 
 interface User {
@@ -30,8 +29,6 @@ const signUp = (props: User) => {
                 resolve(data)
             },
             onFailure: err => {
-                // logger.log(err)
-                toast.error('Successfully toasted!')
                 reject(err)
             },
         })
