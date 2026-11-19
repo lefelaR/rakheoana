@@ -60,7 +60,7 @@ const PortfolioProjectEditor = ({
       </p>
       {!fileImage && draft.image ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img className={styles.preview} src={draft.image} alt="" />
+        <img className={styles.preview} src={draft.image} alt="" loading="lazy" decoding="async" />
       ) : null}
       <label className={styles.field}>
         <span className={styles.label}>Title</span>

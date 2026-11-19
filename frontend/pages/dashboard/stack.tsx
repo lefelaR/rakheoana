@@ -14,7 +14,8 @@ import {
 const DashboardTechStack = () => {
   const [groups, setGroups] = useState<TechStackGroup[]>([]);
   const [pendingId, setPendingId] = useState<string>();
-  const [status, setStatus] = useState("Loading tech stack.");
+  const [loading, setLoading] = useState(true);
+  const [status, setStatus] = useState("");
   const [catalogOnly, setCatalogOnly] = useState(false);
 
   useEffect(() => {
@@ -28,6 +29,7 @@ const DashboardTechStack = () => {
         setGroups(records);
         setCatalogOnly(false);
         setStatus("");
+        setLoading(false);
       })
       .catch(() => {
         if (!active) {
@@ -36,6 +38,7 @@ const DashboardTechStack = () => {
         setGroups([]);
         setCatalogOnly(true);
         setStatus("Could not load the tech stack from the API.");
+        setLoading(false);
       });
 
     return () => {
@@ -78,7 +81,7 @@ const DashboardTechStack = () => {
   };
 
   return (
-    <Layout>
+    <Layout loading={loading} loadingLabel="Loading tech stack.">
       <TechStackTemplate
         groups={groups}
         pendingId={pendingId}

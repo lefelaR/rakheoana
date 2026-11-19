@@ -1,15 +1,18 @@
+import type { CSSProperties } from "react";
 import type { PortfolioProject } from "@services/portfolioService";
 
 type PortfolioProjectCardProps = {
   project: PortfolioProject;
+  className?: string;
+  style?: CSSProperties;
 };
 
-const PortfolioProjectCard = ({ project }: PortfolioProjectCardProps) => {
+const PortfolioProjectCard = ({ project, className, style }: PortfolioProjectCardProps) => {
   return (
-    <div className="single-work text-center mt-30">
+    <div className={["single-work text-center mt-30", className].filter(Boolean).join(" ")} style={style}>
       <div className="work-image">
         {project.image ? (
-          <img src={project.image} alt={project.title} />
+          <img src={project.image} alt={project.title} loading="lazy" decoding="async" />
         ) : (
           <div className="work-fallback">
             <h3 className="work-title">{project.title}</h3>

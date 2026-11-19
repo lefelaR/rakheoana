@@ -76,25 +76,14 @@ const Signup = () => {
                   });
               }}
             >
-              {({
-                errors,
-                touched,
-                isSubmitting,
-                handleBlur,
-                handleChange,
-              }) => (
-                <Form>
+              <Form>
                   <div className="form-group position-relative has-icon-left mb-4">
                     <Field
                       name="name"
-                      type="input"
+                      type="text"
                       className="form-control form-control-xl"
-                      margin="normal"
-                      label="Name"
-                      placeholder={"Name"}
-                      fullWidth
-                      error={!!errors.name && !!touched.name}
-                      helperText={!!touched.name && errors.name}
+                      placeholder="Name"
+                      autoComplete="given-name"
                     />
                     <div className="form-control-icon">
                       <i className="bi bi-person"></i>
@@ -103,14 +92,10 @@ const Signup = () => {
                   <div className="form-group position-relative has-icon-left mb-4">
                     <Field
                       name="familyName"
-                      type="input"
+                      type="text"
                       className="form-control form-control-xl"
-                      margin="normal"
-                      placeholder={"Surname"}
-                      label="Surname"
-                      fullWidth
-                      error={!!errors.familyName && !!touched.familyName}
-                      helperText={!!touched.familyName && errors.familyName}
+                      placeholder="Surname"
+                      autoComplete="family-name"
                     />
                     <div className="form-control-icon">
                       <i className="bi bi-person"></i>
@@ -119,14 +104,10 @@ const Signup = () => {
                   <div className="form-group position-relative has-icon-left mb-4">
                     <Field
                       name="email"
-                      type="input"
-                      margin="normal"
-                      placeholder={"Email"}
+                      type="email"
+                      placeholder="Email"
                       className="form-control form-control-xl"
-                      label="Email"
-                      fullWidth
-                      error={!!errors.email && !!touched.email}
-                      helperText={!!touched.email && errors.email}
+                      autoComplete="email"
                     />
                     <div className="form-control-icon">
                       <i className="bi bi-person"></i>
@@ -135,14 +116,10 @@ const Signup = () => {
                   <div className="form-group position-relative has-icon-left mb-4">
                   <Field
                       name="password"
-                      type="input"
-                      placeholder={"Password"}
-                      margin="normal"
+                      type="password"
+                      placeholder="Password"
                       className="form-control form-control-xl"
-                      label="Password"
-                      fullWidth
-                      error={!!errors.password && !!touched.password}
-                      helperText={!!touched.password && errors.password}
+                      autoComplete="new-password"
                     />
                     <div className="form-control-icon">
                       <i className="bi bi-shield-lock"></i>
@@ -151,14 +128,10 @@ const Signup = () => {
                   <div className="form-group position-relative has-icon-left mb-4">
                   <Field
                       name="confirmPassword"
-                      type="input"
-                      placeholder={"Confirm Password"}
-                      margin="normal"
+                      type="password"
+                      placeholder="Confirm Password"
                       className="form-control form-control-xl"
-                      label="Confirm Password"
-                      fullWidth
-                      error={!!errors.confirmPassword && !!touched.confirmPassword}
-                      helperText={!!touched.confirmPassword && errors.confirmPassword}
+                      autoComplete="new-password"
                     />
                     <div className="form-control-icon">
                       <i className="bi bi-shield-lock"></i>
@@ -171,8 +144,7 @@ const Signup = () => {
                     name="submit"
                     value="Log in"
                   />
-                </Form>
-              )}
+              </Form>
             </Formik>
             <div className="text-center mt-5 font-weight-smaller">
               <p className="text-gray-600">

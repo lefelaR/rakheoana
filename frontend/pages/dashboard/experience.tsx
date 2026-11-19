@@ -16,7 +16,8 @@ const DashboardExperience = () => {
   const [roles, setRoles] = useState<ExperienceRole[]>([]);
   const [savingId, setSavingId] = useState<string>();
   const [readOnly, setReadOnly] = useState(false);
-  const [status, setStatus] = useState("Loading experience.");
+  const [loading, setLoading] = useState(true);
+  const [status, setStatus] = useState("");
 
   useEffect(() => {
     let active = true;
@@ -29,6 +30,7 @@ const DashboardExperience = () => {
         setRoles(records);
         setReadOnly(false);
         setStatus("");
+        setLoading(false);
       })
       .catch(() => {
         if (!active) {
@@ -37,6 +39,7 @@ const DashboardExperience = () => {
         setRoles([]);
         setReadOnly(true);
         setStatus("Could not load experience from the API.");
+        setLoading(false);
       });
 
     return () => {
@@ -101,7 +104,7 @@ const DashboardExperience = () => {
   };
 
   return (
-    <Layout>
+    <Layout loading={loading} loadingLabel="Loading experience.">
       <DashboardExperienceTemplate
         roles={roles}
         savingId={savingId}

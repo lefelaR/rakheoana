@@ -1,4 +1,5 @@
 import ExperienceRoleCard from "@components/molecules/ExperienceRoleCard";
+import LazyLoad from "@components/molecules/LazyLoad";
 import type { ExperienceRole } from "@services/experienceService";
 import styles from "./SiteExperienceTemplate.module.css";
 
@@ -22,7 +23,15 @@ const SiteExperienceTemplate = ({ roles }: SiteExperienceTemplateProps) => {
             {roles.length === 0 ? (
               <p className="text-center">No roles published yet.</p>
             ) : (
-              roles.map((role) => <ExperienceRoleCard key={role.id} role={role} />)
+              roles.map((role, index) =>
+                index === 0 ? (
+                  <ExperienceRoleCard key={role.id} role={role} />
+                ) : (
+                  <LazyLoad key={role.id} intrinsicSize="22rem">
+                    <ExperienceRoleCard role={role} />
+                  </LazyLoad>
+                ),
+              )
             )}
           </div>
         </div>

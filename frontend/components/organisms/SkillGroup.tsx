@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import SkillTile from "@components/molecules/SkillTile";
 import styles from "./SkillGroup.module.css";
 
@@ -14,6 +15,8 @@ type SkillGroupProps = {
   onToggle?: (skill: Skill) => void;
   /** Public site: Bootstrap row/cols. Dashboard: CSS grid. */
   layout?: "grid" | "bootstrap";
+  className?: string;
+  style?: CSSProperties;
 };
 
 const headingId = (label: string) =>
@@ -25,12 +28,18 @@ const SkillGroup = ({
   pendingId,
   onToggle,
   layout = "grid",
+  className,
+  style,
 }: SkillGroupProps) => {
   const id = headingId(label);
   const bootstrap = layout === "bootstrap";
 
   return (
-    <section className={styles.group} aria-labelledby={id}>
+    <section
+      className={[styles.group, className].filter(Boolean).join(" ")}
+      style={style}
+      aria-labelledby={id}
+    >
       <h2 id={id} className={styles.label}>
         {label}
       </h2>

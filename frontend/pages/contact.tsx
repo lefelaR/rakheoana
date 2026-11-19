@@ -1,6 +1,7 @@
 import { ImageError } from "next/dist/server/image-optimizer";
 import React, { useState, useEffect } from "react";
 import ContactInformation from "components/atoms/contactInformation";
+import LazyLoad from "components/molecules/LazyLoad";
 import Layout from "components/layouts/frontendLayout";
 import Email from "models/email.model";
 import { sendEmail } from "services/mailServices";
@@ -82,6 +83,7 @@ const Contact = () => {
           </div>
 
           <div className="col-lg-6">
+            <LazyLoad intrinsicSize="500px">
             <div className="contact-map mt-60">
               <div className="gmap_canvas">
                 <iframe
@@ -94,6 +96,7 @@ const Contact = () => {
                 ></iframe>
               </div>
             </div>
+            </LazyLoad>
           </div>
         </div>
       </div>

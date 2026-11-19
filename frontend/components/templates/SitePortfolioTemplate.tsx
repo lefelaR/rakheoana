@@ -1,6 +1,7 @@
 import GithubContributionsCard, {
   type GithubContributionsCardProps,
 } from "@components/molecules/GithubContributionsCard";
+import LazyLoad from "@components/molecules/LazyLoad";
 import PortfolioProjectCard from "@components/molecules/PortfolioProjectCard";
 import { portfolioPeriods, type PortfolioProject } from "@services/portfolioService";
 
@@ -42,7 +43,9 @@ const SitePortfolioTemplate = ({
                 ) : (
                   items.map((project) => (
                     <div className="col-lg-4 col-md-6 col-sm-6" key={project.id}>
-                      <PortfolioProjectCard project={project} />
+                      <LazyLoad intrinsicSize="22rem">
+                        <PortfolioProjectCard project={project} />
+                      </LazyLoad>
                     </div>
                   ))
                 )}

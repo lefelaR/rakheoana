@@ -1,3 +1,4 @@
+import LazyMount from "@components/molecules/LazyMount";
 import ExperienceRoleEditor from "@components/organisms/ExperienceRoleEditor";
 import {
   isDraftExperienceId,
@@ -49,16 +50,27 @@ const DashboardExperienceTemplate = ({
         ) : null}
       </header>
       <div className={styles.list}>
-        {roles.map((role) => (
-          <ExperienceRoleEditor
-            key={role.id}
-            role={role}
-            isNew={isDraftExperienceId(role.id)}
-            disabled={readOnly || savingId === role.id}
-            onSave={onSave}
-            onDelete={() => onDelete(role)}
-          />
-        ))}
+        {roles.map((role, index) => {
+          const editor = (
+            <ExperienceRoleEditor
+              role={role}
+              isNew={isDraftExperienceId(role.id)}
+              disabled={readOnly || savingId === role.id}
+              onSave={onSave}
+              onDelete={() => onDelete(role)}
+            />
+          );
+
+          if (index === 0) {
+            return <div key={role.id}>{editor}</div>;
+          }
+
+          return (
+            <LazyMount key={role.id} minHeight={640}>
+              {editor}
+            </LazyMount>
+          );
+        })}
       </div>
     </section>
   );

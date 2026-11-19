@@ -2,6 +2,7 @@ import React from "react";
 import { Toaster } from "react-hot-toast";
 import Navbar from "../atoms/navbar";
 import Footer from "../atoms/footer";
+import LazyLoad from "../molecules/LazyLoad";
 import Head from "next/head";
 import styles from "../../styles/Home.module.css";
 
@@ -27,7 +28,9 @@ export default function Layout({ children }: any) {
         <main className={styles.main}>{children}</main>
       </div>
 
-      <Footer />
+      <LazyLoad intrinsicSize="18rem">
+        <Footer />
+      </LazyLoad>
     </>
   );
 }

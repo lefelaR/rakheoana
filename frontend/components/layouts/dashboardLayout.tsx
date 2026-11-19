@@ -1,9 +1,10 @@
-import React, { type ReactNode } from "react";
+import React, { useEffect, useState, type ReactNode } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { LuBriefcase, LuImages, LuLayers } from "react-icons/lu";
 import Icon from "@components/atoms/Icon";
 import Breadcrumbs, { type BreadcrumbItem } from "@components/molecules/Breadcrumbs";
+import LoadingOverlay from "@components/molecules/LoadingOverlay";
 import { Toaster } from "react-hot-toast";
 import DashboardSideNav, {
   type DashboardNavGroup,
@@ -38,8 +39,26 @@ const breadcrumbItems = (pathname: string): BreadcrumbItem[] => {
   ];
 };
 
-export default function DashboardLayout({ children }: { children: ReactNode }) {
+type DashboardLayoutProps = {
+  children: ReactNode;
+  /** Keep the preload overlay up while this page is still fetching. */
+  loading?: boolean;
+  loadingLabel?: string;
+};
+
+export default function DashboardLayout({
+  children,
+  loading = false,
+  loadingLabel = "Loading dashboard.",
+}: DashboardLayoutProps) {
   const { pathname } = useRouter();
+  const [booting, setBooting] = useState(true);
+
+  useEffect(() => {
+    setBooting(false);
+  }, []);
+
+  const showOverlay = booting || loading;
 
   return (
     <>
@@ -49,7 +68,8 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
         <link rel="icon" href="/logo.ico" />
       </Head>
       <Toaster position="bottom-left" reverseOrder={false} />
-      <div className={styles.shell}>
+      {showOverlay ? <LoadingOverlay label={loadingLabel} /> : null}
+      <div className={styles.shell} aria-hidden={showOverlay || undefined} aria-busy={showOverlay}>
         <DashboardSideNav groups={groups} pathname={pathname} />
         <div className={styles.content}>
           <Breadcrumbs items={breadcrumbItems(pathname)} />

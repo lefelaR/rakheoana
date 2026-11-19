@@ -16,7 +16,8 @@ const DashboardPortfolio = () => {
   const [projects, setProjects] = useState<PortfolioProject[]>([]);
   const [savingId, setSavingId] = useState<string>();
   const [readOnly, setReadOnly] = useState(false);
-  const [status, setStatus] = useState("Loading portfolio.");
+  const [loading, setLoading] = useState(true);
+  const [status, setStatus] = useState("");
 
   useEffect(() => {
     let active = true;
@@ -29,6 +30,7 @@ const DashboardPortfolio = () => {
         setProjects(records);
         setReadOnly(false);
         setStatus("");
+        setLoading(false);
       })
       .catch(() => {
         if (!active) {
@@ -37,6 +39,7 @@ const DashboardPortfolio = () => {
         setProjects([]);
         setReadOnly(true);
         setStatus("Could not load portfolio projects from the API.");
+        setLoading(false);
       });
 
     return () => {
@@ -103,7 +106,7 @@ const DashboardPortfolio = () => {
   };
 
   return (
-    <Layout>
+    <Layout loading={loading} loadingLabel="Loading portfolio.">
       <DashboardPortfolioTemplate
         projects={projects}
         savingId={savingId}

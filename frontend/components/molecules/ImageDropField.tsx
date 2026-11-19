@@ -190,7 +190,7 @@ const ImageDropField = ({ id, value, disabled, onChange }: ImageDropFieldProps) 
       >
         {value ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img className={styles.preview} src={value} alt="" />
+          <img className={styles.preview} src={value} alt="" loading="lazy" decoding="async" />
         ) : null}
         <span className={styles.hint} id={hintId}>
           {reading
