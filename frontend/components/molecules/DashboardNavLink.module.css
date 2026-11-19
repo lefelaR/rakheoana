@@ -23,15 +23,15 @@
 }
 
 .link:focus-visible {
-  outline: 2px solid #38f9d7;
+  outline: 2px solid #754ef9;
   outline-offset: 2px;
 }
 
 .active,
 .active:hover {
-  background: #f3fffc;
-  color: #0f766e;
-  box-shadow: inset 3px 0 0 #38f9d7;
+  background: #f4f1fe;
+  color: #754ef9;
+  box-shadow: inset 3px 0 0 #754ef9;
 }
 
 .icon {
@@ -49,5 +49,5 @@
 }
 
 .active .icon {
-  color: #0f766e;
+  color: #754ef9;
 }
