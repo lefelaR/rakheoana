@@ -1,0 +1,110 @@
+.field {
+  display: block;
+  margin-top: 0.65rem;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #8a8fa3;
+  font-family: Poppins, "Segoe UI", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.drop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 8.5rem;
+  padding: 1rem;
+  border: 1.5px dashed #d5d8e4;
+  border-radius: 0.65rem;
+  background: #f7f8fb;
+  color: #5c6178;
+  text-align: center;
+  cursor: pointer;
+}
+
+.drop:hover,
+.active {
+  border-color: #754ef9;
+  background: #f4f1fe;
+}
+
+.drop:focus-within {
+  outline: 2px solid #754ef9;
+  outline-offset: 2px;
+}
+
+.disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.preview {
+  display: block;
+  max-width: 100%;
+  max-height: 8rem;
+  object-fit: contain;
+  border-radius: 0.4rem;
+}
+
+.hint {
+  font-family: Poppins, "Segoe UI", sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.formats {
+  color: #8a8fa3;
+  font-family: Poppins, "Segoe UI", sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.file {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.remove {
+  margin-top: 0.45rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #754ef9;
+  font-family: Poppins, "Segoe UI", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.remove:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.remove:focus-visible {
+  outline: 2px solid #754ef9;
+  outline-offset: 2px;
+}
+
+.error {
+  margin: 0.4rem 0 0;
+  color: #9b3d3d;
+  font-family: Poppins, "Segoe UI", sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}

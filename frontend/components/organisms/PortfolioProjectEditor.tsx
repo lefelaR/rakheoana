@@ -1,4 +1,5 @@
 import { useEffect, useState, type FormEvent } from "react";
+import ImageDropField from "@components/molecules/ImageDropField";
 import {
   portfolioPeriods,
   type PortfolioProject,
@@ -31,6 +32,8 @@ const PortfolioProjectEditor = ({
     setDraft((current) => ({ ...current, [key]: value }));
   };
 
+  const fileImage = isNew || Boolean(draft.image?.startsWith("data:"));
+
   const onSubmit = (event: FormEvent) => {
     event.preventDefault();
     onSave({
@@ -51,7 +54,7 @@ const PortfolioProjectEditor = ({
       <p id={`${project.id}-heading`} className={styles.srOnly}>
         Edit {project.title || "new project"}
       </p>
-      {draft.image ? (
+      {!fileImage && draft.image ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img className={styles.preview} src={draft.image} alt="" />
       ) : null}
@@ -103,15 +106,24 @@ const PortfolioProjectEditor = ({
           disabled={disabled}
         />
       </label>
-      <label className={styles.field}>
-        <span className={styles.label}>Image path</span>
-        <input
-          className={styles.input}
-          value={draft.image ?? ""}
-          onChange={(event) => setField("image", event.target.value)}
+      {fileImage ? (
+        <ImageDropField
+          id={`${project.id}-image`}
+          value={draft.image}
           disabled={disabled}
+          onChange={(image) => setField("image", image)}
         />
-      </label>
+      ) : (
+        <label className={styles.field}>
+          <span className={styles.label}>Image path</span>
+          <input
+            className={styles.input}
+            value={draft.image ?? ""}
+            onChange={(event) => setField("image", event.target.value)}
+            disabled={disabled}
+          />
+        </label>
+      )}
       <button type="submit" className={styles.save} disabled={disabled}>
         {isNew ? "Add project" : "Save project"}
       </button>

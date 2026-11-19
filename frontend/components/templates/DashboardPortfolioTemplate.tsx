@@ -1,4 +1,4 @@
-import PortfolioProjectEditor from "@components/molecules/PortfolioProjectEditor";
+import PortfolioProjectEditor from "@components/organisms/PortfolioProjectEditor";
 import {
   isDraftPortfolioId,
   portfolioPeriods,
