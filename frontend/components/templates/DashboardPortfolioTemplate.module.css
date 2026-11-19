@@ -26,10 +26,10 @@
 
 .addButton {
   padding: 0.5rem 1rem;
-  border: 1px solid #38f9d7;
+  border: 1px solid #754ef9;
   border-radius: 0.5rem;
-  background: #f3fffc;
-  color: #0f766e;
+  background: #f4f1fe;
+  color: #754ef9;
   font-family: Poppins, "Segoe UI", sans-serif;
   font-size: 0.88rem;
   font-weight: 600;
@@ -37,11 +37,11 @@
 }
 
 .addButton:hover:not(:disabled) {
-  background: #e8fcf8;
+  background: #ebe6fd;
 }
 
 .addButton:focus-visible {
-  outline: 2px solid #38f9d7;
+  outline: 2px solid #754ef9;
   outline-offset: 2px;
 }
 

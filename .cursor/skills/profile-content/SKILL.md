@@ -35,11 +35,11 @@ Web Developer, Software Engineer, Full-Stack Developer. Strengths called out on 
 
 Keep these five groups. Do not add or drop names.
 
-- Languages: JavaScript, TypeScript, C#, PHP, HTML5, CSS3/SCSS, SQL
+- Languages: JavaScript, TypeScript, C#, PHP, Python, Go, Java, HTML5, CSS3/SCSS, SQL
 - Frontend: React, Next.js, Vue.js, React Native, Tailwind CSS, Bootstrap, Material-UI
-- Backend: Node.js, ASP.NET MVC, .NET Core Web API, Laravel, Zend Framework
-- Cloud and DevOps: AWS Lambda, Cognito, CodeBuild, CodePipeline, EC2, Docker, Serverless, DynamoDB, MySQL, MSSQL, CI/CD
-- Tools: Git, VS Code, Visual Studio, Cursor, AI Agents
+- Backend: Node.js, ASP.NET MVC, .NET Core Web API, Laravel, Zend Framework, FastAPI, Spring Boot
+- Cloud and DevOps: AWS Lambda, Cognito, CodeBuild, CodePipeline, EC2, Docker, Serverless, DynamoDB, MySQL, MSSQL, PostgreSQL, Redis, CI/CD, Kubernetes, Kafka, Nginx
+- Tools: Git, VS Code, Visual Studio, Cursor, Linux, AI Agents
 
 ## Education
 

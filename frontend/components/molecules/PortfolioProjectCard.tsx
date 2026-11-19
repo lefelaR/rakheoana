@@ -8,7 +8,14 @@ const PortfolioProjectCard = ({ project }: PortfolioProjectCardProps) => {
   return (
     <div className="single-work text-center mt-30">
       <div className="work-image">
-        {project.image ? <img src={project.image} alt={project.title} /> : null}
+        {project.image ? (
+          <img src={project.image} alt={project.title} />
+        ) : (
+          <div className="work-fallback">
+            <h3 className="work-title">{project.title}</h3>
+            {project.credit ? <p>{project.credit}</p> : null}
+          </div>
+        )}
       </div>
       <div className="work-overlay">
         <div className="work-content">

@@ -61,7 +61,7 @@
 }
 
 .input:focus-visible {
-  outline: 2px solid #38f9d7;
+  outline: 2px solid #754ef9;
   outline-offset: 1px;
 }
 
@@ -75,8 +75,8 @@
   padding: 0.55rem 1rem;
   border: 0;
   border-radius: 0.5rem;
-  background: linear-gradient(135deg, #43cae9, #38f9d7);
-  color: #0f3d38;
+  background: #754ef9;
+  color: #fff;
   font-family: Poppins, "Segoe UI", sans-serif;
   font-size: 0.88rem;
   font-weight: 600;
