@@ -1,3 +1,4 @@
+import LazyLoad from "@components/molecules/LazyLoad";
 import SkillGroup, { type Skill } from "@components/organisms/SkillGroup";
 import styles from "./TechStackTemplate.module.css";
 
@@ -35,15 +36,26 @@ const TechStackTemplate = ({
           </p>
         ) : null}
       </header>
-      {groups.map((group) => (
-        <SkillGroup
-          key={group.label}
-          label={group.label}
-          skills={group.skills}
-          pendingId={pendingId}
-          onToggle={onToggle}
-        />
-      ))}
+      {groups.map((group, index) =>
+        index === 0 ? (
+          <SkillGroup
+            key={group.label}
+            label={group.label}
+            skills={group.skills}
+            pendingId={pendingId}
+            onToggle={onToggle}
+          />
+        ) : (
+          <LazyLoad key={group.label} intrinsicSize="16rem">
+            <SkillGroup
+              label={group.label}
+              skills={group.skills}
+              pendingId={pendingId}
+              onToggle={onToggle}
+            />
+          </LazyLoad>
+        ),
+      )}
     </section>
   );
 };

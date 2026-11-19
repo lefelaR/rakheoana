@@ -1,4 +1,5 @@
 import { useEffect, useState, type FormEvent } from "react";
+import ImageDropField from "@components/molecules/ImageDropField";
 import {
   portfolioPeriods,
   type PortfolioProject,
@@ -10,6 +11,7 @@ type PortfolioProjectEditorProps = {
   disabled?: boolean;
   isNew?: boolean;
   onSave: (project: PortfolioProject) => void;
+  onDelete: () => void;
 };
 
 const PortfolioProjectEditor = ({
@@ -17,11 +19,14 @@ const PortfolioProjectEditor = ({
   disabled,
   isNew,
   onSave,
+  onDelete,
 }: PortfolioProjectEditorProps) => {
   const [draft, setDraft] = useState(project);
+  const [confirmingDelete, setConfirmingDelete] = useState(false);
 
   useEffect(() => {
     setDraft(project);
+    setConfirmingDelete(false);
   }, [project]);
 
   const setField = <K extends keyof PortfolioProject>(
@@ -30,6 +35,8 @@ const PortfolioProjectEditor = ({
   ) => {
     setDraft((current) => ({ ...current, [key]: value }));
   };
+
+  const fileImage = isNew || Boolean(draft.image?.startsWith("data:"));
 
   const onSubmit = (event: FormEvent) => {
     event.preventDefault();
@@ -51,9 +58,9 @@ const PortfolioProjectEditor = ({
       <p id={`${project.id}-heading`} className={styles.srOnly}>
         Edit {project.title || "new project"}
       </p>
-      {draft.image ? (
+      {!fileImage && draft.image ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img className={styles.preview} src={draft.image} alt="" />
+        <img className={styles.preview} src={draft.image} alt="" loading="lazy" decoding="async" />
       ) : null}
       <label className={styles.field}>
         <span className={styles.label}>Title</span>
@@ -103,18 +110,58 @@ const PortfolioProjectEditor = ({
           disabled={disabled}
         />
       </label>
-      <label className={styles.field}>
-        <span className={styles.label}>Image path</span>
-        <input
-          className={styles.input}
-          value={draft.image ?? ""}
-          onChange={(event) => setField("image", event.target.value)}
+      {fileImage ? (
+        <ImageDropField
+          id={`${project.id}-image`}
+          value={draft.image}
           disabled={disabled}
+          onChange={(image) => setField("image", image)}
         />
-      </label>
-      <button type="submit" className={styles.save} disabled={disabled}>
-        {isNew ? "Add project" : "Save project"}
-      </button>
+      ) : (
+        <label className={styles.field}>
+          <span className={styles.label}>Image path</span>
+          <input
+            className={styles.input}
+            value={draft.image ?? ""}
+            onChange={(event) => setField("image", event.target.value)}
+            disabled={disabled}
+          />
+        </label>
+      )}
+      <div className={styles.actions}>
+        <button type="submit" className={styles.save} disabled={disabled}>
+          Save
+        </button>
+        {confirmingDelete ? (
+          <div className={styles.confirm} role="group" aria-labelledby={`${project.id}-delete`}>
+            <p className={styles.confirmText} id={`${project.id}-delete`}>
+              {isNew
+                ? "Discard this project?"
+                : "Delete this project? It will leave your public portfolio page."}
+            </p>
+            <button type="button" className={styles.delete} onClick={onDelete} disabled={disabled}>
+              Delete
+            </button>
+            <button
+              type="button"
+              className={styles.cancel}
+              onClick={() => setConfirmingDelete(false)}
+              disabled={disabled}
+            >
+              Cancel
+            </button>
+          </div>
+        ) : (
+          <button
+            type="button"
+            className={styles.delete}
+            onClick={() => setConfirmingDelete(true)}
+            disabled={disabled}
+          >
+            Delete
+          </button>
+        )}
+      </div>
     </form>
   );
 };

@@ -1,15 +1,32 @@
+import GithubContributionsCard, {
+  type GithubContributionsCardProps,
+} from "@components/molecules/GithubContributionsCard";
+import LazyLoad from "@components/molecules/LazyLoad";
 import PortfolioProjectCard from "@components/molecules/PortfolioProjectCard";
 import { portfolioPeriods, type PortfolioProject } from "@services/portfolioService";
 
 type SitePortfolioTemplateProps = {
-  projects: PortfolioProject[];
+  projects: PortfolioProject[] | null;
+  projectsFailed?: boolean;
+  contributions: GithubContributionsCardProps;
 };
 
-const SitePortfolioTemplate = ({ projects }: SitePortfolioTemplateProps) => {
+const SitePortfolioTemplate = ({
+  projects,
+  projectsFailed = false,
+  contributions,
+}: SitePortfolioTemplateProps) => {
   return (
     <section id="work" className="work-area pt-125 pb-130">
       <div className="container">
-        {portfolioPeriods.map((period) => {
+        <GithubContributionsCard {...contributions} />
+        {projects === null ? (
+          <p className="text-center">Loading portfolio.</p>
+        ) : projectsFailed ? (
+          <p className="text-center">Portfolio projects could not be loaded.</p>
+        ) : null}
+        {projects && !projectsFailed
+          ? portfolioPeriods.map((period) => {
           const items = projects.filter((project) => project.period === period.id);
           return (
             <div key={period.id} className="mb-5">
@@ -26,14 +43,17 @@ const SitePortfolioTemplate = ({ projects }: SitePortfolioTemplateProps) => {
                 ) : (
                   items.map((project) => (
                     <div className="col-lg-4 col-md-6 col-sm-6" key={project.id}>
-                      <PortfolioProjectCard project={project} />
+                      <LazyLoad intrinsicSize="22rem">
+                        <PortfolioProjectCard project={project} />
+                      </LazyLoad>
                     </div>
                   ))
                 )}
               </div>
             </div>
           );
-        })}
+        })
+          : null}
       </div>
     </section>
   );

@@ -29,6 +29,10 @@ export const createPortfolio = async (
   return data.data;
 };
 
+export const deletePortfolio = async (id: string): Promise<void> => {
+  await http.delete(`/api/portfolio/${id}`);
+};
+
 export const isDraftPortfolioId = (id: string) => id.startsWith("new-");
 
 export const createBlankPortfolioProject = (

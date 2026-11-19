@@ -39,7 +39,7 @@ const DashboardSideNav = ({ groups, pathname }: DashboardSideNavProps) => {
 
   const logout = async () => {
     await userSignOut();
-    router.push("/auth/signin");
+    router.push("/");
   };
 
   useEffect(() => {

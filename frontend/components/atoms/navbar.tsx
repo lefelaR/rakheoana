@@ -29,8 +29,9 @@ export default function Navbar() {
                       src="/images/logo.png"
                       width={100}
                       height={80}
-                      alt="Logo"
+                      alt="Rakheoana Lefela"
                       id="header-logo"
+                      priority
                     />
                   </Link>
                   <button
