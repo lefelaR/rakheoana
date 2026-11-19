@@ -1019,6 +1019,24 @@ filter: grayscale(0) !important;
   position: relative; }
   .single-work .work-image img {
     width: 100%; }
+  .single-work .work-image .work-fallback {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    min-height: 260px;
+    padding: 1.5rem;
+    background: #f4f1fe;
+    color: #32333c; }
+    .single-work .work-image .work-fallback .work-title {
+      margin: 0;
+      color: #32333c;
+      font-size: 22px;
+      font-weight: 600; }
+    .single-work .work-image .work-fallback p {
+      margin: 0;
+      color: #5c6178; }
   .single-work .work-overlay {
     position: absolute;
     top: 0;
