@@ -1,5 +1,6 @@
 import ExperienceRoleCard from "@components/molecules/ExperienceRoleCard";
 import type { ExperienceRole } from "@services/experienceService";
+import styles from "./SiteExperienceTemplate.module.css";
 
 type SiteExperienceTemplateProps = {
   roles: ExperienceRole[];
@@ -7,7 +8,7 @@ type SiteExperienceTemplateProps = {
 
 const SiteExperienceTemplate = ({ roles }: SiteExperienceTemplateProps) => {
   return (
-    <section id="experience" className="pricing-area pt-125 pb-130 my-5">
+    <section id="experience" className={`pricing-area pt-125 pb-130 my-5 ${styles.section}`}>
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-lg-8">
@@ -17,7 +18,7 @@ const SiteExperienceTemplate = ({ roles }: SiteExperienceTemplateProps) => {
           </div>
         </div>
         <div className="row justify-content-center">
-          <div className="col-lg-8">
+          <div className="col-lg-10">
             {roles.length === 0 ? (
               <p className="text-center">No roles published yet.</p>
             ) : (
