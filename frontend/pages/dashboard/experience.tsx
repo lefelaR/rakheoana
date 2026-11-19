@@ -6,14 +6,13 @@ import {
   createBlankExperienceRole,
   createExperience,
   getExperience,
-  getExperienceCatalog,
   isDraftExperienceId,
   updateExperience,
   type ExperienceRole,
 } from "@services/experienceService";
 
 const DashboardExperience = () => {
-  const [roles, setRoles] = useState<ExperienceRole[]>(() => getExperienceCatalog());
+  const [roles, setRoles] = useState<ExperienceRole[]>([]);
   const [savingId, setSavingId] = useState<string>();
   const [readOnly, setReadOnly] = useState(false);
   const [status, setStatus] = useState("Loading experience.");
@@ -34,11 +33,9 @@ const DashboardExperience = () => {
         if (!active) {
           return;
         }
-        setRoles(getExperienceCatalog());
+        setRoles([]);
         setReadOnly(true);
-        setStatus(
-          "Could not reach the API. You can preview edits locally; start the backend on port 4000 to save."
-        );
+        setStatus("Could not load experience from the API.");
       });
 
     return () => {
@@ -52,7 +49,7 @@ const DashboardExperience = () => {
 
   const onSave = async (role: ExperienceRole) => {
     if (readOnly) {
-      toast.error("Start the API before saving experience.");
+      toast.error("The experience API is unavailable, so this role was not saved.");
       return;
     }
 

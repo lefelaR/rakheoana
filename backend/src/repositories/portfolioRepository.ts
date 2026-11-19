@@ -28,3 +28,10 @@ export const putPortfolioRecord = async (
 	});
 	return item;
 };
+
+export const deletePortfolioRecord = async (id: string): Promise<void> => {
+	await DynamoDatabaseService.delete({
+		TableName,
+		Key: { id },
+	});
+};

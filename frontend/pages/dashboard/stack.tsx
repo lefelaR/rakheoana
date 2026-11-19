@@ -6,15 +6,13 @@ import TechStackTemplate, {
 } from "@components/templates/TechStackTemplate";
 import type { Skill } from "@components/organisms/SkillGroup";
 import {
-  getSkillCatalog,
   getSkills,
   removeSkill,
   selectSkill,
-  type SkillGroupRecord,
 } from "@services/skillsService";
 
 const DashboardTechStack = () => {
-  const [groups, setGroups] = useState<TechStackGroup[]>(() => getSkillCatalog());
+  const [groups, setGroups] = useState<TechStackGroup[]>([]);
   const [pendingId, setPendingId] = useState<string>();
   const [status, setStatus] = useState("Loading tech stack.");
   const [catalogOnly, setCatalogOnly] = useState(false);
@@ -27,7 +25,7 @@ const DashboardTechStack = () => {
         if (!active) {
           return;
         }
-        setGroups(Array.isArray(records) && records.length > 0 ? records : getSkillCatalog());
+        setGroups(records);
         setCatalogOnly(false);
         setStatus("");
       })
@@ -35,11 +33,9 @@ const DashboardTechStack = () => {
         if (!active) {
           return;
         }
-        setGroups(getSkillCatalog());
+        setGroups([]);
         setCatalogOnly(true);
-        setStatus(
-          "Could not reach the API. Showing the full catalog — selections will apply once the API is available."
-        );
+        setStatus("Could not load the tech stack from the API.");
       });
 
     return () => {
@@ -47,7 +43,7 @@ const DashboardTechStack = () => {
     };
   }, []);
 
-  const applySelection = (records: SkillGroupRecord[], id: string, selected: boolean) =>
+  const applySelection = (records: TechStackGroup[], id: string, selected: boolean) =>
     records.map((group) => ({
       ...group,
       skills: group.skills.map((skill) =>
@@ -57,7 +53,7 @@ const DashboardTechStack = () => {
 
   const onToggle = async (skill: Skill) => {
     if (catalogOnly) {
-      toast.error("Start the API (backend on port 4000) before saving selections.");
+      toast.error("The tech stack API is unavailable, so this selection was not saved.");
       return;
     }
 

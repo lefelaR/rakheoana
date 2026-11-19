@@ -4,9 +4,9 @@ const _ = require('lodash');
 const dayjs = require('dayjs');
 const utc = require('dayjs/plugin/utc');
 const wait = require('timers-ext/promise/sleep');
-const { legacy, writeText } = require('@serverless/utils/log');
+const { writeText } = require('@serverless/utils/log');
 const validate = require('./lib/validate');
-const formatLambdaLogEvent = require('./utils/formatLambdaLogEvent');
+const formatLambdaLogEvent = require('./utils/format-lambda-log-event');
 const ServerlessError = require('../../serverless-error');
 
 dayjs.extend(utc);
@@ -95,8 +95,10 @@ class AwsLogs {
     const results = await this.provider.request('CloudWatchLogs', 'filterLogEvents', params);
     if (results.events) {
       results.events.forEach((e) => {
-        legacy.write(formatLambdaLogEvent(e.message));
-        writeText(formatLambdaLogEvent(e.message, { isModern: true }));
+        if (e.message.includes('SERVERLESS_ENTERPRISE') || e.message.startsWith('END')) {
+          return;
+        }
+        writeText(formatLambdaLogEvent(e.message));
       });
     }
 

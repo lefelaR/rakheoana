@@ -1,6 +1,7 @@
-import middy from "@middy/core"
-import middyJsonBodyParser from "@middy/http-json-body-parser"
+const middy = require("@middy/core");
+const middyJsonBodyParser = require("@middy/http-json-body-parser");
 
 export const middyfy = (handler) => {
-  return middy(handler).use(middyJsonBodyParser())
-}
+  const wrapped = middy(handler).use(middyJsonBodyParser());
+  return async (event, context) => wrapped(event, context);
+};

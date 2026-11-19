@@ -1,110 +1,124 @@
-import aws from "./awsService";
+import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
+import {
+	BatchWriteCommand,
+	BatchWriteCommandInput,
+	BatchWriteCommandOutput,
+	DeleteCommand,
+	DeleteCommandInput,
+	DeleteCommandOutput,
+	DynamoDBDocumentClient,
+	GetCommand,
+	GetCommandInput,
+	GetCommandOutput,
+	PutCommand,
+	PutCommandInput,
+	PutCommandOutput,
+	QueryCommand,
+	QueryCommandInput,
+	QueryCommandOutput,
+	ScanCommand,
+	ScanCommandInput,
+	ScanCommandOutput,
+	UpdateCommand,
+	UpdateCommandInput,
+	UpdateCommandOutput,
+} from "@aws-sdk/lib-dynamodb";
 import * as awsXRay from "aws-xray-sdk";
-import { DocumentClient } from "aws-sdk/lib/dynamodb/document_client";
-import IConfig from "../common/config.interface";
 import BusinessException from "../common/businessException.model";
+import { region } from "./awsService";
 
-type PutItem = AWS.DynamoDB.DocumentClient.PutItemInput;
-type PutItemOutput = AWS.DynamoDB.DocumentClient.PutItemOutput;
+const buildDocumentClient = (): DynamoDBDocumentClient => {
+	const offline = Boolean(process.env.IS_OFFLINE);
+	const client = new DynamoDBClient(
+		offline
+			? {
+					region: "eu-central-1",
+					endpoint: "http://localhost:8000",
+					credentials: {
+						accessKeyId: "local",
+						secretAccessKey: "local",
+					},
+				}
+			: { region: region() }
+	);
 
-// Batch write
-type BatchWrite = AWS.DynamoDB.DocumentClient.BatchWriteItemInput;
-type BatchWriteOutPut = AWS.DynamoDB.DocumentClient.BatchWriteItemOutput;
-
-// Update
-type UpdateItem = AWS.DynamoDB.DocumentClient.UpdateItemInput;
-type UpdateItemOutPut = AWS.DynamoDB.DocumentClient.UpdateItemOutput;
-
-// Query
-type QueryItem = AWS.DynamoDB.DocumentClient.QueryInput;
-type QueryItemOutput = AWS.DynamoDB.DocumentClient.QueryOutput;
-
-// Get
-type GetItem = AWS.DynamoDB.DocumentClient.GetItemInput;
-type GetItemOutput = AWS.DynamoDB.DocumentClient.GetItemOutput;
-
-// Delete
-type DeleteItem = AWS.DynamoDB.DocumentClient.DeleteItemInput;
-type DeleteItemOutput = AWS.DynamoDB.DocumentClient.DeleteItemOutput;
-
-const getAWS: any = () => {
-	if (!process.env.IS_OFFLINE) {
-		return awsXRay.captureAWS(aws);
+	if (!offline) {
+		awsXRay.captureAWSv3Client(client);
 	}
-	return aws;
+
+	return DynamoDBDocumentClient.from(client);
 };
-const AWS = getAWS();
+
 class DynamoDatabaseService {
-	documentClient: DocumentClient;
+	documentClient: DynamoDBDocumentClient;
+
 	constructor() {
-		let options: IConfig;
-		if (process.env.IS_OFFLINE) {
-			options = {
-				endpoint: "http://localhost:8000",
-				region: "eu-central-1",
-				accessKeyId: "local",
-				secretAccessKey: "local",
-			};
-		}
-		//@ts-ignore
-		this.documentClient = new AWS.DynamoDB.DocumentClient(options);
+		this.documentClient = buildDocumentClient();
 	}
 
-	public create = async (params: PutItem): Promise<PutItemOutput> => {
+	public create = async (params: PutCommandInput): Promise<PutCommandOutput> => {
 		try {
-			return await this.documentClient.put(params).promise();
+			return await this.documentClient.send(new PutCommand(params));
 		} catch (error) {
 			throw new BusinessException(`create-error: ${error}`);
 		}
 	};
 
 	public batchCreate = async (
-		params: BatchWrite
-	): Promise<BatchWriteOutPut> => {
+		params: BatchWriteCommandInput
+	): Promise<BatchWriteCommandOutput> => {
 		try {
-			return await this.documentClient.batchWrite(params).promise();
+			return await this.documentClient.send(new BatchWriteCommand(params));
 		} catch (error) {
 			throw new BusinessException(`batch-write-error: ${error}`);
 		}
 	};
 
-	public update = async (params: UpdateItem): Promise<UpdateItemOutPut> => {
+	public update = async (
+		params: Omit<UpdateCommandInput, "ReturnValues"> & { ReturnValues?: string }
+	): Promise<UpdateCommandOutput> => {
 		try {
-			return await this.documentClient.update(params).promise();
+			return await this.documentClient.send(
+				new UpdateCommand(params as UpdateCommandInput)
+			);
 		} catch (error) {
 			throw new BusinessException(`update-error: ${error}`);
 		}
 	};
 
-	public query = async (params: QueryItem): Promise<QueryItemOutput> => {
+	public query = async (
+		params: QueryCommandInput
+	): Promise<QueryCommandOutput> => {
 		try {
-			return await this.documentClient.query(params).promise();
+			return await this.documentClient.send(new QueryCommand(params));
 		} catch (error) {
 			throw new BusinessException(`query-error: ${error}`);
 		}
 	};
 
-	public get = async (params: GetItem): Promise<GetItemOutput> => {
+	public get = async (params: GetCommandInput): Promise<GetCommandOutput> => {
 		try {
-			return await this.documentClient.get(params).promise();
+			return await this.documentClient.send(new GetCommand(params));
 		} catch (error) {
 			throw new BusinessException(`get-error: ${error}`);
 		}
 	};
 
-	public delete = async (params: DeleteItem): Promise<DeleteItemOutput> => {
+	public delete = async (
+		params: DeleteCommandInput
+	): Promise<DeleteCommandOutput> => {
 		try {
-			return await this.documentClient.delete(params).promise();
+			return await this.documentClient.send(new DeleteCommand(params));
 		} catch (error) {
 			throw new BusinessException(`delete-error: ${error}`);
 		}
 	};
 
-	public async scan(params: any): Promise<any> {
+	public async scan(params: ScanCommandInput): Promise<ScanCommandOutput> {
 		try {
-			return await this.documentClient.scan(params).promise();
-		} catch (e) {
-			throw new BusinessException(`get-all-error: ${e}`);
+			return await this.documentClient.send(new ScanCommand(params));
+		} catch (error) {
+			throw new BusinessException(`get-all-error: ${error}`);
 		}
 	}
 }
