@@ -54,6 +54,17 @@ export const skillId = (name: string) =>
 		.replace(/[^a-z0-9]+/g, "-")
 		.replace(/^-+|-+$/g, "");
 
+export const findCatalogSkillById = (id: string) => {
+	for (const group of skillCatalog) {
+		const name = group.skills.find((skill) => skillId(skill) === id);
+		if (name) {
+			return { id, name, group: group.label };
+		}
+	}
+
+	return undefined;
+};
+
 export const findCatalogSkill = (name: string) => {
 	for (const group of skillCatalog) {
 		if (group.skills.includes(name)) {

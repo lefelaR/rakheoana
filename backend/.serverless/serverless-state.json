@@ -6,14 +6,11 @@
     },
     "provider": {
       "name": "aws",
-      "runtime": "nodejs14.x",
+      "runtime": "nodejs24.x",
       "region": "eu-central-1",
       "tracing": {
         "apiGateway": true,
         "lambda": true
-      },
-      "eventBridge": {
-        "useCloudFormation": true
       },
       "stage": "dev",
       "environment": {
@@ -24,7 +21,6 @@
         "REGION": "eu-central-1",
         "STAGE": "dev"
       },
-      "lambdaHashingVersion": "20201221",
       "deploymentBucket": "portfolio-website-backend-dev",
       "iam": {
         "role": {
@@ -252,7 +248,8 @@
                         "Effect": "Allow",
                         "Action": [
                           "logs:CreateLogStream",
-                          "logs:CreateLogGroup"
+                          "logs:CreateLogGroup",
+                          "logs:TagResource"
                         ],
                         "Resource": [
                           {
@@ -334,10 +331,10 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "portfolio-website-backend-dev",
-                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795043495008-2026-11-18T23:11:35.008Z/portfolio-website-backend-dev.zip"
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
               },
               "Handler": "src/functions/skills/list/handler.main",
-              "Runtime": "nodejs14.x",
+              "Runtime": "nodejs24.x",
               "FunctionName": "portfolio-website-backend-dev-dev-listSkills",
               "MemorySize": 1024,
               "Timeout": 6,
@@ -370,10 +367,10 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "portfolio-website-backend-dev",
-                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795043495008-2026-11-18T23:11:35.008Z/portfolio-website-backend-dev.zip"
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
               },
               "Handler": "src/functions/skills/get/handler.main",
-              "Runtime": "nodejs14.x",
+              "Runtime": "nodejs24.x",
               "FunctionName": "portfolio-website-backend-dev-dev-getSkill",
               "MemorySize": 1024,
               "Timeout": 6,
@@ -406,10 +403,10 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "portfolio-website-backend-dev",
-                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795043495008-2026-11-18T23:11:35.008Z/portfolio-website-backend-dev.zip"
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
               },
               "Handler": "src/functions/skills/select/handler.main",
-              "Runtime": "nodejs14.x",
+              "Runtime": "nodejs24.x",
               "FunctionName": "portfolio-website-backend-dev-dev-selectSkill",
               "MemorySize": 1024,
               "Timeout": 6,
@@ -442,10 +439,10 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "portfolio-website-backend-dev",
-                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795043495008-2026-11-18T23:11:35.008Z/portfolio-website-backend-dev.zip"
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
               },
               "Handler": "src/functions/skills/update/handler.main",
-              "Runtime": "nodejs14.x",
+              "Runtime": "nodejs24.x",
               "FunctionName": "portfolio-website-backend-dev-dev-updateSkill",
               "MemorySize": 1024,
               "Timeout": 6,
@@ -478,10 +475,10 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "portfolio-website-backend-dev",
-                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795043495008-2026-11-18T23:11:35.008Z/portfolio-website-backend-dev.zip"
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
               },
               "Handler": "src/functions/skills/remove/handler.main",
-              "Runtime": "nodejs14.x",
+              "Runtime": "nodejs24.x",
               "FunctionName": "portfolio-website-backend-dev-dev-removeSkill",
               "MemorySize": 1024,
               "Timeout": 6,
@@ -514,10 +511,10 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "portfolio-website-backend-dev",
-                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795043495008-2026-11-18T23:11:35.008Z/portfolio-website-backend-dev.zip"
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
               },
               "Handler": "src/functions/experience/list/handler.main",
-              "Runtime": "nodejs14.x",
+              "Runtime": "nodejs24.x",
               "FunctionName": "portfolio-website-backend-dev-dev-listExperience",
               "MemorySize": 1024,
               "Timeout": 6,
@@ -550,10 +547,10 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "portfolio-website-backend-dev",
-                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795043495008-2026-11-18T23:11:35.008Z/portfolio-website-backend-dev.zip"
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
               },
               "Handler": "src/functions/experience/get/handler.main",
-              "Runtime": "nodejs14.x",
+              "Runtime": "nodejs24.x",
               "FunctionName": "portfolio-website-backend-dev-dev-getExperience",
               "MemorySize": 1024,
               "Timeout": 6,
@@ -586,10 +583,10 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "portfolio-website-backend-dev",
-                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795043495008-2026-11-18T23:11:35.008Z/portfolio-website-backend-dev.zip"
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
               },
               "Handler": "src/functions/experience/create/handler.main",
-              "Runtime": "nodejs14.x",
+              "Runtime": "nodejs24.x",
               "FunctionName": "portfolio-website-backend-dev-dev-createExperience",
               "MemorySize": 1024,
               "Timeout": 6,
@@ -622,10 +619,10 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "portfolio-website-backend-dev",
-                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795043495008-2026-11-18T23:11:35.008Z/portfolio-website-backend-dev.zip"
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
               },
               "Handler": "src/functions/experience/update/handler.main",
-              "Runtime": "nodejs14.x",
+              "Runtime": "nodejs24.x",
               "FunctionName": "portfolio-website-backend-dev-dev-updateExperience",
               "MemorySize": 1024,
               "Timeout": 6,
@@ -658,10 +655,10 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "portfolio-website-backend-dev",
-                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795043495008-2026-11-18T23:11:35.008Z/portfolio-website-backend-dev.zip"
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
               },
               "Handler": "src/functions/experience/delete/handler.main",
-              "Runtime": "nodejs14.x",
+              "Runtime": "nodejs24.x",
               "FunctionName": "portfolio-website-backend-dev-dev-deleteExperience",
               "MemorySize": 1024,
               "Timeout": 6,
@@ -694,10 +691,10 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "portfolio-website-backend-dev",
-                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795043495008-2026-11-18T23:11:35.008Z/portfolio-website-backend-dev.zip"
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
               },
               "Handler": "src/functions/portfolio/list/handler.main",
-              "Runtime": "nodejs14.x",
+              "Runtime": "nodejs24.x",
               "FunctionName": "portfolio-website-backend-dev-dev-listPortfolio",
               "MemorySize": 1024,
               "Timeout": 6,
@@ -730,10 +727,10 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "portfolio-website-backend-dev",
-                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795043495008-2026-11-18T23:11:35.008Z/portfolio-website-backend-dev.zip"
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
               },
               "Handler": "src/functions/portfolio/get/handler.main",
-              "Runtime": "nodejs14.x",
+              "Runtime": "nodejs24.x",
               "FunctionName": "portfolio-website-backend-dev-dev-getPortfolio",
               "MemorySize": 1024,
               "Timeout": 6,
@@ -766,10 +763,10 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "portfolio-website-backend-dev",
-                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795043495008-2026-11-18T23:11:35.008Z/portfolio-website-backend-dev.zip"
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
               },
               "Handler": "src/functions/portfolio/create/handler.main",
-              "Runtime": "nodejs14.x",
+              "Runtime": "nodejs24.x",
               "FunctionName": "portfolio-website-backend-dev-dev-createPortfolio",
               "MemorySize": 1024,
               "Timeout": 6,
@@ -802,10 +799,10 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "portfolio-website-backend-dev",
-                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795043495008-2026-11-18T23:11:35.008Z/portfolio-website-backend-dev.zip"
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
               },
               "Handler": "src/functions/portfolio/update/handler.main",
-              "Runtime": "nodejs14.x",
+              "Runtime": "nodejs24.x",
               "FunctionName": "portfolio-website-backend-dev-dev-updatePortfolio",
               "MemorySize": 1024,
               "Timeout": 6,
@@ -838,10 +835,10 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "portfolio-website-backend-dev",
-                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795043495008-2026-11-18T23:11:35.008Z/portfolio-website-backend-dev.zip"
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
               },
               "Handler": "src/functions/portfolio/delete/handler.main",
-              "Runtime": "nodejs14.x",
+              "Runtime": "nodejs24.x",
               "FunctionName": "portfolio-website-backend-dev-dev-deletePortfolio",
               "MemorySize": 1024,
               "Timeout": 6,
@@ -897,7 +894,7 @@
                     "StatusCode": "200",
                     "ResponseParameters": {
                       "method.response.header.Access-Control-Allow-Origin": "'*'",
-                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
                       "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST,GET'"
                     },
                     "ResponseTemplates": {
@@ -951,7 +948,7 @@
                     "StatusCode": "200",
                     "ResponseParameters": {
                       "method.response.header.Access-Control-Allow-Origin": "'*'",
-                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
                       "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,DELETE,PUT,GET'"
                     },
                     "ResponseTemplates": {
@@ -1005,7 +1002,7 @@
                     "StatusCode": "200",
                     "ResponseParameters": {
                       "method.response.header.Access-Control-Allow-Origin": "'*'",
-                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
                       "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST,GET'"
                     },
                     "ResponseTemplates": {
@@ -1059,7 +1056,7 @@
                     "StatusCode": "200",
                     "ResponseParameters": {
                       "method.response.header.Access-Control-Allow-Origin": "'*'",
-                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
                       "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,DELETE,PUT,GET'"
                     },
                     "ResponseTemplates": {
@@ -1113,7 +1110,7 @@
                     "StatusCode": "200",
                     "ResponseParameters": {
                       "method.response.header.Access-Control-Allow-Origin": "'*'",
-                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
                       "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST,GET'"
                     },
                     "ResponseTemplates": {
@@ -1167,7 +1164,7 @@
                     "StatusCode": "200",
                     "ResponseParameters": {
                       "method.response.header.Access-Control-Allow-Origin": "'*'",
-                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
                       "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,DELETE,PUT,GET'"
                     },
                     "ResponseTemplates": {
@@ -1988,7 +1985,7 @@
               "PermissionsNestedStack"
             ]
           },
-          "ApiGatewayDeployment1795043485318": {
+          "ApiGatewayDeployment1795090834720": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -2084,6 +2081,23 @@
             },
             "DependsOn": []
           },
+          "APINestedStack": {
+            "Type": "AWS::CloudFormation::Stack",
+            "Properties": {
+              "Parameters": {},
+              "TemplateURL": {
+                "Fn::Join": [
+                  "/",
+                  [
+                    "https://s3.eu-central-1.amazonaws.com",
+                    "portfolio-website-backend-dev",
+                    "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z",
+                    "cloudformation-template-API-nested-stack.json"
+                  ]
+                ]
+              }
+            }
+          },
           "VersionsNestedStack": {
             "Type": "AWS::CloudFormation::Stack",
             "Properties": {
@@ -2140,7 +2154,7 @@
                   [
                     "https://s3.eu-central-1.amazonaws.com",
                     "portfolio-website-backend-dev",
-                    "serverless/portfolio-website-backend-dev/dev/1795043495008-2026-11-18T23:11:35.008Z",
+                    "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z",
                     "cloudformation-template-Versions-nested-stack.json"
                   ]
                 ]
@@ -2163,23 +2177,6 @@
               "UpdatePortfolioLambdaFunction",
               "DeletePortfolioLambdaFunction"
             ]
-          },
-          "APINestedStack": {
-            "Type": "AWS::CloudFormation::Stack",
-            "Properties": {
-              "Parameters": {},
-              "TemplateURL": {
-                "Fn::Join": [
-                  "/",
-                  [
-                    "https://s3.eu-central-1.amazonaws.com",
-                    "portfolio-website-backend-dev",
-                    "serverless/portfolio-website-backend-dev/dev/1795043495008-2026-11-18T23:11:35.008Z",
-                    "cloudformation-template-API-nested-stack.json"
-                  ]
-                ]
-              }
-            }
           },
           "PermissionsNestedStack": {
             "Type": "AWS::CloudFormation::Stack",
@@ -2288,7 +2285,7 @@
                   [
                     "https://s3.eu-central-1.amazonaws.com",
                     "portfolio-website-backend-dev",
-                    "serverless/portfolio-website-backend-dev/dev/1795043495008-2026-11-18T23:11:35.008Z",
+                    "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z",
                     "cloudformation-template-Permissions-nested-stack.json"
                   ]
                 ]
@@ -2326,7 +2323,7 @@
             "Value": {
               "Fn::GetAtt": [
                 "VersionsNestedStack",
-                "Outputs.ListSkillsLambdaVersionZCHHVMQI2LHMnSGCnH3PvUKvnV3rbsK9LU1QLcRPqAc"
+                "Outputs.ListSkillsLambdaVersionLqAmoGU4qhvVuJLaJInRAlTQei5d1vmoybuDuJ1ejiY"
               ]
             },
             "Export": {
@@ -2338,7 +2335,7 @@
             "Value": {
               "Fn::GetAtt": [
                 "VersionsNestedStack",
-                "Outputs.GetSkillLambdaVersionRRnQ7C0QUVPR1PVs1vHG33HThBcsvECoGKQkDnCimk"
+                "Outputs.GetSkillLambdaVersionEgjx6pAfOapy4jghNLXiIXkb074KAl14oIU8YZDg"
               ]
             },
             "Export": {
@@ -2350,7 +2347,7 @@
             "Value": {
               "Fn::GetAtt": [
                 "VersionsNestedStack",
-                "Outputs.SelectSkillLambdaVersionCAZXU7l93Dccp0IlMlaUMQapL7cX2mgxlTOpGSgo"
+                "Outputs.SelectSkillLambdaVersion3L4VEH2PkSsZlop3ogyOdkNBec15gdY7ZLCQosCnouE"
               ]
             },
             "Export": {
@@ -2362,7 +2359,7 @@
             "Value": {
               "Fn::GetAtt": [
                 "VersionsNestedStack",
-                "Outputs.UpdateSkillLambdaVersion6nVKmobKwBHKc54hDvPJ3APKnmn59MdcIy6LSeyCk"
+                "Outputs.UpdateSkillLambdaVersionnPA6JPzax36q0bSGpcQ2TFQRYfTmpGppaSEJ40VRA"
               ]
             },
             "Export": {
@@ -2374,7 +2371,7 @@
             "Value": {
               "Fn::GetAtt": [
                 "VersionsNestedStack",
-                "Outputs.RemoveSkillLambdaVersionz2kYcXO93Ay91KRepEKxpqTogxY77IMsliuWOCgYbo"
+                "Outputs.RemoveSkillLambdaVersionpn7ssjE1Jexng4UX7kSrFTXPeyqZcd9BP1iaowIpw"
               ]
             },
             "Export": {
@@ -2386,7 +2383,7 @@
             "Value": {
               "Fn::GetAtt": [
                 "VersionsNestedStack",
-                "Outputs.ListExperienceLambdaVersionLtMcRunCH4fMz6m6fJgmMo31wRdAYXjiur2s23rYkc"
+                "Outputs.ListExperienceLambdaVersionmvvBAsPzuLYU7TaDx0fzmACoea0Z8nwb8GnNVYBGY8"
               ]
             },
             "Export": {
@@ -2398,7 +2395,7 @@
             "Value": {
               "Fn::GetAtt": [
                 "VersionsNestedStack",
-                "Outputs.GetExperienceLambdaVersionanxdQag7lP1rXIEsw6dYUAnpubjZAxln6WPhvijAfIs"
+                "Outputs.GetExperienceLambdaVersion8cjE0xhBxY3Iphn6ENbQ4ZcMURZiHUqkm9Zca9Ciw"
               ]
             },
             "Export": {
@@ -2410,7 +2407,7 @@
             "Value": {
               "Fn::GetAtt": [
                 "VersionsNestedStack",
-                "Outputs.CreateExperienceLambdaVersionP4xaE2p2lTNPr5V0uvW1HSz8dwrrjgUB79K0kHpH2ss"
+                "Outputs.CreateExperienceLambdaVersionDYoe4Cj4UTRwsYGidjgnnJHq9O5qPallpkOLc8eWfE"
               ]
             },
             "Export": {
@@ -2422,7 +2419,7 @@
             "Value": {
               "Fn::GetAtt": [
                 "VersionsNestedStack",
-                "Outputs.UpdateExperienceLambdaVersionOjISsI9F9n4WReiHRLIqkhKfmMgmXUHAXsZXmElQLk"
+                "Outputs.UpdateExperienceLambdaVersionIO6gIAhXqMKWWsB1HbZvKypw3ma1nKRgFBUd7sN5A"
               ]
             },
             "Export": {
@@ -2434,7 +2431,7 @@
             "Value": {
               "Fn::GetAtt": [
                 "VersionsNestedStack",
-                "Outputs.DeleteExperienceLambdaVersiondtzfAtM85T9S74Kppm9sMKVup2HiggDZu478bcpg"
+                "Outputs.DeleteExperienceLambdaVersionmvY0zvGGgcRltY7u1OK8syKky5pmAdHYCEh1RyLS8"
               ]
             },
             "Export": {
@@ -2446,7 +2443,7 @@
             "Value": {
               "Fn::GetAtt": [
                 "VersionsNestedStack",
-                "Outputs.ListPortfolioLambdaVersionPj8MFsjO5mYmNWat2QURDY5lMeIIgtU6pApRRVlE"
+                "Outputs.ListPortfolioLambdaVersionpDZmksUimZbOx3OBddKTyGmA5XC3hpkf1ug82V3B4ys"
               ]
             },
             "Export": {
@@ -2458,7 +2455,7 @@
             "Value": {
               "Fn::GetAtt": [
                 "VersionsNestedStack",
-                "Outputs.GetPortfolioLambdaVersionAG0JcHLXM9MnW7JHXwRzjCfVCSGM9733y35yKbAdw"
+                "Outputs.GetPortfolioLambdaVersionCi8PJjqP4oanWCgxrQfyeJYUWQkC8l3l3PBfwhKPOeA"
               ]
             },
             "Export": {
@@ -2470,7 +2467,7 @@
             "Value": {
               "Fn::GetAtt": [
                 "VersionsNestedStack",
-                "Outputs.CreatePortfolioLambdaVersionhBcsDfD2zVvPoTWpMThrgru4hdg0Uyebov8Kijmho"
+                "Outputs.CreatePortfolioLambdaVersionC8PVHM8lOlkfgn4fU2ioIGxNpfI540WtN1yYqpIFh6Q"
               ]
             },
             "Export": {
@@ -2482,7 +2479,7 @@
             "Value": {
               "Fn::GetAtt": [
                 "VersionsNestedStack",
-                "Outputs.UpdatePortfolioLambdaVersion4Up9x9NkcLZRkcVcDVg2EYCGTR8S3A2Y3mxKiXpt8"
+                "Outputs.UpdatePortfolioLambdaVersionMENQY2tbHWJwfdUvGeFAgplORmhhaCMjOHf9g7Viek"
               ]
             },
             "Export": {
@@ -2494,7 +2491,7 @@
             "Value": {
               "Fn::GetAtt": [
                 "VersionsNestedStack",
-                "Outputs.DeletePortfolioLambdaVersionSxqVuCew1ftGynBUrwlQGicNrnD2IZWIUCNSdTMSw"
+                "Outputs.DeletePortfolioLambdaVersionJz2FWAArvid08a7cFNbQVUrXryc3LkVAIlSZpjeSDE"
               ]
             },
             "Export": {
@@ -2576,6 +2573,7 @@
       }
     },
     "plugins": [
+      "./plugins/supported-node-runtimes",
       "serverless-webpack",
       "serverless-dynamodb-local",
       "serverless-deployment-bucket",
@@ -2606,7 +2604,8 @@
                   "Authorization",
                   "X-Api-Key",
                   "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
                 ],
                 "allowCredentials": false
               },
@@ -2620,9 +2619,9 @@
         },
         "memory": 1024,
         "timeout": 6,
-        "runtime": "nodejs14.x",
+        "runtime": "nodejs24.x",
         "vpc": {},
-        "versionLogicalId": "ListSkillsLambdaVersionZCHHVMQI2LHMnSGCnH3PvUKvnV3rbsK9LU1QLcRPqAc"
+        "versionLogicalId": "ListSkillsLambdaVersionLqAmoGU4qhvVuJLaJInRAlTQei5d1vmoybuDuJ1ejiY"
       },
       "getSkill": {
         "handler": "src/functions/skills/get/handler.main",
@@ -2644,7 +2643,8 @@
                   "Authorization",
                   "X-Api-Key",
                   "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
                 ],
                 "allowCredentials": false
               },
@@ -2658,9 +2658,9 @@
         },
         "memory": 1024,
         "timeout": 6,
-        "runtime": "nodejs14.x",
+        "runtime": "nodejs24.x",
         "vpc": {},
-        "versionLogicalId": "GetSkillLambdaVersionRRnQ7C0QUVPR1PVs1vHG33HThBcsvECoGKQkDnCimk"
+        "versionLogicalId": "GetSkillLambdaVersionEgjx6pAfOapy4jghNLXiIXkb074KAl14oIU8YZDg"
       },
       "selectSkill": {
         "handler": "src/functions/skills/select/handler.main",
@@ -2682,7 +2682,8 @@
                   "Authorization",
                   "X-Api-Key",
                   "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
                 ],
                 "allowCredentials": false
               },
@@ -2696,9 +2697,9 @@
         },
         "memory": 1024,
         "timeout": 6,
-        "runtime": "nodejs14.x",
+        "runtime": "nodejs24.x",
         "vpc": {},
-        "versionLogicalId": "SelectSkillLambdaVersionCAZXU7l93Dccp0IlMlaUMQapL7cX2mgxlTOpGSgo"
+        "versionLogicalId": "SelectSkillLambdaVersion3L4VEH2PkSsZlop3ogyOdkNBec15gdY7ZLCQosCnouE"
       },
       "updateSkill": {
         "handler": "src/functions/skills/update/handler.main",
@@ -2720,7 +2721,8 @@
                   "Authorization",
                   "X-Api-Key",
                   "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
                 ],
                 "allowCredentials": false
               },
@@ -2734,9 +2736,9 @@
         },
         "memory": 1024,
         "timeout": 6,
-        "runtime": "nodejs14.x",
+        "runtime": "nodejs24.x",
         "vpc": {},
-        "versionLogicalId": "UpdateSkillLambdaVersion6nVKmobKwBHKc54hDvPJ3APKnmn59MdcIy6LSeyCk"
+        "versionLogicalId": "UpdateSkillLambdaVersionnPA6JPzax36q0bSGpcQ2TFQRYfTmpGppaSEJ40VRA"
       },
       "removeSkill": {
         "handler": "src/functions/skills/remove/handler.main",
@@ -2758,7 +2760,8 @@
                   "Authorization",
                   "X-Api-Key",
                   "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
                 ],
                 "allowCredentials": false
               },
@@ -2772,9 +2775,9 @@
         },
         "memory": 1024,
         "timeout": 6,
-        "runtime": "nodejs14.x",
+        "runtime": "nodejs24.x",
         "vpc": {},
-        "versionLogicalId": "RemoveSkillLambdaVersionz2kYcXO93Ay91KRepEKxpqTogxY77IMsliuWOCgYbo"
+        "versionLogicalId": "RemoveSkillLambdaVersionpn7ssjE1Jexng4UX7kSrFTXPeyqZcd9BP1iaowIpw"
       },
       "listExperience": {
         "handler": "src/functions/experience/list/handler.main",
@@ -2796,7 +2799,8 @@
                   "Authorization",
                   "X-Api-Key",
                   "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
                 ],
                 "allowCredentials": false
               },
@@ -2810,9 +2814,9 @@
         },
         "memory": 1024,
         "timeout": 6,
-        "runtime": "nodejs14.x",
+        "runtime": "nodejs24.x",
         "vpc": {},
-        "versionLogicalId": "ListExperienceLambdaVersionLtMcRunCH4fMz6m6fJgmMo31wRdAYXjiur2s23rYkc"
+        "versionLogicalId": "ListExperienceLambdaVersionmvvBAsPzuLYU7TaDx0fzmACoea0Z8nwb8GnNVYBGY8"
       },
       "getExperience": {
         "handler": "src/functions/experience/get/handler.main",
@@ -2834,7 +2838,8 @@
                   "Authorization",
                   "X-Api-Key",
                   "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
                 ],
                 "allowCredentials": false
               },
@@ -2848,9 +2853,9 @@
         },
         "memory": 1024,
         "timeout": 6,
-        "runtime": "nodejs14.x",
+        "runtime": "nodejs24.x",
         "vpc": {},
-        "versionLogicalId": "GetExperienceLambdaVersionanxdQag7lP1rXIEsw6dYUAnpubjZAxln6WPhvijAfIs"
+        "versionLogicalId": "GetExperienceLambdaVersion8cjE0xhBxY3Iphn6ENbQ4ZcMURZiHUqkm9Zca9Ciw"
       },
       "createExperience": {
         "handler": "src/functions/experience/create/handler.main",
@@ -2872,7 +2877,8 @@
                   "Authorization",
                   "X-Api-Key",
                   "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
                 ],
                 "allowCredentials": false
               },
@@ -2886,9 +2892,9 @@
         },
         "memory": 1024,
         "timeout": 6,
-        "runtime": "nodejs14.x",
+        "runtime": "nodejs24.x",
         "vpc": {},
-        "versionLogicalId": "CreateExperienceLambdaVersionP4xaE2p2lTNPr5V0uvW1HSz8dwrrjgUB79K0kHpH2ss"
+        "versionLogicalId": "CreateExperienceLambdaVersionDYoe4Cj4UTRwsYGidjgnnJHq9O5qPallpkOLc8eWfE"
       },
       "updateExperience": {
         "handler": "src/functions/experience/update/handler.main",
@@ -2910,7 +2916,8 @@
                   "Authorization",
                   "X-Api-Key",
                   "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
                 ],
                 "allowCredentials": false
               },
@@ -2924,9 +2931,9 @@
         },
         "memory": 1024,
         "timeout": 6,
-        "runtime": "nodejs14.x",
+        "runtime": "nodejs24.x",
         "vpc": {},
-        "versionLogicalId": "UpdateExperienceLambdaVersionOjISsI9F9n4WReiHRLIqkhKfmMgmXUHAXsZXmElQLk"
+        "versionLogicalId": "UpdateExperienceLambdaVersionIO6gIAhXqMKWWsB1HbZvKypw3ma1nKRgFBUd7sN5A"
       },
       "deleteExperience": {
         "handler": "src/functions/experience/delete/handler.main",
@@ -2948,7 +2955,8 @@
                   "Authorization",
                   "X-Api-Key",
                   "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
                 ],
                 "allowCredentials": false
               },
@@ -2962,9 +2970,9 @@
         },
         "memory": 1024,
         "timeout": 6,
-        "runtime": "nodejs14.x",
+        "runtime": "nodejs24.x",
         "vpc": {},
-        "versionLogicalId": "DeleteExperienceLambdaVersiondtzfAtM85T9S74Kppm9sMKVup2HiggDZu478bcpg"
+        "versionLogicalId": "DeleteExperienceLambdaVersionmvY0zvGGgcRltY7u1OK8syKky5pmAdHYCEh1RyLS8"
       },
       "listPortfolio": {
         "handler": "src/functions/portfolio/list/handler.main",
@@ -2986,7 +2994,8 @@
                   "Authorization",
                   "X-Api-Key",
                   "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
                 ],
                 "allowCredentials": false
               },
@@ -3000,9 +3009,9 @@
         },
         "memory": 1024,
         "timeout": 6,
-        "runtime": "nodejs14.x",
+        "runtime": "nodejs24.x",
         "vpc": {},
-        "versionLogicalId": "ListPortfolioLambdaVersionPj8MFsjO5mYmNWat2QURDY5lMeIIgtU6pApRRVlE"
+        "versionLogicalId": "ListPortfolioLambdaVersionpDZmksUimZbOx3OBddKTyGmA5XC3hpkf1ug82V3B4ys"
       },
       "getPortfolio": {
         "handler": "src/functions/portfolio/get/handler.main",
@@ -3024,7 +3033,8 @@
                   "Authorization",
                   "X-Api-Key",
                   "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
                 ],
                 "allowCredentials": false
               },
@@ -3038,9 +3048,9 @@
         },
         "memory": 1024,
         "timeout": 6,
-        "runtime": "nodejs14.x",
+        "runtime": "nodejs24.x",
         "vpc": {},
-        "versionLogicalId": "GetPortfolioLambdaVersionAG0JcHLXM9MnW7JHXwRzjCfVCSGM9733y35yKbAdw"
+        "versionLogicalId": "GetPortfolioLambdaVersionCi8PJjqP4oanWCgxrQfyeJYUWQkC8l3l3PBfwhKPOeA"
       },
       "createPortfolio": {
         "handler": "src/functions/portfolio/create/handler.main",
@@ -3062,7 +3072,8 @@
                   "Authorization",
                   "X-Api-Key",
                   "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
                 ],
                 "allowCredentials": false
               },
@@ -3076,9 +3087,9 @@
         },
         "memory": 1024,
         "timeout": 6,
-        "runtime": "nodejs14.x",
+        "runtime": "nodejs24.x",
         "vpc": {},
-        "versionLogicalId": "CreatePortfolioLambdaVersionhBcsDfD2zVvPoTWpMThrgru4hdg0Uyebov8Kijmho"
+        "versionLogicalId": "CreatePortfolioLambdaVersionC8PVHM8lOlkfgn4fU2ioIGxNpfI540WtN1yYqpIFh6Q"
       },
       "updatePortfolio": {
         "handler": "src/functions/portfolio/update/handler.main",
@@ -3100,7 +3111,8 @@
                   "Authorization",
                   "X-Api-Key",
                   "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
                 ],
                 "allowCredentials": false
               },
@@ -3114,9 +3126,9 @@
         },
         "memory": 1024,
         "timeout": 6,
-        "runtime": "nodejs14.x",
+        "runtime": "nodejs24.x",
         "vpc": {},
-        "versionLogicalId": "UpdatePortfolioLambdaVersion4Up9x9NkcLZRkcVcDVg2EYCGTR8S3A2Y3mxKiXpt8"
+        "versionLogicalId": "UpdatePortfolioLambdaVersionMENQY2tbHWJwfdUvGeFAgplORmhhaCMjOHf9g7Viek"
       },
       "deletePortfolio": {
         "handler": "src/functions/portfolio/delete/handler.main",
@@ -3138,7 +3150,8 @@
                   "Authorization",
                   "X-Api-Key",
                   "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
                 ],
                 "allowCredentials": false
               },
@@ -3152,9 +3165,9 @@
         },
         "memory": 1024,
         "timeout": 6,
-        "runtime": "nodejs14.x",
+        "runtime": "nodejs24.x",
         "vpc": {},
-        "versionLogicalId": "DeletePortfolioLambdaVersionSxqVuCew1ftGynBUrwlQGicNrnD2IZWIUCNSdTMSw"
+        "versionLogicalId": "DeletePortfolioLambdaVersionJz2FWAArvid08a7cFNbQVUrXryc3LkVAIlSZpjeSDE"
       }
     },
     "resources": {
@@ -3222,10 +3235,7 @@
     "configValidationMode": "warn",
     "serviceFilename": "serverless.ts",
     "initialServerlessConfig": {
-      "service": {
-        "$ref": "$[\"service\"][\"serviceObject\"]"
-      },
-      "variablesResolutionMode": "20210326",
+      "service": "portfolio-website-backend-dev",
       "custom": {
         "$ref": "$[\"service\"][\"custom\"]"
       },
@@ -3237,8 +3247,9 @@
           "!.dynamodb/**",
           "!node_modules/**"
         ],
+        "artifactsS3KeyDirname": "serverless/portfolio-website-backend-dev/dev/code-artifacts",
         "deploymentBucket": "portfolio-website-backend-dev",
-        "artifactDirectoryName": "serverless/portfolio-website-backend-dev/dev/1795043495008-2026-11-18T23:11:35.008Z"
+        "artifactDirectoryName": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z"
       },
       "provider": {
         "$ref": "$[\"service\"][\"provider\"]"
@@ -3254,7 +3265,7 @@
     "isDashboardMonitoringPreconfigured": false
   },
   "package": {
-    "artifactDirectoryName": "serverless/portfolio-website-backend-dev/dev/1795043495008-2026-11-18T23:11:35.008Z",
+    "artifactDirectoryName": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z",
     "artifact": ""
   }
 }

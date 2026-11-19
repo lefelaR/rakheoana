@@ -7,5 +7,6 @@ export type ExperienceRecord = {
 	endDate: string | null;
 	stack?: string;
 	highlights: string[];
+	hidden?: boolean;
 	updatedAt?: number;
 };
