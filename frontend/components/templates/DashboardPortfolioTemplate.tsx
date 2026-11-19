@@ -1,4 +1,5 @@
-import PortfolioProjectEditor from "@components/molecules/PortfolioProjectEditor";
+import LazyMount from "@components/molecules/LazyMount";
+import PortfolioProjectEditor from "@components/organisms/PortfolioProjectEditor";
 import {
   isDraftPortfolioId,
   portfolioPeriods,
@@ -12,6 +13,7 @@ type DashboardPortfolioTemplateProps = {
   readOnly?: boolean;
   status?: string;
   onSave: (project: PortfolioProject) => void;
+  onDelete: (project: PortfolioProject) => void;
   onAddProject: (period: PortfolioProject["period"]) => void;
 };
 
@@ -21,8 +23,13 @@ const DashboardPortfolioTemplate = ({
   readOnly,
   status,
   onSave,
+  onDelete,
   onAddProject,
 }: DashboardPortfolioTemplateProps) => {
+  const firstId = portfolioPeriods.flatMap((period) =>
+    projects.filter((project) => project.period === period.id),
+  )[0]?.id;
+
   return (
     <section className={styles.page}>
       <header className={styles.header}>
@@ -60,15 +67,27 @@ const DashboardPortfolioTemplate = ({
               <p className={styles.empty}>No projects in this section yet.</p>
             ) : (
               <div className={styles.list}>
-                {items.map((project) => (
-                  <PortfolioProjectEditor
-                    key={project.id}
-                    project={project}
-                    isNew={isDraftPortfolioId(project.id)}
-                    disabled={readOnly || savingId === project.id}
-                    onSave={onSave}
-                  />
-                ))}
+                {items.map((project) => {
+                  const editor = (
+                    <PortfolioProjectEditor
+                      project={project}
+                      isNew={isDraftPortfolioId(project.id)}
+                      disabled={readOnly || savingId === project.id}
+                      onSave={onSave}
+                      onDelete={() => onDelete(project)}
+                    />
+                  );
+
+                  if (project.id === firstId) {
+                    return <div key={project.id}>{editor}</div>;
+                  }
+
+                  return (
+                    <LazyMount key={project.id} minHeight={560}>
+                      {editor}
+                    </LazyMount>
+                  );
+                })}
               </div>
             )}
           </section>

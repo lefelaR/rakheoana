@@ -20,7 +20,7 @@
 
 .menuButton:focus-visible,
 .close:focus-visible {
-  outline: 2px solid #38f9d7;
+  outline: 2px solid #754ef9;
   outline-offset: 2px;
 }
 
@@ -87,7 +87,7 @@
   height: 0.55rem;
   margin-right: 0.55rem;
   border-radius: 50%;
-  background: linear-gradient(135deg, #43cae9, #38f9d7);
+  background: #754ef9;
   vertical-align: 0.05rem;
 }
 

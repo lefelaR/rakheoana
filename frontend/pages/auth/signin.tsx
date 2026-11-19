@@ -49,19 +49,14 @@ const Signin = () => {
                 });
             }}
           >
-            {({ errors, touched, isSubmitting, handleBlur, handleChange }) => (
-              <Form>
+            <Form>
                 <div className="form-group position-relative has-icon-left mb-4">
                   <Field
                     name="email"
-                    type="input"
+                    type="email"
                     className="form-control form-control-xl"
-                    margin="normal"
-                    label="Email"
-                    placeholder={"Email"}
-                    fullWidth
-                    error={!!errors.email && !!touched.email}
-                    helperText={!!touched.email && errors.email}
+                    placeholder="Email"
+                    autoComplete="email"
                   />
                   <div className="form-control-icon">
                     <i className="bi bi-person"></i>
@@ -80,8 +75,7 @@ const Signin = () => {
                   name="submit"
                   value="Log in"
                 />
-              </Form>
-            )}
+            </Form>
           </Formik>
 
           <div className="text-center mt-5 font-weight-smaller">

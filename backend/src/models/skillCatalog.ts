@@ -6,7 +6,18 @@ export type CatalogGroup = {
 export const skillCatalog: CatalogGroup[] = [
 	{
 		label: "Languages",
-		skills: ["JavaScript", "TypeScript", "C#", "PHP", "HTML5", "CSS3/SCSS", "SQL"],
+		skills: [
+			"JavaScript",
+			"TypeScript",
+			"C#",
+			"PHP",
+			"Python",
+			"Go",
+			"Java",
+			"HTML5",
+			"CSS3/SCSS",
+			"SQL",
+		],
 	},
 	{
 		label: "Frontend",
@@ -22,7 +33,15 @@ export const skillCatalog: CatalogGroup[] = [
 	},
 	{
 		label: "Backend",
-		skills: ["Node.js", "ASP.NET MVC", ".NET Core Web API", "Laravel", "Zend Framework"],
+		skills: [
+			"Node.js",
+			"ASP.NET MVC",
+			".NET Core Web API",
+			"Laravel",
+			"Zend Framework",
+			"FastAPI",
+			"Spring Boot",
+		],
 	},
 	{
 		label: "Cloud and DevOps",
@@ -37,12 +56,17 @@ export const skillCatalog: CatalogGroup[] = [
 			"DynamoDB",
 			"MySQL",
 			"MSSQL",
+			"PostgreSQL",
+			"Redis",
 			"CI/CD",
+			"Kubernetes",
+			"Kafka",
+			"Nginx",
 		],
 	},
 	{
 		label: "Tools",
-		skills: ["Git", "VS Code", "Visual Studio", "Cursor", "AI Agents"],
+		skills: ["Git", "VS Code", "Visual Studio", "Cursor", "Linux", "Mac", "AI Agents"],
 	},
 ];
 

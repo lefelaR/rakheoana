@@ -5,6 +5,7 @@ import DashboardPortfolioTemplate from "@components/templates/DashboardPortfolio
 import {
   createBlankPortfolioProject,
   createPortfolio,
+  deletePortfolio,
   getPortfolio,
   isDraftPortfolioId,
   updatePortfolio,
@@ -15,7 +16,8 @@ const DashboardPortfolio = () => {
   const [projects, setProjects] = useState<PortfolioProject[]>([]);
   const [savingId, setSavingId] = useState<string>();
   const [readOnly, setReadOnly] = useState(false);
-  const [status, setStatus] = useState("Loading portfolio.");
+  const [loading, setLoading] = useState(true);
+  const [status, setStatus] = useState("");
 
   useEffect(() => {
     let active = true;
@@ -28,6 +30,7 @@ const DashboardPortfolio = () => {
         setProjects(records);
         setReadOnly(false);
         setStatus("");
+        setLoading(false);
       })
       .catch(() => {
         if (!active) {
@@ -36,6 +39,7 @@ const DashboardPortfolio = () => {
         setProjects([]);
         setReadOnly(true);
         setStatus("Could not load portfolio projects from the API.");
+        setLoading(false);
       });
 
     return () => {
@@ -77,14 +81,39 @@ const DashboardPortfolio = () => {
     }
   };
 
+  const onDelete = async (project: PortfolioProject) => {
+    if (isDraftPortfolioId(project.id)) {
+      setProjects((current) => current.filter((item) => item.id !== project.id));
+      return;
+    }
+
+    if (readOnly) {
+      toast.error("The portfolio API is unavailable, so this project was not deleted.");
+      return;
+    }
+
+    setSavingId(project.id);
+
+    try {
+      await deletePortfolio(project.id);
+      setProjects((current) => current.filter((item) => item.id !== project.id));
+      toast.success(`${project.title || "Project"} deleted.`);
+    } catch {
+      toast.error("Could not delete this project.");
+    } finally {
+      setSavingId(undefined);
+    }
+  };
+
   return (
-    <Layout>
+    <Layout loading={loading} loadingLabel="Loading portfolio.">
       <DashboardPortfolioTemplate
         projects={projects}
         savingId={savingId}
         readOnly={readOnly}
         status={status}
         onSave={onSave}
+        onDelete={onDelete}
         onAddProject={onAddProject}
       />
     </Layout>

@@ -1,6 +1,7 @@
 import React from "react";
 import Image from 'next/image'
 import Link from "next/link";
+import LazyLoad from "../components/molecules/LazyLoad";
 import Layout from "../components/layouts/frontendLayout";
 
 
@@ -21,7 +22,14 @@ export default function Home() {
           <div className="col-lg-6 offset-xl-1">
             <div className="header-image d-none d-lg-block">
               <div className="shadow-lg  bg-white rounded">
-                <Image src="/images/Rakheoana-Profile.jpg"  width={800} height={500} alt="hero" id="header-image" />
+                <Image
+                  src="/images/Rakheoana-Profile.jpg"
+                  width={800}
+                  height={500}
+                  alt="Rakheoana Lefela"
+                  id="header-image"
+                  priority
+                />
               </div>
             </div>
           </div>
@@ -49,6 +57,7 @@ export default function Home() {
         </div>
       </div>
     </div>
+    <LazyLoad intrinsicSize="40rem">
     <section id="about" className="about-area pt-125 pb-130 my-5">
     <div className="container">
       <div className="row justify-content-center">
@@ -133,6 +142,7 @@ export default function Home() {
       </div>
     </div>
   </section>
+  </LazyLoad>
   </Layout>
   )
 }

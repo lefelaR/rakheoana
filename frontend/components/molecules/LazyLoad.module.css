@@ -1,0 +1,4 @@
+.root {
+  content-visibility: auto;
+  contain-intrinsic-size: auto var(--lazy-size, 32rem);
+}

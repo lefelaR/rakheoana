@@ -1,19 +1,38 @@
 import { useEffect, useState, type FormEvent } from "react";
+import RichTextField from "@components/molecules/RichTextField";
+import {
+  highlightText,
+  highlightsToHtml,
+  htmlToHighlights,
+} from "@components/molecules/richText";
 import type { ExperienceRole } from "@services/experienceService";
-import styles from "./ExperienceRoleCard.module.css";
+import styles from "@components/molecules/ExperienceRoleCard.module.css";
 
 type ExperienceRoleEditorProps = {
   role: ExperienceRole;
   disabled?: boolean;
   isNew?: boolean;
   onSave: (role: ExperienceRole) => void;
+  onDelete: () => void;
 };
 
-const ExperienceRoleEditor = ({ role, disabled, isNew, onSave }: ExperienceRoleEditorProps) => {
+const ExperienceRoleEditor = ({
+  role,
+  disabled,
+  isNew,
+  onSave,
+  onDelete,
+}: ExperienceRoleEditorProps) => {
   const [draft, setDraft] = useState(role);
+  const [body, setBody] = useState(() => highlightsToHtml(role.highlights));
+  const [highlightError, setHighlightError] = useState("");
+  const [confirmingDelete, setConfirmingDelete] = useState(false);
 
   useEffect(() => {
     setDraft(role);
+    setBody(highlightsToHtml(role.highlights));
+    setHighlightError("");
+    setConfirmingDelete(false);
   }, [role]);
 
   const setField = <K extends keyof ExperienceRole>(key: K, value: ExperienceRole[K]) => {
@@ -22,7 +41,13 @@ const ExperienceRoleEditor = ({ role, disabled, isNew, onSave }: ExperienceRoleE
 
   const onSubmit = (event: FormEvent) => {
     event.preventDefault();
-    const highlights = draft.highlights.filter((line) => line.trim().length > 0);
+    const highlights = htmlToHighlights(body).filter((line) => highlightText(line).length > 0);
+    if (highlights.length === 0) {
+      setHighlightError("Add at least one highlight.");
+      return;
+    }
+
+    setHighlightError("");
     onSave({ ...draft, highlights });
   };
 
@@ -95,25 +120,51 @@ const ExperienceRoleEditor = ({ role, disabled, isNew, onSave }: ExperienceRoleE
           disabled={disabled}
         />
       </label>
-      <label className={styles.field}>
-        <span className={styles.label}>Highlights (one per line)</span>
-        <textarea
-          className={styles.textarea}
-          rows={5}
-          value={draft.highlights.join("\n")}
-          onChange={(event) =>
-            setField(
-              "highlights",
-              event.target.value.split("\n").map((line) => line.trimEnd())
-            )
-          }
-          required
-          disabled={disabled}
-        />
-      </label>
-      <button type="submit" className={styles.save} disabled={disabled}>
-        {isNew ? "Add role" : "Save role"}
-      </button>
+      <RichTextField
+        label="Highlights"
+        value={body}
+        placeholder="Add a highlight"
+        disabled={disabled}
+        error={highlightError}
+        onChange={(html) => {
+          setHighlightError("");
+          setBody(html);
+        }}
+      />
+      <div className={styles.actions}>
+        <button type="submit" className={styles.save} disabled={disabled}>
+          Save
+        </button>
+        {confirmingDelete ? (
+          <div className={styles.confirm} role="group" aria-labelledby={`${role.id}-delete`}>
+            <p className={styles.confirmText} id={`${role.id}-delete`}>
+              {isNew
+                ? "Discard this role?"
+                : "Delete this role? It will leave your public experience page."}
+            </p>
+            <button type="button" className={styles.delete} onClick={onDelete} disabled={disabled}>
+              Delete
+            </button>
+            <button
+              type="button"
+              className={styles.cancel}
+              onClick={() => setConfirmingDelete(false)}
+              disabled={disabled}
+            >
+              Cancel
+            </button>
+          </div>
+        ) : (
+          <button
+            type="button"
+            className={styles.delete}
+            onClick={() => setConfirmingDelete(true)}
+            disabled={disabled}
+          >
+            Delete
+          </button>
+        )}
+      </div>
     </form>
   );
 };

@@ -5,6 +5,7 @@ import DashboardExperienceTemplate from "@components/templates/DashboardExperien
 import {
   createBlankExperienceRole,
   createExperience,
+  deleteExperience,
   getExperience,
   isDraftExperienceId,
   updateExperience,
@@ -15,7 +16,8 @@ const DashboardExperience = () => {
   const [roles, setRoles] = useState<ExperienceRole[]>([]);
   const [savingId, setSavingId] = useState<string>();
   const [readOnly, setReadOnly] = useState(false);
-  const [status, setStatus] = useState("Loading experience.");
+  const [loading, setLoading] = useState(true);
+  const [status, setStatus] = useState("");
 
   useEffect(() => {
     let active = true;
@@ -28,6 +30,7 @@ const DashboardExperience = () => {
         setRoles(records);
         setReadOnly(false);
         setStatus("");
+        setLoading(false);
       })
       .catch(() => {
         if (!active) {
@@ -36,6 +39,7 @@ const DashboardExperience = () => {
         setRoles([]);
         setReadOnly(true);
         setStatus("Could not load experience from the API.");
+        setLoading(false);
       });
 
     return () => {
@@ -75,14 +79,39 @@ const DashboardExperience = () => {
     }
   };
 
+  const onDelete = async (role: ExperienceRole) => {
+    if (isDraftExperienceId(role.id)) {
+      setRoles((current) => current.filter((item) => item.id !== role.id));
+      return;
+    }
+
+    if (readOnly) {
+      toast.error("The experience API is unavailable, so this role was not deleted.");
+      return;
+    }
+
+    setSavingId(role.id);
+
+    try {
+      await deleteExperience(role.id);
+      setRoles((current) => current.filter((item) => item.id !== role.id));
+      toast.success(`${role.company || "Role"} deleted.`);
+    } catch {
+      toast.error("Could not delete this role.");
+    } finally {
+      setSavingId(undefined);
+    }
+  };
+
   return (
-    <Layout>
+    <Layout loading={loading} loadingLabel="Loading experience.">
       <DashboardExperienceTemplate
         roles={roles}
         savingId={savingId}
         readOnly={readOnly}
         status={status}
         onSave={onSave}
+        onDelete={onDelete}
         onAddRole={onAddRole}
       />
     </Layout>

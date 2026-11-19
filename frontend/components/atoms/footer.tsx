@@ -1,14 +1,21 @@
 
-import React, { useEffect, useState } from "react";
+import React, { type CSSProperties } from "react";
 
+type FooterProps = {
+  className?: string;
+  style?: CSSProperties;
+};
 
-
-export default function Footer() {
+export default function Footer({ className, style }: FooterProps) {
     var date = new Date().getFullYear();
     
     return (
         <>
-            <footer id="footer" className="footer-area">
+            <footer
+              id="footer"
+              className={["footer-area", className].filter(Boolean).join(" ")}
+              style={style}
+            >
                 <div className="footer-widget pt-130 pb-130">
                     <div className="container">
                         <div className="row justify-content-center">
