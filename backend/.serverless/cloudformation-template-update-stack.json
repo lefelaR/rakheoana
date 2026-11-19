@@ -275,7 +275,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/skills/list/handler.main",
         "Runtime": "nodejs24.x",
@@ -311,7 +311,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/skills/get/handler.main",
         "Runtime": "nodejs24.x",
@@ -347,7 +347,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/skills/select/handler.main",
         "Runtime": "nodejs24.x",
@@ -383,7 +383,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/skills/update/handler.main",
         "Runtime": "nodejs24.x",
@@ -419,7 +419,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/skills/remove/handler.main",
         "Runtime": "nodejs24.x",
@@ -455,7 +455,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/experience/list/handler.main",
         "Runtime": "nodejs24.x",
@@ -491,7 +491,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/experience/get/handler.main",
         "Runtime": "nodejs24.x",
@@ -527,7 +527,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/experience/create/handler.main",
         "Runtime": "nodejs24.x",
@@ -563,7 +563,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/experience/update/handler.main",
         "Runtime": "nodejs24.x",
@@ -599,7 +599,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/experience/delete/handler.main",
         "Runtime": "nodejs24.x",
@@ -635,7 +635,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/portfolio/list/handler.main",
         "Runtime": "nodejs24.x",
@@ -671,7 +671,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/portfolio/get/handler.main",
         "Runtime": "nodejs24.x",
@@ -707,7 +707,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/portfolio/create/handler.main",
         "Runtime": "nodejs24.x",
@@ -743,7 +743,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/portfolio/update/handler.main",
         "Runtime": "nodejs24.x",
@@ -779,7 +779,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/portfolio/delete/handler.main",
         "Runtime": "nodejs24.x",
@@ -1929,7 +1929,7 @@
         "PermissionsNestedStack"
       ]
     },
-    "ApiGatewayDeployment1795092270123": {
+    "ApiGatewayDeployment1795093628394": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -2025,86 +2025,6 @@
       },
       "DependsOn": []
     },
-    "VersionsNestedStack": {
-      "Type": "AWS::CloudFormation::Stack",
-      "Properties": {
-        "Parameters": {
-          "ListSkillsLambdaFunctionParameter": {
-            "Ref": "ListSkillsLambdaFunction"
-          },
-          "GetSkillLambdaFunctionParameter": {
-            "Ref": "GetSkillLambdaFunction"
-          },
-          "SelectSkillLambdaFunctionParameter": {
-            "Ref": "SelectSkillLambdaFunction"
-          },
-          "UpdateSkillLambdaFunctionParameter": {
-            "Ref": "UpdateSkillLambdaFunction"
-          },
-          "RemoveSkillLambdaFunctionParameter": {
-            "Ref": "RemoveSkillLambdaFunction"
-          },
-          "ListExperienceLambdaFunctionParameter": {
-            "Ref": "ListExperienceLambdaFunction"
-          },
-          "GetExperienceLambdaFunctionParameter": {
-            "Ref": "GetExperienceLambdaFunction"
-          },
-          "CreateExperienceLambdaFunctionParameter": {
-            "Ref": "CreateExperienceLambdaFunction"
-          },
-          "UpdateExperienceLambdaFunctionParameter": {
-            "Ref": "UpdateExperienceLambdaFunction"
-          },
-          "DeleteExperienceLambdaFunctionParameter": {
-            "Ref": "DeleteExperienceLambdaFunction"
-          },
-          "ListPortfolioLambdaFunctionParameter": {
-            "Ref": "ListPortfolioLambdaFunction"
-          },
-          "GetPortfolioLambdaFunctionParameter": {
-            "Ref": "GetPortfolioLambdaFunction"
-          },
-          "CreatePortfolioLambdaFunctionParameter": {
-            "Ref": "CreatePortfolioLambdaFunction"
-          },
-          "UpdatePortfolioLambdaFunctionParameter": {
-            "Ref": "UpdatePortfolioLambdaFunction"
-          },
-          "DeletePortfolioLambdaFunctionParameter": {
-            "Ref": "DeletePortfolioLambdaFunction"
-          }
-        },
-        "TemplateURL": {
-          "Fn::Join": [
-            "/",
-            [
-              "https://s3.eu-central-1.amazonaws.com",
-              "portfolio-website-backend-dev",
-              "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z",
-              "cloudformation-template-Versions-nested-stack.json"
-            ]
-          ]
-        }
-      },
-      "DependsOn": [
-        "ListSkillsLambdaFunction",
-        "GetSkillLambdaFunction",
-        "SelectSkillLambdaFunction",
-        "UpdateSkillLambdaFunction",
-        "RemoveSkillLambdaFunction",
-        "ListExperienceLambdaFunction",
-        "GetExperienceLambdaFunction",
-        "CreateExperienceLambdaFunction",
-        "UpdateExperienceLambdaFunction",
-        "DeleteExperienceLambdaFunction",
-        "ListPortfolioLambdaFunction",
-        "GetPortfolioLambdaFunction",
-        "CreatePortfolioLambdaFunction",
-        "UpdatePortfolioLambdaFunction",
-        "DeletePortfolioLambdaFunction"
-      ]
-    },
     "APINestedStack": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
@@ -2115,7 +2035,7 @@
             [
               "https://s3.eu-central-1.amazonaws.com",
               "portfolio-website-backend-dev",
-              "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z",
+              "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z",
               "cloudformation-template-API-nested-stack.json"
             ]
           ]
@@ -2229,7 +2149,7 @@
             [
               "https://s3.eu-central-1.amazonaws.com",
               "portfolio-website-backend-dev",
-              "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z",
+              "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z",
               "cloudformation-template-Permissions-nested-stack.json"
             ]
           ]
@@ -2237,6 +2157,86 @@
       },
       "DependsOn": [
         "APINestedStack",
+        "ListSkillsLambdaFunction",
+        "GetSkillLambdaFunction",
+        "SelectSkillLambdaFunction",
+        "UpdateSkillLambdaFunction",
+        "RemoveSkillLambdaFunction",
+        "ListExperienceLambdaFunction",
+        "GetExperienceLambdaFunction",
+        "CreateExperienceLambdaFunction",
+        "UpdateExperienceLambdaFunction",
+        "DeleteExperienceLambdaFunction",
+        "ListPortfolioLambdaFunction",
+        "GetPortfolioLambdaFunction",
+        "CreatePortfolioLambdaFunction",
+        "UpdatePortfolioLambdaFunction",
+        "DeletePortfolioLambdaFunction"
+      ]
+    },
+    "VersionsNestedStack": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "Parameters": {
+          "ListSkillsLambdaFunctionParameter": {
+            "Ref": "ListSkillsLambdaFunction"
+          },
+          "GetSkillLambdaFunctionParameter": {
+            "Ref": "GetSkillLambdaFunction"
+          },
+          "SelectSkillLambdaFunctionParameter": {
+            "Ref": "SelectSkillLambdaFunction"
+          },
+          "UpdateSkillLambdaFunctionParameter": {
+            "Ref": "UpdateSkillLambdaFunction"
+          },
+          "RemoveSkillLambdaFunctionParameter": {
+            "Ref": "RemoveSkillLambdaFunction"
+          },
+          "ListExperienceLambdaFunctionParameter": {
+            "Ref": "ListExperienceLambdaFunction"
+          },
+          "GetExperienceLambdaFunctionParameter": {
+            "Ref": "GetExperienceLambdaFunction"
+          },
+          "CreateExperienceLambdaFunctionParameter": {
+            "Ref": "CreateExperienceLambdaFunction"
+          },
+          "UpdateExperienceLambdaFunctionParameter": {
+            "Ref": "UpdateExperienceLambdaFunction"
+          },
+          "DeleteExperienceLambdaFunctionParameter": {
+            "Ref": "DeleteExperienceLambdaFunction"
+          },
+          "ListPortfolioLambdaFunctionParameter": {
+            "Ref": "ListPortfolioLambdaFunction"
+          },
+          "GetPortfolioLambdaFunctionParameter": {
+            "Ref": "GetPortfolioLambdaFunction"
+          },
+          "CreatePortfolioLambdaFunctionParameter": {
+            "Ref": "CreatePortfolioLambdaFunction"
+          },
+          "UpdatePortfolioLambdaFunctionParameter": {
+            "Ref": "UpdatePortfolioLambdaFunction"
+          },
+          "DeletePortfolioLambdaFunctionParameter": {
+            "Ref": "DeletePortfolioLambdaFunction"
+          }
+        },
+        "TemplateURL": {
+          "Fn::Join": [
+            "/",
+            [
+              "https://s3.eu-central-1.amazonaws.com",
+              "portfolio-website-backend-dev",
+              "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z",
+              "cloudformation-template-Versions-nested-stack.json"
+            ]
+          ]
+        }
+      },
+      "DependsOn": [
         "ListSkillsLambdaFunction",
         "GetSkillLambdaFunction",
         "SelectSkillLambdaFunction",
@@ -2267,7 +2267,7 @@
       "Value": {
         "Fn::GetAtt": [
           "VersionsNestedStack",
-          "Outputs.ListSkillsLambdaVersionLqAmoGU4qhvVuJLaJInRAlTQei5d1vmoybuDuJ1ejiY"
+          "Outputs.ListSkillsLambdaVersionwM15bCYn0nM9MWY9SUS7yNSPxQrexlJOBWFJELi9hMU"
         ]
       },
       "Export": {
@@ -2279,7 +2279,7 @@
       "Value": {
         "Fn::GetAtt": [
           "VersionsNestedStack",
-          "Outputs.GetSkillLambdaVersionEgjx6pAfOapy4jghNLXiIXkb074KAl14oIU8YZDg"
+          "Outputs.GetSkillLambdaVersionrK3xNSudBPyRvuGJ04YvOFnV01Uo1rFdnSxhNHLWOY"
         ]
       },
       "Export": {
@@ -2291,7 +2291,7 @@
       "Value": {
         "Fn::GetAtt": [
           "VersionsNestedStack",
-          "Outputs.SelectSkillLambdaVersion3L4VEH2PkSsZlop3ogyOdkNBec15gdY7ZLCQosCnouE"
+          "Outputs.SelectSkillLambdaVersionP7Da5sm85L9lXwrHvllX5SJXfZFc1VStmqdjWg6SsyI"
         ]
       },
       "Export": {
@@ -2303,7 +2303,7 @@
       "Value": {
         "Fn::GetAtt": [
           "VersionsNestedStack",
-          "Outputs.UpdateSkillLambdaVersionnPA6JPzax36q0bSGpcQ2TFQRYfTmpGppaSEJ40VRA"
+          "Outputs.UpdateSkillLambdaVersion65QW3u0OSEy2P9zqLBMJRHxPhVLX1ktSSGTTvhuI"
         ]
       },
       "Export": {
@@ -2315,7 +2315,7 @@
       "Value": {
         "Fn::GetAtt": [
           "VersionsNestedStack",
-          "Outputs.RemoveSkillLambdaVersionpn7ssjE1Jexng4UX7kSrFTXPeyqZcd9BP1iaowIpw"
+          "Outputs.RemoveSkillLambdaVersionhyeh9XVVEyZJlfuaTYUcITr3tvnYIDvd7OEGF5IOgs"
         ]
       },
       "Export": {
@@ -2327,7 +2327,7 @@
       "Value": {
         "Fn::GetAtt": [
           "VersionsNestedStack",
-          "Outputs.ListExperienceLambdaVersionmvvBAsPzuLYU7TaDx0fzmACoea0Z8nwb8GnNVYBGY8"
+          "Outputs.ListExperienceLambdaVersionSGPobgJr4DQswM9XP58cQBUetZHu9QszxKZPZ4zr4"
         ]
       },
       "Export": {
@@ -2339,7 +2339,7 @@
       "Value": {
         "Fn::GetAtt": [
           "VersionsNestedStack",
-          "Outputs.GetExperienceLambdaVersion8cjE0xhBxY3Iphn6ENbQ4ZcMURZiHUqkm9Zca9Ciw"
+          "Outputs.GetExperienceLambdaVersionXHeI4Zg16QmtsITd7pA9nTyf8u600i3uHpFEEC0"
         ]
       },
       "Export": {
@@ -2351,7 +2351,7 @@
       "Value": {
         "Fn::GetAtt": [
           "VersionsNestedStack",
-          "Outputs.CreateExperienceLambdaVersionDYoe4Cj4UTRwsYGidjgnnJHq9O5qPallpkOLc8eWfE"
+          "Outputs.CreateExperienceLambdaVersiondYrwQGrqdIzVgcMooe1MCSWIk4T6bwNBQNScmA5m3U"
         ]
       },
       "Export": {
@@ -2363,7 +2363,7 @@
       "Value": {
         "Fn::GetAtt": [
           "VersionsNestedStack",
-          "Outputs.UpdateExperienceLambdaVersionIO6gIAhXqMKWWsB1HbZvKypw3ma1nKRgFBUd7sN5A"
+          "Outputs.UpdateExperienceLambdaVersionkYyXCq51iyvrPiEv6cxnntAh5t7maAfMHkh6LeKeI"
         ]
       },
       "Export": {
@@ -2375,7 +2375,7 @@
       "Value": {
         "Fn::GetAtt": [
           "VersionsNestedStack",
-          "Outputs.DeleteExperienceLambdaVersionmvY0zvGGgcRltY7u1OK8syKky5pmAdHYCEh1RyLS8"
+          "Outputs.DeleteExperienceLambdaVersionH5qllfzCqMi8rNaWvRWyD67FiSrfcEGdAf6nBpv5fw"
         ]
       },
       "Export": {
@@ -2387,7 +2387,7 @@
       "Value": {
         "Fn::GetAtt": [
           "VersionsNestedStack",
-          "Outputs.ListPortfolioLambdaVersionpDZmksUimZbOx3OBddKTyGmA5XC3hpkf1ug82V3B4ys"
+          "Outputs.ListPortfolioLambdaVersionEk5ZDcLLo6272ANZ20UcFRAUDG2fL3jwBe3rVfyBZjI"
         ]
       },
       "Export": {
@@ -2399,7 +2399,7 @@
       "Value": {
         "Fn::GetAtt": [
           "VersionsNestedStack",
-          "Outputs.GetPortfolioLambdaVersionCi8PJjqP4oanWCgxrQfyeJYUWQkC8l3l3PBfwhKPOeA"
+          "Outputs.GetPortfolioLambdaVersionAMOPUh1aWGRIoNAn4EQwgKDzrmJHNi2f29hlVIdDQ"
         ]
       },
       "Export": {
@@ -2411,7 +2411,7 @@
       "Value": {
         "Fn::GetAtt": [
           "VersionsNestedStack",
-          "Outputs.CreatePortfolioLambdaVersionC8PVHM8lOlkfgn4fU2ioIGxNpfI540WtN1yYqpIFh6Q"
+          "Outputs.CreatePortfolioLambdaVersionUolJae0UxsfUevXMzFFwlKoeDj683C9i8rVy1mcFA"
         ]
       },
       "Export": {
@@ -2423,7 +2423,7 @@
       "Value": {
         "Fn::GetAtt": [
           "VersionsNestedStack",
-          "Outputs.UpdatePortfolioLambdaVersionMENQY2tbHWJwfdUvGeFAgplORmhhaCMjOHf9g7Viek"
+          "Outputs.UpdatePortfolioLambdaVersionKkf57YESBBgyPVXAfcnWpChykbotyeGLjMifqSVDUs8"
         ]
       },
       "Export": {
@@ -2435,7 +2435,7 @@
       "Value": {
         "Fn::GetAtt": [
           "VersionsNestedStack",
-          "Outputs.DeletePortfolioLambdaVersionJz2FWAArvid08a7cFNbQVUrXryc3LkVAIlSZpjeSDE"
+          "Outputs.DeletePortfolioLambdaVersionbh34YUQHYydaBteG94bH6QwCT49ohwpeSf7DrY6A5M"
         ]
       },
       "Export": {
