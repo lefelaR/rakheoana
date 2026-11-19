@@ -7,6 +7,8 @@ import dynamoDbTables from "./resources/dynamodb-tables";
 import * as roleFunctions from "@functions/roles";
 import * as userFunctions from "@functions/users";
 import * as skillFunctions from "@functions/skills";
+import * as experienceFunctions from "@functions/experience";
+import * as portfolioFunctions from "@functions/portfolio";
 // import * as newsletterFunctions from "@functions/newsletter";
 // import * as rsvpFunctions from "@functions/rsvps";
 // import * as propertyFunctions from "@functions/properties";
@@ -94,6 +96,8 @@ const serverlessConfiguration: AWS = {
       ROLES_TABLE: "${self:service}-${self:provider.stage}-roles",
       USERS_TABLE: "${self:service}-${self:provider.stage}-users",
       SKILLS_TABLE: "${self:service}-${self:provider.stage}-skills",
+      EXPERIENCE_TABLE: "${self:service}-${self:provider.stage}-experience",
+      PORTFOLIO_TABLE: "${self:service}-${self:provider.stage}-portfolio",
       // NEWSLETTERS_TABLE: "${self:service}-${self:provider.stage}-newsletter",
       // RSVP_TABLE: "${self:service}-${self:provider.stage}-rsvp",
       // AGM_TABLE: "${self:service}-${self:provider.stage}-agmdocuments",
@@ -185,6 +189,8 @@ const serverlessConfiguration: AWS = {
      ...roleFunctions,
      ...userFunctions,
      ...skillFunctions,
+     ...experienceFunctions,
+     ...portfolioFunctions,
     //  ...newsletterFunctions,
     //  ...rsvpFunctions,
     //  ...propertyFunctions,

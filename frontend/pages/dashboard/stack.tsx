@@ -56,6 +56,11 @@ const DashboardTechStack = () => {
     }));
 
   const onToggle = async (skill: Skill) => {
+    if (catalogOnly) {
+      toast.error("Start the API (backend on port 4000) before saving selections.");
+      return;
+    }
+
     const nextSelected = !skill.selected;
     setPendingId(skill.id);
     setGroups((current) => applySelection(current, skill.id, nextSelected));
@@ -63,8 +68,10 @@ const DashboardTechStack = () => {
     try {
       if (nextSelected) {
         await selectSkill(skill.name);
+        toast.success(`${skill.name} will show on your public tech stack.`);
       } else {
         await removeSkill(skill.id);
+        toast.success(`${skill.name} was removed from your public tech stack.`);
       }
     } catch {
       setGroups((current) => applySelection(current, skill.id, skill.selected));

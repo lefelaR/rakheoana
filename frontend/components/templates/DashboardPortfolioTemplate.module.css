@@ -1,0 +1,102 @@
+.page {
+  max-width: 40rem;
+}
+
+.header {
+  margin-bottom: 1.75rem;
+}
+
+.titleRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  margin: 0;
+  color: #32333c;
+  font-family: Poppins, "Segoe UI", sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.addButton {
+  padding: 0.5rem 1rem;
+  border: 1px solid #38f9d7;
+  border-radius: 0.5rem;
+  background: #f3fffc;
+  color: #0f766e;
+  font-family: Poppins, "Segoe UI", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.addButton:hover:not(:disabled) {
+  background: #e8fcf8;
+}
+
+.addButton:focus-visible {
+  outline: 2px solid #38f9d7;
+  outline-offset: 2px;
+}
+
+.addButton:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.lead {
+  margin: 0;
+  color: #5c6178;
+  font-family: Poppins, "Segoe UI", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.status {
+  margin: 0.85rem 0 0;
+  color: #8a8fa3;
+  font-family: Poppins, "Segoe UI", sans-serif;
+  font-size: 0.9rem;
+}
+
+.notice {
+  margin: 0.85rem 0 0;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid #f0d9a8;
+  border-radius: 0.5rem;
+  background: #fff9ed;
+  color: #6b5730;
+  font-family: Poppins, "Segoe UI", sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+.group {
+  margin-bottom: 1.75rem;
+}
+
+.groupTitle {
+  margin: 0 0 0.85rem;
+  color: #32333c;
+  font-family: Poppins, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.empty {
+  margin: 0;
+  color: #8a8fa3;
+  font-family: Poppins, "Segoe UI", sans-serif;
+  font-size: 0.9rem;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}

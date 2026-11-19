@@ -1,7 +1,9 @@
 import { useEffect, useState, type ReactNode } from "react";
 import Link from "next/link";
-import { LuMenu, LuX } from "react-icons/lu";
+import { useRouter } from "next/router";
+import { LuLogOut, LuMenu, LuX } from "react-icons/lu";
 import DashboardNavLink from "@components/molecules/DashboardNavLink";
+import userSignOut from "@services/auth/userSignOut";
 import styles from "./DashboardSideNav.module.css";
 
 export type DashboardNavItem = {
@@ -29,9 +31,15 @@ const isCurrent = (href: string, pathname: string) => {
 };
 
 const DashboardSideNav = ({ groups, pathname }: DashboardSideNavProps) => {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
 
   const close = () => setOpen(false);
+
+  const logout = async () => {
+    await userSignOut();
+    router.push("/auth/signin");
+  };
 
   useEffect(() => {
     if (!open) {
@@ -100,6 +108,16 @@ const DashboardSideNav = ({ groups, pathname }: DashboardSideNavProps) => {
             </ul>
           </div>
         ))}
+        <ul className={`${styles.list} ${styles.footer}`}>
+          <li>
+            <DashboardNavLink
+              label="Log out"
+              icon={<LuLogOut />}
+              onAction={logout}
+              onNavigate={close}
+            />
+          </li>
+        </ul>
       </nav>
     </>
   );
