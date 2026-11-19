@@ -12,7 +12,7 @@ type DashboardPortfolioTemplateProps = {
   readOnly?: boolean;
   status?: string;
   onSave: (project: PortfolioProject) => void;
-  onAddProject: () => void;
+  onAddProject: (period: PortfolioProject["period"]) => void;
 };
 
 const DashboardPortfolioTemplate = ({
@@ -28,14 +28,6 @@ const DashboardPortfolioTemplate = ({
       <header className={styles.header}>
         <div className={styles.titleRow}>
           <h1 className={styles.title}>Portfolio</h1>
-          <button
-            type="button"
-            className={styles.addButton}
-            onClick={onAddProject}
-            disabled={readOnly}
-          >
-            Add project
-          </button>
         </div>
         <p className={styles.lead}>
           Edit the work samples below and save. Clients stay as credits, not employers.
@@ -47,35 +39,23 @@ const DashboardPortfolioTemplate = ({
           </p>
         ) : null}
       </header>
-      {projects.some((project) => isDraftPortfolioId(project.id)) ? (
-        <section className={styles.group} aria-labelledby="new-projects-heading">
-          <h2 id="new-projects-heading" className={styles.groupTitle}>
-            New project
-          </h2>
-          <div className={styles.list}>
-            {projects
-              .filter((project) => isDraftPortfolioId(project.id))
-              .map((project) => (
-                <PortfolioProjectEditor
-                  key={project.id}
-                  project={project}
-                  isNew
-                  disabled={readOnly || savingId === project.id}
-                  onSave={onSave}
-                />
-              ))}
-          </div>
-        </section>
-      ) : null}
       {portfolioPeriods.map((period) => {
-        const items = projects.filter(
-          (project) => !isDraftPortfolioId(project.id) && project.period === period.id
-        );
+        const items = projects.filter((project) => project.period === period.id);
         return (
           <section key={period.id} className={styles.group} aria-labelledby={`${period.id}-heading`}>
-            <h2 id={`${period.id}-heading`} className={styles.groupTitle}>
-              {period.label}
-            </h2>
+            <div className={styles.groupHeader}>
+              <h2 id={`${period.id}-heading`} className={styles.groupTitle}>
+                {period.label}
+              </h2>
+              <button
+                type="button"
+                className={styles.addButton}
+                onClick={() => onAddProject(period.id)}
+                disabled={readOnly}
+              >
+                Add project
+              </button>
+            </div>
             {items.length === 0 ? (
               <p className={styles.empty}>No projects in this section yet.</p>
             ) : (
@@ -84,6 +64,7 @@ const DashboardPortfolioTemplate = ({
                   <PortfolioProjectEditor
                     key={project.id}
                     project={project}
+                    isNew={isDraftPortfolioId(project.id)}
                     disabled={readOnly || savingId === project.id}
                     onSave={onSave}
                   />

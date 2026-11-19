@@ -43,8 +43,8 @@ const DashboardPortfolio = () => {
     };
   }, []);
 
-  const onAddProject = () => {
-    setProjects((current) => [createBlankPortfolioProject(), ...current]);
+  const onAddProject = (period: PortfolioProject["period"]) => {
+    setProjects((current) => [createBlankPortfolioProject(period), ...current]);
   };
 
   const onSave = async (project: PortfolioProject) => {

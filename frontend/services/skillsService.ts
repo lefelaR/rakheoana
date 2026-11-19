@@ -28,14 +28,6 @@ export const selectedSkillGroups = (groups: SkillGroupRecord[]): SkillGroupRecor
     }))
     .filter((group) => group.skills.length > 0);
 
-export const selectedSkillGroups = (groups: SkillGroupRecord[]): SkillGroupRecord[] =>
-  groups
-    .map((group) => ({
-      ...group,
-      skills: group.skills.filter((skill) => skill.selected),
-    }))
-    .filter((group) => group.skills.length > 0);
-
 export const selectSkill = async (name: string): Promise<SkillRecord> => {
   const { data } = await http.post("/api/skills", { name });
   return data.data;
