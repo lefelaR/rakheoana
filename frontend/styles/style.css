@@ -1015,6 +1015,10 @@ filter: grayscale(0) !important;
     padding-top: 70px;
     padding-bottom: 80px; } }
 
+.work-area {
+  width: 100%;
+  align-self: stretch; }
+
 .single-work {
   position: relative; }
   .single-work .work-image img {

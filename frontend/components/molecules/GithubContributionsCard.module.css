@@ -1,0 +1,134 @@
+.card {
+  width: 100%;
+  margin: 0 0 3rem;
+  padding: 1.5rem 1.35rem 1.15rem;
+  background: #fff;
+  border: 1px solid #ece9f8;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(50, 51, 60, 0.06);
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.15rem;
+}
+
+.title {
+  margin: 0;
+  color: #32333c;
+  font-family: Poppins, "Segoe UI", sans-serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.summary {
+  margin: 0.35rem 0 0;
+  color: #5c6178;
+  font-size: 0.95rem;
+}
+
+.profile {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex: none;
+  color: #754ef9;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.profile:hover {
+  color: #5b36d6;
+}
+
+.profile:focus-visible {
+  outline: 2px solid #754ef9;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.scroll {
+  overflow-x: auto;
+}
+
+.calendar {
+  display: grid;
+  grid-template-rows: 1.15rem repeat(7, auto);
+  gap: 4px;
+  width: 100%;
+  min-width: 720px;
+}
+
+.month {
+  align-self: end;
+  color: #8a8fa3;
+  font-size: 12px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.dayLabel {
+  align-self: center;
+  color: #8a8fa3;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.block,
+.pad {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 3px;
+}
+
+.swatch {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  border-radius: 3px;
+}
+
+.cell {
+  background: #ebedf0;
+}
+
+.cell[data-level="1"] {
+  background: #d9cffc;
+}
+
+.cell[data-level="2"] {
+  background: #b39af8;
+}
+
+.cell[data-level="3"] {
+  background: #8f68f6;
+}
+
+.cell[data-level="4"] {
+  background: #754ef9;
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  margin-top: 0.85rem;
+  color: #8a8fa3;
+  font-size: 12px;
+}
+
+@media (max-width: 767px) {
+  .header {
+    flex-direction: column;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+}
