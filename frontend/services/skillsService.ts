@@ -1,4 +1,3 @@
-import { catalogSkillGroups } from "../constants/skillCatalog";
 import { http } from "./httpService";
 
 export type SkillRecord = {
@@ -15,11 +14,19 @@ export type SkillGroupRecord = {
 
 export const getSkills = async (): Promise<SkillGroupRecord[]> => {
   const { data } = await http.get("/api/skills");
+  if (!Array.isArray(data?.data)) {
+    throw new Error("Skills response was not a list");
+  }
   return data.data;
 };
 
-/** Full catalog as card data when the API is unavailable (local dev, outages). */
-export const getSkillCatalog = (): SkillGroupRecord[] => catalogSkillGroups();
+export const selectedSkillGroups = (groups: SkillGroupRecord[]): SkillGroupRecord[] =>
+  groups
+    .map((group) => ({
+      ...group,
+      skills: group.skills.filter((skill) => skill.selected),
+    }))
+    .filter((group) => group.skills.length > 0);
 
 export const selectedSkillGroups = (groups: SkillGroupRecord[]): SkillGroupRecord[] =>
   groups

@@ -1,18 +1,15 @@
-import { portfolioCatalog } from "../constants/portfolioCatalog";
 import type { PortfolioProject } from "../constants/portfolioCatalog";
 import { http } from "./httpService";
 
 export type { PortfolioProject };
 export { portfolioPeriods } from "../constants/portfolioCatalog";
 
-export const getPortfolioCatalog = (): PortfolioProject[] => portfolioCatalog;
-
 export const getPortfolio = async (): Promise<PortfolioProject[]> => {
   const { data } = await http.get("/api/portfolio");
-  if (Array.isArray(data?.data) && data.data.length > 0) {
-    return data.data;
+  if (!Array.isArray(data?.data)) {
+    throw new Error("Portfolio response was not a list");
   }
-  return portfolioCatalog;
+  return data.data;
 };
 
 export type PortfolioProjectPayload = Omit<PortfolioProject, "id">;

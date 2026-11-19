@@ -4,5 +4,7 @@ const middy = require("@middy/core");
 const middyJsonBodyParser = require("@middy/http-json-body-parser");
 
 export const middyfy = (handler: any) => {
-  return middy(handler).use(middyJsonBodyParser());
+  const wrapped = middy(handler).use(middyJsonBodyParser());
+  // Node.js 24 rejects handlers whose signature includes the callback argument.
+  return async (event: unknown, context: unknown) => wrapped(event, context);
 };

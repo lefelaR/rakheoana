@@ -1,17 +1,14 @@
-import { experienceCatalog } from "../constants/experienceCatalog";
 import type { ExperienceRole } from "../constants/experienceCatalog";
 import { http } from "./httpService";
 
 export type { ExperienceRole };
 
-export const getExperienceCatalog = (): ExperienceRole[] => experienceCatalog;
-
 export const getExperience = async (): Promise<ExperienceRole[]> => {
   const { data } = await http.get("/api/experience");
-  if (Array.isArray(data?.data) && data.data.length > 0) {
-    return data.data;
+  if (!Array.isArray(data?.data)) {
+    throw new Error("Experience response was not a list");
   }
-  return experienceCatalog;
+  return data.data;
 };
 
 export type ExperienceRolePayload = Omit<ExperienceRole, "id">;

@@ -6,14 +6,13 @@ import {
   createBlankPortfolioProject,
   createPortfolio,
   getPortfolio,
-  getPortfolioCatalog,
   isDraftPortfolioId,
   updatePortfolio,
   type PortfolioProject,
 } from "@services/portfolioService";
 
 const DashboardPortfolio = () => {
-  const [projects, setProjects] = useState<PortfolioProject[]>(() => getPortfolioCatalog());
+  const [projects, setProjects] = useState<PortfolioProject[]>([]);
   const [savingId, setSavingId] = useState<string>();
   const [readOnly, setReadOnly] = useState(false);
   const [status, setStatus] = useState("Loading portfolio.");
@@ -34,11 +33,9 @@ const DashboardPortfolio = () => {
         if (!active) {
           return;
         }
-        setProjects(getPortfolioCatalog());
+        setProjects([]);
         setReadOnly(true);
-        setStatus(
-          "Could not reach the API. You can preview edits locally; start the backend on port 4000 to save."
-        );
+        setStatus("Could not load portfolio projects from the API.");
       });
 
     return () => {
@@ -52,7 +49,7 @@ const DashboardPortfolio = () => {
 
   const onSave = async (project: PortfolioProject) => {
     if (readOnly) {
-      toast.error("Start the API before saving portfolio projects.");
+      toast.error("The portfolio API is unavailable, so this project was not saved.");
       return;
     }
 
