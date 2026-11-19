@@ -62,8 +62,7 @@ export default function Navbar() {
                     <ul className="navbar-nav ml-auto">
                       <li className={itemClass("/auth/signin")}>
                         <Link className="page-scroll" href="/auth/signin">
-                          <i className="lni lni-lock">&nbsp; </i>
-                          Login
+                          <i className="lni lni-lock" aria-hidden="true" /> Login
                         </Link>
                       </li>
                     </ul>
