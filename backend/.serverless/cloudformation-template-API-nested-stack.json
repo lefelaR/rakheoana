@@ -3,6 +3,19 @@
   "Description": "APINestedStack nested stack",
   "Parameters": {},
   "Resources": {
+    "ApiGatewayRestApi": {
+      "Type": "AWS::ApiGateway::RestApi",
+      "Properties": {
+        "Name": "dev-portfolio-website-backend-dev",
+        "EndpointConfiguration": {
+          "Types": [
+            "EDGE"
+          ]
+        },
+        "Policy": ""
+      },
+      "DependsOn": []
+    },
     "ApiGatewayResourceApi": {
       "Type": "AWS::ApiGateway::Resource",
       "Properties": {
@@ -13,6 +26,32 @@
           ]
         },
         "PathPart": "api",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      },
+      "DependsOn": []
+    },
+    "ApiGatewayResourceApiSkills": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiGatewayResourceApi"
+        },
+        "PathPart": "skills",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      },
+      "DependsOn": []
+    },
+    "ApiGatewayResourceApiSkillsIdVar": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiGatewayResourceApiSkills"
+        },
+        "PathPart": "{id}",
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         }
@@ -68,45 +107,6 @@
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         }
-      },
-      "DependsOn": []
-    },
-    "ApiGatewayResourceApiSkills": {
-      "Type": "AWS::ApiGateway::Resource",
-      "Properties": {
-        "ParentId": {
-          "Ref": "ApiGatewayResourceApi"
-        },
-        "PathPart": "skills",
-        "RestApiId": {
-          "Ref": "ApiGatewayRestApi"
-        }
-      },
-      "DependsOn": []
-    },
-    "ApiGatewayResourceApiSkillsIdVar": {
-      "Type": "AWS::ApiGateway::Resource",
-      "Properties": {
-        "ParentId": {
-          "Ref": "ApiGatewayResourceApiSkills"
-        },
-        "PathPart": "{id}",
-        "RestApiId": {
-          "Ref": "ApiGatewayRestApi"
-        }
-      },
-      "DependsOn": []
-    },
-    "ApiGatewayRestApi": {
-      "Type": "AWS::ApiGateway::RestApi",
-      "Properties": {
-        "Name": "dev-portfolio-website-backend-dev",
-        "EndpointConfiguration": {
-          "Types": [
-            "EDGE"
-          ]
-        },
-        "Policy": ""
       },
       "DependsOn": []
     }

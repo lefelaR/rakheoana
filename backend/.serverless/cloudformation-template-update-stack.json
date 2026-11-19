@@ -275,7 +275,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/skills/list/handler.main",
         "Runtime": "nodejs24.x",
@@ -311,7 +311,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/skills/get/handler.main",
         "Runtime": "nodejs24.x",
@@ -347,7 +347,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/skills/select/handler.main",
         "Runtime": "nodejs24.x",
@@ -383,7 +383,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/skills/update/handler.main",
         "Runtime": "nodejs24.x",
@@ -419,7 +419,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/skills/remove/handler.main",
         "Runtime": "nodejs24.x",
@@ -455,7 +455,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/experience/list/handler.main",
         "Runtime": "nodejs24.x",
@@ -491,7 +491,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/experience/get/handler.main",
         "Runtime": "nodejs24.x",
@@ -527,7 +527,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/experience/create/handler.main",
         "Runtime": "nodejs24.x",
@@ -563,7 +563,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/experience/update/handler.main",
         "Runtime": "nodejs24.x",
@@ -599,7 +599,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/experience/delete/handler.main",
         "Runtime": "nodejs24.x",
@@ -635,7 +635,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/portfolio/list/handler.main",
         "Runtime": "nodejs24.x",
@@ -671,7 +671,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/portfolio/get/handler.main",
         "Runtime": "nodejs24.x",
@@ -707,7 +707,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/portfolio/create/handler.main",
         "Runtime": "nodejs24.x",
@@ -743,7 +743,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/portfolio/update/handler.main",
         "Runtime": "nodejs24.x",
@@ -779,7 +779,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "portfolio-website-backend-dev",
-          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z/portfolio-website-backend-dev.zip"
+          "S3Key": "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z/portfolio-website-backend-dev.zip"
         },
         "Handler": "src/functions/portfolio/delete/handler.main",
         "Runtime": "nodejs24.x",
@@ -1929,7 +1929,7 @@
         "PermissionsNestedStack"
       ]
     },
-    "ApiGatewayDeployment1795090834720": {
+    "ApiGatewayDeployment1795092270123": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -2025,23 +2025,6 @@
       },
       "DependsOn": []
     },
-    "APINestedStack": {
-      "Type": "AWS::CloudFormation::Stack",
-      "Properties": {
-        "Parameters": {},
-        "TemplateURL": {
-          "Fn::Join": [
-            "/",
-            [
-              "https://s3.eu-central-1.amazonaws.com",
-              "portfolio-website-backend-dev",
-              "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z",
-              "cloudformation-template-API-nested-stack.json"
-            ]
-          ]
-        }
-      }
-    },
     "VersionsNestedStack": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
@@ -2098,7 +2081,7 @@
             [
               "https://s3.eu-central-1.amazonaws.com",
               "portfolio-website-backend-dev",
-              "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z",
+              "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z",
               "cloudformation-template-Versions-nested-stack.json"
             ]
           ]
@@ -2121,6 +2104,23 @@
         "UpdatePortfolioLambdaFunction",
         "DeletePortfolioLambdaFunction"
       ]
+    },
+    "APINestedStack": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "Parameters": {},
+        "TemplateURL": {
+          "Fn::Join": [
+            "/",
+            [
+              "https://s3.eu-central-1.amazonaws.com",
+              "portfolio-website-backend-dev",
+              "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z",
+              "cloudformation-template-API-nested-stack.json"
+            ]
+          ]
+        }
+      }
     },
     "PermissionsNestedStack": {
       "Type": "AWS::CloudFormation::Stack",
@@ -2229,7 +2229,7 @@
             [
               "https://s3.eu-central-1.amazonaws.com",
               "portfolio-website-backend-dev",
-              "serverless/portfolio-website-backend-dev/dev/1795090844122-2026-11-19T12:20:44.122Z",
+              "serverless/portfolio-website-backend-dev/dev/1795092281420-2026-11-19T12:44:41.420Z",
               "cloudformation-template-Permissions-nested-stack.json"
             ]
           ]

@@ -2,6 +2,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { LuLogOut, LuMenu, LuX } from "react-icons/lu";
+import Icon from "@components/atoms/Icon";
 import DashboardNavLink from "@components/molecules/DashboardNavLink";
 import userSignOut from "@services/auth/userSignOut";
 import styles from "./DashboardSideNav.module.css";
@@ -65,7 +66,7 @@ const DashboardSideNav = ({ groups, pathname }: DashboardSideNavProps) => {
         aria-controls="dashboard-side-nav"
         onClick={() => setOpen(true)}
       >
-        <LuMenu aria-hidden="true" />
+        <Icon icon={LuMenu} aria-hidden="true" />
         <span className={styles.srOnly}>Open menu</span>
       </button>
       {open ? (
@@ -86,7 +87,7 @@ const DashboardSideNav = ({ groups, pathname }: DashboardSideNavProps) => {
             Rakheoana
           </Link>
           <button type="button" className={styles.close} onClick={close}>
-            <LuX aria-hidden="true" />
+            <Icon icon={LuX} aria-hidden="true" />
             <span className={styles.srOnly}>Close menu</span>
           </button>
         </div>
@@ -112,7 +113,7 @@ const DashboardSideNav = ({ groups, pathname }: DashboardSideNavProps) => {
           <li>
             <DashboardNavLink
               label="Log out"
-              icon={<LuLogOut />}
+              icon={<Icon icon={LuLogOut} />}
               onAction={logout}
               onNavigate={close}
             />

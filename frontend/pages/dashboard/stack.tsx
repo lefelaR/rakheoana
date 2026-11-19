@@ -10,7 +10,6 @@ import {
   getSkills,
   removeSkill,
   selectSkill,
-  type SkillGroupRecord,
 } from "@services/skillsService";
 
 const DashboardTechStack = () => {
@@ -47,7 +46,7 @@ const DashboardTechStack = () => {
     };
   }, []);
 
-  const applySelection = (records: SkillGroupRecord[], id: string, selected: boolean) =>
+  const applySelection = (records: TechStackGroup[], id: string, selected: boolean) =>
     records.map((group) => ({
       ...group,
       skills: group.skills.map((skill) =>
