@@ -1,4 +1,5 @@
 import type { ExperienceRole } from "@services/experienceService";
+import { sanitizeHighlight } from "./richText";
 import styles from "./ExperienceRoleCard.module.css";
 
 type ExperienceRoleCardProps = {
@@ -28,7 +29,7 @@ const ExperienceRoleCard = ({ role }: ExperienceRoleCardProps) => {
       ) : null}
       <ul className={styles.list}>
         {role.highlights.map((line) => (
-          <li key={line}>{line}</li>
+          <li key={line} dangerouslySetInnerHTML={{ __html: sanitizeHighlight(line) }} />
         ))}
       </ul>
     </article>

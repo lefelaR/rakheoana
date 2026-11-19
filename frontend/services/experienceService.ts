@@ -28,6 +28,10 @@ export const createExperience = async (
   return data.data;
 };
 
+export const deleteExperience = async (id: string): Promise<void> => {
+  await http.delete(`/api/experience/${id}`);
+};
+
 export const isDraftExperienceId = (id: string) => id.startsWith("new-");
 
 export const createBlankExperienceRole = (): ExperienceRole => ({

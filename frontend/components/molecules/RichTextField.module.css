@@ -1,0 +1,125 @@
+.field {
+  display: block;
+  margin-top: 0.65rem;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #8a8fa3;
+  font-family: Poppins, "Segoe UI", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.shell {
+  border: 1px solid #eceef3;
+  border-radius: 0.5rem;
+  background: #fff;
+  overflow: hidden;
+}
+
+.shell:focus-within {
+  outline: 2px solid #754ef9;
+  outline-offset: 1px;
+}
+
+.disabled {
+  opacity: 0.7;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+  padding: 0.35rem;
+  border-bottom: 1px solid #eceef3;
+  background: #f7f8fb;
+}
+
+.tool {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  border: 0;
+  border-radius: 0.35rem;
+  background: transparent;
+  color: #5c6178;
+  cursor: pointer;
+}
+
+.tool:hover:not(:disabled) {
+  background: #fff;
+  color: #32333c;
+}
+
+.tool:focus-visible {
+  outline: 2px solid #754ef9;
+  outline-offset: 1px;
+}
+
+.tool:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.toolOn {
+  background: #f4f1fe;
+  color: #754ef9;
+}
+
+.surface :global(.ProseMirror) {
+  min-height: 6.5rem;
+  padding: 0.55rem 0.65rem;
+  outline: none;
+  color: #32333c;
+  font-family: Poppins, "Segoe UI", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.surface :global(.ProseMirror p) {
+  margin: 0;
+}
+
+.surface :global(.ProseMirror ul),
+.surface :global(.ProseMirror ol) {
+  margin: 0.15rem 0;
+  padding-left: 1.2rem;
+}
+
+.surface :global(.ProseMirror ul) {
+  list-style: disc;
+}
+
+.surface :global(.ProseMirror ol) {
+  list-style: decimal;
+}
+
+.surface :global(.ProseMirror li + li) {
+  margin-top: 0.2rem;
+}
+
+.surface :global(.ProseMirror a) {
+  color: #754ef9;
+}
+
+.surface :global(.ProseMirror p.is-empty::before) {
+  color: #8a8fa3;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+.error {
+  margin: 0.4rem 0 0;
+  color: #9b3d3d;
+  font-family: Poppins, "Segoe UI", sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}

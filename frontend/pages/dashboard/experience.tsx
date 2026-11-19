@@ -5,6 +5,7 @@ import DashboardExperienceTemplate from "@components/templates/DashboardExperien
 import {
   createBlankExperienceRole,
   createExperience,
+  deleteExperience,
   getExperience,
   isDraftExperienceId,
   updateExperience,
@@ -75,6 +76,30 @@ const DashboardExperience = () => {
     }
   };
 
+  const onDelete = async (role: ExperienceRole) => {
+    if (isDraftExperienceId(role.id)) {
+      setRoles((current) => current.filter((item) => item.id !== role.id));
+      return;
+    }
+
+    if (readOnly) {
+      toast.error("The experience API is unavailable, so this role was not deleted.");
+      return;
+    }
+
+    setSavingId(role.id);
+
+    try {
+      await deleteExperience(role.id);
+      setRoles((current) => current.filter((item) => item.id !== role.id));
+      toast.success(`${role.company || "Role"} deleted.`);
+    } catch {
+      toast.error("Could not delete this role.");
+    } finally {
+      setSavingId(undefined);
+    }
+  };
+
   return (
     <Layout>
       <DashboardExperienceTemplate
@@ -83,6 +108,7 @@ const DashboardExperience = () => {
         readOnly={readOnly}
         status={status}
         onSave={onSave}
+        onDelete={onDelete}
         onAddRole={onAddRole}
       />
     </Layout>

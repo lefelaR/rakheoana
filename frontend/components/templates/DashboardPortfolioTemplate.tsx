@@ -12,6 +12,7 @@ type DashboardPortfolioTemplateProps = {
   readOnly?: boolean;
   status?: string;
   onSave: (project: PortfolioProject) => void;
+  onDelete: (project: PortfolioProject) => void;
   onAddProject: (period: PortfolioProject["period"]) => void;
 };
 
@@ -21,6 +22,7 @@ const DashboardPortfolioTemplate = ({
   readOnly,
   status,
   onSave,
+  onDelete,
   onAddProject,
 }: DashboardPortfolioTemplateProps) => {
   return (
@@ -67,6 +69,7 @@ const DashboardPortfolioTemplate = ({
                     isNew={isDraftPortfolioId(project.id)}
                     disabled={readOnly || savingId === project.id}
                     onSave={onSave}
+                    onDelete={() => onDelete(project)}
                   />
                 ))}
               </div>

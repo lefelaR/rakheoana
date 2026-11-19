@@ -11,6 +11,7 @@ type PortfolioProjectEditorProps = {
   disabled?: boolean;
   isNew?: boolean;
   onSave: (project: PortfolioProject) => void;
+  onDelete: () => void;
 };
 
 const PortfolioProjectEditor = ({
@@ -18,11 +19,14 @@ const PortfolioProjectEditor = ({
   disabled,
   isNew,
   onSave,
+  onDelete,
 }: PortfolioProjectEditorProps) => {
   const [draft, setDraft] = useState(project);
+  const [confirmingDelete, setConfirmingDelete] = useState(false);
 
   useEffect(() => {
     setDraft(project);
+    setConfirmingDelete(false);
   }, [project]);
 
   const setField = <K extends keyof PortfolioProject>(
@@ -124,9 +128,40 @@ const PortfolioProjectEditor = ({
           />
         </label>
       )}
-      <button type="submit" className={styles.save} disabled={disabled}>
-        {isNew ? "Add project" : "Save project"}
-      </button>
+      <div className={styles.actions}>
+        <button type="submit" className={styles.save} disabled={disabled}>
+          Save
+        </button>
+        {confirmingDelete ? (
+          <div className={styles.confirm} role="group" aria-labelledby={`${project.id}-delete`}>
+            <p className={styles.confirmText} id={`${project.id}-delete`}>
+              {isNew
+                ? "Discard this project?"
+                : "Delete this project? It will leave your public portfolio page."}
+            </p>
+            <button type="button" className={styles.delete} onClick={onDelete} disabled={disabled}>
+              Delete
+            </button>
+            <button
+              type="button"
+              className={styles.cancel}
+              onClick={() => setConfirmingDelete(false)}
+              disabled={disabled}
+            >
+              Cancel
+            </button>
+          </div>
+        ) : (
+          <button
+            type="button"
+            className={styles.delete}
+            onClick={() => setConfirmingDelete(true)}
+            disabled={disabled}
+          >
+            Delete
+          </button>
+        )}
+      </div>
     </form>
   );
 };

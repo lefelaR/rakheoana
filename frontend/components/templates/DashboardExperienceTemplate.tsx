@@ -1,4 +1,4 @@
-import ExperienceRoleEditor from "@components/molecules/ExperienceRoleEditor";
+import ExperienceRoleEditor from "@components/organisms/ExperienceRoleEditor";
 import {
   isDraftExperienceId,
   type ExperienceRole,
@@ -11,6 +11,7 @@ type DashboardExperienceTemplateProps = {
   readOnly?: boolean;
   status?: string;
   onSave: (role: ExperienceRole) => void;
+  onDelete: (role: ExperienceRole) => void;
   onAddRole: () => void;
 };
 
@@ -20,6 +21,7 @@ const DashboardExperienceTemplate = ({
   readOnly,
   status,
   onSave,
+  onDelete,
   onAddRole,
 }: DashboardExperienceTemplateProps) => {
   return (
@@ -54,6 +56,7 @@ const DashboardExperienceTemplate = ({
             isNew={isDraftExperienceId(role.id)}
             disabled={readOnly || savingId === role.id}
             onSave={onSave}
+            onDelete={() => onDelete(role)}
           />
         ))}
       </div>
