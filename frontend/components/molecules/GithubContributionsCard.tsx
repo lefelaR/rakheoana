@@ -1,6 +1,14 @@
 import Icon from "@components/atoms/Icon";
 import type { GithubContributionDay } from "@services/githubContributionsService";
-import { useEffect, useLayoutEffect, useRef, useState, type KeyboardEvent } from "react";
+import {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type FocusEvent,
+  type KeyboardEvent,
+  type MouseEvent,
+} from "react";
 import { createPortal } from "react-dom";
 import { FaGithub } from "react-icons/fa6";
 import styles from "./GithubContributionsCard.module.css";
@@ -16,6 +24,8 @@ export type GithubContributionsCardProps = {
 const DAY_LABELS = ["", "Mon", "", "Wed", "", "Fri", ""];
 
 const POPOVER_GAP = 10;
+
+const useClientLayoutEffect = typeof window === "undefined" ? useEffect : useLayoutEffect;
 
 const contributionLabel = (count: number) =>
   count === 0 ? "No contributions" : `${count} contribution${count === 1 ? "" : "s"}`;
@@ -165,6 +175,7 @@ const GithubContributionsCard = ({
         : `${contributionLabel(total)} in the last year`;
   const [popover, setPopover] = useState<ContributionPopover | null>(null);
   const activeCellRef = useRef<HTMLButtonElement | null>(null);
+  const activeDayRef = useRef<GithubContributionDay | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const popoverRef = useRef<HTMLDivElement>(null);
   const daysRef = useRef(days);
@@ -173,13 +184,29 @@ const GithubContributionsCard = ({
 
   const publish = (element: HTMLButtonElement, day: GithubContributionDay) => {
     activeCellRef.current = element;
+    activeDayRef.current = day;
     const next = measurePopover(element, day, scrollRef.current, popoverRef.current);
     setPopover((current) => (samePopover(current, next) ? current : next));
   };
 
-  const restoreOrHide = () => {
+  const hidePopover = () => {
+    activeCellRef.current = null;
+    activeDayRef.current = null;
+    setPopover(null);
+  };
+
+  const onDayMouseLeave = (event: MouseEvent<HTMLButtonElement>) => {
+    const next = event.relatedTarget;
+    if (next instanceof Element && next.closest("button[data-date]")) {
+      return;
+    }
+
     const focused = document.activeElement;
-    if (focused instanceof HTMLButtonElement && scrollRef.current?.contains(focused)) {
+    if (
+      focused instanceof HTMLButtonElement &&
+      focused !== event.currentTarget &&
+      scrollRef.current?.contains(focused)
+    ) {
       const day = daysRef.current?.find((item) => item.date === focused.dataset.date);
       if (day) {
         publish(focused, day);
@@ -187,11 +214,21 @@ const GithubContributionsCard = ({
       }
     }
 
-    activeCellRef.current = null;
-    setPopover(null);
+    if (document.activeElement !== event.currentTarget) {
+      hidePopover();
+    }
   };
 
-  useLayoutEffect(() => {
+  const onDayBlur = (event: FocusEvent<HTMLButtonElement>) => {
+    const next = event.relatedTarget;
+    if (next instanceof HTMLButtonElement && scrollRef.current?.contains(next)) {
+      return;
+    }
+
+    hidePopover();
+  };
+
+  useClientLayoutEffect(() => {
     const element = activeCellRef.current;
     if (!popover || !element) {
       return;
@@ -201,23 +238,34 @@ const GithubContributionsCard = ({
     if (!samePopover(popover, next)) {
       if (!next) {
         activeCellRef.current = null;
+        activeDayRef.current = null;
       }
       setPopover(next);
     }
   }, [popover]);
 
+  const popoverOpen = popover !== null;
+
   useEffect(() => {
-    if (!popover) {
+    if (!popoverOpen) {
       return;
     }
 
     const update = () => {
       const element = activeCellRef.current;
-      if (!element) {
+      const day = activeDayRef.current;
+      if (!element || !day) {
         return;
       }
 
-      const next = measurePopover(element, popover.day, scrollRef.current, popoverRef.current);
+      const next = measurePopover(element, day, scrollRef.current, popoverRef.current);
+      if (!next) {
+        activeCellRef.current = null;
+        activeDayRef.current = null;
+        setPopover(null);
+        return;
+      }
+
       setPopover((current) => (samePopover(current, next) ? current : next));
     };
 
@@ -227,7 +275,7 @@ const GithubContributionsCard = ({
       window.removeEventListener("scroll", update, true);
       window.removeEventListener("resize", update);
     };
-  }, [popover]);
+  }, [popoverOpen]);
 
   const moveFocus = (day: GithubContributionDay, key: string) => {
     if (!days) {
@@ -255,12 +303,19 @@ const GithubContributionsCard = ({
     const button = next
       ? scrollRef.current?.querySelector<HTMLButtonElement>(`[data-date="${next.date}"]`)
       : null;
-    button?.focus();
+
+    if (!button || !next) {
+      return;
+    }
+
+    button.focus();
+    publish(button, next);
   };
 
   const onDayKeyDown = (event: KeyboardEvent<HTMLButtonElement>, day: GithubContributionDay) => {
     if (event.key === "Escape") {
       event.currentTarget.blur();
+      hidePopover();
       return;
     }
 
@@ -329,9 +384,9 @@ const GithubContributionsCard = ({
                       tabIndex={day.date === tabDate ? 0 : -1}
                       style={{ gridColumn: weekIndex + 2, gridRow: dayIndex + 2 }}
                       onMouseEnter={(event) => publish(event.currentTarget, day)}
-                      onMouseLeave={restoreOrHide}
+                      onMouseLeave={onDayMouseLeave}
                       onFocus={(event) => publish(event.currentTarget, day)}
-                      onBlur={restoreOrHide}
+                      onBlur={onDayBlur}
                       onKeyDown={(event) => onDayKeyDown(event, day)}
                     />
                   ) : (
@@ -369,8 +424,8 @@ const GithubContributionsCard = ({
                 ["--arrow-shift" as string]: `${popover.arrowShift}px`,
               }}
             >
-              <p className={styles.popoverDate}>{formatDay(popover.day.date)}</p>
-              <p className={styles.popoverCount}>{contributionLabel(popover.day.count)}</p>
+              <div className={styles.popoverDate}>{formatDay(popover.day.date)}</div>
+              <div className={styles.popoverCount}>{contributionLabel(popover.day.count)}</div>
             </div>,
             document.body
           )
