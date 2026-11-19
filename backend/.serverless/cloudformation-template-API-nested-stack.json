@@ -3,20 +3,7 @@
   "Description": "APINestedStack nested stack",
   "Parameters": {},
   "Resources": {
-    "ApiGatewayRestApi": {
-      "Type": "AWS::ApiGateway::RestApi",
-      "Properties": {
-        "Name": "dev-rakheoana-backend-dev",
-        "EndpointConfiguration": {
-          "Types": [
-            "EDGE"
-          ]
-        },
-        "Policy": ""
-      },
-      "DependsOn": []
-    },
-    "ApiGatewayResourceConfigurations": {
+    "ApiGatewayResourceApi": {
       "Type": "AWS::ApiGateway::Resource",
       "Properties": {
         "ParentId": {
@@ -25,34 +12,31 @@
             "RootResourceId"
           ]
         },
-        "PathPart": "configurations",
+        "PathPart": "api",
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         }
       },
       "DependsOn": []
     },
-    "ApiGatewayResourceRoles": {
+    "ApiGatewayResourceApiExperience": {
       "Type": "AWS::ApiGateway::Resource",
       "Properties": {
         "ParentId": {
-          "Fn::GetAtt": [
-            "ApiGatewayRestApi",
-            "RootResourceId"
-          ]
+          "Ref": "ApiGatewayResourceApi"
         },
-        "PathPart": "roles",
+        "PathPart": "experience",
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         }
       },
       "DependsOn": []
     },
-    "ApiGatewayResourceRolesIdVar": {
+    "ApiGatewayResourceApiExperienceIdVar": {
       "Type": "AWS::ApiGateway::Resource",
       "Properties": {
         "ParentId": {
-          "Ref": "ApiGatewayResourceRoles"
+          "Ref": "ApiGatewayResourceApiExperience"
         },
         "PathPart": "{id}",
         "RestApiId": {
@@ -61,19 +45,68 @@
       },
       "DependsOn": []
     },
-    "ApiGatewayResourceUsers": {
+    "ApiGatewayResourceApiPortfolio": {
       "Type": "AWS::ApiGateway::Resource",
       "Properties": {
         "ParentId": {
-          "Fn::GetAtt": [
-            "ApiGatewayRestApi",
-            "RootResourceId"
-          ]
+          "Ref": "ApiGatewayResourceApi"
         },
-        "PathPart": "users",
+        "PathPart": "portfolio",
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         }
+      },
+      "DependsOn": []
+    },
+    "ApiGatewayResourceApiPortfolioIdVar": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiGatewayResourceApiPortfolio"
+        },
+        "PathPart": "{id}",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      },
+      "DependsOn": []
+    },
+    "ApiGatewayResourceApiSkills": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiGatewayResourceApi"
+        },
+        "PathPart": "skills",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      },
+      "DependsOn": []
+    },
+    "ApiGatewayResourceApiSkillsIdVar": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiGatewayResourceApiSkills"
+        },
+        "PathPart": "{id}",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi"
+        }
+      },
+      "DependsOn": []
+    },
+    "ApiGatewayRestApi": {
+      "Type": "AWS::ApiGateway::RestApi",
+      "Properties": {
+        "Name": "dev-portfolio-website-backend-dev",
+        "EndpointConfiguration": {
+          "Types": [
+            "EDGE"
+          ]
+        },
+        "Policy": ""
       },
       "DependsOn": []
     }
@@ -84,24 +117,34 @@
         "Ref": "ApiGatewayRestApi"
       }
     },
-    "ApiGatewayResourceConfigurations": {
+    "ApiGatewayResourceApiSkills": {
       "Value": {
-        "Ref": "ApiGatewayResourceConfigurations"
+        "Ref": "ApiGatewayResourceApiSkills"
       }
     },
-    "ApiGatewayResourceRoles": {
+    "ApiGatewayResourceApiSkillsIdVar": {
       "Value": {
-        "Ref": "ApiGatewayResourceRoles"
+        "Ref": "ApiGatewayResourceApiSkillsIdVar"
       }
     },
-    "ApiGatewayResourceRolesIdVar": {
+    "ApiGatewayResourceApiExperience": {
       "Value": {
-        "Ref": "ApiGatewayResourceRolesIdVar"
+        "Ref": "ApiGatewayResourceApiExperience"
       }
     },
-    "ApiGatewayResourceUsers": {
+    "ApiGatewayResourceApiExperienceIdVar": {
       "Value": {
-        "Ref": "ApiGatewayResourceUsers"
+        "Ref": "ApiGatewayResourceApiExperienceIdVar"
+      }
+    },
+    "ApiGatewayResourceApiPortfolio": {
+      "Value": {
+        "Ref": "ApiGatewayResourceApiPortfolio"
+      }
+    },
+    "ApiGatewayResourceApiPortfolioIdVar": {
+      "Value": {
+        "Ref": "ApiGatewayResourceApiPortfolioIdVar"
       }
     }
   }

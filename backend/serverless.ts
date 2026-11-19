@@ -1,28 +1,18 @@
 import type { AWS } from "@serverless/typescript";
 import dynamoDbTables from "./resources/dynamodb-tables";
-// import * as issueFunctions from "@functions/issues";
-// import * as notificationFunctions from "@functions/notifications";
-// import * as departmentFunctions from "@functions/departments";
-// import * as categoryFunctions from "@functions/categories";
-import * as roleFunctions from "@functions/roles";
-import * as userFunctions from "@functions/users";
 import * as skillFunctions from "@functions/skills";
 import * as experienceFunctions from "@functions/experience";
 import * as portfolioFunctions from "@functions/portfolio";
-// import * as newsletterFunctions from "@functions/newsletter";
-// import * as rsvpFunctions from "@functions/rsvps";
-// import * as propertyFunctions from "@functions/properties";
-// import * as agmFunctions from "@functions/agm";
-// import * as interactionFunctions from "@functions/interactions";
-// import * as mailSubscriberFunctions from "@functions/mail-subscribers";
-// import * as wayLeaveFunctions from '@functions/way-leaves';
 
+// @serverless/typescript still types runtime as nodejs14.x and older.
+type ServiceConfig = Omit<AWS, "provider"> & {
+  provider: Omit<AWS["provider"], "runtime"> & {
+    runtime: "nodejs24.x";
+  };
+};
 
-import { getAllConfigurations } from "@functions/configurations";
-
-const serverlessConfiguration: AWS = {
-  service: "rakheoana-backend-dev",
-  variablesResolutionMode: "20210326",
+const serverlessConfiguration: ServiceConfig = {
+  service: "portfolio-website-backend-dev",
   custom: {
     prune: {
       automatic: true,
@@ -61,6 +51,7 @@ const serverlessConfiguration: AWS = {
     },
   },
   plugins: [
+    "./plugins/supported-node-runtimes",
     "serverless-webpack",
     "serverless-dynamodb-local",
     "serverless-deployment-bucket",
@@ -76,42 +67,23 @@ const serverlessConfiguration: AWS = {
   provider: {
     name: "aws",
     // profile: "turati",
-    runtime: "nodejs14.x",
+    runtime: "nodejs24.x",
     region: "eu-central-1",
     tracing: {
       apiGateway: true,
       lambda: true,
     },
-    eventBridge: {
-      useCloudFormation: true,
-    },
     stage: "dev",
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1",
-      // ISSUE_TABLE: "${self:service}-${self:provider.stage}-issues",
-      // LOG_TABLE: "${self:service}-${self:provider.stage}-logs",
-      // PROPERTY_TABLE: "${self:service}-${self:provider.stage}-properties",
-      // CATEGORY_TABLE: "${self:service}-${self:provider.stage}-categories",
-      // DEPARTMENT_TABLE: "${self:service}-${self:provider.stage}-departments",
-      ROLES_TABLE: "${self:service}-${self:provider.stage}-roles",
-      USERS_TABLE: "${self:service}-${self:provider.stage}-users",
       SKILLS_TABLE: "${self:service}-${self:provider.stage}-skills",
       EXPERIENCE_TABLE: "${self:service}-${self:provider.stage}-experience",
       PORTFOLIO_TABLE: "${self:service}-${self:provider.stage}-portfolio",
-      // NEWSLETTERS_TABLE: "${self:service}-${self:provider.stage}-newsletter",
-      // RSVP_TABLE: "${self:service}-${self:provider.stage}-rsvp",
-      // AGM_TABLE: "${self:service}-${self:provider.stage}-agmdocuments",
       REGION: "${self:provider.region}",
-      ADMIN_EMAIL: "rakgew@gmail.com",
       STAGE: "${self:provider.stage}",
-      // INTERACTIONS_TABLE: "${self:service}-${self:provider.stage}-interactions",
-      // MAIL_SUBSCRIBER_TABLE: "${self:service}-${self:provider.stage}-mailSubscribers",
-      // WAY_LEAVE_TABLE: "${self:service}-${self:provider.stage}-wayLeaves",
-
     },
-    lambdaHashingVersion: "20201221",
     deploymentBucket: {
-      name: "rakheoana-deployment-bucket",
+      name: "portfolio-website-backend-dev",
       serverSideEncryption: "AES256",
     },
     iam: {
@@ -178,38 +150,16 @@ const serverlessConfiguration: AWS = {
       },
     },
   },
-  // import the function via paths
   //@ts-ignore
   functions: {
-    getAllConfigurations,
-    // ...issueFunctions,
-    //  ...notificationFunctions,
-    //  ...departmentFunctions,
-    //  ...categoryFunctions,
-     ...roleFunctions,
-     ...userFunctions,
-     ...skillFunctions,
-     ...experienceFunctions,
-     ...portfolioFunctions,
-    //  ...newsletterFunctions,
-    //  ...rsvpFunctions,
-    //  ...propertyFunctions,
-    //  ...agmFunctions,
-    //  ...interactionFunctions,
-    //  ...mailSubscriberFunctions,
-    //  ...wayLeaveFunctions
+    ...skillFunctions,
+    ...experienceFunctions,
+    ...portfolioFunctions,
   },
 
   resources: {
     Resources: dynamoDbTables,
   },
 };
-
-if (serverlessConfiguration.provider.stage != "prod") {
-  console.log("Not in production");
-  serverlessConfiguration.provider.environment.ADMIN_EMAIL =
-    "rakgew@gmail.com";
-  console.log("STAGE:", serverlessConfiguration.provider.stage);
-}
 
 module.exports = serverlessConfiguration;

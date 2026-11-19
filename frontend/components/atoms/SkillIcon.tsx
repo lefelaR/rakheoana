@@ -1,4 +1,4 @@
-import type { IconType } from "react-icons";
+import type { IconBaseProps, IconType } from "react-icons";
 import { FaAws, FaMicrosoft } from "react-icons/fa6";
 import { LuBot, LuCode, LuDatabase, LuWorkflow } from "react-icons/lu";
 import { DiVisualstudio } from "react-icons/di";
@@ -70,8 +70,8 @@ type SkillIconProps = {
 };
 
 const SkillIcon = ({ name }: SkillIconProps) => {
-  const Icon = icons[name] ?? LuCode;
-  return <Icon size={28} aria-hidden="true" />;
+  const Glyph = (icons[name] ?? LuCode) as (props: IconBaseProps) => JSX.Element;
+  return <Glyph size={28} aria-hidden="true" />;
 };
 
 export default SkillIcon;

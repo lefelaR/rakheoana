@@ -1,31 +1,27 @@
 {
   "service": {
-    "service": "rakheoana-backend-dev",
+    "service": "portfolio-website-backend-dev",
     "serviceObject": {
-      "name": "rakheoana-backend-dev"
+      "name": "portfolio-website-backend-dev"
     },
     "provider": {
       "name": "aws",
-      "runtime": "nodejs14.x",
+      "runtime": "nodejs24.x",
       "region": "eu-central-1",
       "tracing": {
         "apiGateway": true,
         "lambda": true
       },
-      "eventBridge": {
-        "useCloudFormation": true
-      },
       "stage": "dev",
       "environment": {
         "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
-        "ROLES_TABLE": "rakheoana-backend-dev-dev-roles",
-        "USERS_TABLE": "rakheoana-backend-dev-dev-users",
+        "SKILLS_TABLE": "portfolio-website-backend-dev-dev-skills",
+        "EXPERIENCE_TABLE": "portfolio-website-backend-dev-dev-experience",
+        "PORTFOLIO_TABLE": "portfolio-website-backend-dev-dev-portfolio",
         "REGION": "eu-central-1",
-        "ADMIN_EMAIL": "rakgew@gmail.com",
         "STAGE": "dev"
       },
-      "lambdaHashingVersion": "20201221",
-      "deploymentBucket": "rakheoana-deployment-bucket",
+      "deploymentBucket": "portfolio-website-backend-dev",
       "iam": {
         "role": {
           "statements": [
@@ -102,59 +98,115 @@
       },
       "versionFunctions": true,
       "deploymentBucketObject": {
-        "name": "rakheoana-deployment-bucket",
+        "name": "portfolio-website-backend-dev",
         "serverSideEncryption": "AES256"
       },
       "compiledCloudFormationTemplate": {
         "AWSTemplateFormatVersion": "2010-09-09",
         "Description": "The AWS CloudFormation template for this Serverless application",
         "Resources": {
-          "GetAllConfigurationsLogGroup": {
+          "ListSkillsLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/rakheoana-backend-dev-dev-getAllConfigurations"
+              "LogGroupName": "/aws/lambda/portfolio-website-backend-dev-dev-listSkills"
             },
             "DependsOn": []
           },
-          "CreateRoleLogGroup": {
+          "GetSkillLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/rakheoana-backend-dev-dev-createRole"
+              "LogGroupName": "/aws/lambda/portfolio-website-backend-dev-dev-getSkill"
             },
             "DependsOn": []
           },
-          "UpdateRoleLogGroup": {
+          "SelectSkillLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/rakheoana-backend-dev-dev-updateRole"
+              "LogGroupName": "/aws/lambda/portfolio-website-backend-dev-dev-selectSkill"
             },
             "DependsOn": []
           },
-          "DeleteRoleLogGroup": {
+          "UpdateSkillLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/rakheoana-backend-dev-dev-deleteRole"
+              "LogGroupName": "/aws/lambda/portfolio-website-backend-dev-dev-updateSkill"
             },
             "DependsOn": []
           },
-          "GetRoleLogGroup": {
+          "RemoveSkillLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/rakheoana-backend-dev-dev-getRole"
+              "LogGroupName": "/aws/lambda/portfolio-website-backend-dev-dev-removeSkill"
             },
             "DependsOn": []
           },
-          "GetAllRolesLogGroup": {
+          "ListExperienceLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/rakheoana-backend-dev-dev-getAllRoles"
+              "LogGroupName": "/aws/lambda/portfolio-website-backend-dev-dev-listExperience"
             },
             "DependsOn": []
           },
-          "AddUserLogGroup": {
+          "GetExperienceLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/rakheoana-backend-dev-dev-addUser"
+              "LogGroupName": "/aws/lambda/portfolio-website-backend-dev-dev-getExperience"
+            },
+            "DependsOn": []
+          },
+          "CreateExperienceLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/portfolio-website-backend-dev-dev-createExperience"
+            },
+            "DependsOn": []
+          },
+          "UpdateExperienceLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/portfolio-website-backend-dev-dev-updateExperience"
+            },
+            "DependsOn": []
+          },
+          "DeleteExperienceLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/portfolio-website-backend-dev-dev-deleteExperience"
+            },
+            "DependsOn": []
+          },
+          "ListPortfolioLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/portfolio-website-backend-dev-dev-listPortfolio"
+            },
+            "DependsOn": []
+          },
+          "GetPortfolioLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/portfolio-website-backend-dev-dev-getPortfolio"
+            },
+            "DependsOn": []
+          },
+          "CreatePortfolioLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/portfolio-website-backend-dev-dev-createPortfolio"
+            },
+            "DependsOn": []
+          },
+          "UpdatePortfolioLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/portfolio-website-backend-dev-dev-updatePortfolio"
+            },
+            "DependsOn": []
+          },
+          "DeletePortfolioLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/portfolio-website-backend-dev-dev-deletePortfolio"
             },
             "DependsOn": []
           },
@@ -183,7 +235,7 @@
                     "Fn::Join": [
                       "-",
                       [
-                        "rakheoana-backend-dev",
+                        "portfolio-website-backend-dev",
                         "dev",
                         "lambda"
                       ]
@@ -196,12 +248,13 @@
                         "Effect": "Allow",
                         "Action": [
                           "logs:CreateLogStream",
-                          "logs:CreateLogGroup"
+                          "logs:CreateLogGroup",
+                          "logs:TagResource"
                         ],
                         "Resource": [
                           {
                             "Fn::Sub": [
-                              "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/rakheoana-backend-dev-dev*:*",
+                              "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/portfolio-website-backend-dev-dev*:*",
                               {}
                             ]
                           }
@@ -215,7 +268,7 @@
                         "Resource": [
                           {
                             "Fn::Sub": [
-                              "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/rakheoana-backend-dev-dev*:*:*",
+                              "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/portfolio-website-backend-dev-dev*:*:*",
                               {}
                             ]
                           }
@@ -261,7 +314,7 @@
                 "Fn::Join": [
                   "-",
                   [
-                    "rakheoana-backend-dev",
+                    "portfolio-website-backend-dev",
                     "dev",
                     {
                       "Ref": "AWS::Region"
@@ -273,16 +326,16 @@
             },
             "DependsOn": []
           },
-          "GetAllConfigurationsLambdaFunction": {
+          "ListSkillsLambdaFunction": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
               "Code": {
-                "S3Bucket": "rakheoana-deployment-bucket",
-                "S3Key": "serverless/rakheoana-backend-dev/dev/1693743300906-2023-09-03T12:15:00.906Z/rakheoana-backend-dev.zip"
+                "S3Bucket": "portfolio-website-backend-dev",
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
               },
-              "Handler": "src/functions/configurations/getAllConfigs/handler.main",
-              "Runtime": "nodejs14.x",
-              "FunctionName": "rakheoana-backend-dev-dev-getAllConfigurations",
+              "Handler": "src/functions/skills/list/handler.main",
+              "Runtime": "nodejs24.x",
+              "FunctionName": "portfolio-website-backend-dev-dev-listSkills",
               "MemorySize": 1024,
               "Timeout": 6,
               "TracingConfig": {
@@ -291,10 +344,10 @@
               "Environment": {
                 "Variables": {
                   "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
-                  "ROLES_TABLE": "rakheoana-backend-dev-dev-roles",
-                  "USERS_TABLE": "rakheoana-backend-dev-dev-users",
+                  "SKILLS_TABLE": "portfolio-website-backend-dev-dev-skills",
+                  "EXPERIENCE_TABLE": "portfolio-website-backend-dev-dev-experience",
+                  "PORTFOLIO_TABLE": "portfolio-website-backend-dev-dev-portfolio",
                   "REGION": "eu-central-1",
-                  "ADMIN_EMAIL": "rakgew@gmail.com",
                   "STAGE": "dev"
                 }
               },
@@ -306,19 +359,19 @@
               }
             },
             "DependsOn": [
-              "GetAllConfigurationsLogGroup"
+              "ListSkillsLogGroup"
             ]
           },
-          "CreateRoleLambdaFunction": {
+          "GetSkillLambdaFunction": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
               "Code": {
-                "S3Bucket": "rakheoana-deployment-bucket",
-                "S3Key": "serverless/rakheoana-backend-dev/dev/1693743300906-2023-09-03T12:15:00.906Z/rakheoana-backend-dev.zip"
+                "S3Bucket": "portfolio-website-backend-dev",
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
               },
-              "Handler": "src/functions/roles/create/handler.main",
-              "Runtime": "nodejs14.x",
-              "FunctionName": "rakheoana-backend-dev-dev-createRole",
+              "Handler": "src/functions/skills/get/handler.main",
+              "Runtime": "nodejs24.x",
+              "FunctionName": "portfolio-website-backend-dev-dev-getSkill",
               "MemorySize": 1024,
               "Timeout": 6,
               "TracingConfig": {
@@ -327,10 +380,10 @@
               "Environment": {
                 "Variables": {
                   "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
-                  "ROLES_TABLE": "rakheoana-backend-dev-dev-roles",
-                  "USERS_TABLE": "rakheoana-backend-dev-dev-users",
+                  "SKILLS_TABLE": "portfolio-website-backend-dev-dev-skills",
+                  "EXPERIENCE_TABLE": "portfolio-website-backend-dev-dev-experience",
+                  "PORTFOLIO_TABLE": "portfolio-website-backend-dev-dev-portfolio",
                   "REGION": "eu-central-1",
-                  "ADMIN_EMAIL": "rakgew@gmail.com",
                   "STAGE": "dev"
                 }
               },
@@ -342,19 +395,19 @@
               }
             },
             "DependsOn": [
-              "CreateRoleLogGroup"
+              "GetSkillLogGroup"
             ]
           },
-          "UpdateRoleLambdaFunction": {
+          "SelectSkillLambdaFunction": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
               "Code": {
-                "S3Bucket": "rakheoana-deployment-bucket",
-                "S3Key": "serverless/rakheoana-backend-dev/dev/1693743300906-2023-09-03T12:15:00.906Z/rakheoana-backend-dev.zip"
+                "S3Bucket": "portfolio-website-backend-dev",
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
               },
-              "Handler": "src/functions/roles/update/handler.main",
-              "Runtime": "nodejs14.x",
-              "FunctionName": "rakheoana-backend-dev-dev-updateRole",
+              "Handler": "src/functions/skills/select/handler.main",
+              "Runtime": "nodejs24.x",
+              "FunctionName": "portfolio-website-backend-dev-dev-selectSkill",
               "MemorySize": 1024,
               "Timeout": 6,
               "TracingConfig": {
@@ -363,10 +416,10 @@
               "Environment": {
                 "Variables": {
                   "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
-                  "ROLES_TABLE": "rakheoana-backend-dev-dev-roles",
-                  "USERS_TABLE": "rakheoana-backend-dev-dev-users",
+                  "SKILLS_TABLE": "portfolio-website-backend-dev-dev-skills",
+                  "EXPERIENCE_TABLE": "portfolio-website-backend-dev-dev-experience",
+                  "PORTFOLIO_TABLE": "portfolio-website-backend-dev-dev-portfolio",
                   "REGION": "eu-central-1",
-                  "ADMIN_EMAIL": "rakgew@gmail.com",
                   "STAGE": "dev"
                 }
               },
@@ -378,19 +431,19 @@
               }
             },
             "DependsOn": [
-              "UpdateRoleLogGroup"
+              "SelectSkillLogGroup"
             ]
           },
-          "DeleteRoleLambdaFunction": {
+          "UpdateSkillLambdaFunction": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
               "Code": {
-                "S3Bucket": "rakheoana-deployment-bucket",
-                "S3Key": "serverless/rakheoana-backend-dev/dev/1693743300906-2023-09-03T12:15:00.906Z/rakheoana-backend-dev.zip"
+                "S3Bucket": "portfolio-website-backend-dev",
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
               },
-              "Handler": "src/functions/roles/delete/handler.main",
-              "Runtime": "nodejs14.x",
-              "FunctionName": "rakheoana-backend-dev-dev-deleteRole",
+              "Handler": "src/functions/skills/update/handler.main",
+              "Runtime": "nodejs24.x",
+              "FunctionName": "portfolio-website-backend-dev-dev-updateSkill",
               "MemorySize": 1024,
               "Timeout": 6,
               "TracingConfig": {
@@ -399,10 +452,10 @@
               "Environment": {
                 "Variables": {
                   "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
-                  "ROLES_TABLE": "rakheoana-backend-dev-dev-roles",
-                  "USERS_TABLE": "rakheoana-backend-dev-dev-users",
+                  "SKILLS_TABLE": "portfolio-website-backend-dev-dev-skills",
+                  "EXPERIENCE_TABLE": "portfolio-website-backend-dev-dev-experience",
+                  "PORTFOLIO_TABLE": "portfolio-website-backend-dev-dev-portfolio",
                   "REGION": "eu-central-1",
-                  "ADMIN_EMAIL": "rakgew@gmail.com",
                   "STAGE": "dev"
                 }
               },
@@ -414,19 +467,19 @@
               }
             },
             "DependsOn": [
-              "DeleteRoleLogGroup"
+              "UpdateSkillLogGroup"
             ]
           },
-          "GetRoleLambdaFunction": {
+          "RemoveSkillLambdaFunction": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
               "Code": {
-                "S3Bucket": "rakheoana-deployment-bucket",
-                "S3Key": "serverless/rakheoana-backend-dev/dev/1693743300906-2023-09-03T12:15:00.906Z/rakheoana-backend-dev.zip"
+                "S3Bucket": "portfolio-website-backend-dev",
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
               },
-              "Handler": "src/functions/roles/get/handler.main",
-              "Runtime": "nodejs14.x",
-              "FunctionName": "rakheoana-backend-dev-dev-getRole",
+              "Handler": "src/functions/skills/remove/handler.main",
+              "Runtime": "nodejs24.x",
+              "FunctionName": "portfolio-website-backend-dev-dev-removeSkill",
               "MemorySize": 1024,
               "Timeout": 6,
               "TracingConfig": {
@@ -435,10 +488,10 @@
               "Environment": {
                 "Variables": {
                   "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
-                  "ROLES_TABLE": "rakheoana-backend-dev-dev-roles",
-                  "USERS_TABLE": "rakheoana-backend-dev-dev-users",
+                  "SKILLS_TABLE": "portfolio-website-backend-dev-dev-skills",
+                  "EXPERIENCE_TABLE": "portfolio-website-backend-dev-dev-experience",
+                  "PORTFOLIO_TABLE": "portfolio-website-backend-dev-dev-portfolio",
                   "REGION": "eu-central-1",
-                  "ADMIN_EMAIL": "rakgew@gmail.com",
                   "STAGE": "dev"
                 }
               },
@@ -450,19 +503,19 @@
               }
             },
             "DependsOn": [
-              "GetRoleLogGroup"
+              "RemoveSkillLogGroup"
             ]
           },
-          "GetAllRolesLambdaFunction": {
+          "ListExperienceLambdaFunction": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
               "Code": {
-                "S3Bucket": "rakheoana-deployment-bucket",
-                "S3Key": "serverless/rakheoana-backend-dev/dev/1693743300906-2023-09-03T12:15:00.906Z/rakheoana-backend-dev.zip"
+                "S3Bucket": "portfolio-website-backend-dev",
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
               },
-              "Handler": "src/functions/roles/getAll/handler.main",
-              "Runtime": "nodejs14.x",
-              "FunctionName": "rakheoana-backend-dev-dev-getAllRoles",
+              "Handler": "src/functions/experience/list/handler.main",
+              "Runtime": "nodejs24.x",
+              "FunctionName": "portfolio-website-backend-dev-dev-listExperience",
               "MemorySize": 1024,
               "Timeout": 6,
               "TracingConfig": {
@@ -471,10 +524,10 @@
               "Environment": {
                 "Variables": {
                   "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
-                  "ROLES_TABLE": "rakheoana-backend-dev-dev-roles",
-                  "USERS_TABLE": "rakheoana-backend-dev-dev-users",
+                  "SKILLS_TABLE": "portfolio-website-backend-dev-dev-skills",
+                  "EXPERIENCE_TABLE": "portfolio-website-backend-dev-dev-experience",
+                  "PORTFOLIO_TABLE": "portfolio-website-backend-dev-dev-portfolio",
                   "REGION": "eu-central-1",
-                  "ADMIN_EMAIL": "rakgew@gmail.com",
                   "STAGE": "dev"
                 }
               },
@@ -486,19 +539,19 @@
               }
             },
             "DependsOn": [
-              "GetAllRolesLogGroup"
+              "ListExperienceLogGroup"
             ]
           },
-          "AddUserLambdaFunction": {
+          "GetExperienceLambdaFunction": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
               "Code": {
-                "S3Bucket": "rakheoana-deployment-bucket",
-                "S3Key": "serverless/rakheoana-backend-dev/dev/1693743300906-2023-09-03T12:15:00.906Z/rakheoana-backend-dev.zip"
+                "S3Bucket": "portfolio-website-backend-dev",
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
               },
-              "Handler": "src/functions/users/addUser/handler.main",
-              "Runtime": "nodejs14.x",
-              "FunctionName": "rakheoana-backend-dev-dev-addUser",
+              "Handler": "src/functions/experience/get/handler.main",
+              "Runtime": "nodejs24.x",
+              "FunctionName": "portfolio-website-backend-dev-dev-getExperience",
               "MemorySize": 1024,
               "Timeout": 6,
               "TracingConfig": {
@@ -507,10 +560,10 @@
               "Environment": {
                 "Variables": {
                   "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
-                  "ROLES_TABLE": "rakheoana-backend-dev-dev-roles",
-                  "USERS_TABLE": "rakheoana-backend-dev-dev-users",
+                  "SKILLS_TABLE": "portfolio-website-backend-dev-dev-skills",
+                  "EXPERIENCE_TABLE": "portfolio-website-backend-dev-dev-experience",
+                  "PORTFOLIO_TABLE": "portfolio-website-backend-dev-dev-portfolio",
                   "REGION": "eu-central-1",
-                  "ADMIN_EMAIL": "rakgew@gmail.com",
                   "STAGE": "dev"
                 }
               },
@@ -522,10 +575,298 @@
               }
             },
             "DependsOn": [
-              "AddUserLogGroup"
+              "GetExperienceLogGroup"
             ]
           },
-          "ApiGatewayMethodConfigurationsOptions": {
+          "CreateExperienceLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "portfolio-website-backend-dev",
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
+              },
+              "Handler": "src/functions/experience/create/handler.main",
+              "Runtime": "nodejs24.x",
+              "FunctionName": "portfolio-website-backend-dev-dev-createExperience",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "TracingConfig": {
+                "Mode": "Active"
+              },
+              "Environment": {
+                "Variables": {
+                  "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+                  "SKILLS_TABLE": "portfolio-website-backend-dev-dev-skills",
+                  "EXPERIENCE_TABLE": "portfolio-website-backend-dev-dev-experience",
+                  "PORTFOLIO_TABLE": "portfolio-website-backend-dev-dev-portfolio",
+                  "REGION": "eu-central-1",
+                  "STAGE": "dev"
+                }
+              },
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "CreateExperienceLogGroup"
+            ]
+          },
+          "UpdateExperienceLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "portfolio-website-backend-dev",
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
+              },
+              "Handler": "src/functions/experience/update/handler.main",
+              "Runtime": "nodejs24.x",
+              "FunctionName": "portfolio-website-backend-dev-dev-updateExperience",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "TracingConfig": {
+                "Mode": "Active"
+              },
+              "Environment": {
+                "Variables": {
+                  "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+                  "SKILLS_TABLE": "portfolio-website-backend-dev-dev-skills",
+                  "EXPERIENCE_TABLE": "portfolio-website-backend-dev-dev-experience",
+                  "PORTFOLIO_TABLE": "portfolio-website-backend-dev-dev-portfolio",
+                  "REGION": "eu-central-1",
+                  "STAGE": "dev"
+                }
+              },
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "UpdateExperienceLogGroup"
+            ]
+          },
+          "DeleteExperienceLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "portfolio-website-backend-dev",
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
+              },
+              "Handler": "src/functions/experience/delete/handler.main",
+              "Runtime": "nodejs24.x",
+              "FunctionName": "portfolio-website-backend-dev-dev-deleteExperience",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "TracingConfig": {
+                "Mode": "Active"
+              },
+              "Environment": {
+                "Variables": {
+                  "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+                  "SKILLS_TABLE": "portfolio-website-backend-dev-dev-skills",
+                  "EXPERIENCE_TABLE": "portfolio-website-backend-dev-dev-experience",
+                  "PORTFOLIO_TABLE": "portfolio-website-backend-dev-dev-portfolio",
+                  "REGION": "eu-central-1",
+                  "STAGE": "dev"
+                }
+              },
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "DeleteExperienceLogGroup"
+            ]
+          },
+          "ListPortfolioLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "portfolio-website-backend-dev",
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
+              },
+              "Handler": "src/functions/portfolio/list/handler.main",
+              "Runtime": "nodejs24.x",
+              "FunctionName": "portfolio-website-backend-dev-dev-listPortfolio",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "TracingConfig": {
+                "Mode": "Active"
+              },
+              "Environment": {
+                "Variables": {
+                  "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+                  "SKILLS_TABLE": "portfolio-website-backend-dev-dev-skills",
+                  "EXPERIENCE_TABLE": "portfolio-website-backend-dev-dev-experience",
+                  "PORTFOLIO_TABLE": "portfolio-website-backend-dev-dev-portfolio",
+                  "REGION": "eu-central-1",
+                  "STAGE": "dev"
+                }
+              },
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "ListPortfolioLogGroup"
+            ]
+          },
+          "GetPortfolioLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "portfolio-website-backend-dev",
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
+              },
+              "Handler": "src/functions/portfolio/get/handler.main",
+              "Runtime": "nodejs24.x",
+              "FunctionName": "portfolio-website-backend-dev-dev-getPortfolio",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "TracingConfig": {
+                "Mode": "Active"
+              },
+              "Environment": {
+                "Variables": {
+                  "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+                  "SKILLS_TABLE": "portfolio-website-backend-dev-dev-skills",
+                  "EXPERIENCE_TABLE": "portfolio-website-backend-dev-dev-experience",
+                  "PORTFOLIO_TABLE": "portfolio-website-backend-dev-dev-portfolio",
+                  "REGION": "eu-central-1",
+                  "STAGE": "dev"
+                }
+              },
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "GetPortfolioLogGroup"
+            ]
+          },
+          "CreatePortfolioLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "portfolio-website-backend-dev",
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
+              },
+              "Handler": "src/functions/portfolio/create/handler.main",
+              "Runtime": "nodejs24.x",
+              "FunctionName": "portfolio-website-backend-dev-dev-createPortfolio",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "TracingConfig": {
+                "Mode": "Active"
+              },
+              "Environment": {
+                "Variables": {
+                  "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+                  "SKILLS_TABLE": "portfolio-website-backend-dev-dev-skills",
+                  "EXPERIENCE_TABLE": "portfolio-website-backend-dev-dev-experience",
+                  "PORTFOLIO_TABLE": "portfolio-website-backend-dev-dev-portfolio",
+                  "REGION": "eu-central-1",
+                  "STAGE": "dev"
+                }
+              },
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "CreatePortfolioLogGroup"
+            ]
+          },
+          "UpdatePortfolioLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "portfolio-website-backend-dev",
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
+              },
+              "Handler": "src/functions/portfolio/update/handler.main",
+              "Runtime": "nodejs24.x",
+              "FunctionName": "portfolio-website-backend-dev-dev-updatePortfolio",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "TracingConfig": {
+                "Mode": "Active"
+              },
+              "Environment": {
+                "Variables": {
+                  "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+                  "SKILLS_TABLE": "portfolio-website-backend-dev-dev-skills",
+                  "EXPERIENCE_TABLE": "portfolio-website-backend-dev-dev-experience",
+                  "PORTFOLIO_TABLE": "portfolio-website-backend-dev-dev-portfolio",
+                  "REGION": "eu-central-1",
+                  "STAGE": "dev"
+                }
+              },
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "UpdatePortfolioLogGroup"
+            ]
+          },
+          "DeletePortfolioLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "portfolio-website-backend-dev",
+                "S3Key": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z/portfolio-website-backend-dev.zip"
+              },
+              "Handler": "src/functions/portfolio/delete/handler.main",
+              "Runtime": "nodejs24.x",
+              "FunctionName": "portfolio-website-backend-dev-dev-deletePortfolio",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "TracingConfig": {
+                "Mode": "Active"
+              },
+              "Environment": {
+                "Variables": {
+                  "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+                  "SKILLS_TABLE": "portfolio-website-backend-dev-dev-skills",
+                  "EXPERIENCE_TABLE": "portfolio-website-backend-dev-dev-experience",
+                  "PORTFOLIO_TABLE": "portfolio-website-backend-dev-dev-portfolio",
+                  "REGION": "eu-central-1",
+                  "STAGE": "dev"
+                }
+              },
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "DeletePortfolioLogGroup"
+            ]
+          },
+          "ApiGatewayMethodApiSkillsOptions": {
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
               "AuthorizationType": "NONE",
@@ -553,8 +894,8 @@
                     "StatusCode": "200",
                     "ResponseParameters": {
                       "method.response.header.Access-Control-Allow-Origin": "'*'",
-                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
-                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET'"
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST,GET'"
                     },
                     "ResponseTemplates": {
                       "application/json": ""
@@ -565,7 +906,7 @@
               "ResourceId": {
                 "Fn::GetAtt": [
                   "APINestedStack",
-                  "Outputs.ApiGatewayResourceConfigurations"
+                  "Outputs.ApiGatewayResourceApiSkills"
                 ]
               },
               "RestApiId": {
@@ -579,7 +920,7 @@
               "APINestedStack"
             ]
           },
-          "ApiGatewayMethodRolesOptions": {
+          "ApiGatewayMethodApiSkillsIdVarOptions": {
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
               "AuthorizationType": "NONE",
@@ -607,8 +948,8 @@
                     "StatusCode": "200",
                     "ResponseParameters": {
                       "method.response.header.Access-Control-Allow-Origin": "'*'",
-                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
-                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,POST'"
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,DELETE,PUT,GET'"
                     },
                     "ResponseTemplates": {
                       "application/json": ""
@@ -619,7 +960,7 @@
               "ResourceId": {
                 "Fn::GetAtt": [
                   "APINestedStack",
-                  "Outputs.ApiGatewayResourceRoles"
+                  "Outputs.ApiGatewayResourceApiSkillsIdVar"
                 ]
               },
               "RestApiId": {
@@ -633,7 +974,7 @@
               "APINestedStack"
             ]
           },
-          "ApiGatewayMethodRolesIdVarOptions": {
+          "ApiGatewayMethodApiExperienceOptions": {
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
               "AuthorizationType": "NONE",
@@ -661,8 +1002,8 @@
                     "StatusCode": "200",
                     "ResponseParameters": {
                       "method.response.header.Access-Control-Allow-Origin": "'*'",
-                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
-                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,DELETE,PUT'"
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST,GET'"
                     },
                     "ResponseTemplates": {
                       "application/json": ""
@@ -673,7 +1014,7 @@
               "ResourceId": {
                 "Fn::GetAtt": [
                   "APINestedStack",
-                  "Outputs.ApiGatewayResourceRolesIdVar"
+                  "Outputs.ApiGatewayResourceApiExperience"
                 ]
               },
               "RestApiId": {
@@ -687,7 +1028,7 @@
               "APINestedStack"
             ]
           },
-          "ApiGatewayMethodUsersOptions": {
+          "ApiGatewayMethodApiExperienceIdVarOptions": {
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
               "AuthorizationType": "NONE",
@@ -715,8 +1056,8 @@
                     "StatusCode": "200",
                     "ResponseParameters": {
                       "method.response.header.Access-Control-Allow-Origin": "'*'",
-                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
-                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST'"
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,DELETE,PUT,GET'"
                     },
                     "ResponseTemplates": {
                       "application/json": ""
@@ -727,7 +1068,7 @@
               "ResourceId": {
                 "Fn::GetAtt": [
                   "APINestedStack",
-                  "Outputs.ApiGatewayResourceUsers"
+                  "Outputs.ApiGatewayResourceApiExperienceIdVar"
                 ]
               },
               "RestApiId": {
@@ -741,7 +1082,115 @@
               "APINestedStack"
             ]
           },
-          "ApiGatewayMethodConfigurationsGet": {
+          "ApiGatewayMethodApiPortfolioOptions": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "AuthorizationType": "NONE",
+              "HttpMethod": "OPTIONS",
+              "MethodResponses": [
+                {
+                  "StatusCode": "200",
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true,
+                    "method.response.header.Access-Control-Allow-Headers": true,
+                    "method.response.header.Access-Control-Allow-Methods": true
+                  },
+                  "ResponseModels": {}
+                }
+              ],
+              "RequestParameters": {},
+              "Integration": {
+                "Type": "MOCK",
+                "RequestTemplates": {
+                  "application/json": "{statusCode:200}"
+                },
+                "ContentHandling": "CONVERT_TO_TEXT",
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,POST,GET'"
+                    },
+                    "ResponseTemplates": {
+                      "application/json": ""
+                    }
+                  }
+                ]
+              },
+              "ResourceId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayResourceApiPortfolio"
+                ]
+              },
+              "RestApiId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayRestApi"
+                ]
+              }
+            },
+            "DependsOn": [
+              "APINestedStack"
+            ]
+          },
+          "ApiGatewayMethodApiPortfolioIdVarOptions": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "AuthorizationType": "NONE",
+              "HttpMethod": "OPTIONS",
+              "MethodResponses": [
+                {
+                  "StatusCode": "200",
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true,
+                    "method.response.header.Access-Control-Allow-Headers": true,
+                    "method.response.header.Access-Control-Allow-Methods": true
+                  },
+                  "ResponseModels": {}
+                }
+              ],
+              "RequestParameters": {},
+              "Integration": {
+                "Type": "MOCK",
+                "RequestTemplates": {
+                  "application/json": "{statusCode:200}"
+                },
+                "ContentHandling": "CONVERT_TO_TEXT",
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,DELETE,PUT,GET'"
+                    },
+                    "ResponseTemplates": {
+                      "application/json": ""
+                    }
+                  }
+                ]
+              },
+              "ResourceId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayResourceApiPortfolioIdVar"
+                ]
+              },
+              "RestApiId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayRestApi"
+                ]
+              }
+            },
+            "DependsOn": [
+              "APINestedStack"
+            ]
+          },
+          "ApiGatewayMethodApiSkillsGet": {
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
               "HttpMethod": "GET",
@@ -749,7 +1198,7 @@
               "ResourceId": {
                 "Fn::GetAtt": [
                   "APINestedStack",
-                  "Outputs.ApiGatewayResourceConfigurations"
+                  "Outputs.ApiGatewayResourceApiSkills"
                 ]
               },
               "RestApiId": {
@@ -778,7 +1227,7 @@
                       ":lambda:path/2015-03-31/functions/",
                       {
                         "Fn::GetAtt": [
-                          "GetAllConfigurationsLambdaFunction",
+                          "ListSkillsLambdaFunction",
                           "Arn"
                         ]
                       },
@@ -794,15 +1243,15 @@
               "PermissionsNestedStack"
             ]
           },
-          "ApiGatewayMethodRolesPost": {
+          "ApiGatewayMethodApiSkillsIdVarGet": {
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
-              "HttpMethod": "POST",
+              "HttpMethod": "GET",
               "RequestParameters": {},
               "ResourceId": {
                 "Fn::GetAtt": [
                   "APINestedStack",
-                  "Outputs.ApiGatewayResourceRoles"
+                  "Outputs.ApiGatewayResourceApiSkillsIdVar"
                 ]
               },
               "RestApiId": {
@@ -831,7 +1280,7 @@
                       ":lambda:path/2015-03-31/functions/",
                       {
                         "Fn::GetAtt": [
-                          "CreateRoleLambdaFunction",
+                          "GetSkillLambdaFunction",
                           "Arn"
                         ]
                       },
@@ -840,22 +1289,67 @@
                   ]
                 }
               },
-              "MethodResponses": [],
-              "RequestValidatorId": {
-                "Ref": "ApiGatewayRakheoanabackenddevRequestValidator"
-              },
-              "RequestModels": {
-                "application/json": {
-                  "Ref": "ApiGatewayMethodRolesPostApplicationJsonModel"
-                }
-              }
+              "MethodResponses": []
             },
             "DependsOn": [
               "APINestedStack",
               "PermissionsNestedStack"
             ]
           },
-          "ApiGatewayMethodRolesIdVarPut": {
+          "ApiGatewayMethodApiSkillsPost": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "POST",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayResourceApiSkills"
+                ]
+              },
+              "RestApiId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayRestApi"
+                ]
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "SelectSkillLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            },
+            "DependsOn": [
+              "APINestedStack",
+              "PermissionsNestedStack"
+            ]
+          },
+          "ApiGatewayMethodApiSkillsIdVarPut": {
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
               "HttpMethod": "PUT",
@@ -863,7 +1357,7 @@
               "ResourceId": {
                 "Fn::GetAtt": [
                   "APINestedStack",
-                  "Outputs.ApiGatewayResourceRolesIdVar"
+                  "Outputs.ApiGatewayResourceApiSkillsIdVar"
                 ]
               },
               "RestApiId": {
@@ -892,7 +1386,7 @@
                       ":lambda:path/2015-03-31/functions/",
                       {
                         "Fn::GetAtt": [
-                          "UpdateRoleLambdaFunction",
+                          "UpdateSkillLambdaFunction",
                           "Arn"
                         ]
                       },
@@ -901,22 +1395,14 @@
                   ]
                 }
               },
-              "MethodResponses": [],
-              "RequestValidatorId": {
-                "Ref": "ApiGatewayRakheoanabackenddevRequestValidator"
-              },
-              "RequestModels": {
-                "application/json": {
-                  "Ref": "ApiGatewayMethodRolesIdVarPutApplicationJsonModel"
-                }
-              }
+              "MethodResponses": []
             },
             "DependsOn": [
               "APINestedStack",
               "PermissionsNestedStack"
             ]
           },
-          "ApiGatewayMethodRolesIdVarDelete": {
+          "ApiGatewayMethodApiSkillsIdVarDelete": {
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
               "HttpMethod": "DELETE",
@@ -924,7 +1410,7 @@
               "ResourceId": {
                 "Fn::GetAtt": [
                   "APINestedStack",
-                  "Outputs.ApiGatewayResourceRolesIdVar"
+                  "Outputs.ApiGatewayResourceApiSkillsIdVar"
                 ]
               },
               "RestApiId": {
@@ -953,7 +1439,7 @@
                       ":lambda:path/2015-03-31/functions/",
                       {
                         "Fn::GetAtt": [
-                          "DeleteRoleLambdaFunction",
+                          "RemoveSkillLambdaFunction",
                           "Arn"
                         ]
                       },
@@ -969,7 +1455,7 @@
               "PermissionsNestedStack"
             ]
           },
-          "ApiGatewayMethodRolesIdVarGet": {
+          "ApiGatewayMethodApiExperienceGet": {
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
               "HttpMethod": "GET",
@@ -977,7 +1463,7 @@
               "ResourceId": {
                 "Fn::GetAtt": [
                   "APINestedStack",
-                  "Outputs.ApiGatewayResourceRolesIdVar"
+                  "Outputs.ApiGatewayResourceApiExperience"
                 ]
               },
               "RestApiId": {
@@ -1006,7 +1492,7 @@
                       ":lambda:path/2015-03-31/functions/",
                       {
                         "Fn::GetAtt": [
-                          "GetRoleLambdaFunction",
+                          "ListExperienceLambdaFunction",
                           "Arn"
                         ]
                       },
@@ -1022,7 +1508,7 @@
               "PermissionsNestedStack"
             ]
           },
-          "ApiGatewayMethodRolesGet": {
+          "ApiGatewayMethodApiExperienceIdVarGet": {
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
               "HttpMethod": "GET",
@@ -1030,7 +1516,7 @@
               "ResourceId": {
                 "Fn::GetAtt": [
                   "APINestedStack",
-                  "Outputs.ApiGatewayResourceRoles"
+                  "Outputs.ApiGatewayResourceApiExperienceIdVar"
                 ]
               },
               "RestApiId": {
@@ -1059,7 +1545,7 @@
                       ":lambda:path/2015-03-31/functions/",
                       {
                         "Fn::GetAtt": [
-                          "GetAllRolesLambdaFunction",
+                          "GetExperienceLambdaFunction",
                           "Arn"
                         ]
                       },
@@ -1075,7 +1561,7 @@
               "PermissionsNestedStack"
             ]
           },
-          "ApiGatewayMethodUsersPost": {
+          "ApiGatewayMethodApiExperiencePost": {
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
               "HttpMethod": "POST",
@@ -1083,7 +1569,7 @@
               "ResourceId": {
                 "Fn::GetAtt": [
                   "APINestedStack",
-                  "Outputs.ApiGatewayResourceUsers"
+                  "Outputs.ApiGatewayResourceApiExperience"
                 ]
               },
               "RestApiId": {
@@ -1112,7 +1598,7 @@
                       ":lambda:path/2015-03-31/functions/",
                       {
                         "Fn::GetAtt": [
-                          "AddUserLambdaFunction",
+                          "CreateExperienceLambdaFunction",
                           "Arn"
                         ]
                       },
@@ -1121,140 +1607,385 @@
                   ]
                 }
               },
-              "MethodResponses": [],
-              "RequestValidatorId": {
-                "Ref": "ApiGatewayRakheoanabackenddevRequestValidator"
-              },
-              "RequestModels": {
-                "application/json": {
-                  "Ref": "ApiGatewayMethodUsersPostApplicationJsonModel"
-                }
-              }
+              "MethodResponses": []
             },
             "DependsOn": [
               "APINestedStack",
               "PermissionsNestedStack"
             ]
           },
-          "ApiGatewayRakheoanabackenddevRequestValidator": {
-            "Type": "AWS::ApiGateway::RequestValidator",
+          "ApiGatewayMethodApiExperienceIdVarPut": {
+            "Type": "AWS::ApiGateway::Method",
             "Properties": {
+              "HttpMethod": "PUT",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayResourceApiExperienceIdVar"
+                ]
+              },
               "RestApiId": {
                 "Fn::GetAtt": [
                   "APINestedStack",
                   "Outputs.ApiGatewayRestApi"
                 ]
               },
-              "ValidateRequestBody": true,
-              "ValidateRequestParameters": true,
-              "Name": "rakheoana-backend-dev-dev | Validate request body and querystring parameters"
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "UpdateExperienceLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
             },
             "DependsOn": [
-              "APINestedStack"
+              "APINestedStack",
+              "PermissionsNestedStack"
             ]
           },
-          "ApiGatewayMethodRolesPostApplicationJsonModel": {
-            "Type": "AWS::ApiGateway::Model",
+          "ApiGatewayMethodApiExperienceIdVarDelete": {
+            "Type": "AWS::ApiGateway::Method",
             "Properties": {
+              "HttpMethod": "DELETE",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayResourceApiExperienceIdVar"
+                ]
+              },
               "RestApiId": {
                 "Fn::GetAtt": [
                   "APINestedStack",
                   "Outputs.ApiGatewayRestApi"
                 ]
               },
-              "ContentType": "application/json",
-              "Schema": {
-                "type": "object",
-                "properties": {
-                  "title": {
-                    "type": "string"
-                  },
-                  "description": {
-                    "type": "string"
-                  },
-                  "permissions": {
-                    "type": "array"
-                  }
-                },
-                "required": [
-                  "title",
-                  "description"
-                ]
-              }
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "DeleteExperienceLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
             },
             "DependsOn": [
-              "APINestedStack"
+              "APINestedStack",
+              "PermissionsNestedStack"
             ]
           },
-          "ApiGatewayMethodRolesIdVarPutApplicationJsonModel": {
-            "Type": "AWS::ApiGateway::Model",
+          "ApiGatewayMethodApiPortfolioGet": {
+            "Type": "AWS::ApiGateway::Method",
             "Properties": {
+              "HttpMethod": "GET",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayResourceApiPortfolio"
+                ]
+              },
               "RestApiId": {
                 "Fn::GetAtt": [
                   "APINestedStack",
                   "Outputs.ApiGatewayRestApi"
                 ]
               },
-              "ContentType": "application/json",
-              "Schema": {
-                "type": "object",
-                "properties": {
-                  "title": {
-                    "type": "string"
-                  },
-                  "description": {
-                    "type": "string"
-                  },
-                  "permissions": {
-                    "type": "array"
-                  }
-                },
-                "required": [
-                  "title",
-                  "description",
-                  "permissions"
-                ]
-              }
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "ListPortfolioLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
             },
             "DependsOn": [
-              "APINestedStack"
+              "APINestedStack",
+              "PermissionsNestedStack"
             ]
           },
-          "ApiGatewayMethodUsersPostApplicationJsonModel": {
-            "Type": "AWS::ApiGateway::Model",
+          "ApiGatewayMethodApiPortfolioIdVarGet": {
+            "Type": "AWS::ApiGateway::Method",
             "Properties": {
+              "HttpMethod": "GET",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayResourceApiPortfolioIdVar"
+                ]
+              },
               "RestApiId": {
                 "Fn::GetAtt": [
                   "APINestedStack",
                   "Outputs.ApiGatewayRestApi"
                 ]
               },
-              "ContentType": "application/json",
-              "Schema": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "string"
-                  },
-                  "name": {
-                    "type": "string"
-                  },
-                  "phoneNumber": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "id",
-                  "name",
-                  "phoneNumber"
-                ]
-              }
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "GetPortfolioLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
             },
             "DependsOn": [
-              "APINestedStack"
+              "APINestedStack",
+              "PermissionsNestedStack"
             ]
           },
-          "ApiGatewayDeployment1693743251114": {
+          "ApiGatewayMethodApiPortfolioPost": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "POST",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayResourceApiPortfolio"
+                ]
+              },
+              "RestApiId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayRestApi"
+                ]
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "CreatePortfolioLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            },
+            "DependsOn": [
+              "APINestedStack",
+              "PermissionsNestedStack"
+            ]
+          },
+          "ApiGatewayMethodApiPortfolioIdVarPut": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "PUT",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayResourceApiPortfolioIdVar"
+                ]
+              },
+              "RestApiId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayRestApi"
+                ]
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "UpdatePortfolioLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            },
+            "DependsOn": [
+              "APINestedStack",
+              "PermissionsNestedStack"
+            ]
+          },
+          "ApiGatewayMethodApiPortfolioIdVarDelete": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "DELETE",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayResourceApiPortfolioIdVar"
+                ]
+              },
+              "RestApiId": {
+                "Fn::GetAtt": [
+                  "APINestedStack",
+                  "Outputs.ApiGatewayRestApi"
+                ]
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "DeletePortfolioLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            },
+            "DependsOn": [
+              "APINestedStack",
+              "PermissionsNestedStack"
+            ]
+          },
+          "ApiGatewayDeployment1795093628394": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -1266,24 +1997,34 @@
               "StageName": "dev"
             },
             "DependsOn": [
-              "ApiGatewayMethodConfigurationsOptions",
-              "ApiGatewayMethodRolesOptions",
-              "ApiGatewayMethodRolesIdVarOptions",
-              "ApiGatewayMethodUsersOptions",
-              "ApiGatewayMethodConfigurationsGet",
-              "ApiGatewayMethodRolesPost",
-              "ApiGatewayMethodRolesIdVarPut",
-              "ApiGatewayMethodRolesIdVarDelete",
-              "ApiGatewayMethodRolesIdVarGet",
-              "ApiGatewayMethodRolesGet",
-              "ApiGatewayMethodUsersPost",
+              "ApiGatewayMethodApiSkillsOptions",
+              "ApiGatewayMethodApiSkillsIdVarOptions",
+              "ApiGatewayMethodApiExperienceOptions",
+              "ApiGatewayMethodApiExperienceIdVarOptions",
+              "ApiGatewayMethodApiPortfolioOptions",
+              "ApiGatewayMethodApiPortfolioIdVarOptions",
+              "ApiGatewayMethodApiSkillsGet",
+              "ApiGatewayMethodApiSkillsIdVarGet",
+              "ApiGatewayMethodApiSkillsPost",
+              "ApiGatewayMethodApiSkillsIdVarPut",
+              "ApiGatewayMethodApiSkillsIdVarDelete",
+              "ApiGatewayMethodApiExperienceGet",
+              "ApiGatewayMethodApiExperienceIdVarGet",
+              "ApiGatewayMethodApiExperiencePost",
+              "ApiGatewayMethodApiExperienceIdVarPut",
+              "ApiGatewayMethodApiExperienceIdVarDelete",
+              "ApiGatewayMethodApiPortfolioGet",
+              "ApiGatewayMethodApiPortfolioIdVarGet",
+              "ApiGatewayMethodApiPortfolioPost",
+              "ApiGatewayMethodApiPortfolioIdVarPut",
+              "ApiGatewayMethodApiPortfolioIdVarDelete",
               "APINestedStack"
             ]
           },
-          "RolesTable": {
+          "SkillsTable": {
             "Type": "AWS::DynamoDB::Table",
             "Properties": {
-              "TableName": "rakheoana-backend-dev-dev-roles",
+              "TableName": "portfolio-website-backend-dev-dev-skills",
               "BillingMode": "PAY_PER_REQUEST",
               "AttributeDefinitions": [
                 {
@@ -1300,10 +2041,10 @@
             },
             "DependsOn": []
           },
-          "UsersTable": {
+          "ExperienceTable": {
             "Type": "AWS::DynamoDB::Table",
             "Properties": {
-              "TableName": "rakheoana-backend-dev-dev-users",
+              "TableName": "portfolio-website-backend-dev-dev-experience",
               "BillingMode": "PAY_PER_REQUEST",
               "AttributeDefinitions": [
                 {
@@ -1320,53 +2061,25 @@
             },
             "DependsOn": []
           },
-          "VersionsNestedStack": {
-            "Type": "AWS::CloudFormation::Stack",
+          "PortfolioTable": {
+            "Type": "AWS::DynamoDB::Table",
             "Properties": {
-              "Parameters": {
-                "GetAllConfigurationsLambdaFunctionParameter": {
-                  "Ref": "GetAllConfigurationsLambdaFunction"
-                },
-                "CreateRoleLambdaFunctionParameter": {
-                  "Ref": "CreateRoleLambdaFunction"
-                },
-                "UpdateRoleLambdaFunctionParameter": {
-                  "Ref": "UpdateRoleLambdaFunction"
-                },
-                "DeleteRoleLambdaFunctionParameter": {
-                  "Ref": "DeleteRoleLambdaFunction"
-                },
-                "GetRoleLambdaFunctionParameter": {
-                  "Ref": "GetRoleLambdaFunction"
-                },
-                "GetAllRolesLambdaFunctionParameter": {
-                  "Ref": "GetAllRolesLambdaFunction"
-                },
-                "AddUserLambdaFunctionParameter": {
-                  "Ref": "AddUserLambdaFunction"
+              "TableName": "portfolio-website-backend-dev-dev-portfolio",
+              "BillingMode": "PAY_PER_REQUEST",
+              "AttributeDefinitions": [
+                {
+                  "AttributeName": "id",
+                  "AttributeType": "S"
                 }
-              },
-              "TemplateURL": {
-                "Fn::Join": [
-                  "/",
-                  [
-                    "https://s3.eu-central-1.amazonaws.com",
-                    "rakheoana-deployment-bucket",
-                    "serverless/rakheoana-backend-dev/dev/1693743300906-2023-09-03T12:15:00.906Z",
-                    "cloudformation-template-Versions-nested-stack.json"
-                  ]
-                ]
-              }
+              ],
+              "KeySchema": [
+                {
+                  "AttributeName": "id",
+                  "KeyType": "HASH"
+                }
+              ]
             },
-            "DependsOn": [
-              "GetAllConfigurationsLambdaFunction",
-              "CreateRoleLambdaFunction",
-              "UpdateRoleLambdaFunction",
-              "DeleteRoleLambdaFunction",
-              "GetRoleLambdaFunction",
-              "GetAllRolesLambdaFunction",
-              "AddUserLambdaFunction"
-            ]
+            "DependsOn": []
           },
           "APINestedStack": {
             "Type": "AWS::CloudFormation::Stack",
@@ -1377,8 +2090,8 @@
                   "/",
                   [
                     "https://s3.eu-central-1.amazonaws.com",
-                    "rakheoana-deployment-bucket",
-                    "serverless/rakheoana-backend-dev/dev/1693743300906-2023-09-03T12:15:00.906Z",
+                    "portfolio-website-backend-dev",
+                    "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z",
                     "cloudformation-template-API-nested-stack.json"
                   ]
                 ]
@@ -1395,45 +2108,93 @@
                     "Outputs.ApiGatewayRestApi"
                   ]
                 },
-                "GetAllConfigurationsLambdaFunctionArnParameter": {
+                "ListSkillsLambdaFunctionArnParameter": {
                   "Fn::GetAtt": [
-                    "GetAllConfigurationsLambdaFunction",
+                    "ListSkillsLambdaFunction",
                     "Arn"
                   ]
                 },
-                "CreateRoleLambdaFunctionArnParameter": {
+                "GetSkillLambdaFunctionArnParameter": {
                   "Fn::GetAtt": [
-                    "CreateRoleLambdaFunction",
+                    "GetSkillLambdaFunction",
                     "Arn"
                   ]
                 },
-                "UpdateRoleLambdaFunctionArnParameter": {
+                "SelectSkillLambdaFunctionArnParameter": {
                   "Fn::GetAtt": [
-                    "UpdateRoleLambdaFunction",
+                    "SelectSkillLambdaFunction",
                     "Arn"
                   ]
                 },
-                "DeleteRoleLambdaFunctionArnParameter": {
+                "UpdateSkillLambdaFunctionArnParameter": {
                   "Fn::GetAtt": [
-                    "DeleteRoleLambdaFunction",
+                    "UpdateSkillLambdaFunction",
                     "Arn"
                   ]
                 },
-                "GetRoleLambdaFunctionArnParameter": {
+                "RemoveSkillLambdaFunctionArnParameter": {
                   "Fn::GetAtt": [
-                    "GetRoleLambdaFunction",
+                    "RemoveSkillLambdaFunction",
                     "Arn"
                   ]
                 },
-                "GetAllRolesLambdaFunctionArnParameter": {
+                "ListExperienceLambdaFunctionArnParameter": {
                   "Fn::GetAtt": [
-                    "GetAllRolesLambdaFunction",
+                    "ListExperienceLambdaFunction",
                     "Arn"
                   ]
                 },
-                "AddUserLambdaFunctionArnParameter": {
+                "GetExperienceLambdaFunctionArnParameter": {
                   "Fn::GetAtt": [
-                    "AddUserLambdaFunction",
+                    "GetExperienceLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "CreateExperienceLambdaFunctionArnParameter": {
+                  "Fn::GetAtt": [
+                    "CreateExperienceLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "UpdateExperienceLambdaFunctionArnParameter": {
+                  "Fn::GetAtt": [
+                    "UpdateExperienceLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "DeleteExperienceLambdaFunctionArnParameter": {
+                  "Fn::GetAtt": [
+                    "DeleteExperienceLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "ListPortfolioLambdaFunctionArnParameter": {
+                  "Fn::GetAtt": [
+                    "ListPortfolioLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "GetPortfolioLambdaFunctionArnParameter": {
+                  "Fn::GetAtt": [
+                    "GetPortfolioLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "CreatePortfolioLambdaFunctionArnParameter": {
+                  "Fn::GetAtt": [
+                    "CreatePortfolioLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "UpdatePortfolioLambdaFunctionArnParameter": {
+                  "Fn::GetAtt": [
+                    "UpdatePortfolioLambdaFunction",
+                    "Arn"
+                  ]
+                },
+                "DeletePortfolioLambdaFunctionArnParameter": {
+                  "Fn::GetAtt": [
+                    "DeletePortfolioLambdaFunction",
                     "Arn"
                   ]
                 }
@@ -1443,8 +2204,8 @@
                   "/",
                   [
                     "https://s3.eu-central-1.amazonaws.com",
-                    "rakheoana-deployment-bucket",
-                    "serverless/rakheoana-backend-dev/dev/1693743300906-2023-09-03T12:15:00.906Z",
+                    "portfolio-website-backend-dev",
+                    "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z",
                     "cloudformation-template-Permissions-nested-stack.json"
                   ]
                 ]
@@ -1452,105 +2213,289 @@
             },
             "DependsOn": [
               "APINestedStack",
-              "GetAllConfigurationsLambdaFunction",
-              "CreateRoleLambdaFunction",
-              "UpdateRoleLambdaFunction",
-              "DeleteRoleLambdaFunction",
-              "GetRoleLambdaFunction",
-              "GetAllRolesLambdaFunction",
-              "AddUserLambdaFunction"
+              "ListSkillsLambdaFunction",
+              "GetSkillLambdaFunction",
+              "SelectSkillLambdaFunction",
+              "UpdateSkillLambdaFunction",
+              "RemoveSkillLambdaFunction",
+              "ListExperienceLambdaFunction",
+              "GetExperienceLambdaFunction",
+              "CreateExperienceLambdaFunction",
+              "UpdateExperienceLambdaFunction",
+              "DeleteExperienceLambdaFunction",
+              "ListPortfolioLambdaFunction",
+              "GetPortfolioLambdaFunction",
+              "CreatePortfolioLambdaFunction",
+              "UpdatePortfolioLambdaFunction",
+              "DeletePortfolioLambdaFunction"
+            ]
+          },
+          "VersionsNestedStack": {
+            "Type": "AWS::CloudFormation::Stack",
+            "Properties": {
+              "Parameters": {
+                "ListSkillsLambdaFunctionParameter": {
+                  "Ref": "ListSkillsLambdaFunction"
+                },
+                "GetSkillLambdaFunctionParameter": {
+                  "Ref": "GetSkillLambdaFunction"
+                },
+                "SelectSkillLambdaFunctionParameter": {
+                  "Ref": "SelectSkillLambdaFunction"
+                },
+                "UpdateSkillLambdaFunctionParameter": {
+                  "Ref": "UpdateSkillLambdaFunction"
+                },
+                "RemoveSkillLambdaFunctionParameter": {
+                  "Ref": "RemoveSkillLambdaFunction"
+                },
+                "ListExperienceLambdaFunctionParameter": {
+                  "Ref": "ListExperienceLambdaFunction"
+                },
+                "GetExperienceLambdaFunctionParameter": {
+                  "Ref": "GetExperienceLambdaFunction"
+                },
+                "CreateExperienceLambdaFunctionParameter": {
+                  "Ref": "CreateExperienceLambdaFunction"
+                },
+                "UpdateExperienceLambdaFunctionParameter": {
+                  "Ref": "UpdateExperienceLambdaFunction"
+                },
+                "DeleteExperienceLambdaFunctionParameter": {
+                  "Ref": "DeleteExperienceLambdaFunction"
+                },
+                "ListPortfolioLambdaFunctionParameter": {
+                  "Ref": "ListPortfolioLambdaFunction"
+                },
+                "GetPortfolioLambdaFunctionParameter": {
+                  "Ref": "GetPortfolioLambdaFunction"
+                },
+                "CreatePortfolioLambdaFunctionParameter": {
+                  "Ref": "CreatePortfolioLambdaFunction"
+                },
+                "UpdatePortfolioLambdaFunctionParameter": {
+                  "Ref": "UpdatePortfolioLambdaFunction"
+                },
+                "DeletePortfolioLambdaFunctionParameter": {
+                  "Ref": "DeletePortfolioLambdaFunction"
+                }
+              },
+              "TemplateURL": {
+                "Fn::Join": [
+                  "/",
+                  [
+                    "https://s3.eu-central-1.amazonaws.com",
+                    "portfolio-website-backend-dev",
+                    "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z",
+                    "cloudformation-template-Versions-nested-stack.json"
+                  ]
+                ]
+              }
+            },
+            "DependsOn": [
+              "ListSkillsLambdaFunction",
+              "GetSkillLambdaFunction",
+              "SelectSkillLambdaFunction",
+              "UpdateSkillLambdaFunction",
+              "RemoveSkillLambdaFunction",
+              "ListExperienceLambdaFunction",
+              "GetExperienceLambdaFunction",
+              "CreateExperienceLambdaFunction",
+              "UpdateExperienceLambdaFunction",
+              "DeleteExperienceLambdaFunction",
+              "ListPortfolioLambdaFunction",
+              "GetPortfolioLambdaFunction",
+              "CreatePortfolioLambdaFunction",
+              "UpdatePortfolioLambdaFunction",
+              "DeletePortfolioLambdaFunction"
             ]
           }
         },
         "Outputs": {
           "ServerlessDeploymentBucketName": {
-            "Value": "rakheoana-deployment-bucket",
+            "Value": "portfolio-website-backend-dev",
             "Export": {
-              "Name": "sls-rakheoana-backend-dev-dev-ServerlessDeploymentBucketName"
+              "Name": "sls-portfolio-website-backend-dev-dev-ServerlessDeploymentBucketName"
             }
           },
-          "GetAllConfigurationsLambdaFunctionQualifiedArn": {
+          "ListSkillsLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
               "Fn::GetAtt": [
                 "VersionsNestedStack",
-                "Outputs.GetAllConfigurationsLambdaVersiontokBqchPzNiCvoJc36diKe4Sg57RhXwsR6I3VqvW9Y"
+                "Outputs.ListSkillsLambdaVersionwM15bCYn0nM9MWY9SUS7yNSPxQrexlJOBWFJELi9hMU"
               ]
             },
             "Export": {
-              "Name": "sls-rakheoana-backend-dev-dev-GetAllConfigurationsLambdaFunctionQualifiedArn"
+              "Name": "sls-portfolio-website-backend-dev-dev-ListSkillsLambdaFunctionQualifiedArn"
             }
           },
-          "CreateRoleLambdaFunctionQualifiedArn": {
+          "GetSkillLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
               "Fn::GetAtt": [
                 "VersionsNestedStack",
-                "Outputs.CreateRoleLambdaVersionK4FfQxPE8LrNGIZLQm8IQy0bFaWFhv5dxuE94XgXctE"
+                "Outputs.GetSkillLambdaVersionrK3xNSudBPyRvuGJ04YvOFnV01Uo1rFdnSxhNHLWOY"
               ]
             },
             "Export": {
-              "Name": "sls-rakheoana-backend-dev-dev-CreateRoleLambdaFunctionQualifiedArn"
+              "Name": "sls-portfolio-website-backend-dev-dev-GetSkillLambdaFunctionQualifiedArn"
             }
           },
-          "UpdateRoleLambdaFunctionQualifiedArn": {
+          "SelectSkillLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
               "Fn::GetAtt": [
                 "VersionsNestedStack",
-                "Outputs.UpdateRoleLambdaVersionmNtcHJdeM9Q8eJjr2PQy5M8nlHuFIOJxctFbWT5yM"
+                "Outputs.SelectSkillLambdaVersionP7Da5sm85L9lXwrHvllX5SJXfZFc1VStmqdjWg6SsyI"
               ]
             },
             "Export": {
-              "Name": "sls-rakheoana-backend-dev-dev-UpdateRoleLambdaFunctionQualifiedArn"
+              "Name": "sls-portfolio-website-backend-dev-dev-SelectSkillLambdaFunctionQualifiedArn"
             }
           },
-          "DeleteRoleLambdaFunctionQualifiedArn": {
+          "UpdateSkillLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
               "Fn::GetAtt": [
                 "VersionsNestedStack",
-                "Outputs.DeleteRoleLambdaVersionHtCpyD8g8rlDuC8BuGpeGuzuKBCYbGC1oOTSUo1yyw"
+                "Outputs.UpdateSkillLambdaVersion65QW3u0OSEy2P9zqLBMJRHxPhVLX1ktSSGTTvhuI"
               ]
             },
             "Export": {
-              "Name": "sls-rakheoana-backend-dev-dev-DeleteRoleLambdaFunctionQualifiedArn"
+              "Name": "sls-portfolio-website-backend-dev-dev-UpdateSkillLambdaFunctionQualifiedArn"
             }
           },
-          "GetRoleLambdaFunctionQualifiedArn": {
+          "RemoveSkillLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
               "Fn::GetAtt": [
                 "VersionsNestedStack",
-                "Outputs.GetRoleLambdaVersionE3iILdhJ7FpzM9O6bUnl9O1PquRoIN0iusybdAIM"
+                "Outputs.RemoveSkillLambdaVersionhyeh9XVVEyZJlfuaTYUcITr3tvnYIDvd7OEGF5IOgs"
               ]
             },
             "Export": {
-              "Name": "sls-rakheoana-backend-dev-dev-GetRoleLambdaFunctionQualifiedArn"
+              "Name": "sls-portfolio-website-backend-dev-dev-RemoveSkillLambdaFunctionQualifiedArn"
             }
           },
-          "GetAllRolesLambdaFunctionQualifiedArn": {
+          "ListExperienceLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
               "Fn::GetAtt": [
                 "VersionsNestedStack",
-                "Outputs.GetAllRolesLambdaVersionqvZ1dW0GfaZGuv03psq9aLzg1tjyOIhN0rIdS6P8I"
+                "Outputs.ListExperienceLambdaVersionSGPobgJr4DQswM9XP58cQBUetZHu9QszxKZPZ4zr4"
               ]
             },
             "Export": {
-              "Name": "sls-rakheoana-backend-dev-dev-GetAllRolesLambdaFunctionQualifiedArn"
+              "Name": "sls-portfolio-website-backend-dev-dev-ListExperienceLambdaFunctionQualifiedArn"
             }
           },
-          "AddUserLambdaFunctionQualifiedArn": {
+          "GetExperienceLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
               "Fn::GetAtt": [
                 "VersionsNestedStack",
-                "Outputs.AddUserLambdaVersionQWReJzSwd5CaX2lEiaUgimBmGhD9o16pH2PEkHF7cI"
+                "Outputs.GetExperienceLambdaVersionXHeI4Zg16QmtsITd7pA9nTyf8u600i3uHpFEEC0"
               ]
             },
             "Export": {
-              "Name": "sls-rakheoana-backend-dev-dev-AddUserLambdaFunctionQualifiedArn"
+              "Name": "sls-portfolio-website-backend-dev-dev-GetExperienceLambdaFunctionQualifiedArn"
+            }
+          },
+          "CreateExperienceLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Fn::GetAtt": [
+                "VersionsNestedStack",
+                "Outputs.CreateExperienceLambdaVersiondYrwQGrqdIzVgcMooe1MCSWIk4T6bwNBQNScmA5m3U"
+              ]
+            },
+            "Export": {
+              "Name": "sls-portfolio-website-backend-dev-dev-CreateExperienceLambdaFunctionQualifiedArn"
+            }
+          },
+          "UpdateExperienceLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Fn::GetAtt": [
+                "VersionsNestedStack",
+                "Outputs.UpdateExperienceLambdaVersionkYyXCq51iyvrPiEv6cxnntAh5t7maAfMHkh6LeKeI"
+              ]
+            },
+            "Export": {
+              "Name": "sls-portfolio-website-backend-dev-dev-UpdateExperienceLambdaFunctionQualifiedArn"
+            }
+          },
+          "DeleteExperienceLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Fn::GetAtt": [
+                "VersionsNestedStack",
+                "Outputs.DeleteExperienceLambdaVersionH5qllfzCqMi8rNaWvRWyD67FiSrfcEGdAf6nBpv5fw"
+              ]
+            },
+            "Export": {
+              "Name": "sls-portfolio-website-backend-dev-dev-DeleteExperienceLambdaFunctionQualifiedArn"
+            }
+          },
+          "ListPortfolioLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Fn::GetAtt": [
+                "VersionsNestedStack",
+                "Outputs.ListPortfolioLambdaVersionEk5ZDcLLo6272ANZ20UcFRAUDG2fL3jwBe3rVfyBZjI"
+              ]
+            },
+            "Export": {
+              "Name": "sls-portfolio-website-backend-dev-dev-ListPortfolioLambdaFunctionQualifiedArn"
+            }
+          },
+          "GetPortfolioLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Fn::GetAtt": [
+                "VersionsNestedStack",
+                "Outputs.GetPortfolioLambdaVersionAMOPUh1aWGRIoNAn4EQwgKDzrmJHNi2f29hlVIdDQ"
+              ]
+            },
+            "Export": {
+              "Name": "sls-portfolio-website-backend-dev-dev-GetPortfolioLambdaFunctionQualifiedArn"
+            }
+          },
+          "CreatePortfolioLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Fn::GetAtt": [
+                "VersionsNestedStack",
+                "Outputs.CreatePortfolioLambdaVersionUolJae0UxsfUevXMzFFwlKoeDj683C9i8rVy1mcFA"
+              ]
+            },
+            "Export": {
+              "Name": "sls-portfolio-website-backend-dev-dev-CreatePortfolioLambdaFunctionQualifiedArn"
+            }
+          },
+          "UpdatePortfolioLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Fn::GetAtt": [
+                "VersionsNestedStack",
+                "Outputs.UpdatePortfolioLambdaVersionKkf57YESBBgyPVXAfcnWpChykbotyeGLjMifqSVDUs8"
+              ]
+            },
+            "Export": {
+              "Name": "sls-portfolio-website-backend-dev-dev-UpdatePortfolioLambdaFunctionQualifiedArn"
+            }
+          },
+          "DeletePortfolioLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Fn::GetAtt": [
+                "VersionsNestedStack",
+                "Outputs.DeletePortfolioLambdaVersionbh34YUQHYydaBteG94bH6QwCT49ohwpeSf7DrY6A5M"
+              ]
+            },
+            "Export": {
+              "Name": "sls-portfolio-website-backend-dev-dev-DeletePortfolioLambdaFunctionQualifiedArn"
             }
           },
           "ServiceEndpoint": {
@@ -1579,7 +2524,7 @@
               ]
             },
             "Export": {
-              "Name": "sls-rakheoana-backend-dev-dev-ServiceEndpoint"
+              "Name": "sls-portfolio-website-backend-dev-dev-ServiceEndpoint"
             }
           }
         }
@@ -1604,9 +2549,15 @@
         ],
         "start": {
           "port": 8000,
-          "dbPath": "./",
-          "migrate": true
+          "dbPath": "./.dynamodb",
+          "sharedDb": true,
+          "migrate": false
         }
+      },
+      "serverless-offline": {
+        "httpPort": 4000,
+        "lambdaPort": 4002,
+        "httpHost": "127.0.0.1"
       },
       "serverless-offline-aws-eventbridge": {
         "port": 4080,
@@ -1622,24 +2573,25 @@
       }
     },
     "plugins": [
+      "./plugins/supported-node-runtimes",
       "serverless-webpack",
-      "serverless-offline",
       "serverless-dynamodb-local",
       "serverless-deployment-bucket",
       "serverless-prune-plugin",
       "serverless-offline-aws-eventbridge",
-      "serverless-plugin-split-stacks"
+      "serverless-plugin-split-stacks",
+      "serverless-offline"
     ],
     "pluginsData": {},
     "functions": {
-      "getAllConfigurations": {
-        "handler": "src/functions/configurations/getAllConfigs/handler.main",
+      "listSkills": {
+        "handler": "src/functions/skills/list/handler.main",
         "tracing": true,
         "events": [
           {
             "http": {
               "method": "get",
-              "path": "configurations",
+              "path": "api/skills",
               "cors": {
                 "origin": "*",
                 "methods": [
@@ -1652,7 +2604,8 @@
                   "Authorization",
                   "X-Api-Key",
                   "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
                 ],
                 "allowCredentials": false
               },
@@ -1660,24 +2613,63 @@
             }
           }
         ],
-        "name": "rakheoana-backend-dev-dev-getAllConfigurations",
+        "name": "portfolio-website-backend-dev-dev-listSkills",
         "package": {
-          "artifact": ".serverless\\rakheoana-backend-dev.zip"
+          "artifact": ".serverless/portfolio-website-backend-dev.zip"
         },
         "memory": 1024,
         "timeout": 6,
-        "runtime": "nodejs14.x",
+        "runtime": "nodejs24.x",
         "vpc": {},
-        "versionLogicalId": "GetAllConfigurationsLambdaVersiontokBqchPzNiCvoJc36diKe4Sg57RhXwsR6I3VqvW9Y"
+        "versionLogicalId": "ListSkillsLambdaVersionwM15bCYn0nM9MWY9SUS7yNSPxQrexlJOBWFJELi9hMU"
       },
-      "createRole": {
-        "handler": "src/functions/roles/create/handler.main",
+      "getSkill": {
+        "handler": "src/functions/skills/get/handler.main",
+        "tracing": true,
+        "events": [
+          {
+            "http": {
+              "method": "get",
+              "path": "api/skills/{id}",
+              "cors": {
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "GET"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "portfolio-website-backend-dev-dev-getSkill",
+        "package": {
+          "artifact": ".serverless/portfolio-website-backend-dev.zip"
+        },
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs24.x",
+        "vpc": {},
+        "versionLogicalId": "GetSkillLambdaVersionrK3xNSudBPyRvuGJ04YvOFnV01Uo1rFdnSxhNHLWOY"
+      },
+      "selectSkill": {
+        "handler": "src/functions/skills/select/handler.main",
         "tracing": true,
         "events": [
           {
             "http": {
               "method": "post",
-              "path": "roles",
+              "path": "api/skills",
               "cors": {
                 "origin": "*",
                 "methods": [
@@ -1690,39 +2682,33 @@
                   "Authorization",
                   "X-Api-Key",
                   "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
                 ],
                 "allowCredentials": false
-              },
-              "request": {
-                "schema": {
-                  "application/json": {
-                    "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"ApiGatewayMethodRolesPostApplicationJsonModel\"][\"Properties\"][\"Schema\"]"
-                  }
-                }
               },
               "integration": "AWS_PROXY"
             }
           }
         ],
-        "name": "rakheoana-backend-dev-dev-createRole",
+        "name": "portfolio-website-backend-dev-dev-selectSkill",
         "package": {
-          "artifact": ".serverless\\rakheoana-backend-dev.zip"
+          "artifact": ".serverless/portfolio-website-backend-dev.zip"
         },
         "memory": 1024,
         "timeout": 6,
-        "runtime": "nodejs14.x",
+        "runtime": "nodejs24.x",
         "vpc": {},
-        "versionLogicalId": "CreateRoleLambdaVersionK4FfQxPE8LrNGIZLQm8IQy0bFaWFhv5dxuE94XgXctE"
+        "versionLogicalId": "SelectSkillLambdaVersionP7Da5sm85L9lXwrHvllX5SJXfZFc1VStmqdjWg6SsyI"
       },
-      "updateRole": {
-        "handler": "src/functions/roles/update/handler.main",
+      "updateSkill": {
+        "handler": "src/functions/skills/update/handler.main",
         "tracing": true,
         "events": [
           {
             "http": {
               "method": "put",
-              "path": "roles/{id}",
+              "path": "api/skills/{id}",
               "cors": {
                 "origin": "*",
                 "methods": [
@@ -1735,38 +2721,33 @@
                   "Authorization",
                   "X-Api-Key",
                   "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
                 ],
                 "allowCredentials": false
-              },
-              "request": {
-                "schema": {
-                  "application/json": {
-                    "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"ApiGatewayMethodRolesIdVarPutApplicationJsonModel\"][\"Properties\"][\"Schema\"]"
-                  }
-                }
               },
               "integration": "AWS_PROXY"
             }
           }
         ],
-        "name": "rakheoana-backend-dev-dev-updateRole",
+        "name": "portfolio-website-backend-dev-dev-updateSkill",
         "package": {
-          "artifact": ".serverless\\rakheoana-backend-dev.zip"
+          "artifact": ".serverless/portfolio-website-backend-dev.zip"
         },
         "memory": 1024,
         "timeout": 6,
-        "runtime": "nodejs14.x",
+        "runtime": "nodejs24.x",
         "vpc": {},
-        "versionLogicalId": "UpdateRoleLambdaVersionmNtcHJdeM9Q8eJjr2PQy5M8nlHuFIOJxctFbWT5yM"
+        "versionLogicalId": "UpdateSkillLambdaVersion65QW3u0OSEy2P9zqLBMJRHxPhVLX1ktSSGTTvhuI"
       },
-      "deleteRole": {
-        "handler": "src/functions/roles/delete/handler.main",
+      "removeSkill": {
+        "handler": "src/functions/skills/remove/handler.main",
         "tracing": true,
         "events": [
           {
             "http": {
               "method": "delete",
+              "path": "api/skills/{id}",
               "cors": {
                 "origin": "*",
                 "methods": [
@@ -1779,33 +2760,33 @@
                   "Authorization",
                   "X-Api-Key",
                   "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
                 ],
                 "allowCredentials": false
               },
-              "path": "roles/{id}",
               "integration": "AWS_PROXY"
             }
           }
         ],
-        "name": "rakheoana-backend-dev-dev-deleteRole",
+        "name": "portfolio-website-backend-dev-dev-removeSkill",
         "package": {
-          "artifact": ".serverless\\rakheoana-backend-dev.zip"
+          "artifact": ".serverless/portfolio-website-backend-dev.zip"
         },
         "memory": 1024,
         "timeout": 6,
-        "runtime": "nodejs14.x",
+        "runtime": "nodejs24.x",
         "vpc": {},
-        "versionLogicalId": "DeleteRoleLambdaVersionHtCpyD8g8rlDuC8BuGpeGuzuKBCYbGC1oOTSUo1yyw"
+        "versionLogicalId": "RemoveSkillLambdaVersionhyeh9XVVEyZJlfuaTYUcITr3tvnYIDvd7OEGF5IOgs"
       },
-      "getRole": {
-        "handler": "src/functions/roles/get/handler.main",
+      "listExperience": {
+        "handler": "src/functions/experience/list/handler.main",
         "tracing": true,
         "events": [
           {
             "http": {
               "method": "get",
-              "path": "roles/{id}",
+              "path": "api/experience",
               "cors": {
                 "origin": "*",
                 "methods": [
@@ -1818,7 +2799,8 @@
                   "Authorization",
                   "X-Api-Key",
                   "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
                 ],
                 "allowCredentials": false
               },
@@ -1826,24 +2808,24 @@
             }
           }
         ],
-        "name": "rakheoana-backend-dev-dev-getRole",
+        "name": "portfolio-website-backend-dev-dev-listExperience",
         "package": {
-          "artifact": ".serverless\\rakheoana-backend-dev.zip"
+          "artifact": ".serverless/portfolio-website-backend-dev.zip"
         },
         "memory": 1024,
         "timeout": 6,
-        "runtime": "nodejs14.x",
+        "runtime": "nodejs24.x",
         "vpc": {},
-        "versionLogicalId": "GetRoleLambdaVersionE3iILdhJ7FpzM9O6bUnl9O1PquRoIN0iusybdAIM"
+        "versionLogicalId": "ListExperienceLambdaVersionSGPobgJr4DQswM9XP58cQBUetZHu9QszxKZPZ4zr4"
       },
-      "getAllRoles": {
-        "handler": "src/functions/roles/getAll/handler.main",
+      "getExperience": {
+        "handler": "src/functions/experience/get/handler.main",
         "tracing": true,
         "events": [
           {
             "http": {
               "method": "get",
-              "path": "roles",
+              "path": "api/experience/{id}",
               "cors": {
                 "origin": "*",
                 "methods": [
@@ -1856,7 +2838,8 @@
                   "Authorization",
                   "X-Api-Key",
                   "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
                 ],
                 "allowCredentials": false
               },
@@ -1864,24 +2847,24 @@
             }
           }
         ],
-        "name": "rakheoana-backend-dev-dev-getAllRoles",
+        "name": "portfolio-website-backend-dev-dev-getExperience",
         "package": {
-          "artifact": ".serverless\\rakheoana-backend-dev.zip"
+          "artifact": ".serverless/portfolio-website-backend-dev.zip"
         },
         "memory": 1024,
         "timeout": 6,
-        "runtime": "nodejs14.x",
+        "runtime": "nodejs24.x",
         "vpc": {},
-        "versionLogicalId": "GetAllRolesLambdaVersionqvZ1dW0GfaZGuv03psq9aLzg1tjyOIhN0rIdS6P8I"
+        "versionLogicalId": "GetExperienceLambdaVersionXHeI4Zg16QmtsITd7pA9nTyf8u600i3uHpFEEC0"
       },
-      "addUser": {
-        "handler": "src/functions/users/addUser/handler.main",
+      "createExperience": {
+        "handler": "src/functions/experience/create/handler.main",
         "tracing": true,
         "events": [
           {
             "http": {
               "method": "post",
-              "path": "users",
+              "path": "api/experience",
               "cors": {
                 "origin": "*",
                 "methods": [
@@ -1894,38 +2877,305 @@
                   "Authorization",
                   "X-Api-Key",
                   "X-Amz-Security-Token",
-                  "X-Amz-User-Agent"
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
                 ],
                 "allowCredentials": false
-              },
-              "request": {
-                "schema": {
-                  "application/json": {
-                    "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"ApiGatewayMethodUsersPostApplicationJsonModel\"][\"Properties\"][\"Schema\"]"
-                  }
-                }
               },
               "integration": "AWS_PROXY"
             }
           }
         ],
-        "name": "rakheoana-backend-dev-dev-addUser",
+        "name": "portfolio-website-backend-dev-dev-createExperience",
         "package": {
-          "artifact": ".serverless\\rakheoana-backend-dev.zip"
+          "artifact": ".serverless/portfolio-website-backend-dev.zip"
         },
         "memory": 1024,
         "timeout": 6,
-        "runtime": "nodejs14.x",
+        "runtime": "nodejs24.x",
         "vpc": {},
-        "versionLogicalId": "AddUserLambdaVersionQWReJzSwd5CaX2lEiaUgimBmGhD9o16pH2PEkHF7cI"
+        "versionLogicalId": "CreateExperienceLambdaVersiondYrwQGrqdIzVgcMooe1MCSWIk4T6bwNBQNScmA5m3U"
+      },
+      "updateExperience": {
+        "handler": "src/functions/experience/update/handler.main",
+        "tracing": true,
+        "events": [
+          {
+            "http": {
+              "method": "put",
+              "path": "api/experience/{id}",
+              "cors": {
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "PUT"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "portfolio-website-backend-dev-dev-updateExperience",
+        "package": {
+          "artifact": ".serverless/portfolio-website-backend-dev.zip"
+        },
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs24.x",
+        "vpc": {},
+        "versionLogicalId": "UpdateExperienceLambdaVersionkYyXCq51iyvrPiEv6cxnntAh5t7maAfMHkh6LeKeI"
+      },
+      "deleteExperience": {
+        "handler": "src/functions/experience/delete/handler.main",
+        "tracing": true,
+        "events": [
+          {
+            "http": {
+              "method": "delete",
+              "path": "api/experience/{id}",
+              "cors": {
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "DELETE"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "portfolio-website-backend-dev-dev-deleteExperience",
+        "package": {
+          "artifact": ".serverless/portfolio-website-backend-dev.zip"
+        },
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs24.x",
+        "vpc": {},
+        "versionLogicalId": "DeleteExperienceLambdaVersionH5qllfzCqMi8rNaWvRWyD67FiSrfcEGdAf6nBpv5fw"
+      },
+      "listPortfolio": {
+        "handler": "src/functions/portfolio/list/handler.main",
+        "tracing": true,
+        "events": [
+          {
+            "http": {
+              "method": "get",
+              "path": "api/portfolio",
+              "cors": {
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "GET"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "portfolio-website-backend-dev-dev-listPortfolio",
+        "package": {
+          "artifact": ".serverless/portfolio-website-backend-dev.zip"
+        },
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs24.x",
+        "vpc": {},
+        "versionLogicalId": "ListPortfolioLambdaVersionEk5ZDcLLo6272ANZ20UcFRAUDG2fL3jwBe3rVfyBZjI"
+      },
+      "getPortfolio": {
+        "handler": "src/functions/portfolio/get/handler.main",
+        "tracing": true,
+        "events": [
+          {
+            "http": {
+              "method": "get",
+              "path": "api/portfolio/{id}",
+              "cors": {
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "GET"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "portfolio-website-backend-dev-dev-getPortfolio",
+        "package": {
+          "artifact": ".serverless/portfolio-website-backend-dev.zip"
+        },
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs24.x",
+        "vpc": {},
+        "versionLogicalId": "GetPortfolioLambdaVersionAMOPUh1aWGRIoNAn4EQwgKDzrmJHNi2f29hlVIdDQ"
+      },
+      "createPortfolio": {
+        "handler": "src/functions/portfolio/create/handler.main",
+        "tracing": true,
+        "events": [
+          {
+            "http": {
+              "method": "post",
+              "path": "api/portfolio",
+              "cors": {
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "POST"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "portfolio-website-backend-dev-dev-createPortfolio",
+        "package": {
+          "artifact": ".serverless/portfolio-website-backend-dev.zip"
+        },
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs24.x",
+        "vpc": {},
+        "versionLogicalId": "CreatePortfolioLambdaVersionUolJae0UxsfUevXMzFFwlKoeDj683C9i8rVy1mcFA"
+      },
+      "updatePortfolio": {
+        "handler": "src/functions/portfolio/update/handler.main",
+        "tracing": true,
+        "events": [
+          {
+            "http": {
+              "method": "put",
+              "path": "api/portfolio/{id}",
+              "cors": {
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "PUT"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "portfolio-website-backend-dev-dev-updatePortfolio",
+        "package": {
+          "artifact": ".serverless/portfolio-website-backend-dev.zip"
+        },
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs24.x",
+        "vpc": {},
+        "versionLogicalId": "UpdatePortfolioLambdaVersionKkf57YESBBgyPVXAfcnWpChykbotyeGLjMifqSVDUs8"
+      },
+      "deletePortfolio": {
+        "handler": "src/functions/portfolio/delete/handler.main",
+        "tracing": true,
+        "events": [
+          {
+            "http": {
+              "method": "delete",
+              "path": "api/portfolio/{id}",
+              "cors": {
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "DELETE"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "portfolio-website-backend-dev-dev-deletePortfolio",
+        "package": {
+          "artifact": ".serverless/portfolio-website-backend-dev.zip"
+        },
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs24.x",
+        "vpc": {},
+        "versionLogicalId": "DeletePortfolioLambdaVersionbh34YUQHYydaBteG94bH6QwCT49ohwpeSf7DrY6A5M"
       }
     },
     "resources": {
       "Resources": {
-        "RolesTable": {
+        "SkillsTable": {
           "Type": "AWS::DynamoDB::Table",
           "Properties": {
-            "TableName": "rakheoana-backend-dev-dev-roles",
+            "TableName": "portfolio-website-backend-dev-dev-skills",
             "BillingMode": "PAY_PER_REQUEST",
             "AttributeDefinitions": [
               {
@@ -1941,10 +3191,29 @@
             ]
           }
         },
-        "UsersTable": {
+        "ExperienceTable": {
           "Type": "AWS::DynamoDB::Table",
           "Properties": {
-            "TableName": "rakheoana-backend-dev-dev-users",
+            "TableName": "portfolio-website-backend-dev-dev-experience",
+            "BillingMode": "PAY_PER_REQUEST",
+            "AttributeDefinitions": [
+              {
+                "AttributeName": "id",
+                "AttributeType": "S"
+              }
+            ],
+            "KeySchema": [
+              {
+                "AttributeName": "id",
+                "KeyType": "HASH"
+              }
+            ]
+          }
+        },
+        "PortfolioTable": {
+          "Type": "AWS::DynamoDB::Table",
+          "Properties": {
+            "TableName": "portfolio-website-backend-dev-dev-portfolio",
             "BillingMode": "PAY_PER_REQUEST",
             "AttributeDefinitions": [
               {
@@ -1966,10 +3235,7 @@
     "configValidationMode": "warn",
     "serviceFilename": "serverless.ts",
     "initialServerlessConfig": {
-      "service": {
-        "$ref": "$[\"service\"][\"serviceObject\"]"
-      },
-      "variablesResolutionMode": "20210326",
+      "service": "portfolio-website-backend-dev",
       "custom": {
         "$ref": "$[\"service\"][\"custom\"]"
       },
@@ -1981,8 +3247,9 @@
           "!.dynamodb/**",
           "!node_modules/**"
         ],
-        "deploymentBucket": "rakheoana-deployment-bucket",
-        "artifactDirectoryName": "serverless/rakheoana-backend-dev/dev/1693743300906-2023-09-03T12:15:00.906Z"
+        "artifactsS3KeyDirname": "serverless/portfolio-website-backend-dev/dev/code-artifacts",
+        "deploymentBucket": "portfolio-website-backend-dev",
+        "artifactDirectoryName": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z"
       },
       "provider": {
         "$ref": "$[\"service\"][\"provider\"]"
@@ -1998,7 +3265,7 @@
     "isDashboardMonitoringPreconfigured": false
   },
   "package": {
-    "artifactDirectoryName": "serverless/rakheoana-backend-dev/dev/1693743300906-2023-09-03T12:15:00.906Z",
+    "artifactDirectoryName": "serverless/portfolio-website-backend-dev/dev/1795093640274-2026-11-19T13:07:20.274Z",
     "artifact": ""
   }
 }

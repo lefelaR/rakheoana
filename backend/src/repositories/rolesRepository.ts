@@ -16,21 +16,19 @@ export const addRole = async (role: Role) => {
 	await DynamoDatabaseService.create(params);
 
 	//dispatch event
-	// await eventBridgeService
-	// 	.putEvents({
-	// 		Entries: [
-	// 			{
-	// 				EventBusName: RoleEvents.onCreated.EventBusName,
-	// 				Source: RoleEvents.onCreated.Source + '-' + process.env.STAGE,
-	// 				DetailType: RoleEvents.onCreated.DetailType,
-	// 				Detail: JSON.stringify({
-	// 					description: `Role Created at ${new Date(role.createdAt)}`,
-	// 					data: role,
-	// 				}),
-	// 			},
-	// 		],
-	// 	})
-	// 	.promise();
+	// await eventBridgeService.putEvents({
+	// 	Entries: [
+	// 		{
+	// 			EventBusName: RoleEvents.onCreated.EventBusName,
+	// 			Source: RoleEvents.onCreated.Source + "-" + process.env.STAGE,
+	// 			DetailType: RoleEvents.onCreated.DetailType,
+	// 			Detail: JSON.stringify({
+	// 				description: `Role Created at ${new Date(role.createdAt)}`,
+	// 				data: role,
+	// 			}),
+	// 		},
+	// 	],
+	// });
 	return role;
 };
 
@@ -60,21 +58,19 @@ export const updateRole = async (role: Role) => {
 	const result = await DynamoDatabaseService.update(params);
 
 	//dispatch event
-	await eventBridgeService
-		.putEvents({
-			Entries: [
-				{
-					EventBusName: RoleEvents.onUpdated.EventBusName,
-					Source: RoleEvents.onUpdated.Source + '-' + process.env.STAGE,
-					DetailType: RoleEvents.onUpdated.DetailType,
-					Detail: JSON.stringify({
-						description: `Role updated at ${new Date(updatedAt)}`,
-						data: params,
-					}),
-				},
-			],
-		})
-		.promise();
+	await eventBridgeService.putEvents({
+		Entries: [
+			{
+				EventBusName: RoleEvents.onUpdated.EventBusName,
+				Source: RoleEvents.onUpdated.Source + "-" + process.env.STAGE,
+				DetailType: RoleEvents.onUpdated.DetailType,
+				Detail: JSON.stringify({
+					description: `Role updated at ${new Date(updatedAt)}`,
+					data: params,
+				}),
+			},
+		],
+	});
 	return result.Attributes;
 };
 
@@ -103,20 +99,18 @@ export const deleteRole = async (roleId: string) => {
 		Key: { id: roleId },
 	};
 	await DynamoDatabaseService.delete(params);
-	await eventBridgeService
-		.putEvents({
-			Entries: [
-				{
-					EventBusName: RoleEvents.onDeleted.EventBusName,
-					Source: RoleEvents.onDeleted.Source + '-' + process.env.STAGE,
-					DetailType: RoleEvents.onDeleted.DetailType,
-					Detail: JSON.stringify({
-						description: `Role ${roleId} deleted at ${new Date()}`,
-						data: params,
-					}),
-				},
-			],
-		})
-		.promise();
+	await eventBridgeService.putEvents({
+		Entries: [
+			{
+				EventBusName: RoleEvents.onDeleted.EventBusName,
+				Source: RoleEvents.onDeleted.Source + "-" + process.env.STAGE,
+				DetailType: RoleEvents.onDeleted.DetailType,
+				Detail: JSON.stringify({
+					description: `Role ${roleId} deleted at ${new Date()}`,
+					data: params,
+				}),
+			},
+		],
+	});
 	return params.Key.id;
 };

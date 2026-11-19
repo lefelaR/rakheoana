@@ -7,5 +7,6 @@ export type PortfolioRecord = {
 	url?: string;
 	image?: string;
 	period: PortfolioPeriod;
+	hidden?: boolean;
 	updatedAt?: number;
 };
